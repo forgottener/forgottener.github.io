@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: https://forgottener.github.io/sitemap.xml
+Sitemap: https://gaoboy.com/sitemap.xml
