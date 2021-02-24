@@ -1,0 +1,1891 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>Unraid下Docker部署Nextcloud网盘 - 猿资猿味 - 高波的博客</title><meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv=cache-control content="no-transform"><meta http-equiv=cache-control content="no-siteapp"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=author content="forgottener"><meta name=description content="家庭网络部署nextcloud私人网盘服务教程，以及域名访问问题解决方案"><meta name=keywords content="unraid,docker,nextcloud,ddns"><meta name=generator content="Hugo 0.80.0 with theme even"><link rel=canonical href=https://gaoboy.com/post/unraid-docker-nextcloud-setting-ddns-proxy/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link href=/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css rel=stylesheet><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous><meta property="og:title" content="Unraid下Docker部署Nextcloud网盘"><meta property="og:description" content="家庭网络部署nextcloud私人网盘服务教程，以及域名访问问题解决方案"><meta property="og:type" content="article"><meta property="og:url" content="https://gaoboy.com/post/unraid-docker-nextcloud-setting-ddns-proxy/"><meta property="article:published_time" content="2021-02-24T16:19:40+08:00"><meta property="article:modified_time" content="2021-02-24T16:19:40+08:00"><meta itemprop=name content="Unraid下Docker部署Nextcloud网盘"><meta itemprop=description content="家庭网络部署nextcloud私人网盘服务教程，以及域名访问问题解决方案"><meta itemprop=datePublished content="2021-02-24T16:19:40+08:00"><meta itemprop=dateModified content="2021-02-24T16:19:40+08:00"><meta itemprop=wordCount content="9904"><meta itemprop=keywords content="docker,nextcloud,网盘,"><meta name=twitter:card content="summary"><meta name=twitter:title content="Unraid下Docker部署Nextcloud网盘"><meta name=twitter:description content="家庭网络部署nextcloud私人网盘服务教程，以及域名访问问题解决方案"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script><script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>猿资猿味</a></div><div class=mobile-navbar-icon><span></span><span></span><span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><a href=/><li class=mobile-menu-item>Home</li></a><a href=/post/><li class=mobile-menu-item>Archives</li></a><a href=/tags/><li class=mobile-menu-item>Tags</li></a><a href=/categories/><li class=mobile-menu-item>Categories</li></a></ul></nav><div class=container id=mobile-panel><header id=header class=header><div class=logo-wrapper><a href=/ class=logo>猿资猿味</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=/>Home</a></li><li class=menu-item><a class=menu-item-link href=/post/>Archives</a></li><li class=menu-item><a class=menu-item-link href=/tags/>Tags</a></li><li class=menu-item><a class=menu-item-link href=/categories/>Categories</a></li></ul></nav></header><main id=main class=main><div class=content-wrapper><div id=content class=content><article class=post><header class=post-header><h1 class=post-title>Unraid下Docker部署Nextcloud网盘</h1><div class=post-meta><span class=post-time>2021-02-24</span><div class=post-category><a href=/categories/unraid/>unraid</a>
+<a href=/categories/nas/>nas</a></div></div></header><div class=post-toc id=post-toc><h2 class=post-toc-title>文章目录</h2><div class="post-toc-content always-active"><nav id=TableOfContents><ul><li><ul><li><a href=#安装步骤>安装步骤</a></li><li><a href=#遇到的问题>遇到的问题</a></li><li><a href=#修改配置文件>修改配置文件</a></li></ul></li></ul></nav></div></div><div class=post-content><h2 id=安装步骤>安装步骤</h2><ul><li><code>Community Applications</code> 搜索<code>nextcloud</code></li><li>选择<a href=https://hub.docker.com/r/linuxserver/nextcloud> linuxserver/nextcloud</a></li><li><code>Host Port 1:*</code> <code>Container Port: 443</code>容器内443端口对应宿主机<code>unraid</code>的端口。随便挑一个没被占用的，我用了<code>1443</code></li><li><code>Host Path 2:*</code> <code>Container Path: /data</code>填unraid序列里创建的一个用来存储nextcloud数据的共享文件夹，我的是<code>/mnt/user/nextcloud</code></li><li><code>APPLY</code>启动，访问<code>https://xx.xx.xx.xx:1443</code>进入安装网页界面。（<code>xx.xx.xx.xx</code>是unraid的ip，必须是<code>https</code>,浏览器提示不安全选择继续访问）</li><li>顺利进入安装网页界面后设置管理员账号、密码，选择数据库类型后完成安装。</li></ul><h2 id=遇到的问题>遇到的问题</h2><p>第一个<code>trusted_domains</code>的问题比较好定位，修改配置文件<code>/mnt/user/appdata/nextcloud/www/nextcloud/config</code>即可。</p><p>第二个问题：由于nextcloud服务对于默认的域名(https默认<code>443</code>)是不带端口的，但是你懂的，通过ddns公网转发到路由器端口映射局域网内的<code>nextcloud</code>服务肯定会带端口号，这在客户端上访问就会遇到跳转问题（链接跳转时端口号丢了）</p><h2 id=修改配置文件>修改配置文件</h2><p>nextcloud项目代码在<code>unraid</code>文件夹<code>/mnt/user/appdata/nextcloud</code>下，可以通过<code>unraid</code>的<code>webterminal</code>进入。配置文件路径是<code>/mnt/user/appdata/nextcloud/www/nextcloud/config</code> 里面有一个示例的配置文件<code>config.sample.php</code>，内容如下：</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=color:#f92672>&lt;?</span><span style=color:#a6e22e>php</span>
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * This configuration file is only provided to document the different
+</span><span style=color:#e6db74> * configuration options and their usage.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * DO NOT COMPLETELY BASE YOUR CONFIGURATION FILE ON THIS SAMPLE. THIS MAY BREAK
+</span><span style=color:#e6db74> * YOUR INSTANCE. Instead, manually copy configuration switches that you
+</span><span style=color:#e6db74> * consider important for your instance to your working ``config.php``, and
+</span><span style=color:#e6db74> * apply configuration options that are pertinent for your instance.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * This file is used to generate the configuration documentation.
+</span><span style=color:#e6db74> * Please consider following requirements of the current parser:
+</span><span style=color:#e6db74> *  * all comments need to start with `/**` and end with ` *\/` - each on their
+</span><span style=color:#e6db74> *    own line
+</span><span style=color:#e6db74> *  * add a `@see CONFIG_INDEX` to copy a previously described config option
+</span><span style=color:#e6db74> *    also to this line
+</span><span style=color:#e6db74> *  * everything between the ` *\/` and the next `/**` will be treated as the
+</span><span style=color:#e6db74> *    config option
+</span><span style=color:#e6db74> *  * use RST syntax
+</span><span style=color:#e6db74> */</span>
+
+$CONFIG <span style=color:#f92672>=</span> [
+
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Default Parameters
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * These parameters are configured by the Nextcloud installer, and are required
+</span><span style=color:#e6db74> * for your Nextcloud server to operate.
+</span><span style=color:#e6db74> */</span>
+
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * This is a unique identifier for your Nextcloud installation, created
+</span><span style=color:#e6db74> * automatically by the installer. This example is for documentation only,
+</span><span style=color:#e6db74> * and you should never use it because it will not work. A valid ``instanceid``
+</span><span style=color:#e6db74> * is created when you install Nextcloud.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * &#39;instanceid&#39; =&gt; &#39;d3c944a9a&#39;,
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;instanceid&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;&#39;</span>,
+
+ <span style=color:#e6db74>/**
+</span><span style=color:#e6db74>  * The salt used to hash all passwords, auto-generated by the Nextcloud
+</span><span style=color:#e6db74>  * installer. (There are also per-user salts.) If you lose this salt you lose
+</span><span style=color:#e6db74>  * all your passwords. This example is for documentation only, and you should
+</span><span style=color:#e6db74>  * never use it.
+</span><span style=color:#e6db74>  *
+</span><span style=color:#e6db74>  * @deprecated This salt is deprecated and only used for legacy-compatibility,
+</span><span style=color:#e6db74>  * developers should *NOT* use this value for anything nowadays.
+</span><span style=color:#e6db74>  *
+</span><span style=color:#e6db74>  * &#39;passwordsalt&#39; =&gt; &#39;d3c944a9af095aa08f&#39;,
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;passwordsalt&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Your list of trusted domains that users can log into. Specifying trusted
+</span><span style=color:#e6db74> * domains prevents host header poisoning. Do not remove this, as it performs
+</span><span style=color:#e6db74> * necessary security checks.
+</span><span style=color:#e6db74> * You can specify:
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * - the exact hostname of your host or virtual host, e.g. demo.example.org.
+</span><span style=color:#e6db74> * - the exact hostname with permitted port, e.g. demo.example.org:443.
+</span><span style=color:#e6db74> *   This disallows all other ports on this host
+</span><span style=color:#e6db74> * - use * as a wildcard, e.g. ubos-raspberry-pi*.local will allow
+</span><span style=color:#e6db74> *   ubos-raspberry-pi.local and ubos-raspberry-pi-2.local
+</span><span style=color:#e6db74> * - the IP address with or without permitted port, e.g. [2001:db8::1]:8080
+</span><span style=color:#e6db74> *   Using TLS certificates where commonName=&lt;IP address&gt; is deprecated
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;trusted_domains&#39;</span> <span style=color:#f92672>=&gt;</span>
+   [
+    <span style=color:#e6db74>&#39;demo.example.org&#39;</span>,
+    <span style=color:#e6db74>&#39;otherdomain.example.org&#39;</span>,
+    <span style=color:#e6db74>&#39;10.111.112.113&#39;</span>,
+    <span style=color:#e6db74>&#39;[2001:db8::1]&#39;</span>
+  ],
+
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Where user files are stored. The SQLite database is also stored here, when
+</span><span style=color:#e6db74> * you use SQLite.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Default to ``data/`` in the Nextcloud directory.
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;datadirectory&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;/var/www/nextcloud/data&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * The current version number of your Nextcloud installation. This is set up
+</span><span style=color:#e6db74> * during installation and update, so you shouldn&#39;t need to change it.
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;version&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Identifies the database used with this installation. See also config option
+</span><span style=color:#e6db74> * ``supportedDatabases``
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Available:
+</span><span style=color:#e6db74> * 	- sqlite3 (SQLite3)
+</span><span style=color:#e6db74> * 	- mysql (MySQL/MariaDB)
+</span><span style=color:#e6db74> * 	- pgsql (PostgreSQL)
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``sqlite3``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;dbtype&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;sqlite3&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Your host server name, for example ``localhost``, ``hostname``,
+</span><span style=color:#e6db74> * ``hostname.example.com``, or the IP address. To specify a port use
+</span><span style=color:#e6db74> * ``hostname:####``; to specify a Unix socket use
+</span><span style=color:#e6db74> * ``localhost:/path/to/socket``.
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;dbhost&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * The name of the Nextcloud database, which is set during installation. You
+</span><span style=color:#e6db74> * should not need to change this.
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;dbname&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;nextcloud&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * The user that Nextcloud uses to write to the database. This must be unique
+</span><span style=color:#e6db74> * across Nextcloud instances using the same SQL database. This is set up during
+</span><span style=color:#e6db74> * installation, so you shouldn&#39;t need to change it.
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;dbuser&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * The password for the database user. This is set up during installation, so
+</span><span style=color:#e6db74> * you shouldn&#39;t need to change it.
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;dbpassword&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Prefix for the Nextcloud tables in the database.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Default to ``oc_``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;dbtableprefix&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;&#39;</span>,
+
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Indicates whether the Nextcloud instance was installed successfully; ``true``
+</span><span style=color:#e6db74> * indicates a successful installation, and ``false`` indicates an unsuccessful
+</span><span style=color:#e6db74> * installation.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``false``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;installed&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>false</span>,
+
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * User Experience
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * These optional parameters control some aspects of the user interface. Default
+</span><span style=color:#e6db74> * values, where present, are shown.
+</span><span style=color:#e6db74> */</span>
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * This sets the default language on your Nextcloud server, using ISO_639-1
+</span><span style=color:#e6db74> * language codes such as ``en`` for English, ``de`` for German, and ``fr`` for
+</span><span style=color:#e6db74> * French. It overrides automatic language detection on public pages like login
+</span><span style=color:#e6db74> * or shared items. User&#39;s language preferences configured under &#34;personal -&gt;
+</span><span style=color:#e6db74> * language&#34; override this setting after they have logged in. Nextcloud has two
+</span><span style=color:#e6db74> * distinguished language codes for German, &#39;de&#39; and &#39;de_DE&#39;. &#39;de&#39; is used for
+</span><span style=color:#e6db74> * informal German and &#39;de_DE&#39; for formal German. By setting this value to &#39;de_DE&#39;
+</span><span style=color:#e6db74> * you can enforce the formal version of German unless the user has chosen
+</span><span style=color:#e6db74> * something different explicitly.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``en``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;default_language&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;en&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * With this setting a language can be forced for all users. If a language is
+</span><span style=color:#e6db74> * forced, the users are also unable to change their language in the personal
+</span><span style=color:#e6db74> * settings. If users shall be unable to change their language, but users have
+</span><span style=color:#e6db74> * different languages, this value can be set to ``true`` instead of a language
+</span><span style=color:#e6db74> * code.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``false``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;force_language&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;en&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * This sets the default locale on your Nextcloud server, using ISO_639
+</span><span style=color:#e6db74> * language codes such as ``en`` for English, ``de`` for German, and ``fr`` for
+</span><span style=color:#e6db74> * French, and ISO-3166 country codes such as ``GB``, ``US``, ``CA``, as defined
+</span><span style=color:#e6db74> * in RFC 5646. It overrides automatic locale detection on public pages like
+</span><span style=color:#e6db74> * login or shared items. User&#39;s locale preferences configured under &#34;personal
+</span><span style=color:#e6db74> * -&gt; locale&#34; override this setting after they have logged in.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``en``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;default_locale&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;en_US&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * With this setting a locale can be forced for all users. If a locale is
+</span><span style=color:#e6db74> * forced, the users are also unable to change their locale in the personal
+</span><span style=color:#e6db74> * settings. If users shall be unable to change their locale, but users have
+</span><span style=color:#e6db74> * different languages, this value can be set to ``true`` instead of a locale
+</span><span style=color:#e6db74> * code.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``false``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;force_locale&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;en_US&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Set the default app to open on login. Use the app names as they appear in the
+</span><span style=color:#e6db74> * URL after clicking them in the Apps menu, such as documents, calendar, and
+</span><span style=color:#e6db74> * gallery. You can use a comma-separated list of app names, so if the first
+</span><span style=color:#e6db74> * app is not enabled for a user then Nextcloud will try the second one, and so
+</span><span style=color:#e6db74> * on. If no enabled apps are found it defaults to the dashboard app.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``dashboard,files``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;defaultapp&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;dashboard,files&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * ``true`` enables the Help menu item in the user menu (top right of the
+</span><span style=color:#e6db74> * Nextcloud Web interface). ``false`` removes the Help item.
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;knowledgebaseenabled&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>true</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * ``true`` allows users to change their display names (on their Personal
+</span><span style=color:#e6db74> * pages), and ``false`` prevents them from changing their display names.
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;allow_user_to_change_display_name&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>true</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Lifetime of the remember login cookie. This should be larger than the
+</span><span style=color:#e6db74> * session_lifetime. If it is set to 0 remember me is disabled.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``60*60*24*15`` seconds (15 days)
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;remember_login_cookie_lifetime&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#ae81ff>60</span><span style=color:#f92672>*</span><span style=color:#ae81ff>60</span><span style=color:#f92672>*</span><span style=color:#ae81ff>24</span><span style=color:#f92672>*</span><span style=color:#ae81ff>15</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * The lifetime of a session after inactivity.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``60*60*24`` seconds (24 hours)
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;session_lifetime&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#ae81ff>60</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>60</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>24</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Enable or disable session keep-alive when a user is logged in to the Web UI.
+</span><span style=color:#e6db74> * Enabling this sends a &#34;heartbeat&#34; to the server to keep it from timing out.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``true``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;session_keepalive&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>true</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Enable or disable the automatic logout after session_lifetime, even if session
+</span><span style=color:#e6db74> * keepalive is enabled. This will make sure that an inactive browser will be logged out
+</span><span style=color:#e6db74> * even if requests to the server might extend the session lifetime.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``false``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;auto_logout&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>false</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Enforce token authentication for clients, which blocks requests using the user
+</span><span style=color:#e6db74> * password for enhanced security. Users need to generate tokens in personal settings
+</span><span style=color:#e6db74> * which can be used as passwords on their clients.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``false``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;token_auth_enforced&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>false</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * The interval at which token activity should be updated.
+</span><span style=color:#e6db74> * Increasing this value means that the last activty on the security page gets
+</span><span style=color:#e6db74> * more outdated.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Tokens are still checked every 5 minutes for validity
+</span><span style=color:#e6db74> * max value: 300
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``300``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;token_auth_activity_update&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#ae81ff>60</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Whether the bruteforce protection shipped with Nextcloud should be enabled or not.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Disabling this is discouraged for security reasons.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``true``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;auth.bruteforce.protection.enabled&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>true</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * By default WebAuthn is available but it can be explicitly disabled by admins
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;auth.webauthn.enabled&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>true</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * The directory where the skeleton files are located. These files will be
+</span><span style=color:#e6db74> * copied to the data directory of new users. Leave empty to not copy any
+</span><span style=color:#e6db74> * skeleton files.
+</span><span style=color:#e6db74> * ``{lang}`` can be used as a placeholder for the language of the user.
+</span><span style=color:#e6db74> * If the directory does not exist, it falls back to non dialect (from ``de_DE``
+</span><span style=color:#e6db74> * to ``de``). If that does not exist either, it falls back to ``default``
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``core/skeleton`` in the Nextcloud directory.
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;skeletondirectory&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;/path/to/nextcloud/core/skeleton&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * If your user backend does not allow password resets (e.g. when it&#39;s a
+</span><span style=color:#e6db74> * read-only user backend like LDAP), you can specify a custom link, where the
+</span><span style=color:#e6db74> * user is redirected to, when clicking the &#34;reset password&#34; link after a failed
+</span><span style=color:#e6db74> * login-attempt.
+</span><span style=color:#e6db74> * In case you do not want to provide any link, replace the url with &#39;disabled&#39;
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;lost_password_link&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;https://example.org/link/to/password/reset&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Mail Parameters
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * These configure the email settings for Nextcloud notifications and password
+</span><span style=color:#e6db74> * resets.
+</span><span style=color:#e6db74> */</span>
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * The return address that you want to appear on emails sent by the Nextcloud
+</span><span style=color:#e6db74> * server, for example ``nc-admin@example.com``, substituting your own domain,
+</span><span style=color:#e6db74> * of course.
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;mail_domain&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;example.com&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * FROM address that overrides the built-in ``sharing-noreply`` and
+</span><span style=color:#e6db74> * ``lostpassword-noreply`` FROM addresses.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to different from addresses depending on the feature.
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;mail_from_address&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;nextcloud&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Enable SMTP class debugging.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``false``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;mail_smtpdebug&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>false</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Which mode to use for sending mail: ``sendmail``, ``smtp`` or ``qmail``.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * If you are using local or remote SMTP, set this to ``smtp``.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * For the ``sendmail`` option you need an installed and working email system on
+</span><span style=color:#e6db74> * the server, with ``/usr/sbin/sendmail`` installed on your Unix system.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * For ``qmail`` the binary is /var/qmail/bin/sendmail, and it must be installed
+</span><span style=color:#e6db74> * on your Unix system.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``smtp``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;mail_smtpmode&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;smtp&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * This depends on ``mail_smtpmode``. Specify the IP address of your mail
+</span><span style=color:#e6db74> * server host. This may contain multiple hosts separated by a semi-colon. If
+</span><span style=color:#e6db74> * you need to specify the port number append it to the IP address separated by
+</span><span style=color:#e6db74> * a colon, like this: ``127.0.0.1:24``.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``127.0.0.1``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;mail_smtphost&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;127.0.0.1&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * This depends on ``mail_smtpmode``. Specify the port for sending mail.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``25``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;mail_smtpport&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#ae81ff>25</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * This depends on ``mail_smtpmode``. This sets the SMTP server timeout, in
+</span><span style=color:#e6db74> * seconds. You may need to increase this if you are running an anti-malware or
+</span><span style=color:#e6db74> * spam scanner.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``10`` seconds
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;mail_smtptimeout&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#ae81ff>10</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * This depends on ``mail_smtpmode``. Specify when you are using ``ssl`` for SSL/TLS or
+</span><span style=color:#e6db74> * ``tls`` for STARTTLS, or leave empty for no encryption.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``&#39;&#39;`` (empty string)
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;mail_smtpsecure&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * This depends on ``mail_smtpmode``. Change this to ``true`` if your mail
+</span><span style=color:#e6db74> * server requires authentication.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``false``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;mail_smtpauth&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>false</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * This depends on ``mail_smtpmode``. If SMTP authentication is required, choose
+</span><span style=color:#e6db74> * the authentication type as ``LOGIN`` or ``PLAIN``.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``LOGIN``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;mail_smtpauthtype&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;LOGIN&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * This depends on ``mail_smtpauth``. Specify the username for authenticating to
+</span><span style=color:#e6db74> * the SMTP server.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``&#39;&#39;`` (empty string)
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;mail_smtpname&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * This depends on ``mail_smtpauth``. Specify the password for authenticating to
+</span><span style=color:#e6db74> * the SMTP server.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Default to ``&#39;&#39;`` (empty string)
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;mail_smtppassword&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Replaces the default mail template layout. This can be utilized if the
+</span><span style=color:#e6db74> * options to modify the mail texts with the theming app is not enough.
+</span><span style=color:#e6db74> * The class must extend  ``\OC\Mail\EMailTemplate``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;mail_template_class&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;\OC\Mail\EMailTemplate&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Email will be send by default with an HTML and a plain text body. This option
+</span><span style=color:#e6db74> * allows to only send plain text emails.
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;mail_send_plaintext_only&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>false</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * This depends on ``mail_smtpmode``. Array of additional streams options that
+</span><span style=color:#e6db74> * will be passed to underlying Swift mailer implementation.
+</span><span style=color:#e6db74> * Defaults to an empty array.
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;mail_smtpstreamoptions&#39;</span> <span style=color:#f92672>=&gt;</span> [],
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Which mode is used for sendmail/qmail: ``smtp`` or ``pipe``.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * For ``smtp`` the sendmail binary is started with the parameter ``-bs``:
+</span><span style=color:#e6db74> *   - Use the SMTP protocol on standard input and output.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * For ``pipe`` the binary is started with the parameters ``-t``:
+</span><span style=color:#e6db74> *   - Read message from STDIN and extract recipients.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``smtp``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;mail_sendmailmode&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;smtp&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Proxy Configurations
+</span><span style=color:#e6db74> */</span>
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * The automatic hostname detection of Nextcloud can fail in certain reverse
+</span><span style=color:#e6db74> * proxy and CLI/cron situations. This option allows you to manually override
+</span><span style=color:#e6db74> * the automatic detection; for example ``www.example.com``, or specify the port
+</span><span style=color:#e6db74> * ``www.example.com:8080``.
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;overwritehost&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * When generating URLs, Nextcloud attempts to detect whether the server is
+</span><span style=color:#e6db74> * accessed via ``https`` or ``http``. However, if Nextcloud is behind a proxy
+</span><span style=color:#e6db74> * and the proxy handles the ``https`` calls, Nextcloud would not know that
+</span><span style=color:#e6db74> * ``ssl`` is in use, which would result in incorrect URLs being generated.
+</span><span style=color:#e6db74> * Valid values are ``http`` and ``https``.
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;overwriteprotocol&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Nextcloud attempts to detect the webroot for generating URLs automatically.
+</span><span style=color:#e6db74> * For example, if ``www.example.com/nextcloud`` is the URL pointing to the
+</span><span style=color:#e6db74> * Nextcloud instance, the webroot is ``/nextcloud``. When proxies are in use,
+</span><span style=color:#e6db74> * it may be difficult for Nextcloud to detect this parameter, resulting in
+</span><span style=color:#e6db74> * invalid URLs.
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;overwritewebroot&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * This option allows you to define a manual override condition as a regular
+</span><span style=color:#e6db74> * expression for the remote IP address. For example, defining a range of IP
+</span><span style=color:#e6db74> * addresses starting with ``10.0.0.`` and ending with 1 to 3:
+</span><span style=color:#e6db74> * ``^10\.0\.0\.[1-3]$``
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``&#39;&#39;`` (empty string)
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;overwritecondaddr&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Use this configuration parameter to specify the base URL for any URLs which
+</span><span style=color:#e6db74> * are generated within Nextcloud using any kind of command line tools (cron or
+</span><span style=color:#e6db74> * occ). The value should contain the full base URL:
+</span><span style=color:#e6db74> * ``https://www.example.com/nextcloud``
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``&#39;&#39;`` (empty string)
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;overwrite.cli.url&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * To have clean URLs without `/index.php` this parameter needs to be configured.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * This parameter will be written as &#34;RewriteBase&#34; on update and installation of
+</span><span style=color:#e6db74> * Nextcloud to your `.htaccess` file. While this value is often simply the URL
+</span><span style=color:#e6db74> * path of the Nextcloud installation it cannot be set automatically properly in
+</span><span style=color:#e6db74> * every scenario and needs thus some manual configuration.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * In a standard Apache setup this usually equals the folder that Nextcloud is
+</span><span style=color:#e6db74> * accessible at. So if Nextcloud is accessible via &#34;https://mycloud.org/nextcloud&#34;
+</span><span style=color:#e6db74> * the correct value would most likely be &#34;/nextcloud&#34;. If Nextcloud is running
+</span><span style=color:#e6db74> * under &#34;https://mycloud.org/&#34; then it would be &#34;/&#34;.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Note that the above rule is not valid in every case, as there are some rare setup
+</span><span style=color:#e6db74> * cases where this may not apply. However, to avoid any update problems this
+</span><span style=color:#e6db74> * configuration value is explicitly opt-in.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * After setting this value run `occ maintenance:update:htaccess`. Now, when the
+</span><span style=color:#e6db74> * following conditions are met Nextcloud URLs won&#39;t contain `index.php`:
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * - `mod_rewrite` is installed
+</span><span style=color:#e6db74> * - `mod_env` is installed
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``&#39;&#39;`` (empty string)
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;htaccess.RewriteBase&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;/&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * For server setups, that don&#39;t have `mod_env` enabled or restricted (e.g. suEXEC)
+</span><span style=color:#e6db74> * this parameter has to be set to true and will assume mod_rewrite.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Please check, if `mod_rewrite` is active and functional before setting this
+</span><span style=color:#e6db74> * parameter and you updated your .htaccess with `occ maintenance:update:htaccess`.
+</span><span style=color:#e6db74> * Otherwise your nextcloud installation might not be reachable anymore.
+</span><span style=color:#e6db74> * For example, try accessing resources by leaving out `index.php` in the URL.
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;htaccess.IgnoreFrontController&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>false</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * The URL of your proxy server, for example ``proxy.example.com:8081``.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Note: Guzzle (the http library used by Nextcloud) is reading the environment
+</span><span style=color:#e6db74> * variables HTTP_PROXY (only for cli request), HTTPS_PROXY, and NO_PROXY by default.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * If you configure proxy with Nextcloud any default configuration by Guzzle
+</span><span style=color:#e6db74> * is overwritten. Make sure to set ``proxyexclude`` accordingly if necessary.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``&#39;&#39;`` (empty string)
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;proxy&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * The optional authentication for the proxy to use to connect to the internet.
+</span><span style=color:#e6db74> * The format is: ``username:password``.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``&#39;&#39;`` (empty string)
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;proxyuserpwd&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * List of host names that should not be proxied to.
+</span><span style=color:#e6db74> * For example: ``[&#39;.mit.edu&#39;, &#39;foo.com&#39;]``.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Hint: Use something like ``explode(&#39;,&#39;, getenv(&#39;NO_PROXY&#39;))`` to sync this
+</span><span style=color:#e6db74> * value with the global NO_PROXY option.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to empty array.
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;proxyexclude&#39;</span> <span style=color:#f92672>=&gt;</span> [],
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Allow remote servers with local addresses e.g. in federated shares, webcal services and more
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to false
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;allow_local_remote_servers&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>true</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Deleted Items (trash bin)
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * These parameters control the Deleted files app.
+</span><span style=color:#e6db74> */</span>
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * If the trash bin app is enabled (default), this setting defines the policy
+</span><span style=color:#e6db74> * for when files and folders in the trash bin will be permanently deleted.
+</span><span style=color:#e6db74> * The app allows for two settings, a minimum time for trash bin retention,
+</span><span style=color:#e6db74> * and a maximum time for trash bin retention.
+</span><span style=color:#e6db74> * Minimum time is the number of days a file will be kept, after which it
+</span><span style=color:#e6db74> * may be deleted. Maximum time is the number of days at which it is guaranteed
+</span><span style=color:#e6db74> * to be deleted.
+</span><span style=color:#e6db74> * Both minimum and maximum times can be set together to explicitly define
+</span><span style=color:#e6db74> * file and folder deletion. For migration purposes, this setting is installed
+</span><span style=color:#e6db74> * initially set to &#34;auto&#34;, which is equivalent to the default setting in
+</span><span style=color:#e6db74> * Nextcloud.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Available values:
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * * ``auto``
+</span><span style=color:#e6db74> *     default setting. keeps files and folders in the trash bin for 30 days
+</span><span style=color:#e6db74> *     and automatically deletes anytime after that if space is needed (note:
+</span><span style=color:#e6db74> *     files may not be deleted if space is not needed).
+</span><span style=color:#e6db74> * * ``D, auto``
+</span><span style=color:#e6db74> *     keeps files and folders in the trash bin for D+ days, delete anytime if
+</span><span style=color:#e6db74> *     space needed (note: files may not be deleted if space is not needed)
+</span><span style=color:#e6db74> * * ``auto, D``
+</span><span style=color:#e6db74> *     delete all files in the trash bin that are older than D days
+</span><span style=color:#e6db74> *     automatically, delete other files anytime if space needed
+</span><span style=color:#e6db74> * * ``D1, D2``
+</span><span style=color:#e6db74> *     keep files and folders in the trash bin for at least D1 days and
+</span><span style=color:#e6db74> *     delete when exceeds D2 days (note: files will not be deleted automatically if space is needed)
+</span><span style=color:#e6db74> * * ``disabled``
+</span><span style=color:#e6db74> *     trash bin auto clean disabled, files and folders will be kept forever
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``auto``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;trashbin_retention_obligation&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;auto&#39;</span>,
+
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * File versions
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * These parameters control the Versions app.
+</span><span style=color:#e6db74> */</span>
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * If the versions app is enabled (default), this setting defines the policy
+</span><span style=color:#e6db74> * for when versions will be permanently deleted.
+</span><span style=color:#e6db74> * The app allows for two settings, a minimum time for version retention,
+</span><span style=color:#e6db74> * and a maximum time for version retention.
+</span><span style=color:#e6db74> * Minimum time is the number of days a version will be kept, after which it
+</span><span style=color:#e6db74> * may be deleted. Maximum time is the number of days at which it is guaranteed
+</span><span style=color:#e6db74> * to be deleted.
+</span><span style=color:#e6db74> * Both minimum and maximum times can be set together to explicitly define
+</span><span style=color:#e6db74> * version deletion. For migration purposes, this setting is installed
+</span><span style=color:#e6db74> * initially set to &#34;auto&#34;, which is equivalent to the default setting in
+</span><span style=color:#e6db74> * Nextcloud.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Available values:
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * * ``auto``
+</span><span style=color:#e6db74> *     default setting. Automatically expire versions according to expire
+</span><span style=color:#e6db74> *     rules. Please refer to :doc:`../configuration_files/file_versioning` for
+</span><span style=color:#e6db74> *     more information.
+</span><span style=color:#e6db74> * * ``D, auto``
+</span><span style=color:#e6db74> *     keep versions at least for D days, apply expire rules to all versions
+</span><span style=color:#e6db74> *     that are older than D days
+</span><span style=color:#e6db74> * * ``auto, D``
+</span><span style=color:#e6db74> *     delete all versions that are older than D days automatically, delete
+</span><span style=color:#e6db74> *     other versions according to expire rules
+</span><span style=color:#e6db74> * * ``D1, D2``
+</span><span style=color:#e6db74> *     keep versions for at least D1 days and delete when exceeds D2 days
+</span><span style=color:#e6db74> * * ``disabled``
+</span><span style=color:#e6db74> *     versions auto clean disabled, versions will be kept forever
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``auto``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;versions_retention_obligation&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;auto&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Nextcloud Verifications
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Nextcloud performs several verification checks. There are two options,
+</span><span style=color:#e6db74> * ``true`` and ``false``.
+</span><span style=color:#e6db74> */</span>
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Checks an app before install whether it uses private APIs instead of the
+</span><span style=color:#e6db74> * proper public APIs. If this is set to true it will only allow to install or
+</span><span style=color:#e6db74> * enable apps that pass this check.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``false``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;appcodechecker&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>true</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Check if Nextcloud is up-to-date and shows a notification if a new version is
+</span><span style=color:#e6db74> * available.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``true``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;updatechecker&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>true</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * URL that Nextcloud should use to look for updates
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``https://updates.nextcloud.com/updater_server/``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;updater.server.url&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;https://updates.nextcloud.com/updater_server/&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * The channel that Nextcloud should use to look for updates
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Supported values:
+</span><span style=color:#e6db74> *   - ``daily``
+</span><span style=color:#e6db74> *   - ``beta``
+</span><span style=color:#e6db74> *   - ``stable``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;updater.release.channel&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;stable&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Is Nextcloud connected to the Internet or running in a closed network?
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``true``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;has_internet_connection&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>true</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Which domains to request to determine the availability of an Internet
+</span><span style=color:#e6db74> * connection. If none of these hosts are reachable, the administration panel
+</span><span style=color:#e6db74> * will show a warning. Set to an empty list to not do any such checks (warning
+</span><span style=color:#e6db74> * will still be shown).
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to the following domains:
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> *  - www.nextcloud.com
+</span><span style=color:#e6db74> *  - www.startpage.com
+</span><span style=color:#e6db74> *  - www.eff.org
+</span><span style=color:#e6db74> *  - www.edri.org
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;connectivity_check_domains&#39;</span> <span style=color:#f92672>=&gt;</span> [
+	<span style=color:#e6db74>&#39;www.nextcloud.com&#39;</span>,
+	<span style=color:#e6db74>&#39;www.startpage.com&#39;</span>,
+	<span style=color:#e6db74>&#39;www.eff.org&#39;</span>,
+	<span style=color:#e6db74>&#39;www.edri.org&#39;</span>
+],
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Allows Nextcloud to verify a working .well-known URL redirects. This is done
+</span><span style=color:#e6db74> * by attempting to make a request from JS to
+</span><span style=color:#e6db74> * https://your-domain.com/.well-known/caldav/
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``true``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;check_for_working_wellknown_setup&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>true</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * This is a crucial security check on Apache servers that should always be set
+</span><span style=color:#e6db74> * to ``true``. This verifies that the ``.htaccess`` file is writable and works.
+</span><span style=color:#e6db74> * If it is not, then any options controlled by ``.htaccess``, such as large
+</span><span style=color:#e6db74> * file uploads, will not work. It also runs checks on the ``data/`` directory,
+</span><span style=color:#e6db74> * which verifies that it can&#39;t be accessed directly through the Web server.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``true``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;check_for_working_htaccess&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>true</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * In rare setups (e.g. on Openshift or docker on windows) the permissions check
+</span><span style=color:#e6db74> * might block the installation while the underlying system offers no means to
+</span><span style=color:#e6db74> * &#34;correct&#34; the permissions. In this case, set the value to false.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * In regular cases, if issues with permissions are encountered they should be
+</span><span style=color:#e6db74> * adjusted accordingly. Changing the flag is discouraged.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``true``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;check_data_directory_permissions&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>true</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * In certain environments it is desired to have a read-only configuration file.
+</span><span style=color:#e6db74> * When this switch is set to ``true`` Nextcloud will not verify whether the
+</span><span style=color:#e6db74> * configuration is writable. However, it will not be possible to configure
+</span><span style=color:#e6db74> * all options via the Web interface. Furthermore, when updating Nextcloud
+</span><span style=color:#e6db74> * it is required to make the configuration file writable again for the update
+</span><span style=color:#e6db74> * process.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``false``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;config_is_read_only&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>false</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Logging
+</span><span style=color:#e6db74> */</span>
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * This parameter determines where the Nextcloud logs are sent.
+</span><span style=color:#e6db74> * ``file``: the logs are written to file ``nextcloud.log`` in the default
+</span><span style=color:#e6db74> * Nextcloud data directory. The log file can be changed with parameter
+</span><span style=color:#e6db74> * ``logfile``.
+</span><span style=color:#e6db74> * ``syslog``: the logs are sent to the system log. This requires a syslog daemon
+</span><span style=color:#e6db74> * to be active.
+</span><span style=color:#e6db74> * ``errorlog``: the logs are sent to the PHP ``error_log`` function.
+</span><span style=color:#e6db74> * ``systemd``: the logs are sent to the Systemd journal. This requires a system
+</span><span style=color:#e6db74> * that runs Systemd and the Systemd journal. The PHP extension ``systemd``
+</span><span style=color:#e6db74> * must be installed and active.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``file``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;log_type&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;file&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Name of the file to which the Nextcloud logs are written if parameter
+</span><span style=color:#e6db74> * ``log_type`` is set to ``file``.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``[datadirectory]/nextcloud.log``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;logfile&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;/var/log/nextcloud.log&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Log file mode for the Nextcloud loggin type in octal notation.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to 0640 (writeable by user, readable by group).
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;logfilemode&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#ae81ff>0640</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Loglevel to start logging at. Valid values are: 0 = Debug, 1 = Info, 2 =
+</span><span style=color:#e6db74> * Warning, 3 = Error, and 4 = Fatal. The default value is Warning.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``2``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;loglevel&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#ae81ff>2</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * If you maintain different instances and aggregate the logs, you may want
+</span><span style=color:#e6db74> * to distinguish between them. ``syslog_tag`` can be set per instance
+</span><span style=color:#e6db74> * with a unique id. Only available if ``log_type`` is set to ``syslog`` or
+</span><span style=color:#e6db74> * ``systemd``.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * The default value is ``Nextcloud``.
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;syslog_tag&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;Nextcloud&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Log condition for log level increase based on conditions. Once one of these
+</span><span style=color:#e6db74> * conditions is met, the required log level is set to debug. This allows to
+</span><span style=color:#e6db74> * debug specific requests, users or apps
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Supported conditions:
+</span><span style=color:#e6db74> *  - ``shared_secret``: if a request parameter with the name `log_secret` is set to
+</span><span style=color:#e6db74> *                this value the condition is met
+</span><span style=color:#e6db74> *  - ``users``:  if the current request is done by one of the specified users,
+</span><span style=color:#e6db74> *                this condition is met
+</span><span style=color:#e6db74> *  - ``apps``:   if the log message is invoked by one of the specified apps,
+</span><span style=color:#e6db74> *                this condition is met
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to an empty array.
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;log.condition&#39;</span> <span style=color:#f92672>=&gt;</span> [
+	<span style=color:#e6db74>&#39;shared_secret&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;57b58edb6637fe3059b3595cf9c41b9&#39;</span>,
+	<span style=color:#e6db74>&#39;users&#39;</span> <span style=color:#f92672>=&gt;</span> [<span style=color:#e6db74>&#39;sample-user&#39;</span>],
+	<span style=color:#e6db74>&#39;apps&#39;</span> <span style=color:#f92672>=&gt;</span> [<span style=color:#e6db74>&#39;files&#39;</span>],
+],
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * This uses PHP.date formatting; see http://php.net/manual/en/function.date.php
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ISO 8601 ``2005-08-15T15:52:01+00:00`` - see \DateTime::ATOM
+</span><span style=color:#e6db74> * (https://secure.php.net/manual/en/class.datetime.php#datetime.constants.atom)
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;logdateformat&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;F d, Y H:i:s&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * The timezone for logfiles. You may change this; see
+</span><span style=color:#e6db74> * http://php.net/manual/en/timezones.php
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``UTC``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;logtimezone&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;Europe/Berlin&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Append all database queries and parameters to the log file. Use this only for
+</span><span style=color:#e6db74> * debugging, as your logfile will become huge.
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;log_query&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>false</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Enables log rotation and limits the total size of logfiles. Set it to 0 for
+</span><span style=color:#e6db74> * no rotation. Specify a size in bytes, for example 104857600 (100 megabytes
+</span><span style=color:#e6db74> * = 100 * 1024 * 1024 bytes). A new logfile is created with a new name when the
+</span><span style=color:#e6db74> * old logfile reaches your limit. If a rotated log file is already present, it
+</span><span style=color:#e6db74> * will be overwritten.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to 100 MB
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;log_rotate_size&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#ae81ff>100</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>1024</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>1024</span>,
+
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Alternate Code Locations
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Some of the Nextcloud code may be stored in alternate locations.
+</span><span style=color:#e6db74> */</span>
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * This section is for configuring the download links for Nextcloud clients, as
+</span><span style=color:#e6db74> * seen in the first-run wizard and on Personal pages.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to:
+</span><span style=color:#e6db74> *  - Desktop client: ``https://nextcloud.com/install/#install-clients``
+</span><span style=color:#e6db74> *  - Android client: ``https://play.google.com/store/apps/details?id=com.nextcloud.client``
+</span><span style=color:#e6db74> *  - iOS client: ``https://itunes.apple.com/us/app/nextcloud/id1125420102?mt=8``
+</span><span style=color:#e6db74> *  - iOS client app id: ``1125420102``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;customclient_desktop&#39;</span> <span style=color:#f92672>=&gt;</span>
+	<span style=color:#e6db74>&#39;https://nextcloud.com/install/#install-clients&#39;</span>,
+<span style=color:#e6db74>&#39;customclient_android&#39;</span> <span style=color:#f92672>=&gt;</span>
+	<span style=color:#e6db74>&#39;https://play.google.com/store/apps/details?id=com.nextcloud.client&#39;</span>,
+<span style=color:#e6db74>&#39;customclient_ios&#39;</span> <span style=color:#f92672>=&gt;</span>
+	<span style=color:#e6db74>&#39;https://itunes.apple.com/us/app/nextcloud/id1125420102?mt=8&#39;</span>,
+<span style=color:#e6db74>&#39;customclient_ios_appid&#39;</span> <span style=color:#f92672>=&gt;</span>
+		<span style=color:#e6db74>&#39;1125420102&#39;</span>,
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Apps
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Options for the Apps folder, Apps store, and App code checker.
+</span><span style=color:#e6db74> */</span>
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * When enabled, admins may install apps from the Nextcloud app store.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``true``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;appstoreenabled&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>true</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Enables the installation of apps from a self hosted apps store.
+</span><span style=color:#e6db74> * Requires that at least one of the configured apps directories is writeable.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``https://apps.nextcloud.com/api/v1``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;appstoreurl&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;https://apps.nextcloud.com/api/v1&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Use the ``apps_paths`` parameter to set the location of the Apps directory,
+</span><span style=color:#e6db74> * which should be scanned for available apps, and where user-specific apps
+</span><span style=color:#e6db74> * should be installed from the Apps store. The ``path`` defines the absolute
+</span><span style=color:#e6db74> * file system path to the app folder. The key ``url`` defines the HTTP Web path
+</span><span style=color:#e6db74> * to that folder, starting from the Nextcloud webroot. The key ``writable``
+</span><span style=color:#e6db74> * indicates if a Web server can write files to that folder.
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;apps_paths&#39;</span> <span style=color:#f92672>=&gt;</span> [
+	[
+		<span style=color:#e6db74>&#39;path&#39;</span><span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;/var/www/nextcloud/apps&#39;</span>,
+		<span style=color:#e6db74>&#39;url&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;/apps&#39;</span>,
+		<span style=color:#e6db74>&#39;writable&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>true</span>,
+	],
+],
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * @see appcodechecker
+</span><span style=color:#e6db74> */</span>
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Previews
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Nextcloud supports previews of image files, the covers of MP3 files, and text
+</span><span style=color:#e6db74> * files. These options control enabling and disabling previews, and thumbnail
+</span><span style=color:#e6db74> * size.
+</span><span style=color:#e6db74> */</span>
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * By default, Nextcloud can generate previews for the following filetypes:
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * - Image files
+</span><span style=color:#e6db74> * - Covers of MP3 files
+</span><span style=color:#e6db74> * - Text documents
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Valid values are ``true``, to enable previews, or
+</span><span style=color:#e6db74> * ``false``, to disable previews
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``true``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;enable_previews&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>true</span>,
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * The maximum width, in pixels, of a preview. A value of ``null`` means there
+</span><span style=color:#e6db74> * is no limit.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``4096``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;preview_max_x&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#ae81ff>4096</span>,
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * The maximum height, in pixels, of a preview. A value of ``null`` means there
+</span><span style=color:#e6db74> * is no limit.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``4096``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;preview_max_y&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#ae81ff>4096</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * max file size for generating image previews with imagegd (default behavior)
+</span><span style=color:#e6db74> * If the image is bigger, it&#39;ll try other preview generators, but will most
+</span><span style=color:#e6db74> * likely show the default mimetype icon. Set to -1 for no limit.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``50`` megabytes
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;preview_max_filesize_image&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#ae81ff>50</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * custom path for LibreOffice/OpenOffice binary
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``&#39;&#39;`` (empty string)
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;preview_libreoffice_path&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;/usr/bin/libreoffice&#39;</span>,
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Use this if LibreOffice/OpenOffice requires additional arguments.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``&#39;&#39;`` (empty string)
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;preview_office_cl_parameters&#39;</span> <span style=color:#f92672>=&gt;</span>
+	<span style=color:#e6db74>&#39; --headless --nologo --nofirststartwizard --invisible --norestore &#39;</span><span style=color:#f92672>.</span>
+	<span style=color:#e6db74>&#39;--convert-to png --outdir &#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Only register providers that have been explicitly enabled
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * The following providers are disabled by default due to performance or privacy
+</span><span style=color:#e6db74> * concerns:
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> *  - OC\Preview\Illustrator
+</span><span style=color:#e6db74> *  - OC\Preview\Movie
+</span><span style=color:#e6db74> *  - OC\Preview\MSOffice2003
+</span><span style=color:#e6db74> *  - OC\Preview\MSOffice2007
+</span><span style=color:#e6db74> *  - OC\Preview\MSOfficeDoc
+</span><span style=color:#e6db74> *  - OC\Preview\PDF
+</span><span style=color:#e6db74> *  - OC\Preview\Photoshop
+</span><span style=color:#e6db74> *  - OC\Preview\Postscript
+</span><span style=color:#e6db74> *  - OC\Preview\StarOffice
+</span><span style=color:#e6db74> *  - OC\Preview\SVG
+</span><span style=color:#e6db74> *  - OC\Preview\TIFF
+</span><span style=color:#e6db74> *  - OC\Preview\Font
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to the following providers:
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> *  - OC\Preview\BMP
+</span><span style=color:#e6db74> *  - OC\Preview\GIF
+</span><span style=color:#e6db74> *  - OC\Preview\HEIC
+</span><span style=color:#e6db74> *  - OC\Preview\JPEG
+</span><span style=color:#e6db74> *  - OC\Preview\MarkDown
+</span><span style=color:#e6db74> *  - OC\Preview\MP3
+</span><span style=color:#e6db74> *  - OC\Preview\PNG
+</span><span style=color:#e6db74> *  - OC\Preview\TXT
+</span><span style=color:#e6db74> *  - OC\Preview\XBitmap
+</span><span style=color:#e6db74> *  - OC\Preview\OpenDocument
+</span><span style=color:#e6db74> *  - OC\Preview\Krita
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;enabledPreviewProviders&#39;</span> <span style=color:#f92672>=&gt;</span> [
+	<span style=color:#e6db74>&#39;OC\Preview\PNG&#39;</span>,
+	<span style=color:#e6db74>&#39;OC\Preview\JPEG&#39;</span>,
+	<span style=color:#e6db74>&#39;OC\Preview\GIF&#39;</span>,
+	<span style=color:#e6db74>&#39;OC\Preview\HEIC&#39;</span>,
+	<span style=color:#e6db74>&#39;OC\Preview\BMP&#39;</span>,
+	<span style=color:#e6db74>&#39;OC\Preview\XBitmap&#39;</span>,
+	<span style=color:#e6db74>&#39;OC\Preview\MP3&#39;</span>,
+	<span style=color:#e6db74>&#39;OC\Preview\TXT&#39;</span>,
+	<span style=color:#e6db74>&#39;OC\Preview\MarkDown&#39;</span>,
+	<span style=color:#e6db74>&#39;OC\Preview\OpenDocument&#39;</span>,
+	<span style=color:#e6db74>&#39;OC\Preview\Krita&#39;</span>,
+],
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * LDAP
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Global settings used by LDAP User and Group Backend
+</span><span style=color:#e6db74> */</span>
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * defines the interval in minutes for the background job that checks user
+</span><span style=color:#e6db74> * existence and marks them as ready to be cleaned up. The number is always
+</span><span style=color:#e6db74> * minutes. Setting it to 0 disables the feature.
+</span><span style=color:#e6db74> * See command line (occ) methods ``ldap:show-remnants`` and ``user:delete``
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``51`` minutes
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;ldapUserCleanupInterval&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#ae81ff>51</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Sort groups in the user settings by name instead of the user count
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * By enabling this the user count beside the group name is disabled as well.
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;sort_groups_by_name&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>false</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Comments
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Global settings for the Comments infrastructure
+</span><span style=color:#e6db74> */</span>
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Replaces the default Comments Manager Factory. This can be utilized if an
+</span><span style=color:#e6db74> * own or 3rdParty CommentsManager should be used that – for instance – uses the
+</span><span style=color:#e6db74> * filesystem instead of the database to keep the comments.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``\OC\Comments\ManagerFactory``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;comments.managerFactory&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;\OC\Comments\ManagerFactory&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Replaces the default System Tags Manager Factory. This can be utilized if an
+</span><span style=color:#e6db74> * own or 3rdParty SystemTagsManager should be used that – for instance – uses the
+</span><span style=color:#e6db74> * filesystem instead of the database to keep the tags.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``\OC\SystemTag\ManagerFactory``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;systemtags.managerFactory&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;\OC\SystemTag\ManagerFactory&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Maintenance
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * These options are for halting user activity when you are performing server
+</span><span style=color:#e6db74> * maintenance.
+</span><span style=color:#e6db74> */</span>
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Enable maintenance mode to disable Nextcloud
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * If you want to prevent users from logging in to Nextcloud before you start
+</span><span style=color:#e6db74> * doing some maintenance work, you need to set the value of the maintenance
+</span><span style=color:#e6db74> * parameter to true. Please keep in mind that users who are already logged-in
+</span><span style=color:#e6db74> * are kicked out of Nextcloud instantly.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``false``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;maintenance&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>false</span>,
+
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * SSL
+</span><span style=color:#e6db74> */</span>
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Extra SSL options to be used for configuration.
+</span><span style=color:#e6db74>  *
+</span><span style=color:#e6db74> * Defaults to an empty array.
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;openssl&#39;</span> <span style=color:#f92672>=&gt;</span> [
+	<span style=color:#e6db74>&#39;config&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;/absolute/location/of/openssl.cnf&#39;</span>,
+],
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Memory caching backend configuration
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Available cache backends:
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * * ``\OC\Memcache\APCu``       APC user backend
+</span><span style=color:#e6db74> * * ``\OC\Memcache\ArrayCache`` In-memory array-based backend (not recommended)
+</span><span style=color:#e6db74> * * ``\OC\Memcache\Memcached``  Memcached backend
+</span><span style=color:#e6db74> * * ``\OC\Memcache\Redis``      Redis backend
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Advice on choosing between the various backends:
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * * APCu should be easiest to install. Almost all distributions have packages.
+</span><span style=color:#e6db74> *   Use this for single user environment for all caches.
+</span><span style=color:#e6db74> * * Use Redis or Memcached for distributed environments.
+</span><span style=color:#e6db74> *   For the local cache (you can configure two) take APCu.
+</span><span style=color:#e6db74> */</span>
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Memory caching backend for locally stored data
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * * Used for host-specific data, e.g. file paths
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``none``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;memcache.local&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;\OC\Memcache\APCu&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Memory caching backend for distributed data
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * * Used for installation-specific data, e.g. database caching
+</span><span style=color:#e6db74> * * If unset, defaults to the value of memcache.local
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``none``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;memcache.distributed&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;\OC\Memcache\Memcached&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Connection details for redis to use for memory caching in a single server configuration.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * For enhanced security it is recommended to configure Redis
+</span><span style=color:#e6db74> * to require a password. See http://redis.io/topics/security
+</span><span style=color:#e6db74> * for more information.
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;redis&#39;</span> <span style=color:#f92672>=&gt;</span> [
+	<span style=color:#e6db74>&#39;host&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;localhost&#39;</span>, <span style=color:#75715e>// can also be a unix domain socket: &#39;/tmp/redis.sock&#39;
+</span><span style=color:#75715e></span>	<span style=color:#e6db74>&#39;port&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#ae81ff>6379</span>,
+	<span style=color:#e6db74>&#39;timeout&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#ae81ff>0.0</span>,
+	<span style=color:#e6db74>&#39;password&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;&#39;</span>, <span style=color:#75715e>// Optional, if not defined no password will be used.
+</span><span style=color:#75715e></span>	<span style=color:#e6db74>&#39;dbindex&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#ae81ff>0</span>, <span style=color:#75715e>// Optional, if undefined SELECT will not run and will use Redis Server&#39;s default DB Index.
+</span><span style=color:#75715e></span>],
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Connection details for a Redis Cluster
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Only for use with Redis Clustering, for Sentinel-based setups use the single
+</span><span style=color:#e6db74> * server configuration above, and perform HA on the hostname.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Redis Cluster support requires the php module phpredis in version 3.0.0 or
+</span><span style=color:#e6db74> * higher.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Available failover modes:
+</span><span style=color:#e6db74> *  - \RedisCluster::FAILOVER_NONE - only send commands to master nodes (default)
+</span><span style=color:#e6db74> *  - \RedisCluster::FAILOVER_ERROR - failover to slaves for read commands if master is unavailable (recommended)
+</span><span style=color:#e6db74> *  - \RedisCluster::FAILOVER_DISTRIBUTE - randomly distribute read commands across master and slaves
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * WARNING: FAILOVER_DISTRIBUTE is a not recommended setting and we strongly
+</span><span style=color:#e6db74> * suggest to not use it if you use Redis for file locking. Due to the way Redis
+</span><span style=color:#e6db74> * is synchronized it could happen, that the read for an existing lock is
+</span><span style=color:#e6db74> * scheduled to a slave that is not fully synchronized with the connected master
+</span><span style=color:#e6db74> * which then causes a FileLocked exception.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * See https://redis.io/topics/cluster-spec for details about the Redis cluster
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Authentication works with phpredis version 4.2.1+. See
+</span><span style=color:#e6db74> * https://github.com/phpredis/phpredis/commit/c5994f2a42b8a348af92d3acb4edff1328ad8ce1
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;redis.cluster&#39;</span> <span style=color:#f92672>=&gt;</span> [
+	<span style=color:#e6db74>&#39;seeds&#39;</span> <span style=color:#f92672>=&gt;</span> [ <span style=color:#75715e>// provide some/all of the cluster servers to bootstrap discovery, port required
+</span><span style=color:#75715e></span>		<span style=color:#e6db74>&#39;localhost:7000&#39;</span>,
+		<span style=color:#e6db74>&#39;localhost:7001&#39;</span>,
+	],
+	<span style=color:#e6db74>&#39;timeout&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#ae81ff>0.0</span>,
+	<span style=color:#e6db74>&#39;read_timeout&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#ae81ff>0.0</span>,
+	<span style=color:#e6db74>&#39;failover_mode&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#a6e22e>\RedisCluster</span><span style=color:#f92672>::</span><span style=color:#a6e22e>FAILOVER_ERROR</span>,
+	<span style=color:#e6db74>&#39;password&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;&#39;</span>, <span style=color:#75715e>// Optional, if not defined no password will be used.
+</span><span style=color:#75715e></span>],
+
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Server details for one or more memcached servers to use for memory caching.
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;memcached_servers&#39;</span> <span style=color:#f92672>=&gt;</span> [
+	<span style=color:#75715e>// hostname, port and optional weight. Also see:
+</span><span style=color:#75715e></span>	<span style=color:#75715e>// http://www.php.net/manual/en/memcached.addservers.php
+</span><span style=color:#75715e></span>	<span style=color:#75715e>// http://www.php.net/manual/en/memcached.addserver.php
+</span><span style=color:#75715e></span>	[<span style=color:#e6db74>&#39;localhost&#39;</span>, <span style=color:#ae81ff>11211</span>],
+	<span style=color:#75715e>//array(&#39;other.host.local&#39;, 11211),
+</span><span style=color:#75715e></span>],
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Connection options for memcached
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;memcached_options&#39;</span> <span style=color:#f92672>=&gt;</span> [
+	<span style=color:#75715e>// Set timeouts to 50ms
+</span><span style=color:#75715e></span>	<span style=color:#a6e22e>\Memcached</span><span style=color:#f92672>::</span><span style=color:#a6e22e>OPT_CONNECT_TIMEOUT</span> <span style=color:#f92672>=&gt;</span> <span style=color:#ae81ff>50</span>,
+	<span style=color:#a6e22e>\Memcached</span><span style=color:#f92672>::</span><span style=color:#a6e22e>OPT_RETRY_TIMEOUT</span> <span style=color:#f92672>=&gt;</span>   <span style=color:#ae81ff>50</span>,
+	<span style=color:#a6e22e>\Memcached</span><span style=color:#f92672>::</span><span style=color:#a6e22e>OPT_SEND_TIMEOUT</span> <span style=color:#f92672>=&gt;</span>    <span style=color:#ae81ff>50</span>,
+	<span style=color:#a6e22e>\Memcached</span><span style=color:#f92672>::</span><span style=color:#a6e22e>OPT_RECV_TIMEOUT</span> <span style=color:#f92672>=&gt;</span>    <span style=color:#ae81ff>50</span>,
+	<span style=color:#a6e22e>\Memcached</span><span style=color:#f92672>::</span><span style=color:#a6e22e>OPT_POLL_TIMEOUT</span> <span style=color:#f92672>=&gt;</span>    <span style=color:#ae81ff>50</span>,
+
+	<span style=color:#75715e>// Enable compression
+</span><span style=color:#75715e></span>	<span style=color:#a6e22e>\Memcached</span><span style=color:#f92672>::</span><span style=color:#a6e22e>OPT_COMPRESSION</span> <span style=color:#f92672>=&gt;</span>          <span style=color:#66d9ef>true</span>,
+
+	<span style=color:#75715e>// Turn on consistent hashing
+</span><span style=color:#75715e></span>	<span style=color:#a6e22e>\Memcached</span><span style=color:#f92672>::</span><span style=color:#a6e22e>OPT_LIBKETAMA_COMPATIBLE</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>true</span>,
+
+	<span style=color:#75715e>// Enable Binary Protocol
+</span><span style=color:#75715e></span>	<span style=color:#a6e22e>\Memcached</span><span style=color:#f92672>::</span><span style=color:#a6e22e>OPT_BINARY_PROTOCOL</span> <span style=color:#f92672>=&gt;</span>      <span style=color:#66d9ef>true</span>,
+
+	<span style=color:#75715e>// Binary serializer vill be enabled if the igbinary PECL module is available
+</span><span style=color:#75715e></span>	<span style=color:#75715e>//\Memcached::OPT_SERIALIZER =&gt; \Memcached::SERIALIZER_IGBINARY,
+</span><span style=color:#75715e></span>],
+
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Location of the cache folder, defaults to ``data/$user/cache`` where
+</span><span style=color:#e6db74> * ``$user`` is the current user. When specified, the format will change to
+</span><span style=color:#e6db74> * ``$cache_path/$user`` where ``$cache_path`` is the configured cache directory
+</span><span style=color:#e6db74> * and ``$user`` is the user.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``&#39;&#39;`` (empty string)
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;cache_path&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * TTL of chunks located in the cache folder before they&#39;re removed by
+</span><span style=color:#e6db74> * garbage collection (in seconds). Increase this value if users have
+</span><span style=color:#e6db74> * issues uploading very large files via the Nextcloud Client as upload isn&#39;t
+</span><span style=color:#e6db74> * completed within one day.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``60*60*24`` (1 day)
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;cache_chunk_gc_ttl&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#ae81ff>60</span><span style=color:#f92672>*</span><span style=color:#ae81ff>60</span><span style=color:#f92672>*</span><span style=color:#ae81ff>24</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Using Object Store with Nextcloud
+</span><span style=color:#e6db74> */</span>
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * This example shows how to configure Nextcloud to store all files in a
+</span><span style=color:#e6db74> * swift object storage.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * It is important to note that Nextcloud in object store mode will expect
+</span><span style=color:#e6db74> * exclusive access to the object store container because it only stores the
+</span><span style=color:#e6db74> * binary data for each file. The metadata is currently kept in the local
+</span><span style=color:#e6db74> * database for performance reasons.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * WARNING: The current implementation is incompatible with any app that uses
+</span><span style=color:#e6db74> * direct file IO and circumvents our virtual filesystem. That includes
+</span><span style=color:#e6db74> * Encryption and Gallery. Gallery will store thumbnails directly in the
+</span><span style=color:#e6db74> * filesystem and encryption will cause severe overhead because key files need
+</span><span style=color:#e6db74> * to be fetched in addition to any requested file.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * One way to test is applying for a trystack account at http://trystack.org/
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;objectstore&#39;</span> <span style=color:#f92672>=&gt;</span> [
+	<span style=color:#e6db74>&#39;class&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;OC\\Files\\ObjectStore\\Swift&#39;</span>,
+	<span style=color:#e6db74>&#39;arguments&#39;</span> <span style=color:#f92672>=&gt;</span> [
+		<span style=color:#75715e>// trystack will use your facebook id as the user name
+</span><span style=color:#75715e></span>		<span style=color:#e6db74>&#39;username&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;facebook100000123456789&#39;</span>,
+		<span style=color:#75715e>// in the trystack dashboard go to user -&gt; settings -&gt; API Password to
+</span><span style=color:#75715e></span>		<span style=color:#75715e>// generate a password
+</span><span style=color:#75715e></span>		<span style=color:#e6db74>&#39;password&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;Secr3tPaSSWoRdt7&#39;</span>,
+		<span style=color:#75715e>// must already exist in the objectstore, name can be different
+</span><span style=color:#75715e></span>		<span style=color:#e6db74>&#39;container&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;nextcloud&#39;</span>,
+		<span style=color:#75715e>// prefix to prepend to the fileid, default is &#39;oid⚱&#39;
+</span><span style=color:#75715e></span>		<span style=color:#e6db74>&#39;objectPrefix&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;oid⚱&#39;</span>,
+		<span style=color:#75715e>// create the container if it does not exist. default is false
+</span><span style=color:#75715e></span>		<span style=color:#e6db74>&#39;autocreate&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>true</span>,
+		<span style=color:#75715e>// required, dev-/trystack defaults to &#39;RegionOne&#39;
+</span><span style=color:#75715e></span>		<span style=color:#e6db74>&#39;region&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;RegionOne&#39;</span>,
+		<span style=color:#75715e>// The Identity / Keystone endpoint
+</span><span style=color:#75715e></span>		<span style=color:#e6db74>&#39;url&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;http://8.21.28.222:5000/v2.0&#39;</span>,
+		<span style=color:#75715e>// required on dev-/trystack
+</span><span style=color:#75715e></span>		<span style=color:#e6db74>&#39;tenantName&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;facebook100000123456789&#39;</span>,
+		<span style=color:#75715e>// dev-/trystack uses swift by default, the lib defaults to &#39;cloudFiles&#39;
+</span><span style=color:#75715e></span>		<span style=color:#75715e>// if omitted
+</span><span style=color:#75715e></span>		<span style=color:#e6db74>&#39;serviceName&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;swift&#39;</span>,
+		<span style=color:#75715e>// The Interface / url Type, optional
+</span><span style=color:#75715e></span>		<span style=color:#e6db74>&#39;urlType&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;internal&#39;</span>
+	],
+],
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * To use swift V3
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;objectstore&#39;</span> <span style=color:#f92672>=&gt;</span> [
+	<span style=color:#e6db74>&#39;class&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;OC\\Files\\ObjectStore\\Swift&#39;</span>,
+	<span style=color:#e6db74>&#39;arguments&#39;</span> <span style=color:#f92672>=&gt;</span> [
+		<span style=color:#e6db74>&#39;autocreate&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>true</span>,
+		<span style=color:#e6db74>&#39;user&#39;</span> <span style=color:#f92672>=&gt;</span> [
+			<span style=color:#e6db74>&#39;name&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;swift&#39;</span>,
+			<span style=color:#e6db74>&#39;password&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;swift&#39;</span>,
+			<span style=color:#e6db74>&#39;domain&#39;</span> <span style=color:#f92672>=&gt;</span> [
+				<span style=color:#e6db74>&#39;name&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;default&#39;</span>,
+			],
+		],
+		<span style=color:#e6db74>&#39;scope&#39;</span> <span style=color:#f92672>=&gt;</span> [
+			<span style=color:#e6db74>&#39;project&#39;</span> <span style=color:#f92672>=&gt;</span> [
+				<span style=color:#e6db74>&#39;name&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;service&#39;</span>,
+				<span style=color:#e6db74>&#39;domain&#39;</span> <span style=color:#f92672>=&gt;</span> [
+					<span style=color:#e6db74>&#39;name&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;default&#39;</span>,
+				],
+			],
+		],
+		<span style=color:#e6db74>&#39;tenantName&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;service&#39;</span>,
+		<span style=color:#e6db74>&#39;serviceName&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;swift&#39;</span>,
+		<span style=color:#e6db74>&#39;region&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;regionOne&#39;</span>,
+		<span style=color:#e6db74>&#39;url&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;http://yourswifthost:5000/v3&#39;</span>,
+		<span style=color:#e6db74>&#39;bucket&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;nextcloud&#39;</span>,
+	],
+],
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * If this is set to true and a multibucket object store is configured then
+</span><span style=color:#e6db74> * newly created previews are put into 256 dedicated buckets.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Those buckets are named like the mulibucket version but with the postfix
+</span><span style=color:#e6db74> * ``-preview-NUMBER`` where NUMBER is between 0 and 255.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Keep in mind that only previews of files are put in there that don&#39;t have
+</span><span style=color:#e6db74> * some already. Otherwise the old bucket will be used.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * To migrate existing previews to this new multibucket distribution of previews
+</span><span style=color:#e6db74> * use the occ command ``preview:repair``. For now this will only migrate
+</span><span style=color:#e6db74> * previews that were generated before Nextcloud 19 in the flat
+</span><span style=color:#e6db74> * ``appdata_INSTANCEID/previews/FILEID`` folder structure.
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;objectstore.multibucket.preview-distribution&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>false</span>,
+
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Sharing
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Global settings for Sharing
+</span><span style=color:#e6db74> */</span>
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Replaces the default Share Provider Factory. This can be utilized if
+</span><span style=color:#e6db74> * own or 3rdParty Share Providers are used that – for instance – use the
+</span><span style=color:#e6db74> * filesystem instead of the database to keep the share information.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``\OC\Share20\ProviderFactory``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;sharing.managerFactory&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;\OC\Share20\ProviderFactory&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Define max number of results returned by the user search for auto-completion
+</span><span style=color:#e6db74> * Default is unlimited (value set to 0).
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;sharing.maxAutocompleteResults&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#ae81ff>0</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Define the minimum length of the search string before we start auto-completion
+</span><span style=color:#e6db74> * Default is no limit (value set to 0)
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;sharing.minSearchStringLength&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#ae81ff>0</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Set to true to enable that internal shares need to be accepted by the users by default.
+</span><span style=color:#e6db74> * Users can change this for their account in their personal sharing settings
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;sharing.enable_share_accept&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>false</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Set to true to enforce that internal shares need to be accepted
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;sharing.force_share_accept&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>false</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Set to false to stop sending a mail when users receive a share
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;sharing.enable_share_mail&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>true</span>,
+
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * All other configuration options
+</span><span style=color:#e6db74> */</span>
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Additional driver options for the database connection, eg. to enable SSL
+</span><span style=color:#e6db74> * encryption in MySQL or specify a custom wait timeout on a cheap hoster.
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;dbdriveroptions&#39;</span> <span style=color:#f92672>=&gt;</span> [
+	<span style=color:#a6e22e>PDO</span><span style=color:#f92672>::</span><span style=color:#a6e22e>MYSQL_ATTR_SSL_CA</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;/file/path/to/ca_cert.pem&#39;</span>,
+	<span style=color:#a6e22e>PDO</span><span style=color:#f92672>::</span><span style=color:#a6e22e>MYSQL_ATTR_INIT_COMMAND</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;SET wait_timeout = 28800&#39;</span>
+],
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * sqlite3 journal mode can be specified using this configuration parameter -
+</span><span style=color:#e6db74> * can be &#39;WAL&#39; or &#39;DELETE&#39; see for more details https://www.sqlite.org/wal.html
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;sqlite.journal_mode&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;DELETE&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * During setup, if requirements are met (see below), this setting is set to true
+</span><span style=color:#e6db74> * and MySQL can handle 4 byte characters instead of 3 byte characters.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * If you want to convert an existing 3-byte setup into a 4-byte setup please
+</span><span style=color:#e6db74> * set the parameters in MySQL as mentioned below and run the migration command:
+</span><span style=color:#e6db74> * ./occ db:convert-mysql-charset
+</span><span style=color:#e6db74> * The config setting will be set automatically after a successful run.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Consult the documentation for more details.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * MySQL requires a special setup for longer indexes (&gt; 767 bytes) which are
+</span><span style=color:#e6db74> * needed:
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * [mysqld]
+</span><span style=color:#e6db74> * innodb_large_prefix=ON
+</span><span style=color:#e6db74> * innodb_file_format=Barracuda
+</span><span style=color:#e6db74> * innodb_file_per_table=ON
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Tables will be created with
+</span><span style=color:#e6db74> *  * character set: utf8mb4
+</span><span style=color:#e6db74> *  * collation:     utf8mb4_bin
+</span><span style=color:#e6db74> *  * row_format:    compressed
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * See:
+</span><span style=color:#e6db74> * https://dev.mysql.com/doc/refman/5.7/en/charset-unicode-utf8mb4.html
+</span><span style=color:#e6db74> * https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_large_prefix
+</span><span style=color:#e6db74> * https://mariadb.com/kb/en/mariadb/xtradbinnodb-server-system-variables/#innodb_large_prefix
+</span><span style=color:#e6db74> * http://www.tocker.ca/2013/10/31/benchmarking-innodb-page-compression-performance.html
+</span><span style=color:#e6db74> * http://mechanics.flite.com/blog/2014/07/29/using-innodb-large-prefix-to-avoid-error-1071/
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;mysql.utf8mb4&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>false</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Database types that are supported for installation.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Available:
+</span><span style=color:#e6db74> * 	- sqlite (SQLite3)
+</span><span style=color:#e6db74> * 	- mysql (MySQL)
+</span><span style=color:#e6db74> * 	- pgsql (PostgreSQL)
+</span><span style=color:#e6db74> * 	- oci (Oracle)
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to the following databases:
+</span><span style=color:#e6db74> *  - sqlite (SQLite3)
+</span><span style=color:#e6db74> *  - mysql (MySQL)
+</span><span style=color:#e6db74> *  - pgsql (PostgreSQL)
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;supportedDatabases&#39;</span> <span style=color:#f92672>=&gt;</span> [
+	<span style=color:#e6db74>&#39;sqlite&#39;</span>,
+	<span style=color:#e6db74>&#39;mysql&#39;</span>,
+	<span style=color:#e6db74>&#39;pgsql&#39;</span>,
+	<span style=color:#e6db74>&#39;oci&#39;</span>,
+],
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Override where Nextcloud stores temporary files. Useful in situations where
+</span><span style=color:#e6db74> * the system temporary directory is on a limited space ramdisk or is otherwise
+</span><span style=color:#e6db74> * restricted, or if external storages which do not support streaming are in
+</span><span style=color:#e6db74> * use.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * The Web server user must have write access to this directory.
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;tempdirectory&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;/tmp/nextcloudtemp&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Hashing
+</span><span style=color:#e6db74> */</span>
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * By default Nextcloud will use the Argon2 password hashing if available.
+</span><span style=color:#e6db74> * However if for whatever reason you want to stick with the PASSWORD_DEFAULT
+</span><span style=color:#e6db74> * of your php version. Then set the setting to true.
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;hashing_default_password&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>false</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Nextcloud uses the Argon2 algorithm (with PHP &gt;= 7.2) to create hashes by its
+</span><span style=color:#e6db74> * own and exposes its configuration options as following. More information can
+</span><span style=color:#e6db74> * be found at: https://www.php.net/manual/en/function.password-hash.php
+</span><span style=color:#e6db74> */</span>
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * The number of CPU threads to be used by the algorithm for computing a hash.
+</span><span style=color:#e6db74> * The value must be an integer, and the minimum value is 1. Rationally it does
+</span><span style=color:#e6db74> * not help to provide a number higher than the available threads on the machine.
+</span><span style=color:#e6db74> * Values that undershoot the minimum will be ignored in favor of the minimum.
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;hashingThreads&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#a6e22e>PASSWORD_ARGON2_DEFAULT_THREADS</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * The memory in KiB to be used by the algorithm for computing a hash. The value
+</span><span style=color:#e6db74> * must be an integer, and the minimum value is 8 times the number of CPU threads.
+</span><span style=color:#e6db74> * Values that undershoot the minimum will be ignored in favor of the minimum.
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;hashingMemoryCost&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#a6e22e>PASSWORD_ARGON2_DEFAULT_MEMORY_COST</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * The number of iterations that are used by the algorithm for computing a hash.
+</span><span style=color:#e6db74> * The value must be an integer, and the minimum value is 1. Values that
+</span><span style=color:#e6db74> * undershoot the minimum will be ignored in favor of the minimum.
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;hashingTimeCost&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#a6e22e>PASSWORD_ARGON2_DEFAULT_TIME_COST</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * The hashing cost used by hashes generated by Nextcloud
+</span><span style=color:#e6db74> * Using a higher value requires more time and CPU power to calculate the hashes
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;hashingCost&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#ae81ff>10</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Blacklist a specific file or files and disallow the upload of files
+</span><span style=color:#e6db74> * with this name. ``.htaccess`` is blocked by default.
+</span><span style=color:#e6db74> * WARNING: USE THIS ONLY IF YOU KNOW WHAT YOU ARE DOING.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``array(&#39;.htaccess&#39;)``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;blacklisted_files&#39;</span> <span style=color:#f92672>=&gt;</span> [<span style=color:#e6db74>&#39;.htaccess&#39;</span>],
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Define a default folder for shared files and folders other than root.
+</span><span style=color:#e6db74> * Changes to this value will only have effect on new shares.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``/``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;share_folder&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;/&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * If you are applying a theme to Nextcloud, enter the name of the theme here.
+</span><span style=color:#e6db74> * The default location for themes is ``nextcloud/themes/``.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to the theming app which is shipped since Nextcloud 9
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;theme&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * The default cipher for encrypting files. Currently AES-128-CFB and
+</span><span style=color:#e6db74> * AES-256-CFB are supported.
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;cipher&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;AES-256-CFB&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * The minimum Nextcloud desktop client version that will be allowed to sync with
+</span><span style=color:#e6db74> * this server instance. All connections made from earlier clients will be denied
+</span><span style=color:#e6db74> * by the server. Defaults to the minimum officially supported Nextcloud desktop
+</span><span style=color:#e6db74> * clientversion at the time of release of this server version.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * When changing this, note that older unsupported versions of the Nextcloud desktop
+</span><span style=color:#e6db74> * client may not function as expected, and could lead to permanent data loss for
+</span><span style=color:#e6db74> * clients or other unexpected results.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``2.0.0``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;minimum.supported.desktop.version&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;2.0.0&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * EXPERIMENTAL: option whether to include external storage in quota
+</span><span style=color:#e6db74> * calculation, defaults to false.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``false``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;quota_include_external_storage&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>false</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * When an external storage is unavailable for some reasons, it will be flagged
+</span><span style=color:#e6db74> * as such for 10 minutes. When the trigger is a failed authentication attempt
+</span><span style=color:#e6db74> * the delay is higher and can be controlled with this option. The motivation
+</span><span style=color:#e6db74> * is to make account lock outs at Active Directories (and compatible) more
+</span><span style=color:#e6db74> * unlikely.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``1800`` (seconds)
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;external_storage.auth_availability_delay&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#ae81ff>1800</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Specifies how often the local filesystem (the Nextcloud data/ directory, and
+</span><span style=color:#e6db74> * NFS mounts in data/) is checked for changes made outside Nextcloud. This
+</span><span style=color:#e6db74> * does not apply to external storages.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * 0 -&gt; Never check the filesystem for outside changes, provides a performance
+</span><span style=color:#e6db74> * increase when it&#39;s certain that no changes are made directly to the
+</span><span style=color:#e6db74> * filesystem
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * 1 -&gt; Check each file or folder at most once per request, recommended for
+</span><span style=color:#e6db74> * general use if outside changes might happen.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``0``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;filesystem_check_changes&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#ae81ff>0</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * By default Nextcloud will store the part files created during upload in the
+</span><span style=color:#e6db74> * same storage as the upload target. Setting this to false will store the part
+</span><span style=color:#e6db74> * files in the root of the users folder which might be required to work with certain
+</span><span style=color:#e6db74> * external storage setups that have limited rename capabilities.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``true``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;part_file_in_storage&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>true</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Where ``mount.json`` file should be stored, defaults to ``data/mount.json``
+</span><span style=color:#e6db74> * in the Nextcloud directory.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``data/mount.json`` in the Nextcloud directory.
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;mount_file&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;/var/www/nextcloud/data/mount.json&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * When ``true``, prevent Nextcloud from changing the cache due to changes in
+</span><span style=color:#e6db74> * the filesystem for all storage.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``false``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;filesystem_cache_readonly&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>false</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Secret used by Nextcloud for various purposes, e.g. to encrypt data. If you
+</span><span style=color:#e6db74> * lose this string there will be data corruption.
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;secret&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * List of trusted proxy servers
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * You may set this to an array containing a combination of
+</span><span style=color:#e6db74> * - IPv4 addresses, e.g. `192.168.2.123`
+</span><span style=color:#e6db74> * - IPv4 ranges in CIDR notation, e.g. `192.168.2.0/24`
+</span><span style=color:#e6db74> * - IPv6 addresses, e.g. `fd9e:21a7:a92c:2323::1`
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * _(CIDR notation for IPv6 is currently work in progress and thus not
+</span><span style=color:#e6db74> * available as of yet)_
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * When an incoming request&#39;s `REMOTE_ADDR` matches any of the IP addresses
+</span><span style=color:#e6db74> * specified here, it is assumed to be a proxy instead of a client. Thus, the
+</span><span style=color:#e6db74> * client IP will be read from the HTTP header specified in
+</span><span style=color:#e6db74> * `forwarded_for_headers` instead of from `REMOTE_ADDR`.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * So if you configure `trusted_proxies`, also consider setting
+</span><span style=color:#e6db74> * `forwarded_for_headers` which otherwise defaults to `HTTP_X_FORWARDED_FOR`
+</span><span style=color:#e6db74> * (the `X-Forwarded-For` header).
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to an empty array.
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;trusted_proxies&#39;</span> <span style=color:#f92672>=&gt;</span> [<span style=color:#e6db74>&#39;203.0.113.45&#39;</span>, <span style=color:#e6db74>&#39;198.51.100.128&#39;</span>, <span style=color:#e6db74>&#39;192.168.2.0/24&#39;</span>],
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Headers that should be trusted as client IP address in combination with
+</span><span style=color:#e6db74> * `trusted_proxies`. If the HTTP header looks like &#39;X-Forwarded-For&#39;, then use
+</span><span style=color:#e6db74> * &#39;HTTP_X_FORWARDED_FOR&#39; here.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * If set incorrectly, a client can spoof their IP address as visible to
+</span><span style=color:#e6db74> * Nextcloud, bypassing access controls and making logs useless!
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``&#39;HTTP_X_FORWARDED_FOR&#39;``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;forwarded_for_headers&#39;</span> <span style=color:#f92672>=&gt;</span> [<span style=color:#e6db74>&#39;HTTP_X_FORWARDED&#39;</span>, <span style=color:#e6db74>&#39;HTTP_FORWARDED_FOR&#39;</span>],
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * max file size for animating gifs on public-sharing-site.
+</span><span style=color:#e6db74> * If the gif is bigger, it&#39;ll show a static preview
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Value represents the maximum filesize in megabytes. Set to ``-1`` for
+</span><span style=color:#e6db74> * no limit.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``10`` megabytes
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;max_filesize_animated_gifs_public_sharing&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#ae81ff>10</span>,
+
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Enables transactional file locking.
+</span><span style=color:#e6db74> * This is enabled by default.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Prevents concurrent processes from accessing the same files
+</span><span style=color:#e6db74> * at the same time. Can help prevent side effects that would
+</span><span style=color:#e6db74> * be caused by concurrent operations. Mainly relevant for
+</span><span style=color:#e6db74> * very large installations with many users working with
+</span><span style=color:#e6db74> * shared files.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``true``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;filelocking.enabled&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>true</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Set the lock&#39;s time-to-live in seconds.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Any lock older than this will be automatically cleaned up.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``60*60`` seconds (1 hour) or the php
+</span><span style=color:#e6db74> *             max_execution_time, whichever is higher.
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;filelocking.ttl&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#ae81ff>60</span><span style=color:#f92672>*</span><span style=color:#ae81ff>60</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Memory caching backend for file locking
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Because most memcache backends can clean values without warning using redis
+</span><span style=color:#e6db74> * is highly recommended to *avoid data loss*.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``none``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;memcache.locking&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;\\OC\\Memcache\\Redis&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Enable locking debug logging
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Note that this can lead to a very large volume of log items being written which can lead
+</span><span style=color:#e6db74> * to performance degradation and large log files on busy instance.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Thus enabling this in production for longer periods of time is not recommended
+</span><span style=color:#e6db74> * or should be used together with the ``log.condition`` setting.
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;filelocking.debug&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>false</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Disable the web based updater
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;upgrade.disable-web&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>false</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Set this Nextcloud instance to debugging mode
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Only enable this for local development and not in production environments
+</span><span style=color:#e6db74> * This will disable the minifier and outputs some additional debug information
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``false``
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;debug&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>false</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * Sets the data-fingerprint of the current data served
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * This is a property used by the clients to find out if a backup has been
+</span><span style=color:#e6db74> * restored on the server. Once a backup is restored run
+</span><span style=color:#e6db74> * ./occ maintenance:data-fingerprint
+</span><span style=color:#e6db74> * To set this to a new value.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Updating/Deleting this value can make connected clients stall until
+</span><span style=color:#e6db74> * the user has resolved conflicts.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Defaults to ``&#39;&#39;`` (empty string)
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;data-fingerprint&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * This entry is just here to show a warning in case somebody copied the sample
+</span><span style=color:#e6db74> * configuration. DO NOT ADD THIS SWITCH TO YOUR CONFIGURATION!
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * If you, brave person, have read until here be aware that you should not
+</span><span style=color:#e6db74> * modify *ANY* settings in this file without reading the documentation.
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;copied_sample_config&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>true</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * use a custom lookup server to publish user data
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;lookup_server&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;https://lookup.nextcloud.com&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * set to true if the server is used in a setup based on Nextcloud&#39;s Global Scale architecture
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;gs.enabled&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>false</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * by default federation is only used internally in a Global Scale setup
+</span><span style=color:#e6db74> * If you want to allow federation outside of your environment set it to &#39;global&#39;
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;gs.federation&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;internal&#39;</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * List of incompatible user agents opted out from Same Site Cookie Protection.
+</span><span style=color:#e6db74> * Some user agents are notorious and don&#39;t really properly follow HTTP
+</span><span style=color:#e6db74> * specifications. For those, have an opt-out.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * WARNING: only use this if you know what you are doing
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;csrf.optout&#39;</span> <span style=color:#f92672>=&gt;</span> [
+	<span style=color:#e6db74>&#39;/^WebDAVFS/&#39;</span>, <span style=color:#75715e>// OS X Finder
+</span><span style=color:#75715e></span>	<span style=color:#e6db74>&#39;/^Microsoft-WebDAV-MiniRedir/&#39;</span>, <span style=color:#75715e>// Windows webdav drive
+</span><span style=color:#75715e></span>],
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * By default there is on public pages a link shown that allows users to
+</span><span style=color:#e6db74> * learn about the &#34;simple sign up&#34; - see https://nextcloud.com/signup/
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * If this is set to &#34;false&#34; it will not show the link.
+</span><span style=color:#e6db74> */</span>
+<span style=color:#e6db74>&#39;simpleSignUpLink.shown&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>true</span>,
+
+<span style=color:#e6db74>/**
+</span><span style=color:#e6db74> * By default autocompletion is enabled for the login form on Nextcloud&#39;s login page.
+</span><span style=color:#e6db74> * While this is enabled, browsers are allowed to &#34;remember&#34; login names and such.
+</span><span style=color:#e6db74> * Some companies require it to be disabled to comply with their security policy.
+</span><span style=color:#e6db74> *
+</span><span style=color:#e6db74> * Simply set this property to &#34;false&#34;, if you want to turn this feature off.
+</span><span style=color:#e6db74> */</span>
+
+<span style=color:#e6db74>&#39;login_form_autocomplete&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>true</span>,
+];
+</code></pre></div><p>每个配置项都有英文解释，通过找到<code>Proxy Configurations</code>那里算是看明白了，如果带了端口就得增加一个配置项<code>overwritehost</code></p><blockquote><p>/**</p><p>The automatic hostname detection of Nextcloud can fail in certain reverse</p><p>proxy and CLI/cron situations. This option allows you to manually override</p><p>the automatic detection; for example <code>www.example.com</code>, or specify the port</p><p><code>www.example.com:8080</code>.</p><p>*/</p></blockquote><p>最终只要修改配置文件<code>/mnt/user/appdata/nextcloud/www/nextcloud/config/config.php</code>,增加配置项<code>overwritehost</code>即可。</p><pre><code>&lt;?php
+$CONFIG = array (
+  'memcache.local' =&gt; '\\OC\\Memcache\\APCu',
+  'datadirectory' =&gt; '/data',
+  'instanceid' =&gt; 'xxxxxxxxxxxx',
+  'passwordsalt' =&gt; 'xxxxxxxxxxxxx',
+  'secret' =&gt; 'xxxxxxxxxxxxxxx',
+  'trusted_domains' =&gt; 
+  array (
+    0 =&gt; 'xx.xx.xx.xx:1443',
+    1 =&gt; 'cloud.xx.com',
+  ),
+  'dbtype' =&gt; 'mysql',
+  'version' =&gt; '20.0.5.2',
+  'overwrite.cli.url' =&gt; 'https://cloud.xx.com:1443',
+  'overwritehost' =&gt; 'cloud.xx.com:1443',
+  'dbname' =&gt; 'nextcloud',
+  'dbhost' =&gt; 'xx.xx.xx.xx:3306',
+  'dbport' =&gt; '',
+  'dbtableprefix' =&gt; 'oc_',
+  'mysql.utf8mb4' =&gt; true,
+  'dbuser' =&gt; 'oc_xxxx',
+  'dbpassword' =&gt; 'xxxxx',
+  'installed' =&gt; true,
+);
+
+</code></pre></div><div class=post-reward><input type=checkbox name=reward id=reward hidden>
+<label class=reward-button for=reward>赞赏支持</label><div class=qr-code><label class=qr-code-image for=reward><img class=image src=/img/wechat-reward.png>
+<span>微信打赏</span></label>
+<label class=qr-code-image for=reward><img class=image src=/img/alipay-reward.jpeg>
+<span>支付宝打赏</span></label></div></div><footer class=post-footer><div class=post-tags><a href=/tags/docker/>docker</a>
+<a href=/tags/nextcloud/>nextcloud</a>
+<a href=/tags/%E7%BD%91%E7%9B%98/>网盘</a></div><nav class=post-nav><a class=next href=/post/m73-4k60hz-hackintosh/><span class="next-text nav-default">M73 黑苹果小记</span>
+<span class="next-text nav-mobile">下一篇</span>
+<i class="iconfont icon-right"></i></a></nav></footer></article></div><div id=vcomments></div><script src=//cdn1.lncld.net/static/js/3.0.4/av-min.js></script><script src=//unpkg.com/valine/dist/Valine.min.js></script><script type=text/javascript>new Valine({el:'#vcomments',appId:'fXqv8lFikU96F2xUDOBW4T9X-MdYXbMMI',appKey:'AUbjromOz15du9OJSTY6Q8HM',notify:false,verify:false,avatar:'robohash',placeholder:'本站支持评论邮件提醒功能，在上方邮箱输入框留下邮箱，可以收到回复通知哦！（支持markdown语法）',visitor:false});</script></div></main><footer id=footer class=footer><div class=social-links><a href=mailto:gao.bo168@gmail.com class="iconfont icon-email" title=email></a><a href=https://github.com/forgottener class="iconfont icon-github" title=github></a><a href=https://space.bilibili.com/1714562 class="iconfont icon-bilibili" title=bilibili></a><a href=https://gaoboy.com/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a></div><div class=copyright><span class=power-by>由 <a class=hexo-link href=https://gohugo.io>Hugo</a> 强力驱动</span>
+<span class=division>|</span>
+<span class=theme-info>主题 -
+<a class=theme-link href=https://github.com/olOwOlo/hugo-theme-even>Even</a></span>
+<span class=copyright-year>&copy;
+2013 -
+2021<span class=heart><i class="iconfont icon-heart"></i></span><span><a rel="license noopener" href=https://beian.miit.gov.cn/ target=_blank>浙ICP备14043338号-2</a>~<a rel="license noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010802003111" target=_blank>浙公网安备 33010802003111号</a></span></span></div></footer><div class=back-to-top id=back-to-top><i class="iconfont icon-up"></i></div></div><script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script><script type=text/javascript src=/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js></script><script src=/js/blank.js></script></body></html>
