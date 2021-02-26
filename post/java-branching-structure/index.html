@@ -1,0 +1,182 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>Java 分支结构 - 猿资猿味 - 高波的博客</title><meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv=cache-control content="no-transform"><meta http-equiv=cache-control content="no-siteapp"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=author content="forgottener"><meta name=description content="Java 分支结构"><meta name=keywords content="java,branching,if,else,switch"><meta name=generator content="Hugo 0.81.0 with theme even"><link rel=canonical href=https://gaoboy.com/post/java-branching-structure/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link href=/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css rel=stylesheet><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous><meta property="og:title" content="Java 分支结构"><meta property="og:description" content="Java 分支结构"><meta property="og:type" content="article"><meta property="og:url" content="https://gaoboy.com/post/java-branching-structure/"><meta property="article:section" content="post"><meta property="article:published_time" content="2015-01-25T14:22:21+08:00"><meta property="article:modified_time" content="2015-01-25T14:22:21+08:00"><meta itemprop=name content="Java 分支结构"><meta itemprop=description content="Java 分支结构"><meta itemprop=datePublished content="2015-01-25T14:22:21+08:00"><meta itemprop=dateModified content="2015-01-25T14:22:21+08:00"><meta itemprop=wordCount content="2113"><meta itemprop=keywords content="java,"><meta name=twitter:card content="summary"><meta name=twitter:title content="Java 分支结构"><meta name=twitter:description content="Java 分支结构"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script><script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>猿资猿味</a></div><div class=mobile-navbar-icon><span></span><span></span><span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><a href=/><li class=mobile-menu-item>Home</li></a><a href=/post/><li class=mobile-menu-item>Archives</li></a><a href=/tags/><li class=mobile-menu-item>Tags</li></a><a href=/categories/><li class=mobile-menu-item>Categories</li></a></ul></nav><div class=container id=mobile-panel><header id=header class=header><div class=logo-wrapper><a href=/ class=logo>猿资猿味</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=/>Home</a></li><li class=menu-item><a class=menu-item-link href=/post/>Archives</a></li><li class=menu-item><a class=menu-item-link href=/tags/>Tags</a></li><li class=menu-item><a class=menu-item-link href=/categories/>Categories</a></li></ul></nav></header><main id=main class=main><div class=content-wrapper><div id=content class=content><article class=post><header class=post-header><h1 class=post-title>Java 分支结构</h1><div class=post-meta><span class=post-time>2015-01-25</span><div class=post-category><a href=/categories/java/>java</a></div></div></header><div class=post-toc id=post-toc><h2 class=post-toc-title>文章目录</h2><div class="post-toc-content always-active"><nav id=TableOfContents><ul><li><a href=#概述>概述</a></li><li><a href=#if-语句>if 语句</a><ul><li><a href=#语法>语法</a></li></ul></li><li><a href=#ifelse-语句>if&mldr;else 语句</a><ul><li><a href=#语法-1>语法</a></li><li><a href=#实例>实例</a></li></ul></li><li><a href=#ifelse-ifelse-语句>if&mldr;else if&mldr;else 语句</a><ul><li><a href=#语法-2>语法</a></li><li><a href=#实例-1>实例</a></li></ul></li><li><a href=#嵌套的-ifelse-语句>嵌套的 if…else 语句</a><ul><li><a href=#语法-3>语法</a></li><li><a href=#实例-2>实例</a></li></ul></li><li><a href=#switch-语句>switch 语句</a><ul><li><a href=#语法-4>语法</a></li><li><a href=#实例-3>实例</a></li><li><a href=#实例-4>实例</a></li><li><a href=#实例-5>实例</a></li><li><a href=#实例-6>实例</a></li></ul></li></ul></nav></div></div><div class=post-content><h1 id=概述>概述</h1><p>顺序结构只能顺序执行，不能进行判断和选择，因此需要分支结构。</p><p>Java 有两种分支结构：</p><ul><li>if 语句</li><li>switch 语句</li></ul><h1 id=if-语句>if 语句</h1><p>一个 if 语句包含一个布尔表达式和一条或多条语句。</p><h2 id=语法>语法</h2><p>If 语句的用语法如下：</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>布尔表达式<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+   <span style=color:#75715e>//如果布尔表达式为true将执行的语句
+</span><span style=color:#75715e></span><span style=color:#f92672>}</span>
+</code></pre></div><p>如果布尔表达式的值为 true，则执行 if 语句中的代码块。否则执行 If 语句块后面的代码。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Test</span> <span style=color:#f92672>{</span>
+
+   <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String args<span style=color:#f92672>[])</span> <span style=color:#f92672>{</span>
+      <span style=color:#66d9ef>int</span> x <span style=color:#f92672>=</span> 10<span style=color:#f92672>;</span>
+
+      <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>x <span style=color:#f92672>&lt;</span> 20<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+          System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>print</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;这是 if 语句&#34;</span><span style=color:#f92672>);</span> 
+      <span style=color:#f92672>}</span>
+   <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+</code></pre></div><p>以上代码编译运行结果如下：</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>这是 <span style=color:#66d9ef>if</span> 语句
+</code></pre></div><h1 id=ifelse-语句>if&mldr;else 语句</h1><p>if 语句后面可以跟 else 语句，当 if 语句的布尔表达式值为 false 时，else 语句块会被执行。</p><h2 id=语法-1>语法</h2><p>if…else 的用法如下：</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>布尔表达式<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+   <span style=color:#75715e>//如果布尔表达式的值为true
+</span><span style=color:#75715e></span><span style=color:#f92672>}</span> <span style=color:#66d9ef>else</span> <span style=color:#f92672>{</span>
+   <span style=color:#75715e>//如果布尔表达式的值为false
+</span><span style=color:#75715e></span><span style=color:#f92672>}</span>
+</code></pre></div><h2 id=实例>实例</h2><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Test</span> <span style=color:#f92672>{</span>
+
+   <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String args<span style=color:#f92672>[])</span> <span style=color:#f92672>{</span>
+      <span style=color:#66d9ef>int</span> x <span style=color:#f92672>=</span> 30<span style=color:#f92672>;</span>
+
+      <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>x <span style=color:#f92672>&lt;</span> 20<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+          System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>print</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;这是 if 语句&#34;</span><span style=color:#f92672>);</span>
+       <span style=color:#f92672>}</span> <span style=color:#66d9ef>else</span> <span style=color:#f92672>{</span>
+          System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>print</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;这是 else 语句&#34;</span><span style=color:#f92672>);</span>
+       <span style=color:#f92672>}</span>
+   <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+</code></pre></div><p>以上代码编译运行结果如下：</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>这是 <span style=color:#66d9ef>else</span> 语句
+</code></pre></div><h1 id=ifelse-ifelse-语句>if&mldr;else if&mldr;else 语句</h1><p>if 语句后面可以跟 else if…else 语句，这种语句可以检测到多种可能的情况。</p><p>使用 if，else if，else 语句的时候，需要注意下面几点：</p><ul><li>if 语句至多有 1 个 else 语句，else 语句在所有的 else if 语句之后。</li><li>If 语句可以有若干个 else if 语句，它们必须在 else 语句之前。</li><li>一旦其中一个 else if 语句检测为 true，其他的 else if 以及 else 语句都将跳过执行。</li></ul><h2 id=语法-2>语法</h2><p>if&mldr;else 语法格式如下:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>布尔表达式 1<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+   <span style=color:#75715e>//如果布尔表达式 1的值为true执行代码
+</span><span style=color:#75715e></span><span style=color:#f92672>}</span> <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>布尔表达式 2<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+   <span style=color:#75715e>//如果布尔表达式 2的值为true执行代码
+</span><span style=color:#75715e></span><span style=color:#f92672>}</span> <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>布尔表达式 3<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+   <span style=color:#75715e>//如果布尔表达式 3的值为true执行代码
+</span><span style=color:#75715e></span><span style=color:#f92672>}</span> <span style=color:#66d9ef>else</span> <span style=color:#f92672>{</span>
+   <span style=color:#75715e>//如果以上布尔表达式都不为true执行代码
+</span><span style=color:#75715e></span><span style=color:#f92672>}</span>
+</code></pre></div><h2 id=实例-1>实例</h2><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Test</span> <span style=color:#f92672>{</span>
+
+   <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String args<span style=color:#f92672>[])</span> <span style=color:#f92672>{</span>
+      <span style=color:#66d9ef>int</span> x <span style=color:#f92672>=</span> 30<span style=color:#f92672>;</span>
+
+      <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>x <span style=color:#f92672>==</span> 10<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+         System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>print</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Value of X is 10&#34;</span><span style=color:#f92672>);</span>
+      <span style=color:#f92672>}</span> <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>x <span style=color:#f92672>==</span> 20<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+         System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>print</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Value of X is 20&#34;</span><span style=color:#f92672>);</span>
+      <span style=color:#f92672>}</span> <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>x <span style=color:#f92672>==</span> 30<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+         System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>print</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Value of X is 30&#34;</span><span style=color:#f92672>);</span>
+      <span style=color:#f92672>}</span> <span style=color:#66d9ef>else</span> <span style=color:#f92672>{</span>
+         System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>print</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;这是 else 语句&#34;</span><span style=color:#f92672>);</span>
+      <span style=color:#f92672>}</span>
+   <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+</code></pre></div><p>以上代码编译运行结果如下：</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>Value of X is 30
+</code></pre></div><h1 id=嵌套的-ifelse-语句>嵌套的 if…else 语句</h1><p>使用嵌套的 if-else 语句是合法的。也就是说你可以在另一个 if 或者 else if 语句中使用 if 或者 else if 语句。</p><h2 id=语法-3>语法</h2><p>嵌套的 if…else 语法格式如下：</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>布尔表达式 1<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+   <span style=color:#75715e>////如果布尔表达式 1的值为true执行代码
+</span><span style=color:#75715e></span>   <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>布尔表达式 2<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+      <span style=color:#75715e>////如果布尔表达式 2的值为true执行代码
+</span><span style=color:#75715e></span>   <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+</code></pre></div><p>你可以像 if 语句一样嵌套 else if&mldr;else。</p><h2 id=实例-2>实例</h2><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Test</span> <span style=color:#f92672>{</span>
+
+   <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String args<span style=color:#f92672>[])</span> <span style=color:#f92672>{</span>
+      <span style=color:#66d9ef>int</span> x <span style=color:#f92672>=</span> 30<span style=color:#f92672>;</span>
+      <span style=color:#66d9ef>int</span> y <span style=color:#f92672>=</span> 10<span style=color:#f92672>;</span>
+
+      <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>x <span style=color:#f92672>==</span> 30<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+         <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>y <span style=color:#f92672>==</span> 10<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+             System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>print</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;X = 30 and Y = 10&#34;</span><span style=color:#f92672>);</span>
+          <span style=color:#f92672>}</span>
+       <span style=color:#f92672>}</span>
+    <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+</code></pre></div><p>以上代码编译运行结果如下：</p><pre><code>X = 30 and Y = 10
+</code></pre><h1 id=switch-语句>switch 语句</h1><p>switch 语句判断一个变量与一系列值中某个值是否相等，每个值称为一个分支。</p><h2 id=语法-4>语法</h2><p>switch 语法格式如下：</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>switch</span> <span style=color:#f92672>(</span>expression<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+    <span style=color:#66d9ef>case</span> value <span style=color:#f92672>:</span>
+       <span style=color:#75715e>//语句
+</span><span style=color:#75715e></span>       <span style=color:#66d9ef>break</span><span style=color:#f92672>;</span> <span style=color:#75715e>//可选
+</span><span style=color:#75715e></span>    <span style=color:#66d9ef>case</span> value <span style=color:#f92672>:</span>
+       <span style=color:#75715e>//语句
+</span><span style=color:#75715e></span>       <span style=color:#66d9ef>break</span><span style=color:#f92672>;</span> <span style=color:#75715e>//可选
+</span><span style=color:#75715e></span>    <span style=color:#75715e>//你可以有任意数量的case语句
+</span><span style=color:#75715e></span>    <span style=color:#66d9ef>default</span> <span style=color:#f92672>:</span> <span style=color:#75715e>//可选
+</span><span style=color:#75715e></span>       <span style=color:#75715e>//语句
+</span><span style=color:#75715e></span><span style=color:#f92672>}</span>
+</code></pre></div><p>switch 语句有如下规则：</p><ul><li>switch 语句中的变量类型只能为 byte、short、int 或者 char。</li><li>switch 语句可以拥有多个 case 语句。每个 case 后面跟一个要比较的值和冒号。</li><li>case 语句中的值的数据类型必须与变量的数据类型相同，而且只能是常量或者字面常量。</li><li>当变量的值与 case 语句的值相等时，那么 case 语句之后的语句开始执行，直到 break 语句出现才会跳出 switch 语句。</li><li>当遇到 break 语句时，switch 语句终止。程序跳转到 switch 语句后面的语句执行。case 语句不必须要包含 break 语句。如果没有 break 语句出现，程序会继续执行下一条 case 语句，直到出现 break 语句。</li><li>switch 语句可以包含一个 default 分支，该分支必须是 switch 语句的最后一个分支。default 在没有 case 语句的值和变量值相等的时候执行。default 分支不需要 break 语句。</li></ul><p><strong>switch case 执行时，一定会先进行匹配，匹配成功返回当前 case 的值，再根据是否有 break，判断是否继续输出，或是跳出判断。</strong></p><h2 id=实例-3>实例</h2><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Test</span> <span style=color:#f92672>{</span>
+
+   <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String args<span style=color:#f92672>[])</span> <span style=color:#f92672>{</span>
+      <span style=color:#75715e>//char grade = args[0].charAt(0);
+</span><span style=color:#75715e></span>      <span style=color:#66d9ef>char</span> grade <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;C&#39;</span><span style=color:#f92672>;</span>
+
+      <span style=color:#66d9ef>switch</span> <span style=color:#f92672>(</span>grade<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+         <span style=color:#66d9ef>case</span> <span style=color:#e6db74>&#39;A&#39;</span> <span style=color:#f92672>:</span>
+            System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;优秀&#34;</span><span style=color:#f92672>);</span> 
+            <span style=color:#66d9ef>break</span><span style=color:#f92672>;</span>
+         <span style=color:#66d9ef>case</span> <span style=color:#e6db74>&#39;B&#39;</span> <span style=color:#f92672>:</span>
+         <span style=color:#66d9ef>case</span> <span style=color:#e6db74>&#39;C&#39;</span> <span style=color:#f92672>:</span>
+            System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;良好&#34;</span><span style=color:#f92672>);</span>
+            <span style=color:#66d9ef>break</span><span style=color:#f92672>;</span>
+         <span style=color:#66d9ef>case</span> <span style=color:#e6db74>&#39;D&#39;</span> <span style=color:#f92672>:</span>
+            System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;及格&#34;</span><span style=color:#f92672>);</span>
+         <span style=color:#66d9ef>case</span> <span style=color:#e6db74>&#39;F&#39;</span> <span style=color:#f92672>:</span>
+            System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;你需要继续努力&#34;</span><span style=color:#f92672>);</span>
+            <span style=color:#66d9ef>break</span><span style=color:#f92672>;</span>
+         <span style=color:#66d9ef>default</span> <span style=color:#f92672>:</span>
+            System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;无效等级&#34;</span><span style=color:#f92672>);</span>
+      <span style=color:#f92672>}</span>
+      System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;你的等级是 &#34;</span> <span style=color:#f92672>+</span> grade<span style=color:#f92672>);</span>
+   <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+</code></pre></div><p>以上代码编译运行结果如下：</p><pre><code>良好
+你的等级是 C
+</code></pre><h2 id=实例-4>实例</h2><p>如果 case 语句块中没有 break 语句时，JVM 并不会顺序输出每一个 case 对应的返回值，而是继续匹配，匹配不成功则返回默认 case。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Test</span> <span style=color:#f92672>{</span>
+   <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String args<span style=color:#f92672>[])</span> <span style=color:#f92672>{</span>
+      <span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> 5<span style=color:#f92672>;</span>
+      <span style=color:#66d9ef>switch</span> <span style=color:#f92672>(</span>i<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+         <span style=color:#66d9ef>case</span> 0<span style=color:#f92672>:</span>
+            System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;0&#34;</span><span style=color:#f92672>);</span>
+         <span style=color:#66d9ef>case</span> 1<span style=color:#f92672>:</span>
+            System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;1&#34;</span><span style=color:#f92672>);</span>
+         <span style=color:#66d9ef>case</span> 2<span style=color:#f92672>:</span>
+            System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;2&#34;</span><span style=color:#f92672>);</span>
+         <span style=color:#66d9ef>default</span><span style=color:#f92672>:</span>
+            System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;default&#34;</span><span style=color:#f92672>);</span>
+      <span style=color:#f92672>}</span>
+   <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+</code></pre></div><p>以上代码编译运行结果如下：</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>default
+</code></pre></div><h2 id=实例-5>实例</h2><p>如果 case 语句块中没有 break 语句时，匹配成功后，从当前 case 开始，后续所有 case 的值都会输出。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Test</span> <span style=color:#f92672>{</span>
+   <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String args<span style=color:#f92672>[])</span> <span style=color:#f92672>{</span>
+      <span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> 1<span style=color:#f92672>;</span>
+      <span style=color:#66d9ef>switch</span> <span style=color:#f92672>(</span>i<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+         <span style=color:#66d9ef>case</span> 0<span style=color:#f92672>:</span>
+            System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;0&#34;</span><span style=color:#f92672>);</span>
+         <span style=color:#66d9ef>case</span> 1<span style=color:#f92672>:</span>
+            System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;1&#34;</span><span style=color:#f92672>);</span>
+         <span style=color:#66d9ef>case</span> 2<span style=color:#f92672>:</span>
+            System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;2&#34;</span><span style=color:#f92672>);</span>
+         <span style=color:#66d9ef>default</span><span style=color:#f92672>:</span>
+            System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;default&#34;</span><span style=color:#f92672>);</span>
+      <span style=color:#f92672>}</span>
+   <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+</code></pre></div><p>以上代码编译运行结果如下：</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#ae81ff>1</span>
+<span style=color:#ae81ff>2</span>
+default
+</code></pre></div><h2 id=实例-6>实例</h2><p>如果当前匹配成功的 case 语句块没有 break 语句，则从当前 case 开始，后续所有 case 的值都会输出，如果后续的 case 语句块有 break 语句则会跳出判断。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Test</span> <span style=color:#f92672>{</span>
+   <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String args<span style=color:#f92672>[])</span> <span style=color:#f92672>{</span>
+      <span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> 1<span style=color:#f92672>;</span>
+      <span style=color:#66d9ef>switch</span> <span style=color:#f92672>(</span>i<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+         <span style=color:#66d9ef>case</span> 0<span style=color:#f92672>:</span>
+            System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;0&#34;</span><span style=color:#f92672>);</span>
+         <span style=color:#66d9ef>case</span> 1<span style=color:#f92672>:</span>
+            System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;1&#34;</span><span style=color:#f92672>);</span>
+         <span style=color:#66d9ef>case</span> 2<span style=color:#f92672>:</span>
+            System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;2&#34;</span><span style=color:#f92672>);</span>
+         <span style=color:#66d9ef>case</span> 3<span style=color:#f92672>:</span>
+            System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;3&#34;</span><span style=color:#f92672>);</span>
+         <span style=color:#66d9ef>break</span><span style=color:#f92672>;</span>
+         <span style=color:#66d9ef>default</span><span style=color:#f92672>:</span>
+            System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;default&#34;</span><span style=color:#f92672>);</span>
+      <span style=color:#f92672>}</span>
+   <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+</code></pre></div><p>以上代码编译运行结果如下：</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#ae81ff>1</span>
+<span style=color:#ae81ff>2</span>
+<span style=color:#ae81ff>3</span>
+</code></pre></div></div><footer class=post-footer><div class=post-tags><a href=/tags/java/>java</a></div><nav class=post-nav><a class=prev href=/post/springboot-introduction/><i class="iconfont icon-left"></i><span class="prev-text nav-default">Springboot 入门指引</span>
+<span class="prev-text nav-mobile">上一篇</span></a>
+<a class=next href=/post/java-loop-structure/><span class="next-text nav-default">Java 循环结构</span>
+<span class="next-text nav-mobile">下一篇</span>
+<i class="iconfont icon-right"></i></a></nav></footer></article></div><div id=vcomments></div><script src=//cdn1.lncld.net/static/js/3.0.4/av-min.js></script><script src=//unpkg.com/valine/dist/Valine.min.js></script><script type=text/javascript>new Valine({el:'#vcomments',appId:'fXqv8lFikU96F2xUDOBW4T9X-MdYXbMMI',appKey:'AUbjromOz15du9OJSTY6Q8HM',notify:!1,verify:!1,avatar:'robohash',placeholder:'本站支持评论邮件提醒功能，在上方邮箱输入框留下邮箱，可以收到回复通知哦！（支持markdown语法）',visitor:!1})</script></div></main><footer id=footer class=footer><div class=social-links><a href=mailto:gao.bo168@gmail.com class="iconfont icon-email" title=email></a><a href=https://github.com/forgottener class="iconfont icon-github" title=github></a><a href=https://space.bilibili.com/1714562 class="iconfont icon-bilibili" title=bilibili></a><a href=https://gaoboy.com/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a></div><div class=copyright><span class=power-by>由 <a class=hexo-link href=https://gohugo.io>Hugo</a> 强力驱动</span>
+<span class=division>|</span>
+<span class=theme-info>主题 -
+<a class=theme-link href=https://github.com/olOwOlo/hugo-theme-even>Even</a></span>
+<span class=copyright-year>&copy;
+2013 -
+2021<span class=heart><i class="iconfont icon-heart"></i></span><span><a rel="license noopener" href=https://beian.miit.gov.cn/ target=_blank>浙ICP备14043338号-2</a>~<a rel="license noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010802003111" target=_blank>浙公网安备 33010802003111号</a></span></span></div></footer><div class=back-to-top id=back-to-top><i class="iconfont icon-up"></i></div></div><script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script><script type=text/javascript src=/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js></script><script src=/js/blank.js></script></body></html>
