@@ -1,0 +1,124 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>Java Scanner 类 - 猿资猿味 - 高波的博客</title><meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv=cache-control content="no-transform"><meta http-equiv=cache-control content="no-siteapp"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=author content="forgottener"><meta name=description content="Java Scanner 类"><meta name=keywords content="java,Scanner"><meta name=generator content="Hugo 0.81.0 with theme even"><link rel=canonical href=https://gaoboy.com/post/java-scanner/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link href=/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css rel=stylesheet><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous><meta property="og:title" content="Java Scanner 类"><meta property="og:description" content="Java Scanner 类"><meta property="og:type" content="article"><meta property="og:url" content="https://gaoboy.com/post/java-scanner/"><meta property="article:section" content="post"><meta property="article:published_time" content="2015-01-25T14:56:23+08:00"><meta property="article:modified_time" content="2015-01-25T14:56:23+08:00"><meta itemprop=name content="Java Scanner 类"><meta itemprop=description content="Java Scanner 类"><meta itemprop=datePublished content="2015-01-25T14:56:23+08:00"><meta itemprop=dateModified content="2015-01-25T14:56:23+08:00"><meta itemprop=wordCount content="1283"><meta itemprop=keywords content="java,"><meta name=twitter:card content="summary"><meta name=twitter:title content="Java Scanner 类"><meta name=twitter:description content="Java Scanner 类"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script><script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>猿资猿味</a></div><div class=mobile-navbar-icon><span></span><span></span><span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><a href=/><li class=mobile-menu-item>Home</li></a><a href=/post/><li class=mobile-menu-item>Archives</li></a><a href=/tags/><li class=mobile-menu-item>Tags</li></a><a href=/categories/><li class=mobile-menu-item>Categories</li></a></ul></nav><div class=container id=mobile-panel><header id=header class=header><div class=logo-wrapper><a href=/ class=logo>猿资猿味</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=/>Home</a></li><li class=menu-item><a class=menu-item-link href=/post/>Archives</a></li><li class=menu-item><a class=menu-item-link href=/tags/>Tags</a></li><li class=menu-item><a class=menu-item-link href=/categories/>Categories</a></li></ul></nav></header><main id=main class=main><div class=content-wrapper><div id=content class=content><article class=post><header class=post-header><h1 class=post-title>Java Scanner 类</h1><div class=post-meta><span class=post-time>2015-01-25</span><div class=post-category><a href=/categories/java/>java</a></div></div></header><div class=post-toc id=post-toc><h2 class=post-toc-title>文章目录</h2><div class="post-toc-content always-active"><nav id=TableOfContents><ul><li><a href=#概述>概述</a></li><li><a href=#使用-next-方法>使用 next 方法</a></li><li><a href=#使用-nextline-方法>使用 nextLine 方法</a></li><li><a href=#next-与-nextline-区别>next() 与 nextLine() 区别</a><ul><li><a href=#next>next()</a></li><li><a href=#nextline>nextLine()</a></li></ul></li></ul></nav></div></div><div class=post-content><h1 id=概述>概述</h1><p>java.util.Scanner 是 Java5 的新特征，我们可以通过 Scanner 类来获取用户的输入。</p><p>下面是创建 Scanner 对象的基本语法：</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>Scanner s <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> Scanner<span style=color:#f92672>(</span>System<span style=color:#f92672>.</span><span style=color:#a6e22e>in</span><span style=color:#f92672>);</span>
+</code></pre></div><p>接下来我们演示一个最简单的的数据输入，并通过 Scanner 类的 next() 与 nextLine() 方法获取输入的字符串，在读取前我们一般需要 使用 hasNext 与 hasNextLine 判断是否还有输入的数据：</p><h1 id=使用-next-方法>使用 next 方法</h1><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#f92672>import</span> java.util.Scanner<span style=color:#f92672>;</span> 
+
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ScannerDemo</span> <span style=color:#f92672>{</span>
+    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String<span style=color:#f92672>[]</span> args<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+        Scanner scan <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> Scanner<span style=color:#f92672>(</span>System<span style=color:#f92672>.</span><span style=color:#a6e22e>in</span><span style=color:#f92672>);</span>
+        <span style=color:#75715e>// 从键盘接收数据  
+</span><span style=color:#75715e></span>
+        <span style=color:#75715e>//next方式接收字符串
+</span><span style=color:#75715e></span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;next方式接收：&#34;</span><span style=color:#f92672>);</span>
+
+        <span style=color:#75715e>// 判断是否还有输入
+</span><span style=color:#75715e></span>        <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>scan<span style=color:#f92672>.</span><span style=color:#a6e22e>hasNext</span><span style=color:#f92672>())</span> <span style=color:#f92672>{</span>
+            String str1 <span style=color:#f92672>=</span> scan<span style=color:#f92672>.</span><span style=color:#a6e22e>next</span><span style=color:#f92672>();</span>
+            System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;输入的数据为：&#34;</span> <span style=color:#f92672>+</span> str1<span style=color:#f92672>);</span>
+        <span style=color:#f92672>}</span>
+    <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+</code></pre></div><p>执行以上程序输出结果为：</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ javac ScannerDemo.java
+$ java ScannerDemo
+next方式接收：
+youj com
+输入的数据为：youj
+</code></pre></div><p>可以看到 com 字符串并未输出，接下来我们看 nextLine。</p><h1 id=使用-nextline-方法>使用 nextLine 方法</h1><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#f92672>import</span> java.util.Scanner<span style=color:#f92672>;</span>  
+
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ScannerDemo</span> <span style=color:#f92672>{</span>
+    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String<span style=color:#f92672>[]</span> args<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+        Scanner scan <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> Scanner<span style=color:#f92672>(</span>System<span style=color:#f92672>.</span><span style=color:#a6e22e>in</span><span style=color:#f92672>);</span>
+        <span style=color:#75715e>// 从键盘接收数据  
+</span><span style=color:#75715e></span>
+        <span style=color:#75715e>//nextLine方式接收字符串
+</span><span style=color:#75715e></span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;nextLine方式接收：&#34;</span><span style=color:#f92672>);</span>
+
+        <span style=color:#75715e>// 判断是否还有输入
+</span><span style=color:#75715e></span>        <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>scan<span style=color:#f92672>.</span><span style=color:#a6e22e>hasNextLine</span><span style=color:#f92672>())</span> <span style=color:#f92672>{</span>
+            String str2 <span style=color:#f92672>=</span> scan<span style=color:#f92672>.</span><span style=color:#a6e22e>nextLine</span><span style=color:#f92672>();</span>
+            System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;输入的数据为：&#34;</span> <span style=color:#f92672>+</span> str2<span style=color:#f92672>);</span>
+        <span style=color:#f92672>}</span>
+    <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+</code></pre></div><p>执行以上程序输出结果为：</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ javac ScannerDemo.java 
+$ java ScannerDemo 
+nextLine方式接收： 
+youj com 
+输入的数据为：youj com
+</code></pre></div><p>可以看到 com 字符串输出。</p><h1 id=next-与-nextline-区别>next() 与 nextLine() 区别</h1><h2 id=next>next()</h2><ul><li>1、一定要读取到有效字符后才可以结束输入。</li><li>2、对输入有效字符之前遇到的空白，next() 方法会自动将其去掉。</li><li>3、只有输入有效字符后才将其后面输入的空白作为分隔符或者结束符。</li><li>next() 不能得到带有空格的字符串。</li></ul><h2 id=nextline>nextLine()</h2><ul><li>1、以 Enter 为结束符，也就是说 nextLine () 方法返回的是输入回车之前的所有字符。</li><li>2、可以获得空白。</li></ul><p>如果要输入 int 或 float 类型的数据，在 Scanner 类中也有支持，但是在输入之前最好先使用 hasNextXxx() 方法进行验证，再使用 nextXxx() 来读取：</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#f92672>import</span> java.util.Scanner<span style=color:#f92672>;</span>  
+
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ScannerDemo</span> <span style=color:#f92672>{</span>
+    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String<span style=color:#f92672>[]</span> args<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+        Scanner scan <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> Scanner<span style=color:#f92672>(</span>System<span style=color:#f92672>.</span><span style=color:#a6e22e>in</span><span style=color:#f92672>);</span>
+
+        <span style=color:#75715e>// 从键盘接收数据  
+</span><span style=color:#75715e></span>        <span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span>
+        <span style=color:#66d9ef>float</span> f <span style=color:#f92672>=</span> 0<span style=color:#f92672>.</span><span style=color:#a6e22e>0f</span><span style=color:#f92672>;</span>
+        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>print</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;输入整数：&#34;</span><span style=color:#f92672>);</span>
+
+        <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>scan<span style=color:#f92672>.</span><span style=color:#a6e22e>hasNextInt</span><span style=color:#f92672>())</span> <span style=color:#f92672>{</span>
+            <span style=color:#75715e>// 判断输入的是否是整数  
+</span><span style=color:#75715e></span>            i <span style=color:#f92672>=</span> scan<span style=color:#f92672>.</span><span style=color:#a6e22e>nextInt</span><span style=color:#f92672>();</span>
+            <span style=color:#75715e>// 接收整数  
+</span><span style=color:#75715e></span>            System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;整数数据：&#34;</span> <span style=color:#f92672>+</span> i<span style=color:#f92672>);</span>
+        <span style=color:#f92672>}</span> <span style=color:#66d9ef>else</span> <span style=color:#f92672>{</span>
+            <span style=color:#75715e>// 输入错误的信息  
+</span><span style=color:#75715e></span>            System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;输入的不是整数！&#34;</span><span style=color:#f92672>);</span>
+        <span style=color:#f92672>}</span>
+
+        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>print</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;输入小数：&#34;</span><span style=color:#f92672>);</span>
+
+        <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>scan<span style=color:#f92672>.</span><span style=color:#a6e22e>hasNextFloat</span><span style=color:#f92672>())</span> <span style=color:#f92672>{</span>
+            <span style=color:#75715e>// 判断输入的是否是小数  
+</span><span style=color:#75715e></span>            f <span style=color:#f92672>=</span> scan<span style=color:#f92672>.</span><span style=color:#a6e22e>nextFloat</span><span style=color:#f92672>();</span>
+            <span style=color:#75715e>// 接收小数  
+</span><span style=color:#75715e></span>            System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;小数数据：&#34;</span> <span style=color:#f92672>+</span> f<span style=color:#f92672>);</span>
+        <span style=color:#f92672>}</span> <span style=color:#66d9ef>else</span> <span style=color:#f92672>{</span>
+            <span style=color:#75715e>// 输入错误的信息  
+</span><span style=color:#75715e></span>            System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;输入的不是小数！&#34;</span><span style=color:#f92672>);</span>
+        <span style=color:#f92672>}</span>
+    <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+</code></pre></div><p>执行以上程序输出结果为：</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ javac ScannerDemo.java
+$ java ScannerDemo
+输入整数：12
+整数数据：12
+输入小数：1.2
+小数数据：1.2
+</code></pre></div><p>以下实例我们可以输入多个数字，并求其总和与平均数，每输入一个数字用回车确认，通过输入非数字来结束输入并输出执行结果：</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#f92672>import</span> java.util.Scanner<span style=color:#f92672>;</span> 
+
+<span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ScannerDemo</span> <span style=color:#f92672>{</span>
+    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String<span style=color:#f92672>[]</span> args<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+        Scanner scan <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> Scanner<span style=color:#f92672>(</span>System<span style=color:#f92672>.</span><span style=color:#a6e22e>in</span><span style=color:#f92672>);</span>
+
+        <span style=color:#66d9ef>double</span> sum <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span>
+        <span style=color:#66d9ef>int</span> m <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span>
+
+        <span style=color:#66d9ef>while</span> <span style=color:#f92672>(</span>scan<span style=color:#f92672>.</span><span style=color:#a6e22e>hasNextDouble</span><span style=color:#f92672>())</span> <span style=color:#f92672>{</span>
+            <span style=color:#66d9ef>double</span> x <span style=color:#f92672>=</span> scan<span style=color:#f92672>.</span><span style=color:#a6e22e>nextDouble</span><span style=color:#f92672>();</span>
+            m <span style=color:#f92672>=</span> m <span style=color:#f92672>+</span> 1<span style=color:#f92672>;</span>
+            sum <span style=color:#f92672>=</span> sum <span style=color:#f92672>+</span> x<span style=color:#f92672>;</span>
+        <span style=color:#f92672>}</span>
+
+        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span>m <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;个数的和为&#34;</span> <span style=color:#f92672>+</span> sum<span style=color:#f92672>);</span>
+        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span>m <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;个数的平均值是&#34;</span> <span style=color:#f92672>+</span> <span style=color:#f92672>(</span>sum <span style=color:#f92672>/</span> m<span style=color:#f92672>));</span>
+    <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+</code></pre></div><p>执行以上程序输出结果为：</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ javac ScannerDemo.java
+$ java ScannerDemo
+<span style=color:#ae81ff>12</span>
+<span style=color:#ae81ff>23</span>
+<span style=color:#ae81ff>15</span>
+21.4
+end
+4个数的和为71.4
+4个数的平均值是17.85
+</code></pre></div></div><footer class=post-footer><div class=post-tags><a href=/tags/java/>java</a></div><nav class=post-nav><a class=prev href=/post/java-exception-handle/><i class="iconfont icon-left"></i><span class="prev-text nav-default">Java 异常处理</span>
+<span class="prev-text nav-mobile">上一篇</span></a>
+<a class=next href=/post/java-stream-file-io/><span class="next-text nav-default">Java 流(Stream)、文件(File)和IO</span>
+<span class="next-text nav-mobile">下一篇</span>
+<i class="iconfont icon-right"></i></a></nav></footer></article></div><div id=vcomments></div><script src=//cdn1.lncld.net/static/js/3.0.4/av-min.js></script><script src=//unpkg.com/valine/dist/Valine.min.js></script><script type=text/javascript>new Valine({el:'#vcomments',appId:'fXqv8lFikU96F2xUDOBW4T9X-MdYXbMMI',appKey:'AUbjromOz15du9OJSTY6Q8HM',notify:!1,verify:!1,avatar:'robohash',placeholder:'本站支持评论邮件提醒功能，在上方邮箱输入框留下邮箱，可以收到回复通知哦！（支持markdown语法）',visitor:!1})</script></div></main><footer id=footer class=footer><div class=social-links><a href=mailto:gao.bo168@gmail.com class="iconfont icon-email" title=email></a><a href=https://github.com/forgottener class="iconfont icon-github" title=github></a><a href=https://space.bilibili.com/1714562 class="iconfont icon-bilibili" title=bilibili></a><a href=https://gaoboy.com/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a></div><div class=copyright><span class=power-by>由 <a class=hexo-link href=https://gohugo.io>Hugo</a> 强力驱动</span>
+<span class=division>|</span>
+<span class=theme-info>主题 -
+<a class=theme-link href=https://github.com/olOwOlo/hugo-theme-even>Even</a></span>
+<span class=copyright-year>&copy;
+2013 -
+2021<span class=heart><i class="iconfont icon-heart"></i></span><span><a rel="license noopener" href=https://beian.miit.gov.cn/ target=_blank>浙ICP备14043338号-2</a>~<a rel="license noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010802003111" target=_blank>浙公网安备 33010802003111号</a></span></span></div></footer><div class=back-to-top id=back-to-top><i class="iconfont icon-up"></i></div></div><script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script><script type=text/javascript src=/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js></script><script src=/js/blank.js></script></body></html>

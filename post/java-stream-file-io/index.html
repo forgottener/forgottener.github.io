@@ -1,0 +1,227 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>Java 流(Stream)、文件(File)和IO - 猿资猿味 - 高波的博客</title><meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv=cache-control content="no-transform"><meta http-equiv=cache-control content="no-siteapp"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=author content="forgottener"><meta name=description content="Java Stream, File and IO"><meta name=keywords content="java,Stream"><meta name=generator content="Hugo 0.81.0 with theme even"><link rel=canonical href=https://gaoboy.com/post/java-stream-file-io/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link href=/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css rel=stylesheet><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous><meta property="og:title" content="Java 流(Stream)、文件(File)和IO"><meta property="og:description" content="Java Stream, File and IO"><meta property="og:type" content="article"><meta property="og:url" content="https://gaoboy.com/post/java-stream-file-io/"><meta property="article:section" content="post"><meta property="article:published_time" content="2015-01-25T14:56:23+08:00"><meta property="article:modified_time" content="2015-01-25T14:56:23+08:00"><meta itemprop=name content="Java 流(Stream)、文件(File)和IO"><meta itemprop=description content="Java Stream, File and IO"><meta itemprop=datePublished content="2015-01-25T14:56:23+08:00"><meta itemprop=dateModified content="2015-01-25T14:56:23+08:00"><meta itemprop=wordCount content="3107"><meta itemprop=keywords content="java,"><meta name=twitter:card content="summary"><meta name=twitter:title content="Java 流(Stream)、文件(File)和IO"><meta name=twitter:description content="Java Stream, File and IO"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script><script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>猿资猿味</a></div><div class=mobile-navbar-icon><span></span><span></span><span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><a href=/><li class=mobile-menu-item>Home</li></a><a href=/post/><li class=mobile-menu-item>Archives</li></a><a href=/tags/><li class=mobile-menu-item>Tags</li></a><a href=/categories/><li class=mobile-menu-item>Categories</li></a></ul></nav><div class=container id=mobile-panel><header id=header class=header><div class=logo-wrapper><a href=/ class=logo>猿资猿味</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=/>Home</a></li><li class=menu-item><a class=menu-item-link href=/post/>Archives</a></li><li class=menu-item><a class=menu-item-link href=/tags/>Tags</a></li><li class=menu-item><a class=menu-item-link href=/categories/>Categories</a></li></ul></nav></header><main id=main class=main><div class=content-wrapper><div id=content class=content><article class=post><header class=post-header><h1 class=post-title>Java 流(Stream)、文件(File)和IO</h1><div class=post-meta><span class=post-time>2015-01-25</span><div class=post-category><a href=/categories/java/>java</a></div></div></header><div class=post-toc id=post-toc><h2 class=post-toc-title>文章目录</h2><div class="post-toc-content always-active"><nav id=TableOfContents><ul><li><a href=#概述>概述</a></li><li><a href=#读取控制台输入>读取控制台输入</a></li><li><a href=#从控制台读取多字符输入>从控制台读取多字符输入</a></li><li><a href=#从控制台读取字符串>从控制台读取字符串</a></li><li><a href=#控制台输出>控制台输出</a><ul><li><a href=#实例>实例</a></li></ul></li><li><a href=#读写文件>读写文件</a><ul><li><a href=#fileinputstream>FileInputStream</a></li><li><a href=#fileoutputstream>FileOutputStream</a></li><li><a href=#实例-1>实例</a></li></ul></li><li><a href=#文件和-io>文件和 I/O</a></li><li><a href=#java-中的目录>Java 中的目录</a><ul><li><a href=#创建目录>创建目录</a></li><li><a href=#读取目录>读取目录</a></li><li><a href=#删除目录或文件>删除目录或文件</a></li></ul></li></ul></nav></div></div><div class=post-content><h1 id=概述>概述</h1><p><code>Java.io</code> 包几乎包含了所有操作输入、输出需要的类。所有这些流类代表了输入源和输出目标。</p><p><code>Java.io</code> 包中的流支持很多种格式，比如：基本类型、对象、本地化字符集等等。</p><p>一个流可以理解为一个数据的序列。输入流表示从一个源读取数据，输出流表示向一个目标写数据。</p><p>Java 为 I/O 提供了强大的而灵活的支持，使其更广泛地应用到文件传输和网络编程中。</p><p>但本节讲述最基本的和流与 I/O 相关的功能。我们将通过一个个例子来学习这些功能。</p><h1 id=读取控制台输入>读取控制台输入</h1><p>Java 的控制台输入由 <code>System.in</code> 完成。</p><p>为了获得一个绑定到控制台的字符流，你可以把 <code>System.in</code> 包装在一个 BufferedReader 对象中来创建一个字符流。</p><p>下面是创建 BufferedReader 的基本语法：</p><pre><code>BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+</code></pre><p>BufferedReader 对象创建后，我们便可以使用 read() 方法从控制台读取一个字符，或者用 readLine() 方法读取一个字符串。</p><h1 id=从控制台读取多字符输入>从控制台读取多字符输入</h1><p>从 BufferedReader 对象读取一个字符要使用 read() 方法，它的语法如下：</p><pre><code>int read() throws IOException
+</code></pre><p>每次调用 read() 方法，它从输入流读取一个字符并把该字符作为整数值返回。 当流结束的时候返回 - 1。该方法抛出 IOException。</p><p>下面的程序示范了用 read() 方法从控制台不断读取字符直到用户输入 &ldquo;q&rdquo;。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#75715e>// 使用 BufferedReader 在控制台读取字符
+</span><span style=color:#75715e></span>
+<span style=color:#f92672>import</span> java.io.*<span style=color:#f92672>;</span>
+
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>BRRead</span> <span style=color:#f92672>{</span>
+   <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String args<span style=color:#f92672>[])</span> <span style=color:#66d9ef>throws</span> IOException <span style=color:#f92672>{</span>
+      <span style=color:#66d9ef>char</span> c<span style=color:#f92672>;</span>
+      <span style=color:#75715e>// 使用 System.in 创建 BufferedReader 
+</span><span style=color:#75715e></span>      BufferedReader br <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> BufferedReader<span style=color:#f92672>(</span><span style=color:#66d9ef>new</span> 
+                         InputStreamReader<span style=color:#f92672>(</span>System<span style=color:#f92672>.</span><span style=color:#a6e22e>in</span><span style=color:#f92672>));</span>
+      System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Enter characters, &#39;q&#39; to quit.&#34;</span><span style=color:#f92672>);</span>
+      <span style=color:#75715e>// 读取字符
+</span><span style=color:#75715e></span>      <span style=color:#66d9ef>do</span> <span style=color:#f92672>{</span>
+         c <span style=color:#f92672>=</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>char</span><span style=color:#f92672>)</span> br<span style=color:#f92672>.</span><span style=color:#a6e22e>read</span><span style=color:#f92672>();</span>
+         System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span>c<span style=color:#f92672>);</span>
+      <span style=color:#f92672>}</span> <span style=color:#66d9ef>while</span> <span style=color:#f92672>(</span>c <span style=color:#f92672>!=</span> <span style=color:#e6db74>&#39;q&#39;</span><span style=color:#f92672>);</span>
+   <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+</code></pre></div><p>以上实例编译运行结果如下:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>Enter characters, <span style=color:#e6db74>&#39;q&#39;</span> to quit.
+123abcq
+<span style=color:#ae81ff>1</span>
+<span style=color:#ae81ff>2</span>
+<span style=color:#ae81ff>3</span>
+a
+b
+c
+q
+</code></pre></div><h1 id=从控制台读取字符串>从控制台读取字符串</h1><p>从标准输入读取一个字符串需要使用 BufferedReader 的 readLine() 方法。</p><p>它的一般格式是：</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>String <span style=color:#a6e22e>readLine</span><span style=color:#f92672>()</span> <span style=color:#66d9ef>throws</span> IOException
+</code></pre></div><p>下面的程序读取和显示字符行直到你输入了单词 &ldquo;end&rdquo;。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#75715e>// 使用 BufferedReader 在控制台读取字符
+</span><span style=color:#75715e></span><span style=color:#f92672>import</span> java.io.*<span style=color:#f92672>;</span>
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>BRReadLines</span> <span style=color:#f92672>{</span>
+   <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String args<span style=color:#f92672>[])</span> <span style=color:#66d9ef>throws</span> IOException <span style=color:#f92672>{</span>
+      <span style=color:#75715e>// 使用 System.in 创建 BufferedReader 
+</span><span style=color:#75715e></span>      BufferedReader br <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> BufferedReader<span style=color:#f92672>(</span><span style=color:#66d9ef>new</span>
+                              InputStreamReader<span style=color:#f92672>(</span>System<span style=color:#f92672>.</span><span style=color:#a6e22e>in</span><span style=color:#f92672>));</span>
+      String str<span style=color:#f92672>;</span>
+      System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Enter lines of text.&#34;</span><span style=color:#f92672>);</span>
+      System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Enter &#39;end&#39; to quit.&#34;</span><span style=color:#f92672>);</span>
+      <span style=color:#66d9ef>do</span> <span style=color:#f92672>{</span>
+         str <span style=color:#f92672>=</span> br<span style=color:#f92672>.</span><span style=color:#a6e22e>readLine</span><span style=color:#f92672>();</span>
+         System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span>str<span style=color:#f92672>);</span>
+      <span style=color:#f92672>}</span> <span style=color:#66d9ef>while</span> <span style=color:#f92672>(!</span>str<span style=color:#f92672>.</span><span style=color:#a6e22e>equals</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;end&#34;</span><span style=color:#f92672>));</span>
+   <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+</code></pre></div><p>以上实例编译运行结果如下:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>Enter lines of text.
+Enter <span style=color:#e6db74>&#39;end&#39;</span> to quit.
+This is line one
+This is line one
+This is line two
+This is line two
+end
+end
+</code></pre></div><h1 id=控制台输出>控制台输出</h1><p>在此前已经介绍过，控制台的输出由 print() 和 println() 完成。这些方法都由类 PrintStream 定义，System.out 是该类对象的一个引用。</p><p>PrintStream 继承了 OutputStream 类，并且实现了方法 write()。这样，write() 也可以用来往控制台写操作。</p><p>PrintStream 定义 write() 的最简单格式如下所示：</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>void</span> <span style=color:#a6e22e>write</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> byteval<span style=color:#f92672>)</span>
+</code></pre></div><p>该方法将 byteval 的低八位字节写到流中。</p><h2 id=实例>实例</h2><p>下面的例子用 write() 把字符 &ldquo;A&rdquo; 和紧跟着的换行符输出到屏幕：</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#f92672>import</span> java.io.*<span style=color:#f92672>;</span>
+
+<span style=color:#75715e>// 演示 System.out.write().
+</span><span style=color:#75715e></span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>WriteDemo</span> <span style=color:#f92672>{</span>
+   <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String args<span style=color:#f92672>[])</span> <span style=color:#f92672>{</span>
+      <span style=color:#66d9ef>int</span> b<span style=color:#f92672>;</span> 
+      b <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;A&#39;</span><span style=color:#f92672>;</span>
+      System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>write</span><span style=color:#f92672>(</span>b<span style=color:#f92672>);</span>
+      System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>write</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#39;\n&#39;</span><span style=color:#f92672>);</span>
+   <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+</code></pre></div><p>运行以上实例在输出窗口输出 &ldquo;A&rdquo; 字符</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>A
+</code></pre></div><blockquote><p><strong>注意：</strong> write() 方法不经常使用，因为 print() 和 println() 方法用起来更为方便。</p></blockquote><h1 id=读写文件>读写文件</h1><p>如前所述，一个流被定义为一个数据序列。输入流用于从源读取数据，输出流用于向目标写数据。</p><p>下图是一个描述输入流和输出流的类层次图。</p><p><img src=https://qcloud.gaoboy.com/img/post/20210227153139.png alt></p><p>下面将要讨论的两个重要的流是 FileInputStream 和 FileOutputStream：</p><h2 id=fileinputstream>FileInputStream</h2><p>该流用于从文件读取数据，它的对象可以用关键字 new 来创建。</p><p>有多种构造方法可用来创建对象。</p><p>可以使用字符串类型的文件名来创建一个输入流对象来读取文件：</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>InputStream f <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> FileInputStream<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;C:/java/hello&#34;</span><span style=color:#f92672>);</span>
+</code></pre></div><p>也可以使用一个文件对象来创建一个输入流对象来读取文件。我们首先得使用 File () 方法来创建一个文件对象：</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>File f <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> File<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;C:/java/hello&#34;</span><span style=color:#f92672>);</span>
+InputStream f <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> FileInputStream<span style=color:#f92672>(</span>f<span style=color:#f92672>);</span>
+</code></pre></div><p>创建了 InputStream 对象，就可以使用下面的方法来读取流或者进行其他的流操作。</p><table><thead><tr><th style=text-align:left><strong>序号</strong></th><th style=text-align:left><strong>方法及描述</strong></th></tr></thead><tbody><tr><td style=text-align:left>1</td><td style=text-align:left><strong>public void close() throws IOException{}</strong> 关闭此文件输入流并释放与此流有关的所有系统资源。抛出 IOException 异常。</td></tr><tr><td style=text-align:left>2</td><td style=text-align:left><strong>protected void finalize()throws IOException {}</strong> 这个方法清除与该文件的连接。确保在不再引用文件输入流时调用其 close 方法。抛出 IOException 异常。</td></tr><tr><td style=text-align:left>3</td><td style=text-align:left><strong>public int read(int r)throws IOException{}</strong> 这个方法从 InputStream 对象读取指定字节的数据。返回为整数值。返回下一字节数据，如果已经到结尾则返回 - 1。</td></tr><tr><td style=text-align:left>4</td><td style=text-align:left><strong>public int read(byte[] r) throws IOException{}</strong> 这个方法从输入流读取 r.length 长度的字节。返回读取的字节数。如果是文件结尾则返回 - 1。</td></tr><tr><td style=text-align:left>5</td><td style=text-align:left><strong>public int available() throws IOException{}</strong> 返回下一次对此输入流调用的方法可以不受阻塞地从此输入流读取的字节数。返回一个整数值。</td></tr></tbody></table><p>除了 InputStream 外，还有一些其他的输入流</p><ul><li>ByteArrayInputStream</li><li>DataInputStream</li></ul><h2 id=fileoutputstream>FileOutputStream</h2><p>该类用来创建一个文件并向文件中写数据。</p><p>如果该流在打开文件进行输出前，目标文件不存在，那么该流会创建该文件。</p><p>有两个构造方法可以用来创建 FileOutputStream 对象。</p><p>使用字符串类型的文件名来创建一个输出流对象：</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>OutputStream f <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> FileOutputStream<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;C:/java/hello&#34;</span><span style=color:#f92672>)</span>
+</code></pre></div><p>也可以使用一个文件对象来创建一个输出流来写文件。我们首先得使用 File () 方法来创建一个文件对象：</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>File f <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> File<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;C:/java/hello&#34;</span><span style=color:#f92672>);</span>
+OutputStream f <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> FileOutputStream<span style=color:#f92672>(</span>f<span style=color:#f92672>);</span>
+</code></pre></div><p>创建 OutputStream 对象完成后，就可以使用下面的方法来写入流或者进行其他的流操作。</p><table><thead><tr><th style=text-align:left><strong>序号</strong></th><th style=text-align:left><strong>方法及描述</strong></th></tr></thead><tbody><tr><td style=text-align:left>1</td><td style=text-align:left><strong>public void close() throws IOException{}</strong> 关闭此文件输入流并释放与此流有关的所有系统资源。抛出 IOException 异常。</td></tr><tr><td style=text-align:left>2</td><td style=text-align:left><strong>protected void finalize()throws IOException {}</strong> 这个方法清除与该文件的连接。确保在不再引用文件输入流时调用其 close 方法。抛出 IOException 异常。</td></tr><tr><td style=text-align:left>3</td><td style=text-align:left><strong>public void write(int w)throws IOException{}</strong> 这个方法把指定的字节写到输出流中。</td></tr><tr><td style=text-align:left>4</td><td style=text-align:left><strong>public void write(byte[] w)</strong> 把指定数组中 w.length 长度的字节写到 OutputStream 中。</td></tr></tbody></table><p>除了 OutputStream 外，还有一些其他的输出流</p><ul><li>ByteArrayOutputStream</li><li>DataOutputStream</li></ul><h2 id=实例-1>实例</h2><p>下面是一个演示 InputStream 和 OutputStream 用法的例子：</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#f92672>import</span> java.io.*<span style=color:#f92672>;</span>
+ 
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>fileStreamTest</span> <span style=color:#f92672>{</span>
+    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String<span style=color:#f92672>[]</span> args<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+        <span style=color:#66d9ef>try</span> <span style=color:#f92672>{</span>
+            <span style=color:#66d9ef>byte</span> bWrite<span style=color:#f92672>[]</span> <span style=color:#f92672>=</span> <span style=color:#f92672>{</span> 11<span style=color:#f92672>,</span> 21<span style=color:#f92672>,</span> 3<span style=color:#f92672>,</span> 40<span style=color:#f92672>,</span> 5 <span style=color:#f92672>};</span>
+            OutputStream os <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> FileOutputStream<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;test.txt&#34;</span><span style=color:#f92672>);</span>
+            <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> x <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span> x <span style=color:#f92672>&lt;</span> bWrite<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>;</span> x<span style=color:#f92672>++)</span> <span style=color:#f92672>{</span>
+                os<span style=color:#f92672>.</span><span style=color:#a6e22e>write</span><span style=color:#f92672>(</span>bWrite<span style=color:#f92672>[</span>x<span style=color:#f92672>]);</span> <span style=color:#75715e>// writes the bytes
+</span><span style=color:#75715e></span>            <span style=color:#f92672>}</span>
+            os<span style=color:#f92672>.</span><span style=color:#a6e22e>close</span><span style=color:#f92672>();</span>
+ 
+            InputStream is <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> FileInputStream<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;test.txt&#34;</span><span style=color:#f92672>);</span>
+            <span style=color:#66d9ef>int</span> size <span style=color:#f92672>=</span> is<span style=color:#f92672>.</span><span style=color:#a6e22e>available</span><span style=color:#f92672>();</span>
+ 
+            <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span> i <span style=color:#f92672>&lt;</span> size<span style=color:#f92672>;</span> i<span style=color:#f92672>++)</span> <span style=color:#f92672>{</span>
+                System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>print</span><span style=color:#f92672>((</span><span style=color:#66d9ef>char</span><span style=color:#f92672>)</span> is<span style=color:#f92672>.</span><span style=color:#a6e22e>read</span><span style=color:#f92672>()</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;  &#34;</span><span style=color:#f92672>);</span>
+            <span style=color:#f92672>}</span>
+            is<span style=color:#f92672>.</span><span style=color:#a6e22e>close</span><span style=color:#f92672>();</span>
+        <span style=color:#f92672>}</span> <span style=color:#66d9ef>catch</span> <span style=color:#f92672>(</span>IOException e<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+            System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>print</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Exception&#34;</span><span style=color:#f92672>);</span>
+        <span style=color:#f92672>}</span>
+    <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+</code></pre></div><p>上面的程序首先创建文件 test.txt，并把给定的数字以二进制形式写进该文件，同时输出到控制台上。</p><p>以上代码由于是二进制写入，可能存在乱码，你可以使用以下代码实例来解决乱码问题：</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#75715e>//文件名 :fileStreamTest2.java
+</span><span style=color:#75715e></span><span style=color:#f92672>import</span> java.io.*<span style=color:#f92672>;</span>
+
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>fileStreamTest2</span> <span style=color:#f92672>{</span>
+	<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String<span style=color:#f92672>[]</span> args<span style=color:#f92672>)</span> <span style=color:#66d9ef>throws</span> IOException <span style=color:#f92672>{</span>
+		
+		File f <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> File<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;a.txt&#34;</span><span style=color:#f92672>);</span>
+		FileOutputStream fop <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> FileOutputStream<span style=color:#f92672>(</span>f<span style=color:#f92672>);</span>
+		<span style=color:#75715e>// 构建FileOutputStream对象,文件不存在会自动新建
+</span><span style=color:#75715e></span>		
+		OutputStreamWriter writer <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> OutputStreamWriter<span style=color:#f92672>(</span>fop<span style=color:#f92672>,</span> <span style=color:#e6db74>&#34;UTF-8&#34;</span><span style=color:#f92672>);</span>
+		<span style=color:#75715e>// 构建OutputStreamWriter对象,参数可以指定编码,默认为操作系统默认编码,windows上是gbk
+</span><span style=color:#75715e></span>		
+		writer<span style=color:#f92672>.</span><span style=color:#a6e22e>append</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;中文输入&#34;</span><span style=color:#f92672>);</span>
+		<span style=color:#75715e>// 写入到缓冲区
+</span><span style=color:#75715e></span>		
+		writer<span style=color:#f92672>.</span><span style=color:#a6e22e>append</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;\r\n&#34;</span><span style=color:#f92672>);</span>
+		<span style=color:#75715e>//换行
+</span><span style=color:#75715e></span>		
+		writer<span style=color:#f92672>.</span><span style=color:#a6e22e>append</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;English&#34;</span><span style=color:#f92672>);</span>
+		<span style=color:#75715e>// 刷新缓存冲,写入到文件,如果下面已经没有写入的内容了,直接close也会写入
+</span><span style=color:#75715e></span>		
+		writer<span style=color:#f92672>.</span><span style=color:#a6e22e>close</span><span style=color:#f92672>();</span>
+		<span style=color:#75715e>//关闭写入流,同时会把缓冲区内容写入文件,所以上面的注释掉
+</span><span style=color:#75715e></span>		
+		fop<span style=color:#f92672>.</span><span style=color:#a6e22e>close</span><span style=color:#f92672>();</span>
+		<span style=color:#75715e>// 关闭输出流,释放系统资源
+</span><span style=color:#75715e></span>
+		FileInputStream fip <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> FileInputStream<span style=color:#f92672>(</span>f<span style=color:#f92672>);</span>
+		<span style=color:#75715e>// 构建FileInputStream对象
+</span><span style=color:#75715e></span>		
+		InputStreamReader reader <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> InputStreamReader<span style=color:#f92672>(</span>fip<span style=color:#f92672>,</span> <span style=color:#e6db74>&#34;UTF-8&#34;</span><span style=color:#f92672>);</span>
+		<span style=color:#75715e>// 构建InputStreamReader对象,编码与写入相同
+</span><span style=color:#75715e></span>
+		StringBuffer sb <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> StringBuffer<span style=color:#f92672>();</span>
+		<span style=color:#66d9ef>while</span> <span style=color:#f92672>(</span>reader<span style=color:#f92672>.</span><span style=color:#a6e22e>ready</span><span style=color:#f92672>())</span> <span style=color:#f92672>{</span>
+			sb<span style=color:#f92672>.</span><span style=color:#a6e22e>append</span><span style=color:#f92672>((</span><span style=color:#66d9ef>char</span><span style=color:#f92672>)</span> reader<span style=color:#f92672>.</span><span style=color:#a6e22e>read</span><span style=color:#f92672>());</span>
+			<span style=color:#75715e>// 转成char加到StringBuffer对象中
+</span><span style=color:#75715e></span>		<span style=color:#f92672>}</span>
+		System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span>sb<span style=color:#f92672>.</span><span style=color:#a6e22e>toString</span><span style=color:#f92672>());</span>
+		reader<span style=color:#f92672>.</span><span style=color:#a6e22e>close</span><span style=color:#f92672>();</span>
+		<span style=color:#75715e>// 关闭读取流
+</span><span style=color:#75715e></span>		
+		fip<span style=color:#f92672>.</span><span style=color:#a6e22e>close</span><span style=color:#f92672>();</span>
+		<span style=color:#75715e>// 关闭输入流,释放系统资源
+</span><span style=color:#75715e></span>
+	<span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+</code></pre></div><h1 id=文件和-io>文件和 I/O</h1><p>还有一些关于文件和 I/O 的类，我们也需要知道：</p><ul><li>File Class (类)</li><li>FileReader Class (类)</li><li>FileWriter Class (类)</li></ul><h1 id=java-中的目录>Java 中的目录</h1><h2 id=创建目录>创建目录</h2><p>File 类中有两个方法可以用来创建文件夹：</p><ul><li><strong>mkdir()</strong> 方法创建一个文件夹，成功则返回 true，失败则返回 false。失败表明 File 对象指定的路径已经存在，或者由于整个路径还不存在，该文件夹不能被创建。</li><li><strong>mkdirs()</strong> 方法创建一个文件夹和它的所有父文件夹。</li></ul><p>下面的例子创建 &ldquo;/tmp/user/java/bin&rdquo; 文件夹：</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#f92672>import</span> java.io.File<span style=color:#f92672>;</span>
+
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>CreateDir</span> <span style=color:#f92672>{</span>
+   <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String args<span style=color:#f92672>[])</span> <span style=color:#f92672>{</span>
+      String dirname <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;/tmp/user/java/bin&#34;</span><span style=color:#f92672>;</span>
+      File d <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> File<span style=color:#f92672>(</span>dirname<span style=color:#f92672>);</span>
+      <span style=color:#75715e>// 现在创建目录
+</span><span style=color:#75715e></span>      d<span style=color:#f92672>.</span><span style=color:#a6e22e>mkdirs</span><span style=color:#f92672>();</span>
+  <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+</code></pre></div><p>编译并执行上面代码来创建目录 &ldquo;/tmp/user/java/bin&rdquo;。</p><blockquote><p><strong>注意：</strong> Java 在 UNIX 和 Windows 自动按约定分辨文件路径分隔符。如果你在 Windows 版本的 Java 中使用分隔符 (/) ，路径依然能够被正确解析。</p></blockquote><h2 id=读取目录>读取目录</h2><p>一个目录其实就是一个 File 对象，它包含其他文件和文件夹。</p><p>如果创建一个 File 对象并且它是一个目录，那么调用 isDirectory ( ) 方法会返回 true。</p><p>可以通过调用该对象上的 list () 方法，来提取它包含的文件和文件夹的列表。</p><p>下面展示的例子说明如何使用 list () 方法来检查一个文件夹中包含的内容：</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#f92672>import</span> java.io.File<span style=color:#f92672>;</span>
+
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>DirList</span> <span style=color:#f92672>{</span>
+    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String<span style=color:#f92672>[]</span> args<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+        String dirname <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;/tmp&#34;</span><span style=color:#f92672>;</span>
+        File f1 <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> File<span style=color:#f92672>(</span>dirname<span style=color:#f92672>);</span>
+
+        <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>f1<span style=color:#f92672>.</span><span style=color:#a6e22e>isDirectory</span><span style=color:#f92672>())</span> <span style=color:#f92672>{</span>
+            System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Directory of &#34;</span> <span style=color:#f92672>+</span> dirname<span style=color:#f92672>);</span>
+
+            String<span style=color:#f92672>[]</span> s <span style=color:#f92672>=</span> f1<span style=color:#f92672>.</span><span style=color:#a6e22e>list</span><span style=color:#f92672>();</span>
+
+            <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span> i <span style=color:#f92672>&lt;</span> s<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>;</span> i<span style=color:#f92672>++)</span> <span style=color:#f92672>{</span>
+                File f <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> File<span style=color:#f92672>(</span>dirname <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;/&#34;</span> <span style=color:#f92672>+</span> s<span style=color:#f92672>[</span>i<span style=color:#f92672>]);</span>
+
+                <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>f<span style=color:#f92672>.</span><span style=color:#a6e22e>isDirectory</span><span style=color:#f92672>())</span> <span style=color:#f92672>{</span>
+                    System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span>s<span style=color:#f92672>[</span>i<span style=color:#f92672>]</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34; is a directory&#34;</span><span style=color:#f92672>);</span>
+                <span style=color:#f92672>}</span> <span style=color:#66d9ef>else</span> <span style=color:#f92672>{</span>
+                    System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span>s<span style=color:#f92672>[</span>i<span style=color:#f92672>]</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34; is a file&#34;</span><span style=color:#f92672>);</span>
+                <span style=color:#f92672>}</span>
+            <span style=color:#f92672>}</span>
+        <span style=color:#f92672>}</span> <span style=color:#66d9ef>else</span> <span style=color:#f92672>{</span>
+            System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span>dirname <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34; is not a directory&#34;</span><span style=color:#f92672>);</span>
+        <span style=color:#f92672>}</span>
+    <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+</code></pre></div><p>以上实例编译运行结果如下：</p><pre><code>Directory of /tmp
+bin is a directory
+lib is a directory
+demo is a directory
+test.txt is a file
+README is a file
+index.html is a file
+include is a directory
+</code></pre><h2 id=删除目录或文件>删除目录或文件</h2><p>删除文件可以使用 <strong>java.io.File.delete()</strong> 方法。</p><p>以下代码会删除目录 <strong>/tmp/java/</strong>，需要注意的是当删除某一目录时，必须保证该目录下没有其他文件才能正确删除，否则将删除失败。</p><p>测试目录结构：</p><pre><code>/tmp/java/
+|-- 1.log
+|-- test
+</code></pre><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#f92672>import</span> java.io.File<span style=color:#f92672>;</span>
+ 
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>DeleteFileDemo</span> <span style=color:#f92672>{</span>
+    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String<span style=color:#f92672>[]</span> args<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+        <span style=color:#75715e>// 这里修改为自己的测试目录
+</span><span style=color:#75715e></span>        File folder <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> File<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;/tmp/java/&#34;</span><span style=color:#f92672>);</span>
+        deleteFolder<span style=color:#f92672>(</span>folder<span style=color:#f92672>);</span>
+    <span style=color:#f92672>}</span>
+ 
+    <span style=color:#75715e>// 删除文件及目录
+</span><span style=color:#75715e></span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>deleteFolder</span><span style=color:#f92672>(</span>File folder<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+        File<span style=color:#f92672>[]</span> files <span style=color:#f92672>=</span> folder<span style=color:#f92672>.</span><span style=color:#a6e22e>listFiles</span><span style=color:#f92672>();</span>
+        <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>files <span style=color:#f92672>!=</span> <span style=color:#66d9ef>null</span><span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+            <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span>File f <span style=color:#f92672>:</span> files<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+                <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>f<span style=color:#f92672>.</span><span style=color:#a6e22e>isDirectory</span><span style=color:#f92672>())</span> <span style=color:#f92672>{</span>
+                    deleteFolder<span style=color:#f92672>(</span>f<span style=color:#f92672>);</span>
+                <span style=color:#f92672>}</span> <span style=color:#66d9ef>else</span> <span style=color:#f92672>{</span>
+                    f<span style=color:#f92672>.</span><span style=color:#a6e22e>delete</span><span style=color:#f92672>();</span>
+                <span style=color:#f92672>}</span>
+            <span style=color:#f92672>}</span>
+        <span style=color:#f92672>}</span>
+        folder<span style=color:#f92672>.</span><span style=color:#a6e22e>delete</span><span style=color:#f92672>();</span>
+    <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+</code></pre></div></div><footer class=post-footer><div class=post-tags><a href=/tags/java/>java</a></div><nav class=post-nav><a class=prev href=/post/java-scanner/><i class="iconfont icon-left"></i><span class="prev-text nav-default">Java Scanner 类</span>
+<span class="prev-text nav-mobile">上一篇</span></a>
+<a class=next href=/post/java-function/><span class="next-text nav-default">Java 方法</span>
+<span class="next-text nav-mobile">下一篇</span>
+<i class="iconfont icon-right"></i></a></nav></footer></article></div><div id=vcomments></div><script src=//cdn1.lncld.net/static/js/3.0.4/av-min.js></script><script src=//unpkg.com/valine/dist/Valine.min.js></script><script type=text/javascript>new Valine({el:'#vcomments',appId:'fXqv8lFikU96F2xUDOBW4T9X-MdYXbMMI',appKey:'AUbjromOz15du9OJSTY6Q8HM',notify:!1,verify:!1,avatar:'robohash',placeholder:'本站支持评论邮件提醒功能，在上方邮箱输入框留下邮箱，可以收到回复通知哦！（支持markdown语法）',visitor:!1})</script></div></main><footer id=footer class=footer><div class=social-links><a href=mailto:gao.bo168@gmail.com class="iconfont icon-email" title=email></a><a href=https://github.com/forgottener class="iconfont icon-github" title=github></a><a href=https://space.bilibili.com/1714562 class="iconfont icon-bilibili" title=bilibili></a><a href=https://gaoboy.com/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a></div><div class=copyright><span class=power-by>由 <a class=hexo-link href=https://gohugo.io>Hugo</a> 强力驱动</span>
+<span class=division>|</span>
+<span class=theme-info>主题 -
+<a class=theme-link href=https://github.com/olOwOlo/hugo-theme-even>Even</a></span>
+<span class=copyright-year>&copy;
+2013 -
+2021<span class=heart><i class="iconfont icon-heart"></i></span><span><a rel="license noopener" href=https://beian.miit.gov.cn/ target=_blank>浙ICP备14043338号-2</a>~<a rel="license noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010802003111" target=_blank>浙公网安备 33010802003111号</a></span></span></div></footer><div class=back-to-top id=back-to-top><i class="iconfont icon-up"></i></div></div><script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script><script type=text/javascript src=/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js></script><script src=/js/blank.js></script></body></html>
