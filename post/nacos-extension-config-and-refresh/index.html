@@ -12,7 +12,7 @@
 <meta name=apple-mobile-web-app-capable content="yes">
 <meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec">
 <meta name=author content="forgottener"><meta name=description content="nacos多配置文件加载及热刷新、共享配置"><meta name=keywords content="nacos,extension config,spring cloud">
-<meta name=generator content="Hugo 0.87.0 with theme even">
+<meta name=generator content="Hugo 0.88.1 with theme even">
 <link rel=canonical href=https://gaoboy.com/post/nacos-extension-config-and-refresh/>
 <link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
 <link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
@@ -116,7 +116,7 @@
 <div class=post-content>
 <h1 id=配置加载>配置加载</h1>
 <p>配置文件的加载规则是由下面几个属性组合而成的</p>
-<pre><code class=language-properties data-lang=properties>spring.cloud.nacos.config.namespace= 默认:&quot;&quot;//空，此处填的是namespaceId,而不是名字public
+<pre tabindex=0><code class=language-properties data-lang=properties>spring.cloud.nacos.config.namespace= 默认:&quot;&quot;//空，此处填的是namespaceId,而不是名字public
 spring.cloud.nacos.config.group= 默认：DEFAULT_GROUP
 # ${spring.cloud.nacos.config.prefix} &gt; ${spring.cloud.nacos.config.name} &gt; ${spring.application.name}
 spring.cloud.nacos.config.prefix= 
@@ -124,7 +124,7 @@ spring.cloud.nacos.config.file-extension= 默认 .properties
 
 </code></pre><h1 id=启动配置bootstrapproperties>启动配置bootstrap.properties</h1>
 <p>应用名以<code>poseidon</code>为例</p>
-<pre><code class=language-properties data-lang=properties># 基础配置
+<pre tabindex=0><code class=language-properties data-lang=properties># 基础配置
 spring.application.name=poseidon
 spring.cloud.nacos.config.file-extension=yaml
 spring.cloud.nacos.config.server-addr=192.168.12.230:8848
@@ -165,7 +165,7 @@ spring.cloud.nacos.config.ext-config[3].group=yourGroup
 <p>此时spring.cloud.nacos.config.file-extension 的配置对自定义扩展的配置的data-id是无效的。</p>
 </blockquote>
 <h1 id=共享配置>共享配置</h1>
-<pre><code class=language-properties data-lang=properties># 共享配置
+<pre tabindex=0><code class=language-properties data-lang=properties># 共享配置
 spring.cloud.nacos.config.shared-dataids=common-log.yaml,common-redis.yaml
 spring.cloud.nacos.config.refreshable-dataids=common-log.yaml
 
@@ -211,7 +211,7 @@ spring.cloud.nacos.config.refreshable-dataids=common-log.yaml
     <span style=color:#f92672>freezeMoneyStr</span>: <span style=color:#ae81ff>10</span>
     <span style=color:#f92672>returnMoneyStr</span>: <span style=color:#ae81ff>9.5</span>
 </code></pre></div><p>or</p>
-<pre><code class=language-properties data-lang=properties>multiapp.mutualfans.taskDetailH5Url=https://baidu.com/task-details
+<pre tabindex=0><code class=language-properties data-lang=properties>multiapp.mutualfans.taskDetailH5Url=https://baidu.com/task-details
 multiapp.mutualfans.starDetailH5Url=https://baidu.com/star-details
 multiapp.mutualfans.baseDyUid=3729136594481880
 multiapp.mutualfans.dailyMaxApply=141
@@ -265,6 +265,11 @@ multiapp.mutualfans.returnMoneyStr=9.5
 <a href=/tags/nacos/>nacos</a>
 </div>
 <nav class=post-nav>
+<a class=prev href=/post/backend-server-security/>
+<i class="iconfont icon-left"></i>
+<span class="prev-text nav-default">后端服务器安全检查清单</span>
+<span class="prev-text nav-mobile">上一篇</span>
+</a>
 <a class=next href=/post/ddd-msa/>
 <span class="next-text nav-default">欧创新：深度解析DDD中台和微服务设计</span>
 <span class="next-text nav-mobile">下一篇</span>

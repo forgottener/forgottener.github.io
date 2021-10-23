@@ -12,7 +12,7 @@
 <meta name=apple-mobile-web-app-capable content="yes">
 <meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec">
 <meta name=author content="forgottener"><meta name=description content="Java Stream, File and IO"><meta name=keywords content="java,Stream">
-<meta name=generator content="Hugo 0.87.0 with theme even">
+<meta name=generator content="Hugo 0.88.1 with theme even">
 <link rel=canonical href=https://gaoboy.com/post/java-stream-file-io/>
 <link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
 <link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
@@ -136,11 +136,11 @@
 <p>Java 的控制台输入由 <code>System.in</code> 完成。</p>
 <p>为了获得一个绑定到控制台的字符流，你可以把 <code>System.in</code> 包装在一个 BufferedReader 对象中来创建一个字符流。</p>
 <p>下面是创建 BufferedReader 的基本语法：</p>
-<pre><code>BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+<pre tabindex=0><code>BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 </code></pre><p>BufferedReader 对象创建后，我们便可以使用 read() 方法从控制台读取一个字符，或者用 readLine() 方法读取一个字符串。</p>
 <h1 id=从控制台读取多字符输入>从控制台读取多字符输入</h1>
 <p>从 BufferedReader 对象读取一个字符要使用 read() 方法，它的语法如下：</p>
-<pre><code>int read() throws IOException
+<pre tabindex=0><code>int read() throws IOException
 </code></pre><p>每次调用 read() 方法，它从输入流读取一个字符并把该字符作为整数值返回。 当流结束的时候返回 - 1。该方法抛出 IOException。</p>
 <p>下面的程序示范了用 read() 方法从控制台不断读取字符直到用户输入 &ldquo;q&rdquo;。</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#75715e>// 使用 BufferedReader 在控制台读取字符
@@ -452,7 +452,7 @@ OutputStream f <span style=color:#f92672>=</span> <span style=color:#66d9ef>new<
     <span style=color:#f92672>}</span>
 <span style=color:#f92672>}</span>
 </code></pre></div><p>以上实例编译运行结果如下：</p>
-<pre><code>Directory of /tmp
+<pre tabindex=0><code>Directory of /tmp
 bin is a directory
 lib is a directory
 demo is a directory
@@ -464,7 +464,7 @@ include is a directory
 <p>删除文件可以使用 <strong>java.io.File.delete()</strong> 方法。</p>
 <p>以下代码会删除目录 <strong>/tmp/java/</strong>，需要注意的是当删除某一目录时，必须保证该目录下没有其他文件才能正确删除，否则将删除失败。</p>
 <p>测试目录结构：</p>
-<pre><code>/tmp/java/
+<pre tabindex=0><code>/tmp/java/
 |-- 1.log
 |-- test
 </code></pre><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#f92672>import</span> java.io.File<span style=color:#f92672>;</span>

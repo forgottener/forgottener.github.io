@@ -12,7 +12,7 @@
 <meta name=apple-mobile-web-app-capable content="yes">
 <meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec">
 <meta name=author content="forgottener"><meta name=description content="Linux LVM磁盘扩容指南"><meta name=keywords content="lvm,expansion,ubuntu,linux">
-<meta name=generator content="Hugo 0.87.0 with theme even">
+<meta name=generator content="Hugo 0.88.1 with theme even">
 <link rel=canonical href=https://gaoboy.com/post/ubuntu-lvm-expansion/>
 <link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
 <link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
@@ -358,7 +358,7 @@ lvextend -l +100%FREE /dev/ubuntu-vg/ubuntu-lv
 Size of logical volume ubuntu-vg/ubuntu-lv changed from &lt;18.50 GiB <span style=color:#f92672>(</span><span style=color:#ae81ff>4735</span> extents<span style=color:#f92672>)</span> to 58.49 GiB <span style=color:#f92672>(</span><span style=color:#ae81ff>14974</span> extents<span style=color:#f92672>)</span>.
   Logical volume ubuntu-vg/ubuntu-lv successfully resized.
 </code></pre></div><h2 id=刷新分区>刷新分区</h2>
-<pre><code>resize2fs /dev/ubuntu-vg/ubuntu-lv
+<pre tabindex=0><code>resize2fs /dev/ubuntu-vg/ubuntu-lv
 </code></pre><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>df -h 
 <span style=color:#75715e># 成功扩容：</span>
 Filesystem                         Size  Used Avail Use% Mounted on

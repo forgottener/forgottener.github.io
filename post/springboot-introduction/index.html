@@ -12,7 +12,7 @@
 <meta name=apple-mobile-web-app-capable content="yes">
 <meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec">
 <meta name=author content="forgottener"><meta name=description content="SpringBoot 入门简介"><meta name=keywords content="spring,springboot,java">
-<meta name=generator content="Hugo 0.87.0 with theme even">
+<meta name=generator content="Hugo 0.88.1 with theme even">
 <link rel=canonical href=https://gaoboy.com/post/springboot-introduction/>
 <link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
 <link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
@@ -165,7 +165,7 @@
 <h1 id=spring-boot-应用程序>Spring Boot 应用程序</h1>
 <h2 id=工程目录结构>工程目录结构</h2>
 <p>工程目录结构如下：</p>
-<pre><code>│  .gitignore
+<pre tabindex=0><code>│  .gitignore
 │  pom.xml
 │
 │
@@ -210,7 +210,7 @@
 <p>本章节主要介绍一下 Spring Boot 中的一些常用配置，比如：自定义 Banner、配置日志、关闭特定的自动配置等。</p>
 <h2 id=自定义-banner>自定义 Banner</h2>
 <p>在 Spring Boot 启动的时候会有一个默认的启动图案</p>
-<pre><code>  .   ____          _            __ _ _
+<pre tabindex=0><code>  .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
 ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
@@ -220,7 +220,7 @@
 </code></pre><p>我们在 <code>src/main/resources</code> 目录下新建一个 banner.txt</p>
 <p>通过 <a href=http://patorjk.com/software/taag>http://patorjk.com/software/taag</a> 网站生成字符串，将网站生成的字符复制到 banner.txt 中</p>
 <p>再次运行这个程序</p>
-<pre><code>${AnsiColor.BRIGHT_RED}
+<pre tabindex=0><code>${AnsiColor.BRIGHT_RED}
 ////////////////////////////////////////////////////////////////////
 //                          _ooOoo_                               //
 //                         o8888888o                              //
@@ -254,7 +254,7 @@
 <h2 id=配置文件>配置文件</h2>
 <p>Spring Boot 项目使用一个全局的配置文件 <code>application.properties</code> 或者是 <code>application.yml</code>，在 <code>resources</code> 目录下或者类路径下的 <code>/config</code> 下，一般我们放到 <code>resources</code> 下。</p>
 <p>修改 Tomcat 的端口为 9090，并将默认的访问路径 &ldquo;/&rdquo; 修改为 &ldquo;boot&rdquo;，可以在 <code>application.properties</code> 中添加：</p>
-<pre><code class=language-properties data-lang=properties>server.port=9090
+<pre tabindex=0><code class=language-properties data-lang=properties>server.port=9090
 server.context-path=/boot
 </code></pre><p>或在 application.yml 中添加：</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#f92672>server</span>:

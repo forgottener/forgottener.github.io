@@ -12,7 +12,7 @@
 <meta name=apple-mobile-web-app-capable content="yes">
 <meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec">
 <meta name=author content="forgottener"><meta name=description content="使用 API 网关"><meta name=keywords content="gateway,microservices,微服务,网关">
-<meta name=generator content="Hugo 0.87.0 with theme even">
+<meta name=generator content="Hugo 0.88.1 with theme even">
 <link rel=canonical href=https://gaoboy.com/post/building-microservices-using-an-api-gateway/>
 <link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
 <link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
@@ -132,7 +132,7 @@
 <li>选择性购买选项</li>
 </ul>
 <p>在使用单体应用架构的情况下，移动客户端通过对应用程序进行单个 REST 调用来检索此数据，例如：</p>
-<pre><code>GET api.company.com/productdetails/productId
+<pre tabindex=0><code>GET api.company.com/productdetails/productId
 </code></pre><p>负载均衡器将请求路由到几个相同应用程序实例中的其中一个。之后，应用程序查询各个数据库表并返回响应给客户端。相比之下，当使用微服务架构时，产品详细页面上展示的数据来自多个微服务。以下是一些微服务， 可能拥有特定产品页面展示的数据：</p>
 <ul>
 <li><strong>订单服务</strong> 订单历史</li>
@@ -146,7 +146,7 @@
 <p>我们需要决定移动客户端如何访问这些服务。让我们来看看有哪些方法。</p>
 <h1 id=客户端与微服务直接通信>客户端与微服务直接通信</h1>
 <p>理论上，客户端可以直接向每个微服务发送请求。每个微服务都有一个公开的端点：</p>
-<pre><code>https://serviceName.api.company.name
+<pre tabindex=0><code>https://serviceName.api.company.name
 </code></pre><p>该 URL 将映射到用于跨可用实例分发请求的微服务负载均衡器。为了检索特定的产品页面信息，移动客户端将向上述的每个微服务发送请求。</p>
 <p>不幸的是，这种方式存在着挑战与限制。第一个问题是客户端的需求与每个微服务暴露的细粒度的 API 不匹配。 在此示例中，客户端需要进行七次单独请求。如果在更加复杂的应用中，它可能需要做更多的工作。例如，Amazon 展示了在产品页面渲染中如何牵涉到数百个微服务。虽然客户端可以通过 LAN 发送许多请求，但在公共互联网下效率低下，在移动网络必然是不切实际。</p>
 <p>客户端直接调用微服务存在的另一个问题是有些可能使用了非 web 友好协议。一个服务可能使用了 Thrift 二进制 RPC，而另一个则可能使用 AMQP 消息协议。这两个协议无论是对浏览器还是防火墙而言都是不友好的，最好是在内部使用。应用程序在防火墙之外应该使用 HTTP 或者 WebSocket 之类的协议。</p>
@@ -158,7 +158,7 @@
 <p><img src=https://qcloud.gaoboy.com/img/post/20210302165008.png alt></p>
 <p>API 网关负责请求路由、组合和协议转换。所有的客户端请求首先要通过 API 网关，之后请求被路由到适当的服务。 API 网关通常会通过调用多个微服务和聚合结果来处理一个请求。它可以在 Web 协议（如 HTTP 和 WebSocket）和用于内部的非 Web 友好协议之间进行转换。</p>
 <p>API 还可以为每个客户端提供一个定制 API。它通常会为移动客户端暴露一个粗粒度的 API。例如，考虑一下产品详细信息场景。API 网关可以提供一个端点</p>
-<pre><code>/productdetails?productid=xxx
+<pre tabindex=0><code>/productdetails?productid=xxx
 </code></pre><p>如图 2-3 所示，一个使用了 API 网关的微服务。允许移动客户端通过一个单独的请求来检索所有产品详细信息。 API 网关通过调用各种服务（产品信息、推荐、评价等）并组合结果。</p>
 <p>一个很好的 API 网关案例是 Netflix API 网关。 Netflix 流媒体服务可用于数百种不同类型的设备，包括电视机、机顶盒、智能手机、游戏机和平板电脑等。起初，Netflix 尝试为他们的流媒体服务提供一个通用的 API。后来，他们发现由于设备种类繁多，并且他们各自有着不同需求，所以并不是能很好地运作。如今，他们使用了 API 网关，通过运行特定设备适配代码来为每个设备提供一个定制 API。</p>
 <h1 id=api-网关的优点与缺点>API 网关的优点与缺点</h1>

@@ -12,7 +12,7 @@
 <meta name=apple-mobile-web-app-capable content="yes">
 <meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec">
 <meta name=author content="forgottener"><meta name=description content="联想m73 tiny黑苹果折腾排雷小记"><meta name=keywords content="m73,hackintosh,4k,60hz,opencore">
-<meta name=generator content="Hugo 0.87.0 with theme even">
+<meta name=generator content="Hugo 0.88.1 with theme even">
 <link rel=canonical href=https://gaoboy.com/post/m73-4k60hz-hackintosh/>
 <link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
 <link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
@@ -119,13 +119,13 @@
 <p>截止目前（2021年02月26日）笔者下载的版本是FHKT85A，下载文件名是<strong>fhjt85usa.zip</strong></p>
 <p>下载bios文件，用 <a href=http://rufus.ie/zh_CN.html>rufes</a> 刷入u盘后进dos刷，命令很简单</p>
 <p><img src=https://qcloud.gaoboy.com/img/post/20210226101300.png alt></p>
-<pre><code>cd m73bios
+<pre tabindex=0><code>cd m73bios
 
 flash2 IMAGEFH.rom
 
 # 确认按y
 </code></pre><p>如果想要解锁硬件白名单，顺便在刷bios的时候就可以，很简单把机器的sn、mtm都刷成<code>INVALID</code></p>
-<pre><code>flash2 IMAGEFH.rom /sn:INVALID /mtm:INVALID
+<pre tabindex=0><code>flash2 IMAGEFH.rom /sn:INVALID /mtm:INVALID
 </code></pre>
 </div>
 <footer class=post-footer>

@@ -12,7 +12,7 @@
 <meta name=apple-mobile-web-app-capable content="yes">
 <meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec">
 <meta name=author content="forgottener"><meta name=description content="Linux 简单介绍，包含目录结构、操作文件目录、系统管理命令、开关机命令、压缩命令、vim编辑器、软件包管理、用户和组管理、文件权限管理"><meta name=keywords content="linux,cmd,vim">
-<meta name=generator content="Hugo 0.87.0 with theme even">
+<meta name=generator content="Hugo 0.88.1 with theme even">
 <link rel=canonical href=https://gaoboy.com/post/linux-introduction/>
 <link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
 <link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
@@ -1006,7 +1006,7 @@ groups <span style=color:#f92672>(</span>显示用户所属组<span style=color:
 <h2 id=查看文件和目录的权限>查看文件和目录的权限</h2>
 <p><code>ls –al</code> 使用 ls 不带参数只显示文件名称，通过 <code>ls –al</code> 可以显示文件或者目录的权限信息。</p>
 <p><code>ls -l 文件名</code> 显示信息包括：文件类型 (<code>d</code> 目录，<code>-</code> 普通文件，<code>l</code> 链接文件)，文件权限，文件的用户，文件的所属组，文件的大小，文件的创建时间，文件的名称</p>
-<pre><code>-rw-r--r-- 1 forgottener forgottener 675 Oct 26 17:20 .profile
+<pre tabindex=0><code>-rw-r--r-- 1 forgottener forgottener 675 Oct 26 17:20 .profile
 </code></pre><ul>
 <li><code>-</code>：普通文件</li>
 <li><code>rw-</code>：说明用户 forgottener 有读写权限，没有运行权限</li>

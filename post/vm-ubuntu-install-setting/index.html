@@ -12,7 +12,7 @@
 <meta name=apple-mobile-web-app-capable content="yes">
 <meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec">
 <meta name=author content="forgottener"><meta name=description content="虚拟机安装ubuntu后一些重要的配置"><meta name=keywords content="ubuntu,虚拟机">
-<meta name=generator content="Hugo 0.87.0 with theme even">
+<meta name=generator content="Hugo 0.88.1 with theme even">
 <link rel=canonical href=https://gaoboy.com/post/vm-ubuntu-install-setting/>
 <link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
 <link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
@@ -173,7 +173,7 @@ cat &gt;&gt; /etc/hosts <span style=color:#e6db74>&lt;&lt; EOF
 </code></pre></div><ul>
 <li>修改dns</li>
 </ul>
-<pre><code>vi /etc/systemd/resolved.conf
+<pre tabindex=0><code>vi /etc/systemd/resolved.conf
 </code></pre><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#75715e># 第 15 行</span>
 <span style=color:#75715e># 取消 DNS 行注释，并增加 DNS 配置如：114.114.114.114，修改后重启下计算机</span>
 DNS<span style=color:#f92672>=</span>114.114.114.114

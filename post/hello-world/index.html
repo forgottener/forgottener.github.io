@@ -12,7 +12,7 @@
 <meta name=apple-mobile-web-app-capable content="yes">
 <meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec">
 <meta name=author content="forgottener"><meta name=description content><meta name=keywords content="高波,猿资猿味,php,java">
-<meta name=generator content="Hugo 0.87.0 with theme even">
+<meta name=generator content="Hugo 0.88.1 with theme even">
 <link rel=canonical href=https://gaoboy.com/post/hello-world/>
 <link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
 <link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
@@ -94,7 +94,7 @@
 <p><code>hugo new post/some-content.md</code></p>
 <h2 id=js-sequence-diagrams>JS Sequence Diagrams</h2>
 <h3 id=configtoml>config.toml</h3>
-<pre><code>sequenceDiagrams: 
+<pre tabindex=0><code>sequenceDiagrams: 
   enable: true
   options: &quot;{theme: 'simple'}&quot;
 </code></pre><h3 id=example>Example</h3>
@@ -104,7 +104,7 @@ Note right of China: China thinks\nabout it
 China--&gt;Andrew: How are you?
 Andrew-&gt;&gt;China: I am good thanks!
 ```</code></pre>
-<pre><code class=language-sequence data-lang=sequence>Andrew-&gt;China: Says Hello
+<pre tabindex=0><code class=language-sequence data-lang=sequence>Andrew-&gt;China: Says Hello
 Note right of China: China thinks\nabout it
 China--&gt;Andrew: How are you?
 Andrew-&gt;&gt;China: I am good thanks!
@@ -113,7 +113,7 @@ Andrew-&gt;&gt;China: I am good thanks!
 <ul>
 <li>有颜色(带状态)的流程图配置如下：</li>
 </ul>
-<pre><code>flowchartDiagrams: 
+<pre tabindex=0><code>flowchartDiagrams: 
   enable: true
   options: &quot;{'x':0,'y':0,'line-width':3,'line-length':50,'text-margin':10,'font-size':14,'font-color':'black','line-color':'black','element-color':'black','fill':'white','yes-text':'yes','no-text':'no','arrow-end':'block','scale':1,'symbols':{'start':{'font-color':'red','element-color':'green','fill':'yellow'},'end':{'class':'end-element'}},'flowstate':{'past':{'fill':'#CCCCCC','font-size':12},'current':{'fill':'yellow','font-color':'red','font-weight':'bold'},'future':{'fill':'#FFFF99'},'request':{'fill':'blue'},'invalid':{'fill':'#444444'},'approved':{'fill':'#58C4A3','font-size':12,'yes-text':'APPROVED','no-text':'n/a'},'rejected':{'fill':'#C45879','font-size':12,'yes-text':'n/a','no-text':'REJECTED'}}}&quot;
 </code></pre><blockquote>
@@ -137,7 +137,7 @@ cond(no)-&gt;sub1(left)-&gt;op1
 c2(yes)-&gt;io-&gt;e
 c2(no)-&gt;op2-&gt;e
 ```</code></pre>
-<pre><code class=language-flow data-lang=flow>st=&gt;start: Start|past:&gt;http://www.google.com[blank]
+<pre tabindex=0><code class=language-flow data-lang=flow>st=&gt;start: Start|past:&gt;http://www.google.com[blank]
 e=&gt;end: End:&gt;http://www.google.com
 op1=&gt;operation: My Operation|past
 op2=&gt;operation: Stuff|current

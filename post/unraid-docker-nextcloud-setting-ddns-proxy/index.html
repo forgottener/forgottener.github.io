@@ -12,7 +12,7 @@
 <meta name=apple-mobile-web-app-capable content="yes">
 <meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec">
 <meta name=author content="forgottener"><meta name=description content="家庭网络部署nextcloud私人网盘服务教程，以及域名访问问题解决方案"><meta name=keywords content="unraid,docker,nextcloud,ddns">
-<meta name=generator content="Hugo 0.87.0 with theme even">
+<meta name=generator content="Hugo 0.88.1 with theme even">
 <link rel=canonical href=https://gaoboy.com/post/unraid-docker-nextcloud-setting-ddns-proxy/>
 <link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
 <link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
@@ -1983,7 +1983,7 @@ $CONFIG <span style=color:#f92672>=</span> [
 <p>*/</p>
 </blockquote>
 <p>最终只要修改配置文件<code>/mnt/user/appdata/nextcloud/www/nextcloud/config/config.php</code>,增加配置项<code>overwritehost</code>即可。</p>
-<pre><code>&lt;?php
+<pre tabindex=0><code>&lt;?php
 $CONFIG = array (
   'memcache.local' =&gt; '\\OC\\Memcache\\APCu',
   'datadirectory' =&gt; '/data',
