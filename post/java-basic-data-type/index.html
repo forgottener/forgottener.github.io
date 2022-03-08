@@ -2,8 +2,7 @@
 <head>
 <meta charset=utf-8>
 <meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
-<title>Java 基本数据类型 - 猿资猿味 - 高波的博客</title>
-<meta name=renderer content="webkit">
+<title>Java 基本数据类型 - 猿资猿味 - 高波的博客</title><meta name=renderer content="webkit">
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
 <meta http-equiv=cache-control content="no-transform">
 <meta http-equiv=cache-control content="no-siteapp">
@@ -12,7 +11,7 @@
 <meta name=apple-mobile-web-app-capable content="yes">
 <meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec">
 <meta name=author content="forgottener"><meta name=description content="Java 基本数据类型"><meta name=keywords content="java,data type">
-<meta name=generator content="Hugo 0.88.1 with theme even">
+<meta name=generator content="Hugo 0.93.2 with theme even">
 <link rel=canonical href=https://gaoboy.com/post/java-basic-data-type/>
 <link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
 <link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
@@ -30,42 +29,31 @@
 <meta itemprop=name content="Java 基本数据类型">
 <meta itemprop=description content="Java 基本数据类型"><meta itemprop=datePublished content="2015-01-25T13:40:11+08:00">
 <meta itemprop=dateModified content="2015-01-25T13:40:11+08:00">
-<meta itemprop=wordCount content="4064">
+<meta itemprop=wordCount content="4088">
 <meta itemprop=keywords content="java,"><meta name=twitter:card content="summary">
 <meta name=twitter:title content="Java 基本数据类型">
 <meta name=twitter:description content="Java 基本数据类型"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
-</head>
-<body>
+</head><body>
 <div id=mobile-navbar class=mobile-navbar>
 <div class=mobile-header-logo>
 <a href=/ class=logo>猿资猿味</a>
-</div>
-<div class=mobile-navbar-icon>
+</div><div class=mobile-navbar-icon>
 <span></span>
 <span></span>
 <span></span>
-</div>
-</div>
-<nav id=mobile-menu class="mobile-menu slideout-menu">
+</div></div><nav id=mobile-menu class="mobile-menu slideout-menu">
 <ul class=mobile-menu-list>
 <a href=/>
-<li class=mobile-menu-item>Home</li>
-</a><a href=/post/>
-<li class=mobile-menu-item>Archives</li>
-</a><a href=/tags/>
-<li class=mobile-menu-item>Tags</li>
-</a><a href=/categories/>
-<li class=mobile-menu-item>Categories</li>
-</a>
-</ul>
-</nav>
-<div class=container id=mobile-panel>
+<li class=mobile-menu-item>Home</li></a><a href=/post/>
+<li class=mobile-menu-item>Archives</li></a><a href=/tags/>
+<li class=mobile-menu-item>Tags</li></a><a href=/categories/>
+<li class=mobile-menu-item>Categories</li></a>
+</ul></nav><div class=container id=mobile-panel>
 <header id=header class=header>
 <div class=logo-wrapper>
 <a href=/ class=logo>猿资猿味</a>
-</div>
-<nav class=site-navbar>
+</div><nav class=site-navbar>
 <ul id=menu class=menu>
 <li class=menu-item>
 <a class=menu-item-link href=/>Home</a>
@@ -75,314 +63,154 @@
 <a class=menu-item-link href=/tags/>Tags</a>
 </li><li class=menu-item>
 <a class=menu-item-link href=/categories/>Categories</a>
-</li>
-</ul>
-</nav>
-</header>
-<main id=main class=main>
+</li></ul></nav></header><main id=main class=main>
 <div class=content-wrapper>
 <div id=content class=content>
 <article class=post>
 <header class=post-header>
-<h1 class=post-title>Java 基本数据类型</h1>
-<div class=post-meta>
+<h1 class=post-title>Java 基本数据类型</h1><div class=post-meta>
 <span class=post-time> 2015-01-25 </span>
 <div class=post-category>
 <a href=/categories/java/> java </a>
-</div>
-</div>
-</header>
-<div class=post-toc id=post-toc>
-<h2 class=post-toc-title>文章目录</h2>
-<div class="post-toc-content always-active">
+</div></div></header><div class=post-toc id=post-toc>
+<h2 class=post-toc-title>文章目录</h2><div class="post-toc-content always-active">
 <nav id=TableOfContents>
 <ul>
-<li><a href=#概述>概述</a></li>
-<li><a href=#内置数据类型>内置数据类型</a>
+<li><a href=#概述>概述</a></li><li><a href=#内置数据类型>内置数据类型</a>
 <ul>
-<li><a href=#byte>byte</a></li>
-<li><a href=#short>short</a></li>
-<li><a href=#int>int</a></li>
-<li><a href=#long>long</a></li>
-<li><a href=#float>float</a></li>
-<li><a href=#double>double</a></li>
-<li><a href=#char>char</a></li>
-<li><a href=#boolean>boolean</a></li>
-<li><a href=#实例>实例</a></li>
-</ul>
-</li>
-<li><a href=#引用类型>引用类型</a></li>
-<li><a href=#java-常量>Java 常量</a></li>
-</ul>
-</nav>
-</div>
-</div>
-<div class=post-content>
-<h1 id=概述>概述</h1>
-<p>变量就是申请内存来存储值。也就是说，当创建变量的时候，需要在内存中申请空间。</p>
-<p>内存管理系统根据变量的类型为变量分配存储空间，分配的空间只能用来储存该类型数据。</p>
-<p>因此，通过定义不同类型的变量，可以在内存中储存整数、小数或者字符。</p>
-<p>Java 的两大数据类型：</p>
-<ul>
-<li>内置数据类型</li>
-<li>引用数据类型</li>
-</ul>
-<h1 id=内置数据类型>内置数据类型</h1>
-<p>Java 语言提供了八种基本类型。六种数字类型（四个整数型，两个浮点型），一种字符类型，还有一种布尔型。</p>
-<h2 id=byte>byte</h2>
-<ul>
-<li>byte 数据类型是 8 位、有符号的，以二进制补码表示的整数；</li>
-<li>最小值是 - 128（-2^7）；</li>
-<li>最大值是 127（2^7-1）；</li>
-<li>默认值是 0；</li>
-<li>byte 类型用在大型数组中节约空间，主要代替整数，因为 byte 变量占用的空间只有 int 类型的四分之一；</li>
-<li>例子：byte a = 100，byte b = -50。</li>
-</ul>
-<h2 id=short>short</h2>
-<ul>
-<li>short 数据类型是 16 位、有符号的以二进制补码表示的整数</li>
-<li>最小值是 - 32768（-2^15）；</li>
-<li>最大值是 32767（2^15 - 1）；</li>
-<li>Short 数据类型也可以像 byte 那样节省空间。一个 short 变量是 int 型变量所占空间的二分之一；</li>
-<li>默认值是 0；</li>
-<li>例子：short s = 1000，short r = -20000。</li>
-</ul>
-<h2 id=int>int</h2>
-<ul>
-<li>int 数据类型是 32 位、有符号的以二进制补码表示的整数；</li>
-<li>最小值是 - 2,147,483,648（-2^31）；</li>
-<li>最大值是 2,147,483,647（2^31 - 1）；</li>
-<li>一般地整型变量默认为 int 类型；</li>
-<li>默认值是 0；</li>
-<li>例子：int a = 100000, int b = -200000。</li>
-</ul>
-<h2 id=long>long</h2>
-<ul>
-<li>long 数据类型是 64 位、有符号的以二进制补码表示的整数；</li>
-<li>最小值是 - 9,223,372,036,854,775,808（-2^63）；</li>
-<li>最大值是 9,223,372,036,854,775,807（2^63 -1）；</li>
-<li>这种类型主要使用在需要比较大整数的系统上；</li>
-<li>默认值是 0L；</li>
-<li>例子： long a = 100000L，long b = -200000L。</li>
-</ul>
-<h2 id=float>float</h2>
-<ul>
-<li>float 数据类型是单精度、32 位、符合 IEEE 754 标准的浮点数；</li>
-<li>float 在储存大型浮点数组的时候可节省内存空间；</li>
-<li>默认值是 0.0f；</li>
-<li>浮点数不能用来表示精确的值，如货币；</li>
-<li>例子：float f1 = 234.5f。</li>
-</ul>
-<h2 id=double>double</h2>
-<ul>
-<li>double 数据类型是双精度、64 位、符合 IEEE 754 标准的浮点数；</li>
-<li>浮点数的默认类型为 double 类型；</li>
-<li>double 类型同样不能表示精确的值，如货币；</li>
-<li>默认值是 0.0d；</li>
-<li>例子：double d1 = 123.4。</li>
-</ul>
-<h2 id=char>char</h2>
-<ul>
-<li>char 类型是一个单一的 16 位 Unicode 字符；</li>
-<li>最小值是'\u0000'（即为 0）；</li>
-<li>最大值是'\uffff'（即为 65,535）；</li>
-<li>char 数据类型可以储存任何字符；</li>
-<li>例子：char letter = &lsquo;A&rsquo;。</li>
-</ul>
-<h2 id=boolean>boolean</h2>
-<ul>
-<li>boolean 数据类型表示一位的信息；</li>
-<li>只有两个取值：true 和 false；</li>
-<li>这种类型只作为一种标志来记录 true/false 情况；</li>
-<li>默认值是 false；</li>
-<li>例子：boolean one = true。</li>
-</ul>
-<h2 id=实例>实例</h2>
-<p>对于数值类型的基本类型的取值范围，我们无需强制去记忆，因为它们的值都已经以常量的形式定义在对应的包装类中了。请看下面的例子：</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>PrimitiveTypeTest</span> <span style=color:#f92672>{</span>
-    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String<span style=color:#f92672>[]</span> args<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-        <span style=color:#75715e>// byte
-</span><span style=color:#75715e></span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;基本类型：byte 二进制位数：&#34;</span> <span style=color:#f92672>+</span> Byte<span style=color:#f92672>.</span><span style=color:#a6e22e>SIZE</span><span style=color:#f92672>);</span>
-        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;包装类：java.lang.Byte&#34;</span><span style=color:#f92672>);</span>
-        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;最小值：Byte.MIN_VALUE=&#34;</span> <span style=color:#f92672>+</span> Byte<span style=color:#f92672>.</span><span style=color:#a6e22e>MIN_VALUE</span><span style=color:#f92672>);</span>
-        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;最大值：Byte.MAX_VALUE=&#34;</span> <span style=color:#f92672>+</span> Byte<span style=color:#f92672>.</span><span style=color:#a6e22e>MAX_VALUE</span><span style=color:#f92672>);</span>
-        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>();</span>
-        <span style=color:#75715e>// short
-</span><span style=color:#75715e></span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;基本类型：short 二进制位数：&#34;</span> <span style=color:#f92672>+</span> Short<span style=color:#f92672>.</span><span style=color:#a6e22e>SIZE</span><span style=color:#f92672>);</span>
-        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;包装类：java.lang.Short&#34;</span><span style=color:#f92672>);</span>
-        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;最小值：Short.MIN_VALUE=&#34;</span> <span style=color:#f92672>+</span> Short<span style=color:#f92672>.</span><span style=color:#a6e22e>MIN_VALUE</span><span style=color:#f92672>);</span>
-        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;最大值：Short.MAX_VALUE=&#34;</span> <span style=color:#f92672>+</span> Short<span style=color:#f92672>.</span><span style=color:#a6e22e>MAX_VALUE</span><span style=color:#f92672>);</span>
-        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>();</span>
-
-        <span style=color:#75715e>// int
-</span><span style=color:#75715e></span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;基本类型：int 二进制位数：&#34;</span> <span style=color:#f92672>+</span> Integer<span style=color:#f92672>.</span><span style=color:#a6e22e>SIZE</span><span style=color:#f92672>);</span>
-        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;包装类：java.lang.Integer&#34;</span><span style=color:#f92672>);</span>
-        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;最小值：Integer.MIN_VALUE=&#34;</span> <span style=color:#f92672>+</span> Integer<span style=color:#f92672>.</span><span style=color:#a6e22e>MIN_VALUE</span><span style=color:#f92672>);</span>
-        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;最大值：Integer.MAX_VALUE=&#34;</span> <span style=color:#f92672>+</span> Integer<span style=color:#f92672>.</span><span style=color:#a6e22e>MAX_VALUE</span><span style=color:#f92672>);</span>
-        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>();</span>
-
-        <span style=color:#75715e>// long
-</span><span style=color:#75715e></span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;基本类型：long 二进制位数：&#34;</span> <span style=color:#f92672>+</span> Long<span style=color:#f92672>.</span><span style=color:#a6e22e>SIZE</span><span style=color:#f92672>);</span>
-        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;包装类：java.lang.Long&#34;</span><span style=color:#f92672>);</span>
-        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;最小值：Long.MIN_VALUE=&#34;</span> <span style=color:#f92672>+</span> Long<span style=color:#f92672>.</span><span style=color:#a6e22e>MIN_VALUE</span><span style=color:#f92672>);</span>
-        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;最大值：Long.MAX_VALUE=&#34;</span> <span style=color:#f92672>+</span> Long<span style=color:#f92672>.</span><span style=color:#a6e22e>MAX_VALUE</span><span style=color:#f92672>);</span>
-        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>();</span>
-
-        <span style=color:#75715e>// float
-</span><span style=color:#75715e></span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;基本类型：float 二进制位数：&#34;</span> <span style=color:#f92672>+</span> Float<span style=color:#f92672>.</span><span style=color:#a6e22e>SIZE</span><span style=color:#f92672>);</span>
-        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;包装类：java.lang.Float&#34;</span><span style=color:#f92672>);</span>
-        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;最小值：Float.MIN_VALUE=&#34;</span> <span style=color:#f92672>+</span> Float<span style=color:#f92672>.</span><span style=color:#a6e22e>MIN_VALUE</span><span style=color:#f92672>);</span>
-        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;最大值：Float.MAX_VALUE=&#34;</span> <span style=color:#f92672>+</span> Float<span style=color:#f92672>.</span><span style=color:#a6e22e>MAX_VALUE</span><span style=color:#f92672>);</span>
-        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>();</span>
-
-        <span style=color:#75715e>// double
-</span><span style=color:#75715e></span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;基本类型：double 二进制位数：&#34;</span> <span style=color:#f92672>+</span> Double<span style=color:#f92672>.</span><span style=color:#a6e22e>SIZE</span><span style=color:#f92672>);</span>
-        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;包装类：java.lang.Double&#34;</span><span style=color:#f92672>);</span>
-        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;最小值：Double.MIN_VALUE=&#34;</span> <span style=color:#f92672>+</span> Double<span style=color:#f92672>.</span><span style=color:#a6e22e>MIN_VALUE</span><span style=color:#f92672>);</span>
-        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;最大值：Double.MAX_VALUE=&#34;</span> <span style=color:#f92672>+</span> Double<span style=color:#f92672>.</span><span style=color:#a6e22e>MAX_VALUE</span><span style=color:#f92672>);</span>
-        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>();</span>
-
-        <span style=color:#75715e>// char
-</span><span style=color:#75715e></span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;基本类型：char 二进制位数：&#34;</span> <span style=color:#f92672>+</span> Character<span style=color:#f92672>.</span><span style=color:#a6e22e>SIZE</span><span style=color:#f92672>);</span>
-        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;包装类：java.lang.Character&#34;</span><span style=color:#f92672>);</span>
-        <span style=color:#75715e>// 以数值形式而不是字符形式将Character.MIN_VALUE输出到控制台
-</span><span style=color:#75715e></span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;最小值：Character.MIN_VALUE=&#34;</span>
-                <span style=color:#f92672>+</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>)</span> Character<span style=color:#f92672>.</span><span style=color:#a6e22e>MIN_VALUE</span><span style=color:#f92672>);</span>
-        <span style=color:#75715e>// 以数值形式而不是字符形式将Character.MAX_VALUE输出到控制台
-</span><span style=color:#75715e></span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;最大值：Character.MAX_VALUE=&#34;</span>
-                <span style=color:#f92672>+</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>)</span> Character<span style=color:#f92672>.</span><span style=color:#a6e22e>MAX_VALUE</span><span style=color:#f92672>);</span>
-    <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
-</code></pre></div><p>编译以上代码输出结果如下所示：</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>基本类型：byte 二进制位数：8
-包装类：java.lang.Byte
-最小值：Byte.MIN_VALUE<span style=color:#f92672>=</span>-128
-最大值：Byte.MAX_VALUE<span style=color:#f92672>=</span><span style=color:#ae81ff>127</span>
-基本类型：short 二进制位数：16
-包装类：java.lang.Short
-最小值：Short.MIN_VALUE<span style=color:#f92672>=</span>-32768
-最大值：Short.MAX_VALUE<span style=color:#f92672>=</span><span style=color:#ae81ff>32767</span>
-
-
-基本类型：int 二进制位数：32
-包装类：java.lang.Integer
-最小值：Integer.MIN_VALUE<span style=color:#f92672>=</span>-2147483648
-最大值：Integer.MAX_VALUE<span style=color:#f92672>=</span><span style=color:#ae81ff>2147483647</span>
-
-
-基本类型：long 二进制位数：64
-包装类：java.lang.Long
-最小值：Long.MIN_VALUE<span style=color:#f92672>=</span>-9223372036854775808
-最大值：Long.MAX_VALUE<span style=color:#f92672>=</span><span style=color:#ae81ff>9223372036854775807</span>
-
-
-基本类型：float 二进制位数：32
-包装类：java.lang.Float
-最小值：Float.MIN_VALUE<span style=color:#f92672>=</span>1.4E-45
-最大值：Float.MAX_VALUE<span style=color:#f92672>=</span>3.4028235E38
-
-
-基本类型：double 二进制位数：64
-包装类：java.lang.Double
-最小值：Double.MIN_VALUE<span style=color:#f92672>=</span>4.9E-324
-最大值：Double.MAX_VALUE<span style=color:#f92672>=</span>1.7976931348623157E308
-
-
-基本类型：char 二进制位数：16
-包装类：java.lang.Character
-最小值：Character.MIN_VALUE<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>
-最大值：Character.MAX_VALUE<span style=color:#f92672>=</span><span style=color:#ae81ff>65535</span>
-</code></pre></div><p>Float 和 Double 的最小值和最大值都是以科学记数法的形式输出的，结尾的 &ldquo;E + 数字&rdquo; 表示 E 之前的数字要乘以 10 的 “数字” 次幂。比如 3.14E3 就是 3.14×1000=3140，3.14E-3 就是 3.14/1000=0.00314。</p>
-<p>实际上，JAVA 中还存在另外一种基本类型 void，它也有对应的包装类 java.lang.Void，不过我们无法直接对它们进行操作。</p>
-<h1 id=引用类型>引用类型</h1>
-<ul>
-<li>引用类型变量由类的构造函数创建，可以使用它们访问所引用的对象。这些变量在声明时被指定为一个特定的类型，比如 Employee、Pubby 等。变量一旦声明后，类型就不能被改变了。</li>
-<li>对象、数组都是引用数据类型。</li>
-<li>所有引用类型的默认值都是 null。</li>
-<li>一个引用变量可以用来引用与任何与之兼容的类型。</li>
-<li>例子：Animal animal = new Animal (“giraffe”)。</li>
-</ul>
-<h1 id=java-常量>Java 常量</h1>
-<p>常量就是一个固定值。它们不需要计算，直接代表相应的值。</p>
-<p>常量指不能改变的量。 在 Java 中用 final 标志，声明方式和变量类似：</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>final</span> <span style=color:#66d9ef>double</span> PI <span style=color:#f92672>=</span> 3<span style=color:#f92672>.</span><span style=color:#a6e22e>1415927</span><span style=color:#f92672>;</span>
-</code></pre></div><p>虽然常量名也可以用小写，但为了便于识别，通常使用大写字母表示常量。</p>
-<p>字面量可以赋给任何内置类型的变量。例如：</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>byte</span> a <span style=color:#f92672>=</span> 68<span style=color:#f92672>;</span>
-<span style=color:#66d9ef>char</span> a <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;A&#39;</span>
-</code></pre></div><p>byte、int、long、和 short 都可以用十进制、16 进制以及 8 进制的方式来表示。</p>
-<p>当使用常量的时候，前缀 0 表明是 8 进制，而前缀 0x 代表 16 进制。例如：</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>int</span> decimal <span style=color:#f92672>=</span> 100<span style=color:#f92672>;</span>
-<span style=color:#66d9ef>int</span> octal <span style=color:#f92672>=</span> 0144<span style=color:#f92672>;</span>
-<span style=color:#66d9ef>int</span> hexa <span style=color:#f92672>=</span>  0x64<span style=color:#f92672>;</span>
-</code></pre></div><p>和其他语言一样，Java 的字符串常量也是包含在两个引号之间的字符序列。下面是字符串型字面量的例子：</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#e6db74>&#34;Hello World&#34;</span>
-<span style=color:#e6db74>&#34;two\nlines&#34;</span>
-<span style=color:#e6db74>&#34;\&#34;This is in quotes\&#34;&#34;</span>
-</code></pre></div><p>字符串常量和字符常量都可以包含任何 Unicode 字符。例如：</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>char</span> a <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;\u0001&#39;</span><span style=color:#f92672>;</span>
-String a <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;\u0001&#34;</span><span style=color:#f92672>;</span>
-</code></pre></div><p>Java 语言支持一些特殊的转义字符序列。</p>
-<table>
+<li><a href=#byte>byte</a></li><li><a href=#short>short</a></li><li><a href=#int>int</a></li><li><a href=#long>long</a></li><li><a href=#float>float</a></li><li><a href=#double>double</a></li><li><a href=#char>char</a></li><li><a href=#boolean>boolean</a></li><li><a href=#实例>实例</a></li></ul></li><li><a href=#引用类型>引用类型</a></li><li><a href=#java-常量>Java 常量</a></li></ul></nav></div></div><div class=post-content>
+<h1 id=概述>概述</h1><p>变量就是申请内存来存储值。也就是说，当创建变量的时候，需要在内存中申请空间。</p><p>内存管理系统根据变量的类型为变量分配存储空间，分配的空间只能用来储存该类型数据。</p><p>因此，通过定义不同类型的变量，可以在内存中储存整数、小数或者字符。</p><p>Java 的两大数据类型：</p><ul>
+<li>内置数据类型</li><li>引用数据类型</li></ul><h1 id=内置数据类型>内置数据类型</h1><p>Java 语言提供了八种基本类型。六种数字类型（四个整数型，两个浮点型），一种字符类型，还有一种布尔型。</p><h2 id=byte>byte</h2><ul>
+<li>byte 数据类型是 8 位、有符号的，以二进制补码表示的整数；</li><li>最小值是 - 128（-2^7）；</li><li>最大值是 127（2^7-1）；</li><li>默认值是 0；</li><li>byte 类型用在大型数组中节约空间，主要代替整数，因为 byte 变量占用的空间只有 int 类型的四分之一；</li><li>例子：byte a = 100，byte b = -50。</li></ul><h2 id=short>short</h2><ul>
+<li>short 数据类型是 16 位、有符号的以二进制补码表示的整数</li><li>最小值是 - 32768（-2^15）；</li><li>最大值是 32767（2^15 - 1）；</li><li>Short 数据类型也可以像 byte 那样节省空间。一个 short 变量是 int 型变量所占空间的二分之一；</li><li>默认值是 0；</li><li>例子：short s = 1000，short r = -20000。</li></ul><h2 id=int>int</h2><ul>
+<li>int 数据类型是 32 位、有符号的以二进制补码表示的整数；</li><li>最小值是 - 2,147,483,648（-2^31）；</li><li>最大值是 2,147,483,647（2^31 - 1）；</li><li>一般地整型变量默认为 int 类型；</li><li>默认值是 0；</li><li>例子：int a = 100000, int b = -200000。</li></ul><h2 id=long>long</h2><ul>
+<li>long 数据类型是 64 位、有符号的以二进制补码表示的整数；</li><li>最小值是 - 9,223,372,036,854,775,808（-2^63）；</li><li>最大值是 9,223,372,036,854,775,807（2^63 -1）；</li><li>这种类型主要使用在需要比较大整数的系统上；</li><li>默认值是 0L；</li><li>例子： long a = 100000L，long b = -200000L。</li></ul><h2 id=float>float</h2><ul>
+<li>float 数据类型是单精度、32 位、符合 IEEE 754 标准的浮点数；</li><li>float 在储存大型浮点数组的时候可节省内存空间；</li><li>默认值是 0.0f；</li><li>浮点数不能用来表示精确的值，如货币；</li><li>例子：float f1 = 234.5f。</li></ul><h2 id=double>double</h2><ul>
+<li>double 数据类型是双精度、64 位、符合 IEEE 754 标准的浮点数；</li><li>浮点数的默认类型为 double 类型；</li><li>double 类型同样不能表示精确的值，如货币；</li><li>默认值是 0.0d；</li><li>例子：double d1 = 123.4。</li></ul><h2 id=char>char</h2><ul>
+<li>char 类型是一个单一的 16 位 Unicode 字符；</li><li>最小值是&rsquo;\u0000&rsquo;（即为 0）；</li><li>最大值是&rsquo;\uffff&rsquo;（即为 65,535）；</li><li>char 数据类型可以储存任何字符；</li><li>例子：char letter = &lsquo;A&rsquo;。</li></ul><h2 id=boolean>boolean</h2><ul>
+<li>boolean 数据类型表示一位的信息；</li><li>只有两个取值：true 和 false；</li><li>这种类型只作为一种标志来记录 true/false 情况；</li><li>默认值是 false；</li><li>例子：boolean one = true。</li></ul><h2 id=实例>实例</h2><p>对于数值类型的基本类型的取值范围，我们无需强制去记忆，因为它们的值都已经以常量的形式定义在对应的包装类中了。请看下面的例子：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>PrimitiveTypeTest</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String<span style=color:#f92672>[]</span> args<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// byte
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;基本类型：byte 二进制位数：&#34;</span> <span style=color:#f92672>+</span> Byte<span style=color:#f92672>.</span><span style=color:#a6e22e>SIZE</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;包装类：java.lang.Byte&#34;</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;最小值：Byte.MIN_VALUE=&#34;</span> <span style=color:#f92672>+</span> Byte<span style=color:#f92672>.</span><span style=color:#a6e22e>MIN_VALUE</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;最大值：Byte.MAX_VALUE=&#34;</span> <span style=color:#f92672>+</span> Byte<span style=color:#f92672>.</span><span style=color:#a6e22e>MAX_VALUE</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>();</span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// short
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;基本类型：short 二进制位数：&#34;</span> <span style=color:#f92672>+</span> Short<span style=color:#f92672>.</span><span style=color:#a6e22e>SIZE</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;包装类：java.lang.Short&#34;</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;最小值：Short.MIN_VALUE=&#34;</span> <span style=color:#f92672>+</span> Short<span style=color:#f92672>.</span><span style=color:#a6e22e>MIN_VALUE</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;最大值：Short.MAX_VALUE=&#34;</span> <span style=color:#f92672>+</span> Short<span style=color:#f92672>.</span><span style=color:#a6e22e>MAX_VALUE</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>();</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// int
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;基本类型：int 二进制位数：&#34;</span> <span style=color:#f92672>+</span> Integer<span style=color:#f92672>.</span><span style=color:#a6e22e>SIZE</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;包装类：java.lang.Integer&#34;</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;最小值：Integer.MIN_VALUE=&#34;</span> <span style=color:#f92672>+</span> Integer<span style=color:#f92672>.</span><span style=color:#a6e22e>MIN_VALUE</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;最大值：Integer.MAX_VALUE=&#34;</span> <span style=color:#f92672>+</span> Integer<span style=color:#f92672>.</span><span style=color:#a6e22e>MAX_VALUE</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>();</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// long
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;基本类型：long 二进制位数：&#34;</span> <span style=color:#f92672>+</span> Long<span style=color:#f92672>.</span><span style=color:#a6e22e>SIZE</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;包装类：java.lang.Long&#34;</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;最小值：Long.MIN_VALUE=&#34;</span> <span style=color:#f92672>+</span> Long<span style=color:#f92672>.</span><span style=color:#a6e22e>MIN_VALUE</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;最大值：Long.MAX_VALUE=&#34;</span> <span style=color:#f92672>+</span> Long<span style=color:#f92672>.</span><span style=color:#a6e22e>MAX_VALUE</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>();</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// float
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;基本类型：float 二进制位数：&#34;</span> <span style=color:#f92672>+</span> Float<span style=color:#f92672>.</span><span style=color:#a6e22e>SIZE</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;包装类：java.lang.Float&#34;</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;最小值：Float.MIN_VALUE=&#34;</span> <span style=color:#f92672>+</span> Float<span style=color:#f92672>.</span><span style=color:#a6e22e>MIN_VALUE</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;最大值：Float.MAX_VALUE=&#34;</span> <span style=color:#f92672>+</span> Float<span style=color:#f92672>.</span><span style=color:#a6e22e>MAX_VALUE</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>();</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// double
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;基本类型：double 二进制位数：&#34;</span> <span style=color:#f92672>+</span> Double<span style=color:#f92672>.</span><span style=color:#a6e22e>SIZE</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;包装类：java.lang.Double&#34;</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;最小值：Double.MIN_VALUE=&#34;</span> <span style=color:#f92672>+</span> Double<span style=color:#f92672>.</span><span style=color:#a6e22e>MIN_VALUE</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;最大值：Double.MAX_VALUE=&#34;</span> <span style=color:#f92672>+</span> Double<span style=color:#f92672>.</span><span style=color:#a6e22e>MAX_VALUE</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>();</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// char
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;基本类型：char 二进制位数：&#34;</span> <span style=color:#f92672>+</span> Character<span style=color:#f92672>.</span><span style=color:#a6e22e>SIZE</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;包装类：java.lang.Character&#34;</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// 以数值形式而不是字符形式将Character.MIN_VALUE输出到控制台
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;最小值：Character.MIN_VALUE=&#34;</span>
+</span></span><span style=display:flex><span>                <span style=color:#f92672>+</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>)</span> Character<span style=color:#f92672>.</span><span style=color:#a6e22e>MIN_VALUE</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// 以数值形式而不是字符形式将Character.MAX_VALUE输出到控制台
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;最大值：Character.MAX_VALUE=&#34;</span>
+</span></span><span style=display:flex><span>                <span style=color:#f92672>+</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span><span style=color:#f92672>)</span> Character<span style=color:#f92672>.</span><span style=color:#a6e22e>MAX_VALUE</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span></code></pre></div><p>编译以上代码输出结果如下所示：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>基本类型：byte 二进制位数：8
+</span></span><span style=display:flex><span>包装类：java.lang.Byte
+</span></span><span style=display:flex><span>最小值：Byte.MIN_VALUE<span style=color:#f92672>=</span>-128
+</span></span><span style=display:flex><span>最大值：Byte.MAX_VALUE<span style=color:#f92672>=</span><span style=color:#ae81ff>127</span>
+</span></span><span style=display:flex><span>基本类型：short 二进制位数：16
+</span></span><span style=display:flex><span>包装类：java.lang.Short
+</span></span><span style=display:flex><span>最小值：Short.MIN_VALUE<span style=color:#f92672>=</span>-32768
+</span></span><span style=display:flex><span>最大值：Short.MAX_VALUE<span style=color:#f92672>=</span><span style=color:#ae81ff>32767</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>基本类型：int 二进制位数：32
+</span></span><span style=display:flex><span>包装类：java.lang.Integer
+</span></span><span style=display:flex><span>最小值：Integer.MIN_VALUE<span style=color:#f92672>=</span>-2147483648
+</span></span><span style=display:flex><span>最大值：Integer.MAX_VALUE<span style=color:#f92672>=</span><span style=color:#ae81ff>2147483647</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>基本类型：long 二进制位数：64
+</span></span><span style=display:flex><span>包装类：java.lang.Long
+</span></span><span style=display:flex><span>最小值：Long.MIN_VALUE<span style=color:#f92672>=</span>-9223372036854775808
+</span></span><span style=display:flex><span>最大值：Long.MAX_VALUE<span style=color:#f92672>=</span><span style=color:#ae81ff>9223372036854775807</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>基本类型：float 二进制位数：32
+</span></span><span style=display:flex><span>包装类：java.lang.Float
+</span></span><span style=display:flex><span>最小值：Float.MIN_VALUE<span style=color:#f92672>=</span>1.4E-45
+</span></span><span style=display:flex><span>最大值：Float.MAX_VALUE<span style=color:#f92672>=</span>3.4028235E38
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>基本类型：double 二进制位数：64
+</span></span><span style=display:flex><span>包装类：java.lang.Double
+</span></span><span style=display:flex><span>最小值：Double.MIN_VALUE<span style=color:#f92672>=</span>4.9E-324
+</span></span><span style=display:flex><span>最大值：Double.MAX_VALUE<span style=color:#f92672>=</span>1.7976931348623157E308
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>基本类型：char 二进制位数：16
+</span></span><span style=display:flex><span>包装类：java.lang.Character
+</span></span><span style=display:flex><span>最小值：Character.MIN_VALUE<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>最大值：Character.MAX_VALUE<span style=color:#f92672>=</span><span style=color:#ae81ff>65535</span>
+</span></span></code></pre></div><p>Float 和 Double 的最小值和最大值都是以科学记数法的形式输出的，结尾的 &ldquo;E + 数字&rdquo; 表示 E 之前的数字要乘以 10 的 “数字” 次幂。比如 3.14E3 就是 3.14×1000=3140，3.14E-3 就是 3.14/1000=0.00314。</p><p>实际上，JAVA 中还存在另外一种基本类型 void，它也有对应的包装类 java.lang.Void，不过我们无法直接对它们进行操作。</p><h1 id=引用类型>引用类型</h1><ul>
+<li>引用类型变量由类的构造函数创建，可以使用它们访问所引用的对象。这些变量在声明时被指定为一个特定的类型，比如 Employee、Pubby 等。变量一旦声明后，类型就不能被改变了。</li><li>对象、数组都是引用数据类型。</li><li>所有引用类型的默认值都是 null。</li><li>一个引用变量可以用来引用与任何与之兼容的类型。</li><li>例子：Animal animal = new Animal (“giraffe”)。</li></ul><h1 id=java-常量>Java 常量</h1><p>常量就是一个固定值。它们不需要计算，直接代表相应的值。</p><p>常量指不能改变的量。 在 Java 中用 final 标志，声明方式和变量类似：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#66d9ef>final</span> <span style=color:#66d9ef>double</span> PI <span style=color:#f92672>=</span> 3<span style=color:#f92672>.</span><span style=color:#a6e22e>1415927</span><span style=color:#f92672>;</span>
+</span></span></code></pre></div><p>虽然常量名也可以用小写，但为了便于识别，通常使用大写字母表示常量。</p><p>字面量可以赋给任何内置类型的变量。例如：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#66d9ef>byte</span> a <span style=color:#f92672>=</span> 68<span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>char</span> a <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;A&#39;</span>
+</span></span></code></pre></div><p>byte、int、long、和 short 都可以用十进制、16 进制以及 8 进制的方式来表示。</p><p>当使用常量的时候，前缀 0 表明是 8 进制，而前缀 0x 代表 16 进制。例如：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#66d9ef>int</span> decimal <span style=color:#f92672>=</span> 100<span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>int</span> octal <span style=color:#f92672>=</span> 0144<span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>int</span> hexa <span style=color:#f92672>=</span>  0x64<span style=color:#f92672>;</span>
+</span></span></code></pre></div><p>和其他语言一样，Java 的字符串常量也是包含在两个引号之间的字符序列。下面是字符串型字面量的例子：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#e6db74>&#34;Hello World&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#e6db74>&#34;two\nlines&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#e6db74>&#34;\&#34;This is in quotes\&#34;&#34;</span>
+</span></span></code></pre></div><p>字符串常量和字符常量都可以包含任何 Unicode 字符。例如：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#66d9ef>char</span> a <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;\u0001&#39;</span><span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span>String a <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;\u0001&#34;</span><span style=color:#f92672>;</span>
+</span></span></code></pre></div><p>Java 语言支持一些特殊的转义字符序列。</p><table>
 <thead>
 <tr>
-<th style=text-align:left>符号</th>
-<th style=text-align:left>字符含义</th>
-</tr>
-</thead>
-<tbody>
+<th style=text-align:left>符号</th><th style=text-align:left>字符含义</th></tr></thead><tbody>
 <tr>
-<td style=text-align:left>\n</td>
-<td style=text-align:left>换行 (0x0a)</td>
-</tr>
-<tr>
-<td style=text-align:left>\r</td>
-<td style=text-align:left>回车 (0x0d)</td>
-</tr>
-<tr>
-<td style=text-align:left>\f</td>
-<td style=text-align:left>换页符 (0x0c)</td>
-</tr>
-<tr>
-<td style=text-align:left>\b</td>
-<td style=text-align:left>退格 (0x08)</td>
-</tr>
-<tr>
-<td style=text-align:left>\s</td>
-<td style=text-align:left>空格 (0x20)</td>
-</tr>
-<tr>
-<td style=text-align:left>\t</td>
-<td style=text-align:left>制表符</td>
-</tr>
-<tr>
-<td style=text-align:left>"</td>
-<td style=text-align:left>双引号</td>
-</tr>
-<tr>
-<td style=text-align:left>'</td>
-<td style=text-align:left>单引号</td>
-</tr>
-<tr>
-<td style=text-align:left>\</td>
-<td style=text-align:left>反斜杠</td>
-</tr>
-<tr>
-<td style=text-align:left>\ddd</td>
-<td style=text-align:left>八进制字符 (ddd)</td>
-</tr>
-<tr>
-<td style=text-align:left>\uxxxx</td>
-<td style=text-align:left>16 进制 Unicode 字符 (xxxx)</td>
-</tr>
-</tbody>
-</table>
-</div>
-<footer class=post-footer>
+<td style=text-align:left>\n</td><td style=text-align:left>换行 (0x0a)</td></tr><tr>
+<td style=text-align:left>\r</td><td style=text-align:left>回车 (0x0d)</td></tr><tr>
+<td style=text-align:left>\f</td><td style=text-align:left>换页符 (0x0c)</td></tr><tr>
+<td style=text-align:left>\b</td><td style=text-align:left>退格 (0x08)</td></tr><tr>
+<td style=text-align:left>\s</td><td style=text-align:left>空格 (0x20)</td></tr><tr>
+<td style=text-align:left>\t</td><td style=text-align:left>制表符</td></tr><tr>
+<td style=text-align:left>"</td><td style=text-align:left>双引号</td></tr><tr>
+<td style=text-align:left>'</td><td style=text-align:left>单引号</td></tr><tr>
+<td style=text-align:left>\</td><td style=text-align:left>反斜杠</td></tr><tr>
+<td style=text-align:left>\ddd</td><td style=text-align:left>八进制字符 (ddd)</td></tr><tr>
+<td style=text-align:left>\uxxxx</td><td style=text-align:left>16 进制 Unicode 字符 (xxxx)</td></tr></tbody></table></div><footer class=post-footer>
 <div class=post-tags>
 <a href=/tags/java/>java</a>
-</div>
-<nav class=post-nav>
+</div><nav class=post-nav>
 <a class=prev href=/post/java-variable-type/>
 <i class="iconfont icon-left"></i>
 <span class="prev-text nav-default">Java 变量类型</span>
@@ -393,24 +221,16 @@ String a <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;\u000
 <span class="next-text nav-mobile">下一篇</span>
 <i class="iconfont icon-right"></i>
 </a>
-</nav>
-</footer>
-</article>
-</div>
-<div id=vcomments></div>
-<script src=//cdn1.lncld.net/static/js/3.0.4/av-min.js></script>
+</nav></footer></article></div><div id=vcomments></div><script src=//cdn1.lncld.net/static/js/3.0.4/av-min.js></script>
 <script src=//unpkg.com/valine/dist/Valine.min.js></script>
-<script type=text/javascript>new Valine({el:'#vcomments',appId:'fXqv8lFikU96F2xUDOBW4T9X-MdYXbMMI',appKey:'AUbjromOz15du9OJSTY6Q8HM',notify:!1,verify:!1,avatar:'robohash',placeholder:'本站支持评论邮件提醒功能，在上方邮箱输入框留下邮箱，可以收到回复通知哦！（支持markdown语法）',visitor:!1})</script>
-</div>
-</main>
-<footer id=footer class=footer>
+<script type=text/javascript>new Valine({el:"#vcomments",appId:"fXqv8lFikU96F2xUDOBW4T9X-MdYXbMMI",appKey:"AUbjromOz15du9OJSTY6Q8HM",notify:!1,verify:!1,avatar:"robohash",placeholder:"本站支持评论邮件提醒功能，在上方邮箱输入框留下邮箱，可以收到回复通知哦！（支持markdown语法）",visitor:!1})</script>
+</div></main><footer id=footer class=footer>
 <div class=social-links>
 <a href=mailto:gao.bo168@gmail.com class="iconfont icon-email" title=email></a>
 <a href=https://github.com/forgottener class="iconfont icon-github" title=github></a>
 <a href=https://space.bilibili.com/1714562 class="iconfont icon-bilibili" title=bilibili></a>
 <a href=https://gaoboy.com/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a>
-</div>
-<div class=copyright>
+</div><div class=copyright>
 <span class=power-by>
 由 <a class=hexo-link href=https://gohugo.io>Hugo</a> 强力驱动
 </span>
@@ -422,19 +242,14 @@ String a <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;\u000
 <span class=copyright-year>
 &copy;
 2013 -
-2021<span class=heart><i class="iconfont icon-heart"></i></span><span><a rel="license noopener" href=https://beian.miit.gov.cn/ target=_blank>浙ICP备14043338号-2</a>~<a rel="license noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010802003111" target=_blank>浙公网安备 33010802003111号</a></span>
+2022<span class=heart><i class="iconfont icon-heart"></i></span><span><a rel="license noopener" href=https://beian.miit.gov.cn/ target=_blank>浙ICP备14043338号-2</a>~<a rel="license noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010802003111" target=_blank>浙公网安备 33010802003111号</a></span>
 </span>
-</div>
-</footer>
-<div class=back-to-top id=back-to-top>
+</div></footer><div class=back-to-top id=back-to-top>
 <i class="iconfont icon-up"></i>
-</div>
-</div>
-<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+</div></div><script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
 <script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script>
 <script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script>
 <script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script>
-<script type=text/javascript src=/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js></script>
+<script type=text/javascript src=/js/main.min.64437849d125a2d603b3e71d6de5225d641a32d17168a58106e0b61852079683.js></script>
 <script src=/js/blank.js></script>
-</body>
-</html>
+</body></html>

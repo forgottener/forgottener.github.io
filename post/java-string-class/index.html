@@ -2,8 +2,7 @@
 <head>
 <meta charset=utf-8>
 <meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
-<title>Java String 类 - 猿资猿味 - 高波的博客</title>
-<meta name=renderer content="webkit">
+<title>Java String 类 - 猿资猿味 - 高波的博客</title><meta name=renderer content="webkit">
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
 <meta http-equiv=cache-control content="no-transform">
 <meta http-equiv=cache-control content="no-siteapp">
@@ -12,7 +11,7 @@
 <meta name=apple-mobile-web-app-capable content="yes">
 <meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec">
 <meta name=author content="forgottener"><meta name=description content="Java String 类"><meta name=keywords content="java,String">
-<meta name=generator content="Hugo 0.88.1 with theme even">
+<meta name=generator content="Hugo 0.93.2 with theme even">
 <link rel=canonical href=https://gaoboy.com/post/java-string-class/>
 <link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
 <link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
@@ -35,37 +34,26 @@
 <meta name=twitter:title content="Java String 类">
 <meta name=twitter:description content="Java String 类"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
-</head>
-<body>
+</head><body>
 <div id=mobile-navbar class=mobile-navbar>
 <div class=mobile-header-logo>
 <a href=/ class=logo>猿资猿味</a>
-</div>
-<div class=mobile-navbar-icon>
+</div><div class=mobile-navbar-icon>
 <span></span>
 <span></span>
 <span></span>
-</div>
-</div>
-<nav id=mobile-menu class="mobile-menu slideout-menu">
+</div></div><nav id=mobile-menu class="mobile-menu slideout-menu">
 <ul class=mobile-menu-list>
 <a href=/>
-<li class=mobile-menu-item>Home</li>
-</a><a href=/post/>
-<li class=mobile-menu-item>Archives</li>
-</a><a href=/tags/>
-<li class=mobile-menu-item>Tags</li>
-</a><a href=/categories/>
-<li class=mobile-menu-item>Categories</li>
-</a>
-</ul>
-</nav>
-<div class=container id=mobile-panel>
+<li class=mobile-menu-item>Home</li></a><a href=/post/>
+<li class=mobile-menu-item>Archives</li></a><a href=/tags/>
+<li class=mobile-menu-item>Tags</li></a><a href=/categories/>
+<li class=mobile-menu-item>Categories</li></a>
+</ul></nav><div class=container id=mobile-panel>
 <header id=header class=header>
 <div class=logo-wrapper>
 <a href=/ class=logo>猿资猿味</a>
-</div>
-<nav class=site-navbar>
+</div><nav class=site-navbar>
 <ul id=menu class=menu>
 <li class=menu-item>
 <a class=menu-item-link href=/>Home</a>
@@ -75,328 +63,124 @@
 <a class=menu-item-link href=/tags/>Tags</a>
 </li><li class=menu-item>
 <a class=menu-item-link href=/categories/>Categories</a>
-</li>
-</ul>
-</nav>
-</header>
-<main id=main class=main>
+</li></ul></nav></header><main id=main class=main>
 <div class=content-wrapper>
 <div id=content class=content>
 <article class=post>
 <header class=post-header>
-<h1 class=post-title>Java String 类</h1>
-<div class=post-meta>
+<h1 class=post-title>Java String 类</h1><div class=post-meta>
 <span class=post-time> 2015-01-25 </span>
 <div class=post-category>
 <a href=/categories/java/> java </a>
-</div>
-</div>
-</header>
-<div class=post-toc id=post-toc>
-<h2 class=post-toc-title>文章目录</h2>
-<div class="post-toc-content always-active">
+</div></div></header><div class=post-toc id=post-toc>
+<h2 class=post-toc-title>文章目录</h2><div class="post-toc-content always-active">
 <nav id=TableOfContents>
 <ul>
-<li><a href=#概述>概述</a></li>
-<li><a href=#创建字符串>创建字符串</a></li>
-<li><a href=#字符串长度>字符串长度</a></li>
-<li><a href=#连接字符串>连接字符串</a></li>
-<li><a href=#创建格式化字符串>创建格式化字符串</a></li>
-<li><a href=#string-方法>String 方法</a></li>
-</ul>
-</nav>
-</div>
-</div>
-<div class=post-content>
-<h1 id=概述>概述</h1>
-<p>字符串广泛应用在 Java 编程中，在 Java 中字符串属于对象，Java 提供了 String 类来创建和操作字符串。</p>
-<h1 id=创建字符串>创建字符串</h1>
-<p>创建字符串最简单的方式如下:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>String greeting <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;Hello&#34;</span><span style=color:#f92672>;</span>
-</code></pre></div><p>在代码中遇到字符串常量时，这里的值是 &ldquo;Hello&rdquo;，编译器会使用该值创建一个 String 对象。</p>
-<p>和其它对象一样，可以使用关键字和构造方法来创建 String 对象。</p>
-<p>用构造函数创建字符串：</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>String greeting <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> string<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Hello&#34;</span><span style=color:#f92672>);</span>
-</code></pre></div><p>String 创建的字符串存储在公共池中，而 new 创建的字符串对象在堆上：</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>String s1 <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;Hello&#34;</span><span style=color:#f92672>;</span>              <span style=color:#75715e>// String 直接创建
-</span><span style=color:#75715e></span>String s2 <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;Hello&#34;</span><span style=color:#f92672>;</span>              <span style=color:#75715e>// String 直接创建
-</span><span style=color:#75715e></span>String s3 <span style=color:#f92672>=</span> s1<span style=color:#f92672>;</span>                    <span style=color:#75715e>// 相同引用
-</span><span style=color:#75715e></span>String s4 <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> String<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Hello&#34;</span><span style=color:#f92672>);</span>   <span style=color:#75715e>// String 对象创建
-</span><span style=color:#75715e></span>String s5 <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> String<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Hello&#34;</span><span style=color:#f92672>);</span>   <span style=color:#75715e>// String 对象创建
-</span></code></pre></div><p>String 类有 11 种构造方法，这些方法提供不同的参数来初始化字符串，比如提供一个字符数组参数:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>StringDemo</span> <span style=color:#f92672>{</span>
-
-   <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String args<span style=color:#f92672>[])</span> <span style=color:#f92672>{</span>
-      <span style=color:#66d9ef>char</span><span style=color:#f92672>[]</span> helloArray <span style=color:#f92672>=</span> <span style=color:#f92672>{</span><span style=color:#e6db74>&#39;h&#39;</span><span style=color:#f92672>,</span> <span style=color:#e6db74>&#39;e&#39;</span><span style=color:#f92672>,</span> <span style=color:#e6db74>&#39;l&#39;</span><span style=color:#f92672>,</span> <span style=color:#e6db74>&#39;l&#39;</span><span style=color:#f92672>,</span> <span style=color:#e6db74>&#39;o&#39;</span><span style=color:#f92672>,</span> <span style=color:#e6db74>&#39;.&#39;</span><span style=color:#f92672>};</span>
-      String helloString <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> String<span style=color:#f92672>(</span>helloArray<span style=color:#f92672>);</span>  
-      System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span>helloString<span style=color:#f92672>);</span>
-   <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
-</code></pre></div><p>以上实例编译运行结果如下：</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>hello.
-</code></pre></div><blockquote>
-<p><strong>注意:</strong> String 类是不可改变的，所以你一旦创建了 String 对象，那它的值就无法改变了。 如果需要对字符串做很多修改，那么应该选择使用 <strong>StringBuffer & StringBuilder</strong> 类</p>
-</blockquote>
-<blockquote>
-<p>**注意:**String 类是不可改变的，所以你一旦创建了 String 对象，那它的值就无法改变了。</p>
-<p>如果需要对字符串做很多修改，那么应该选择使用 <a href=https://www.runoob.com/java/java-stringbuffer.html>StringBuffer & StringBuilder 类</a>。</p>
-</blockquote>
-<h1 id=字符串长度>字符串长度</h1>
-<p>用于获取有关对象的信息的方法称为访问器方法。</p>
-<p>String 类的一个访问器方法是 length () 方法，它返回字符串对象包含的字符数。</p>
-<p>下面的代码执行后，len 变量等于 17:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>StringDemo</span> <span style=color:#f92672>{</span>
-
-   <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String args<span style=color:#f92672>[])</span> <span style=color:#f92672>{</span>
-      String palindrome <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;Dot saw I was Tod&#34;</span><span style=color:#f92672>;</span>
-      <span style=color:#66d9ef>int</span> len <span style=color:#f92672>=</span> palindrome<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>();</span>
-      System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;String Length is : &#34;</span> <span style=color:#f92672>+</span> len<span style=color:#f92672>);</span>
-   <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
-</code></pre></div><p>以上实例编译运行结果如下：</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>String Length is : <span style=color:#ae81ff>17</span>
-</code></pre></div><h1 id=连接字符串>连接字符串</h1>
-<p>String 类提供了连接两个字符串的方法：</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>string1<span style=color:#f92672>.</span><span style=color:#a6e22e>concat</span><span style=color:#f92672>(</span>string2<span style=color:#f92672>);</span>
-</code></pre></div><p>返回 string2 连接 string1 的新字符串。也可以对字符串常量使用 concat () 方法，如：</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#e6db74>&#34;My name is &#34;</span><span style=color:#f92672>.</span><span style=color:#a6e22e>concat</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Zara&#34;</span><span style=color:#f92672>);</span>
-</code></pre></div><p>更常用的是使用 &lsquo;+&rsquo; 操作符来连接字符串，如：</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#e6db74>&#34;Hello,&#34;</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34; world&#34;</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;!&#34;</span>
-</code></pre></div><p>结果如下:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#e6db74>&#34;Hello, world!&#34;</span>
-</code></pre></div><p>下面是一个例子:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>StringDemo</span> <span style=color:#f92672>{</span>
-   <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String args<span style=color:#f92672>[])</span> <span style=color:#f92672>{</span>     
-       String string1 <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;saw I was &#34;</span><span style=color:#f92672>;</span>     
-       System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Dot &#34;</span> <span style=color:#f92672>+</span> string1 <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;Tod&#34;</span><span style=color:#f92672>);</span>  
-    <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
-</code></pre></div><p>以上实例编译运行结果如下：</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>Dot saw I was Tod
-</code></pre></div><h1 id=创建格式化字符串>创建格式化字符串</h1>
-<p>我们知道输出格式化数字可以使用 printf () 和 format () 方法。String 类使用静态方法 format () 返回一个 String 对象而不是 PrintStream 对象。</p>
-<p>String 类的静态方法 format () 能用来创建可复用的格式化字符串，而不仅仅是用于一次打印输出。如下所示：</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>printf</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;The value of the float variable is &#34;</span> <span style=color:#f92672>+</span>
-                  <span style=color:#e6db74>&#34;%f, while the value of the integer &#34;</span> <span style=color:#f92672>+</span>
-                  <span style=color:#e6db74>&#34;variable is %d, and the string &#34;</span> <span style=color:#f92672>+</span>
-                  <span style=color:#e6db74>&#34;is %s&#34;</span><span style=color:#f92672>,</span> floatVar<span style=color:#f92672>,</span> intVar<span style=color:#f92672>,</span> stringVar<span style=color:#f92672>);</span>
-</code></pre></div><p>你也可以这样写</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>String fs<span style=color:#f92672>;</span>
-fs <span style=color:#f92672>=</span> String<span style=color:#f92672>.</span><span style=color:#a6e22e>format</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;The value of the float variable is &#34;</span> <span style=color:#f92672>+</span>
-                   <span style=color:#e6db74>&#34;%f, while the value of the integer &#34;</span> <span style=color:#f92672>+</span>
-                   <span style=color:#e6db74>&#34;variable is %d, and the string &#34;</span> <span style=color:#f92672>+</span>
-                   <span style=color:#e6db74>&#34;is %s&#34;</span><span style=color:#f92672>,</span> floatVar<span style=color:#f92672>,</span> intVar<span style=color:#f92672>,</span> stringVar<span style=color:#f92672>);</span>
-System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span>fs<span style=color:#f92672>);</span>
-</code></pre></div><h1 id=string-方法>String 方法</h1>
-<p>下面是 String 类支持的方法，更多详细，参看 Java String API 文档:</p>
-<table>
+<li><a href=#概述>概述</a></li><li><a href=#创建字符串>创建字符串</a></li><li><a href=#字符串长度>字符串长度</a></li><li><a href=#连接字符串>连接字符串</a></li><li><a href=#创建格式化字符串>创建格式化字符串</a></li><li><a href=#string-方法>String 方法</a></li></ul></nav></div></div><div class=post-content>
+<h1 id=概述>概述</h1><p>字符串广泛应用在 Java 编程中，在 Java 中字符串属于对象，Java 提供了 String 类来创建和操作字符串。</p><h1 id=创建字符串>创建字符串</h1><p>创建字符串最简单的方式如下:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span>String greeting <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;Hello&#34;</span><span style=color:#f92672>;</span>
+</span></span></code></pre></div><p>在代码中遇到字符串常量时，这里的值是 &ldquo;Hello&rdquo;，编译器会使用该值创建一个 String 对象。</p><p>和其它对象一样，可以使用关键字和构造方法来创建 String 对象。</p><p>用构造函数创建字符串：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span>String greeting <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> string<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Hello&#34;</span><span style=color:#f92672>);</span>
+</span></span></code></pre></div><p>String 创建的字符串存储在公共池中，而 new 创建的字符串对象在堆上：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span>String s1 <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;Hello&#34;</span><span style=color:#f92672>;</span>              <span style=color:#75715e>// String 直接创建
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>String s2 <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;Hello&#34;</span><span style=color:#f92672>;</span>              <span style=color:#75715e>// String 直接创建
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>String s3 <span style=color:#f92672>=</span> s1<span style=color:#f92672>;</span>                    <span style=color:#75715e>// 相同引用
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>String s4 <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> String<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Hello&#34;</span><span style=color:#f92672>);</span>   <span style=color:#75715e>// String 对象创建
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>String s5 <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> String<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Hello&#34;</span><span style=color:#f92672>);</span>   <span style=color:#75715e>// String 对象创建
+</span></span></span></code></pre></div><p>String 类有 11 种构造方法，这些方法提供不同的参数来初始化字符串，比如提供一个字符数组参数:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>StringDemo</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>   <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String args<span style=color:#f92672>[])</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>char</span><span style=color:#f92672>[]</span> helloArray <span style=color:#f92672>=</span> <span style=color:#f92672>{</span><span style=color:#e6db74>&#39;h&#39;</span><span style=color:#f92672>,</span> <span style=color:#e6db74>&#39;e&#39;</span><span style=color:#f92672>,</span> <span style=color:#e6db74>&#39;l&#39;</span><span style=color:#f92672>,</span> <span style=color:#e6db74>&#39;l&#39;</span><span style=color:#f92672>,</span> <span style=color:#e6db74>&#39;o&#39;</span><span style=color:#f92672>,</span> <span style=color:#e6db74>&#39;.&#39;</span><span style=color:#f92672>};</span>
+</span></span><span style=display:flex><span>      String helloString <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> String<span style=color:#f92672>(</span>helloArray<span style=color:#f92672>);</span>  
+</span></span><span style=display:flex><span>      System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span>helloString<span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>   <span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span></code></pre></div><p>以上实例编译运行结果如下：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>hello.
+</span></span></code></pre></div><blockquote>
+<p><strong>注意:</strong> String 类是不可改变的，所以你一旦创建了 String 对象，那它的值就无法改变了。 如果需要对字符串做很多修改，那么应该选择使用 <strong>StringBuffer & StringBuilder</strong> 类</p></blockquote><blockquote>
+<p>**注意:**String 类是不可改变的，所以你一旦创建了 String 对象，那它的值就无法改变了。</p><p>如果需要对字符串做很多修改，那么应该选择使用 <a href=https://www.runoob.com/java/java-stringbuffer.html>StringBuffer & StringBuilder 类</a>。</p></blockquote><h1 id=字符串长度>字符串长度</h1><p>用于获取有关对象的信息的方法称为访问器方法。</p><p>String 类的一个访问器方法是 length () 方法，它返回字符串对象包含的字符数。</p><p>下面的代码执行后，len 变量等于 17:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>StringDemo</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>   <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String args<span style=color:#f92672>[])</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>      String palindrome <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;Dot saw I was Tod&#34;</span><span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>int</span> len <span style=color:#f92672>=</span> palindrome<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>();</span>
+</span></span><span style=display:flex><span>      System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;String Length is : &#34;</span> <span style=color:#f92672>+</span> len<span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>   <span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span></code></pre></div><p>以上实例编译运行结果如下：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>String Length is : <span style=color:#ae81ff>17</span>
+</span></span></code></pre></div><h1 id=连接字符串>连接字符串</h1><p>String 类提供了连接两个字符串的方法：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span>string1<span style=color:#f92672>.</span><span style=color:#a6e22e>concat</span><span style=color:#f92672>(</span>string2<span style=color:#f92672>);</span>
+</span></span></code></pre></div><p>返回 string2 连接 string1 的新字符串。也可以对字符串常量使用 concat () 方法，如：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#e6db74>&#34;My name is &#34;</span><span style=color:#f92672>.</span><span style=color:#a6e22e>concat</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Zara&#34;</span><span style=color:#f92672>);</span>
+</span></span></code></pre></div><p>更常用的是使用 &lsquo;+&rsquo; 操作符来连接字符串，如：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#e6db74>&#34;Hello,&#34;</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34; world&#34;</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;!&#34;</span>
+</span></span></code></pre></div><p>结果如下:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#e6db74>&#34;Hello, world!&#34;</span>
+</span></span></code></pre></div><p>下面是一个例子:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>StringDemo</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>   <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String args<span style=color:#f92672>[])</span> <span style=color:#f92672>{</span>     
+</span></span><span style=display:flex><span>       String string1 <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;saw I was &#34;</span><span style=color:#f92672>;</span>     
+</span></span><span style=display:flex><span>       System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Dot &#34;</span> <span style=color:#f92672>+</span> string1 <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;Tod&#34;</span><span style=color:#f92672>);</span>  
+</span></span><span style=display:flex><span>    <span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span></code></pre></div><p>以上实例编译运行结果如下：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>Dot saw I was Tod
+</span></span></code></pre></div><h1 id=创建格式化字符串>创建格式化字符串</h1><p>我们知道输出格式化数字可以使用 printf () 和 format () 方法。String 类使用静态方法 format () 返回一个 String 对象而不是 PrintStream 对象。</p><p>String 类的静态方法 format () 能用来创建可复用的格式化字符串，而不仅仅是用于一次打印输出。如下所示：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span>System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>printf</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;The value of the float variable is &#34;</span> <span style=color:#f92672>+</span>
+</span></span><span style=display:flex><span>                  <span style=color:#e6db74>&#34;%f, while the value of the integer &#34;</span> <span style=color:#f92672>+</span>
+</span></span><span style=display:flex><span>                  <span style=color:#e6db74>&#34;variable is %d, and the string &#34;</span> <span style=color:#f92672>+</span>
+</span></span><span style=display:flex><span>                  <span style=color:#e6db74>&#34;is %s&#34;</span><span style=color:#f92672>,</span> floatVar<span style=color:#f92672>,</span> intVar<span style=color:#f92672>,</span> stringVar<span style=color:#f92672>);</span>
+</span></span></code></pre></div><p>你也可以这样写</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span>String fs<span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span>fs <span style=color:#f92672>=</span> String<span style=color:#f92672>.</span><span style=color:#a6e22e>format</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;The value of the float variable is &#34;</span> <span style=color:#f92672>+</span>
+</span></span><span style=display:flex><span>                   <span style=color:#e6db74>&#34;%f, while the value of the integer &#34;</span> <span style=color:#f92672>+</span>
+</span></span><span style=display:flex><span>                   <span style=color:#e6db74>&#34;variable is %d, and the string &#34;</span> <span style=color:#f92672>+</span>
+</span></span><span style=display:flex><span>                   <span style=color:#e6db74>&#34;is %s&#34;</span><span style=color:#f92672>,</span> floatVar<span style=color:#f92672>,</span> intVar<span style=color:#f92672>,</span> stringVar<span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span>fs<span style=color:#f92672>);</span>
+</span></span></code></pre></div><h1 id=string-方法>String 方法</h1><p>下面是 String 类支持的方法，更多详细，参看 Java String API 文档:</p><table>
 <thead>
 <tr>
-<th style=text-align:left>SN (序号)</th>
-<th style=text-align:left>方法描述</th>
-</tr>
-</thead>
-<tbody>
+<th style=text-align:left>SN (序号)</th><th style=text-align:left>方法描述</th></tr></thead><tbody>
 <tr>
-<td style=text-align:left>1</td>
-<td style=text-align:left>char charAt(int index) 返回指定索引处的 char 值。</td>
-</tr>
-<tr>
-<td style=text-align:left>2</td>
-<td style=text-align:left>int compareTo(Object o) 把这个字符串和另一个对象比较。</td>
-</tr>
-<tr>
-<td style=text-align:left>3</td>
-<td style=text-align:left>int compareTo(String anotherString) 按字典顺序比较两个字符串。</td>
-</tr>
-<tr>
-<td style=text-align:left>4</td>
-<td style=text-align:left>int compareToIgnoreCase(String str) 按字典顺序比较两个字符串，不考虑大小写。</td>
-</tr>
-<tr>
-<td style=text-align:left>5</td>
-<td style=text-align:left>String concat(String str) 将指定字符串连接到此字符串的结尾。</td>
-</tr>
-<tr>
-<td style=text-align:left>6</td>
-<td style=text-align:left>boolean contentEquals(StringBuffer sb) 当且仅当字符串与指定的 StringButter 有相同顺序的字符时候返回真。</td>
-</tr>
-<tr>
-<td style=text-align:left>7</td>
-<td style=text-align:left>static String copyValueOf(char[] data) 返回指定数组中表示该字符序列的 String。</td>
-</tr>
-<tr>
-<td style=text-align:left>8</td>
-<td style=text-align:left>static String copyValueOf(char[] data, int offset, int count) 返回指定数组中表示该字符序列的 String。</td>
-</tr>
-<tr>
-<td style=text-align:left>9</td>
-<td style=text-align:left>boolean endsWith(String suffix) 测试此字符串是否以指定的后缀结束。</td>
-</tr>
-<tr>
-<td style=text-align:left>10</td>
-<td style=text-align:left>boolean equals(Object anObject) 将此字符串与指定的对象比较。</td>
-</tr>
-<tr>
-<td style=text-align:left>11</td>
-<td style=text-align:left>boolean equalsIgnoreCase(String anotherString) 将此 String 与另一个 String 比较，不考虑大小写。</td>
-</tr>
-<tr>
-<td style=text-align:left>12</td>
-<td style=text-align:left>byte[] getBytes() 使用平台的默认字符集将此 String 编码为 byte 序列，并将结果存储到一个新的 byte 数组中。</td>
-</tr>
-<tr>
-<td style=text-align:left>13</td>
-<td style=text-align:left>byte[] getBytes(String charsetName) 使用指定的字符集将此 String 编码为 byte 序列，并将结果存储到一个新的 byte 数组中。</td>
-</tr>
-<tr>
-<td style=text-align:left>14</td>
-<td style=text-align:left>void getChars(int srcBegin, int srcEnd, char[] dst, int dstBegin) 将字符从此字符串复制到目标字符数组。</td>
-</tr>
-<tr>
-<td style=text-align:left>15</td>
-<td style=text-align:left>int hashCode() 返回此字符串的哈希码。</td>
-</tr>
-<tr>
-<td style=text-align:left>16</td>
-<td style=text-align:left>int indexOf(int ch) 返回指定字符在此字符串中第一次出现处的索引。</td>
-</tr>
-<tr>
-<td style=text-align:left>17</td>
-<td style=text-align:left>int indexOf(int ch, int fromIndex) 返回在此字符串中第一次出现指定字符处的索引，从指定的索引开始搜索。</td>
-</tr>
-<tr>
-<td style=text-align:left>18</td>
-<td style=text-align:left>int indexOf(String str) 返回指定子字符串在此字符串中第一次出现处的索引。</td>
-</tr>
-<tr>
-<td style=text-align:left>19</td>
-<td style=text-align:left>int indexOf(String str, int fromIndex) 返回指定子字符串在此字符串中第一次出现处的索引，从指定的索引开始。</td>
-</tr>
-<tr>
-<td style=text-align:left>20</td>
-<td style=text-align:left>String intern() 返回字符串对象的规范化表示形式。</td>
-</tr>
-<tr>
-<td style=text-align:left>21</td>
-<td style=text-align:left>int lastIndexOf(int ch) 返回指定字符在此字符串中最后一次出现处的索引。</td>
-</tr>
-<tr>
-<td style=text-align:left>22</td>
-<td style=text-align:left>int lastIndexOf(int ch, int fromIndex) 返回指定字符在此字符串中最后一次出现处的索引，从指定的索引处开始进行反向搜索。</td>
-</tr>
-<tr>
-<td style=text-align:left>23</td>
-<td style=text-align:left>int lastIndexOf(String str) 返回指定子字符串在此字符串中最右边出现处的索引。</td>
-</tr>
-<tr>
-<td style=text-align:left>24</td>
-<td style=text-align:left>int lastIndexOf(String str, int fromIndex) 返回指定子字符串在此字符串中最后一次出现处的索引，从指定的索引开始反向搜索。</td>
-</tr>
-<tr>
-<td style=text-align:left>25</td>
-<td style=text-align:left>int length() 返回此字符串的长度。</td>
-</tr>
-<tr>
-<td style=text-align:left>26</td>
-<td style=text-align:left>boolean matches(String regex) 告知此字符串是否匹配给定的正则表达式。</td>
-</tr>
-<tr>
-<td style=text-align:left>27</td>
-<td style=text-align:left>boolean regionMatches(boolean ignoreCase, int toffset, String other, int ooffset, int len) 测试两个字符串区域是否相等。</td>
-</tr>
-<tr>
-<td style=text-align:left>28</td>
-<td style=text-align:left>boolean regionMatches(int toffset, String other, int ooffset, int len) 测试两个字符串区域是否相等。</td>
-</tr>
-<tr>
-<td style=text-align:left>29</td>
-<td style=text-align:left>String replace(char oldChar, char newChar) 返回一个新的字符串，它是通过用 newChar 替换此字符串中出现的所有 oldChar 得到的。</td>
-</tr>
-<tr>
-<td style=text-align:left>30</td>
-<td style=text-align:left>String replaceAll(String regex, String replacement 使用给定的 replacement 替换此字符串所有匹配给定的正则表达式的子字符串。</td>
-</tr>
-<tr>
-<td style=text-align:left>31</td>
-<td style=text-align:left>String replaceFirst(String regex, String replacement) 使用给定的 replacement 替换此字符串匹配给定的正则表达式的第一个子字符串。</td>
-</tr>
-<tr>
-<td style=text-align:left>32</td>
-<td style=text-align:left>String[] split(String regex) 根据给定正则表达式的匹配拆分此字符串。</td>
-</tr>
-<tr>
-<td style=text-align:left>33</td>
-<td style=text-align:left>String[] split(String regex, int limit) 根据匹配给定的正则表达式来拆分此字符串。</td>
-</tr>
-<tr>
-<td style=text-align:left>34</td>
-<td style=text-align:left>boolean startsWith(String prefix) 测试此字符串是否以指定的前缀开始。</td>
-</tr>
-<tr>
-<td style=text-align:left>35</td>
-<td style=text-align:left>boolean startsWith(String prefix, int toffset) 测试此字符串从指定索引开始的子字符串是否以指定前缀开始。</td>
-</tr>
-<tr>
-<td style=text-align:left>36</td>
-<td style=text-align:left>CharSequence subSequence(int beginIndex, int endIndex) 返回一个新的字符序列，它是此序列的一个子序列。</td>
-</tr>
-<tr>
-<td style=text-align:left>37</td>
-<td style=text-align:left>String substring(int beginIndex) 返回一个新的字符串，它是此字符串的一个子字符串。</td>
-</tr>
-<tr>
-<td style=text-align:left>38</td>
-<td style=text-align:left>String substring(int beginIndex, int endIndex) 返回一个新字符串，它是此字符串的一个子字符串。</td>
-</tr>
-<tr>
-<td style=text-align:left>39</td>
-<td style=text-align:left>char[] toCharArray() 将此字符串转换为一个新的字符数组。</td>
-</tr>
-<tr>
-<td style=text-align:left>40</td>
-<td style=text-align:left>String toLowerCase() 使用默认语言环境的规则将此 String 中的所有字符都转换为小写。</td>
-</tr>
-<tr>
-<td style=text-align:left>41</td>
-<td style=text-align:left>String toLowerCase(Locale locale) 使用给定 Locale 的规则将此 String 中的所有字符都转换为小写。</td>
-</tr>
-<tr>
-<td style=text-align:left>42</td>
-<td style=text-align:left>String toString() 返回此对象本身（它已经是一个字符串！）。</td>
-</tr>
-<tr>
-<td style=text-align:left>43</td>
-<td style=text-align:left>String toUpperCase() 使用默认语言环境的规则将此 String 中的所有字符都转换为大写。</td>
-</tr>
-<tr>
-<td style=text-align:left>44</td>
-<td style=text-align:left>String toUpperCase(Locale locale) 使用给定 Locale 的规则将此 String 中的所有字符都转换为大写。</td>
-</tr>
-<tr>
-<td style=text-align:left>45</td>
-<td style=text-align:left>String trim() 返回字符串的副本，忽略前导空白和尾部空白。</td>
-</tr>
-<tr>
-<td style=text-align:left>46</td>
-<td style=text-align:left>static String valueOf(primitive data type x) 返回给定 data type 类型 x 参数的字符串表示形式。</td>
-</tr>
-<tr>
-<td style=text-align:left>47</td>
-<td style=text-align:left>contains(CharSequence chars) 判断是否包含指定的字符系列。</td>
-</tr>
-<tr>
-<td style=text-align:left>48</td>
-<td style=text-align:left>isEmpty() 判断字符串是否为空。</td>
-</tr>
-</tbody>
-</table>
-</div>
-<footer class=post-footer>
+<td style=text-align:left>1</td><td style=text-align:left>char charAt(int index) 返回指定索引处的 char 值。</td></tr><tr>
+<td style=text-align:left>2</td><td style=text-align:left>int compareTo(Object o) 把这个字符串和另一个对象比较。</td></tr><tr>
+<td style=text-align:left>3</td><td style=text-align:left>int compareTo(String anotherString) 按字典顺序比较两个字符串。</td></tr><tr>
+<td style=text-align:left>4</td><td style=text-align:left>int compareToIgnoreCase(String str) 按字典顺序比较两个字符串，不考虑大小写。</td></tr><tr>
+<td style=text-align:left>5</td><td style=text-align:left>String concat(String str) 将指定字符串连接到此字符串的结尾。</td></tr><tr>
+<td style=text-align:left>6</td><td style=text-align:left>boolean contentEquals(StringBuffer sb) 当且仅当字符串与指定的 StringButter 有相同顺序的字符时候返回真。</td></tr><tr>
+<td style=text-align:left>7</td><td style=text-align:left>static String copyValueOf(char[] data) 返回指定数组中表示该字符序列的 String。</td></tr><tr>
+<td style=text-align:left>8</td><td style=text-align:left>static String copyValueOf(char[] data, int offset, int count) 返回指定数组中表示该字符序列的 String。</td></tr><tr>
+<td style=text-align:left>9</td><td style=text-align:left>boolean endsWith(String suffix) 测试此字符串是否以指定的后缀结束。</td></tr><tr>
+<td style=text-align:left>10</td><td style=text-align:left>boolean equals(Object anObject) 将此字符串与指定的对象比较。</td></tr><tr>
+<td style=text-align:left>11</td><td style=text-align:left>boolean equalsIgnoreCase(String anotherString) 将此 String 与另一个 String 比较，不考虑大小写。</td></tr><tr>
+<td style=text-align:left>12</td><td style=text-align:left>byte[] getBytes() 使用平台的默认字符集将此 String 编码为 byte 序列，并将结果存储到一个新的 byte 数组中。</td></tr><tr>
+<td style=text-align:left>13</td><td style=text-align:left>byte[] getBytes(String charsetName) 使用指定的字符集将此 String 编码为 byte 序列，并将结果存储到一个新的 byte 数组中。</td></tr><tr>
+<td style=text-align:left>14</td><td style=text-align:left>void getChars(int srcBegin, int srcEnd, char[] dst, int dstBegin) 将字符从此字符串复制到目标字符数组。</td></tr><tr>
+<td style=text-align:left>15</td><td style=text-align:left>int hashCode() 返回此字符串的哈希码。</td></tr><tr>
+<td style=text-align:left>16</td><td style=text-align:left>int indexOf(int ch) 返回指定字符在此字符串中第一次出现处的索引。</td></tr><tr>
+<td style=text-align:left>17</td><td style=text-align:left>int indexOf(int ch, int fromIndex) 返回在此字符串中第一次出现指定字符处的索引，从指定的索引开始搜索。</td></tr><tr>
+<td style=text-align:left>18</td><td style=text-align:left>int indexOf(String str) 返回指定子字符串在此字符串中第一次出现处的索引。</td></tr><tr>
+<td style=text-align:left>19</td><td style=text-align:left>int indexOf(String str, int fromIndex) 返回指定子字符串在此字符串中第一次出现处的索引，从指定的索引开始。</td></tr><tr>
+<td style=text-align:left>20</td><td style=text-align:left>String intern() 返回字符串对象的规范化表示形式。</td></tr><tr>
+<td style=text-align:left>21</td><td style=text-align:left>int lastIndexOf(int ch) 返回指定字符在此字符串中最后一次出现处的索引。</td></tr><tr>
+<td style=text-align:left>22</td><td style=text-align:left>int lastIndexOf(int ch, int fromIndex) 返回指定字符在此字符串中最后一次出现处的索引，从指定的索引处开始进行反向搜索。</td></tr><tr>
+<td style=text-align:left>23</td><td style=text-align:left>int lastIndexOf(String str) 返回指定子字符串在此字符串中最右边出现处的索引。</td></tr><tr>
+<td style=text-align:left>24</td><td style=text-align:left>int lastIndexOf(String str, int fromIndex) 返回指定子字符串在此字符串中最后一次出现处的索引，从指定的索引开始反向搜索。</td></tr><tr>
+<td style=text-align:left>25</td><td style=text-align:left>int length() 返回此字符串的长度。</td></tr><tr>
+<td style=text-align:left>26</td><td style=text-align:left>boolean matches(String regex) 告知此字符串是否匹配给定的正则表达式。</td></tr><tr>
+<td style=text-align:left>27</td><td style=text-align:left>boolean regionMatches(boolean ignoreCase, int toffset, String other, int ooffset, int len) 测试两个字符串区域是否相等。</td></tr><tr>
+<td style=text-align:left>28</td><td style=text-align:left>boolean regionMatches(int toffset, String other, int ooffset, int len) 测试两个字符串区域是否相等。</td></tr><tr>
+<td style=text-align:left>29</td><td style=text-align:left>String replace(char oldChar, char newChar) 返回一个新的字符串，它是通过用 newChar 替换此字符串中出现的所有 oldChar 得到的。</td></tr><tr>
+<td style=text-align:left>30</td><td style=text-align:left>String replaceAll(String regex, String replacement 使用给定的 replacement 替换此字符串所有匹配给定的正则表达式的子字符串。</td></tr><tr>
+<td style=text-align:left>31</td><td style=text-align:left>String replaceFirst(String regex, String replacement) 使用给定的 replacement 替换此字符串匹配给定的正则表达式的第一个子字符串。</td></tr><tr>
+<td style=text-align:left>32</td><td style=text-align:left>String[] split(String regex) 根据给定正则表达式的匹配拆分此字符串。</td></tr><tr>
+<td style=text-align:left>33</td><td style=text-align:left>String[] split(String regex, int limit) 根据匹配给定的正则表达式来拆分此字符串。</td></tr><tr>
+<td style=text-align:left>34</td><td style=text-align:left>boolean startsWith(String prefix) 测试此字符串是否以指定的前缀开始。</td></tr><tr>
+<td style=text-align:left>35</td><td style=text-align:left>boolean startsWith(String prefix, int toffset) 测试此字符串从指定索引开始的子字符串是否以指定前缀开始。</td></tr><tr>
+<td style=text-align:left>36</td><td style=text-align:left>CharSequence subSequence(int beginIndex, int endIndex) 返回一个新的字符序列，它是此序列的一个子序列。</td></tr><tr>
+<td style=text-align:left>37</td><td style=text-align:left>String substring(int beginIndex) 返回一个新的字符串，它是此字符串的一个子字符串。</td></tr><tr>
+<td style=text-align:left>38</td><td style=text-align:left>String substring(int beginIndex, int endIndex) 返回一个新字符串，它是此字符串的一个子字符串。</td></tr><tr>
+<td style=text-align:left>39</td><td style=text-align:left>char[] toCharArray() 将此字符串转换为一个新的字符数组。</td></tr><tr>
+<td style=text-align:left>40</td><td style=text-align:left>String toLowerCase() 使用默认语言环境的规则将此 String 中的所有字符都转换为小写。</td></tr><tr>
+<td style=text-align:left>41</td><td style=text-align:left>String toLowerCase(Locale locale) 使用给定 Locale 的规则将此 String 中的所有字符都转换为小写。</td></tr><tr>
+<td style=text-align:left>42</td><td style=text-align:left>String toString() 返回此对象本身（它已经是一个字符串！）。</td></tr><tr>
+<td style=text-align:left>43</td><td style=text-align:left>String toUpperCase() 使用默认语言环境的规则将此 String 中的所有字符都转换为大写。</td></tr><tr>
+<td style=text-align:left>44</td><td style=text-align:left>String toUpperCase(Locale locale) 使用给定 Locale 的规则将此 String 中的所有字符都转换为大写。</td></tr><tr>
+<td style=text-align:left>45</td><td style=text-align:left>String trim() 返回字符串的副本，忽略前导空白和尾部空白。</td></tr><tr>
+<td style=text-align:left>46</td><td style=text-align:left>static String valueOf(primitive data type x) 返回给定 data type 类型 x 参数的字符串表示形式。</td></tr><tr>
+<td style=text-align:left>47</td><td style=text-align:left>contains(CharSequence chars) 判断是否包含指定的字符系列。</td></tr><tr>
+<td style=text-align:left>48</td><td style=text-align:left>isEmpty() 判断字符串是否为空。</td></tr></tbody></table></div><footer class=post-footer>
 <div class=post-tags>
 <a href=/tags/java/>java</a>
-</div>
-<nav class=post-nav>
+</div><nav class=post-nav>
 <a class=prev href=/post/java-stringbuffer-and-stringbuilder-class/>
 <i class="iconfont icon-left"></i>
 <span class="prev-text nav-default">Java StringBuffer & StringBuilder 类</span>
@@ -407,24 +191,16 @@ System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><spa
 <span class="next-text nav-mobile">下一篇</span>
 <i class="iconfont icon-right"></i>
 </a>
-</nav>
-</footer>
-</article>
-</div>
-<div id=vcomments></div>
-<script src=//cdn1.lncld.net/static/js/3.0.4/av-min.js></script>
+</nav></footer></article></div><div id=vcomments></div><script src=//cdn1.lncld.net/static/js/3.0.4/av-min.js></script>
 <script src=//unpkg.com/valine/dist/Valine.min.js></script>
-<script type=text/javascript>new Valine({el:'#vcomments',appId:'fXqv8lFikU96F2xUDOBW4T9X-MdYXbMMI',appKey:'AUbjromOz15du9OJSTY6Q8HM',notify:!1,verify:!1,avatar:'robohash',placeholder:'本站支持评论邮件提醒功能，在上方邮箱输入框留下邮箱，可以收到回复通知哦！（支持markdown语法）',visitor:!1})</script>
-</div>
-</main>
-<footer id=footer class=footer>
+<script type=text/javascript>new Valine({el:"#vcomments",appId:"fXqv8lFikU96F2xUDOBW4T9X-MdYXbMMI",appKey:"AUbjromOz15du9OJSTY6Q8HM",notify:!1,verify:!1,avatar:"robohash",placeholder:"本站支持评论邮件提醒功能，在上方邮箱输入框留下邮箱，可以收到回复通知哦！（支持markdown语法）",visitor:!1})</script>
+</div></main><footer id=footer class=footer>
 <div class=social-links>
 <a href=mailto:gao.bo168@gmail.com class="iconfont icon-email" title=email></a>
 <a href=https://github.com/forgottener class="iconfont icon-github" title=github></a>
 <a href=https://space.bilibili.com/1714562 class="iconfont icon-bilibili" title=bilibili></a>
 <a href=https://gaoboy.com/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a>
-</div>
-<div class=copyright>
+</div><div class=copyright>
 <span class=power-by>
 由 <a class=hexo-link href=https://gohugo.io>Hugo</a> 强力驱动
 </span>
@@ -436,19 +212,14 @@ System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><spa
 <span class=copyright-year>
 &copy;
 2013 -
-2021<span class=heart><i class="iconfont icon-heart"></i></span><span><a rel="license noopener" href=https://beian.miit.gov.cn/ target=_blank>浙ICP备14043338号-2</a>~<a rel="license noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010802003111" target=_blank>浙公网安备 33010802003111号</a></span>
+2022<span class=heart><i class="iconfont icon-heart"></i></span><span><a rel="license noopener" href=https://beian.miit.gov.cn/ target=_blank>浙ICP备14043338号-2</a>~<a rel="license noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010802003111" target=_blank>浙公网安备 33010802003111号</a></span>
 </span>
-</div>
-</footer>
-<div class=back-to-top id=back-to-top>
+</div></footer><div class=back-to-top id=back-to-top>
 <i class="iconfont icon-up"></i>
-</div>
-</div>
-<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+</div></div><script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
 <script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script>
 <script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script>
 <script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script>
-<script type=text/javascript src=/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js></script>
+<script type=text/javascript src=/js/main.min.64437849d125a2d603b3e71d6de5225d641a32d17168a58106e0b61852079683.js></script>
 <script src=/js/blank.js></script>
-</body>
-</html>
+</body></html>

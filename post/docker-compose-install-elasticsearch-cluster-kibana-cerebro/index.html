@@ -1,0 +1,351 @@
+<!doctype html><html lang=zh-cn>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<title>Docker Compose单机安装elasticsearch7.16.3 - 猿资猿味 - 高波的博客</title><meta name=renderer content="webkit">
+<meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta http-equiv=cache-control content="no-transform">
+<meta http-equiv=cache-control content="no-siteapp">
+<meta name=theme-color content="#f8f5ec">
+<meta name=msapplication-navbutton-color content="#f8f5ec">
+<meta name=apple-mobile-web-app-capable content="yes">
+<meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec">
+<meta name=author content="forgottener"><meta name=description content="使用docker compose一键部署es集群，方便测试"><meta name=keywords content="docker,docker compose,elasticsearch,kibana,cerebro">
+<meta name=generator content="Hugo 0.93.2 with theme even">
+<link rel=canonical href=https://gaoboy.com/post/docker-compose-install-elasticsearch-cluster-kibana-cerebro/>
+<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
+<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
+<link rel=manifest href=/manifest.json>
+<link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5>
+<link href=/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css rel=stylesheet>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous>
+<meta property="og:title" content="Docker Compose单机安装elasticsearch7.16.3">
+<meta property="og:description" content="使用docker compose一键部署es集群，方便测试">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://gaoboy.com/post/docker-compose-install-elasticsearch-cluster-kibana-cerebro/"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2022-03-08T21:02:53+08:00">
+<meta property="article:modified_time" content="2022-03-08T21:02:53+08:00">
+<meta itemprop=name content="Docker Compose单机安装elasticsearch7.16.3">
+<meta itemprop=description content="使用docker compose一键部署es集群，方便测试"><meta itemprop=datePublished content="2022-03-08T21:02:53+08:00">
+<meta itemprop=dateModified content="2022-03-08T21:02:53+08:00">
+<meta itemprop=wordCount content="573">
+<meta itemprop=keywords content="部署,"><meta name=twitter:card content="summary">
+<meta name=twitter:title content="Docker Compose单机安装elasticsearch7.16.3">
+<meta name=twitter:description content="使用docker compose一键部署es集群，方便测试"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
+<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
+</head><body>
+<div id=mobile-navbar class=mobile-navbar>
+<div class=mobile-header-logo>
+<a href=/ class=logo>猿资猿味</a>
+</div><div class=mobile-navbar-icon>
+<span></span>
+<span></span>
+<span></span>
+</div></div><nav id=mobile-menu class="mobile-menu slideout-menu">
+<ul class=mobile-menu-list>
+<a href=/>
+<li class=mobile-menu-item>Home</li></a><a href=/post/>
+<li class=mobile-menu-item>Archives</li></a><a href=/tags/>
+<li class=mobile-menu-item>Tags</li></a><a href=/categories/>
+<li class=mobile-menu-item>Categories</li></a>
+</ul></nav><div class=container id=mobile-panel>
+<header id=header class=header>
+<div class=logo-wrapper>
+<a href=/ class=logo>猿资猿味</a>
+</div><nav class=site-navbar>
+<ul id=menu class=menu>
+<li class=menu-item>
+<a class=menu-item-link href=/>Home</a>
+</li><li class=menu-item>
+<a class=menu-item-link href=/post/>Archives</a>
+</li><li class=menu-item>
+<a class=menu-item-link href=/tags/>Tags</a>
+</li><li class=menu-item>
+<a class=menu-item-link href=/categories/>Categories</a>
+</li></ul></nav></header><main id=main class=main>
+<div class=content-wrapper>
+<div id=content class=content>
+<article class=post>
+<header class=post-header>
+<h1 class=post-title>Docker Compose单机安装elasticsearch7.16.3</h1><div class=post-meta>
+<span class=post-time> 2022-03-08 </span>
+<div class=post-category>
+<a href=/categories/%E8%BF%90%E7%BB%B4/> 运维 </a>
+</div></div></header><div class=post-toc id=post-toc>
+<h2 class=post-toc-title>文章目录</h2><div class="post-toc-content always-active">
+<nav id=TableOfContents>
+<ul>
+<li>
+<ul>
+<li><a href=#文件结构>文件结构</a></li><li><a href=#配置>配置</a></li><li><a href=#kibana>kibana</a></li><li><a href=#cerebro>cerebro</a></li></ul></li></ul></nav></div></div><div class=post-content>
+<p><a href=https://www.elastic.co/guide/en/elasticsearch/reference/7.16/docker.html>https://www.elastic.co/guide/en/elasticsearch/reference/7.16/docker.html</a></p><h2 id=文件结构>文件结构</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>└── elasticsearch
+</span></span><span style=display:flex><span>    ├── node-00
+</span></span><span style=display:flex><span>    │    ├── config
+</span></span><span style=display:flex><span>    │    │  └── elasticsearch.yml
+</span></span><span style=display:flex><span>    │    ├── data
+</span></span><span style=display:flex><span>    │    ├── docker-compose.yml
+</span></span><span style=display:flex><span>    │    ├── logs
+</span></span><span style=display:flex><span>    │    └── plugins
+</span></span><span style=display:flex><span>    │        └── ik
+</span></span><span style=display:flex><span>    ├── node-01
+</span></span><span style=display:flex><span>    │    ├── config
+</span></span><span style=display:flex><span>    │    │  └── elasticsearch.yml
+</span></span><span style=display:flex><span>    │    ├── data
+</span></span><span style=display:flex><span>    │    ├── docker-compose.yml
+</span></span><span style=display:flex><span>    │    ├── logs
+</span></span><span style=display:flex><span>    │    └── plugins
+</span></span><span style=display:flex><span>    │        └── ik
+</span></span><span style=display:flex><span>    └── node-02
+</span></span><span style=display:flex><span>        ├── config
+</span></span><span style=display:flex><span>        │    └── elasticsearch.yml
+</span></span><span style=display:flex><span>        ├── data
+</span></span><span style=display:flex><span>        ├── docker-compose.yml
+</span></span><span style=display:flex><span>        ├── logs
+</span></span><span style=display:flex><span>        └── plugins
+</span></span><span style=display:flex><span>            └── ik
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>chown 1000:1000 data
+</span></span><span style=display:flex><span>chown 1000:1000 logs
+</span></span></code></pre></div><h2 id=配置>配置</h2><ol>
+<li>创建公用docker network</li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>docker network ls
+</span></span><span style=display:flex><span>docker network create --driver bridge elastic
+</span></span></code></pre></div><ol start=2>
+<li>创建各个node的docker-compose.yml</li></ol><ul>
+<li>node-00</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>version</span>: <span style=color:#e6db74>&#34;3&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>services</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>es-node-00</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>image</span>: <span style=color:#ae81ff>docker.elastic.co/elasticsearch/elasticsearch:7.16.3</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>container_name</span>: <span style=color:#ae81ff>es-node-00</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>environment</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#34;TZ=Asia/Shanghai&#34;</span>
+</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#34;ES_JAVA_OPTS=-Xms1g -Xmx1g&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>restart</span>: <span style=color:#ae81ff>always</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>ulimits</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>memlock</span>:
+</span></span><span style=display:flex><span>        <span style=color:#f92672>soft</span>: -<span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>hard</span>: -<span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>nofile</span>:
+</span></span><span style=display:flex><span>        <span style=color:#f92672>soft</span>: <span style=color:#ae81ff>65536</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>hard</span>: <span style=color:#ae81ff>65536</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>ports</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>9200</span>:<span style=color:#ae81ff>9200</span>
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>9300</span>:<span style=color:#ae81ff>9300</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>networks</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>elastic</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>volumes</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>./config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml</span>
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>./data:/usr/share/elasticsearch/data</span>
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>./plugins:/usr/share/elasticsearch/plugins</span>
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>./logs:/usr/share/elasticsearch/logs</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>networks</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>elastic</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>external</span>: <span style=color:#66d9ef>true</span>
+</span></span></code></pre></div><ul>
+<li>node-01</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>version</span>: <span style=color:#e6db74>&#34;3&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>services</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>es-node-01</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>image</span>: <span style=color:#ae81ff>docker.elastic.co/elasticsearch/elasticsearch:7.16.3</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>container_name</span>: <span style=color:#ae81ff>es-node-01</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>environment</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#34;TZ=Asia/Shanghai&#34;</span>
+</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#34;ES_JAVA_OPTS=-Xms1g -Xmx1g&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>restart</span>: <span style=color:#ae81ff>always</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>ulimits</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>memlock</span>:
+</span></span><span style=display:flex><span>        <span style=color:#f92672>soft</span>: -<span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>hard</span>: -<span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>nofile</span>:
+</span></span><span style=display:flex><span>        <span style=color:#f92672>soft</span>: <span style=color:#ae81ff>65536</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>hard</span>: <span style=color:#ae81ff>65536</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>ports</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>9201</span>:<span style=color:#ae81ff>9200</span>
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>9301</span>:<span style=color:#ae81ff>9300</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>networks</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>elastic</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>volumes</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>./config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml</span>
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>./data:/usr/share/elasticsearch/data</span>
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>./plugins:/usr/share/elasticsearch/plugins</span>
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>./logs:/usr/share/elasticsearch/logs</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>networks</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>elastic</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>external</span>: <span style=color:#66d9ef>true</span>
+</span></span></code></pre></div><ul>
+<li>node-02</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>version</span>: <span style=color:#e6db74>&#34;3&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>services</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>es-node-02</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>image</span>: <span style=color:#ae81ff>docker.elastic.co/elasticsearch/elasticsearch:7.16.3</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>container_name</span>: <span style=color:#ae81ff>es-node-02</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>environment</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#34;TZ=Asia/Shanghai&#34;</span>
+</span></span><span style=display:flex><span>      - <span style=color:#e6db74>&#34;ES_JAVA_OPTS=-Xms1g -Xmx1g&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>restart</span>: <span style=color:#ae81ff>always</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>ulimits</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>memlock</span>:
+</span></span><span style=display:flex><span>        <span style=color:#f92672>soft</span>: -<span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>hard</span>: -<span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>nofile</span>:
+</span></span><span style=display:flex><span>        <span style=color:#f92672>soft</span>: <span style=color:#ae81ff>65536</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>hard</span>: <span style=color:#ae81ff>65536</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>ports</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>9202</span>:<span style=color:#ae81ff>9200</span>
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>9302</span>:<span style=color:#ae81ff>9300</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>networks</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>elastic</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>volumes</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>./config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml</span>
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>./data:/usr/share/elasticsearch/data</span>
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>./plugins:/usr/share/elasticsearch/plugins</span>
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>./logs:/usr/share/elasticsearch/logs</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>networks</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>elastic</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>external</span>: <span style=color:#66d9ef>true</span>
+</span></span></code></pre></div><ol start=3>
+<li>config/elasticsearch.yml</li></ol><ul>
+<li>node-00</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>cluster.name</span>: <span style=color:#ae81ff>my-es-cluster</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>node.name</span>: <span style=color:#ae81ff>es-node-00</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>network.host</span>: <span style=color:#ae81ff>es-node-00</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>http.port</span>: <span style=color:#ae81ff>9200</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>transport.port</span>: <span style=color:#ae81ff>9300</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>http.cors.enabled</span>: <span style=color:#66d9ef>true</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>http.cors.allow-origin</span>: <span style=color:#e6db74>&#34;*&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>discovery.seed_hosts</span>: [<span style=color:#e6db74>&#34;es-node-01&#34;</span>, <span style=color:#e6db74>&#34;es-node-02&#34;</span>]
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>bootstrap.memory_lock</span>: <span style=color:#66d9ef>true</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>cluster.initial_master_nodes</span>: [<span style=color:#e6db74>&#34;es-node-00&#34;</span>, <span style=color:#e6db74>&#34;es-node-01&#34;</span>, <span style=color:#e6db74>&#34;es-node-02&#34;</span>]
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#disable the usage of geoip functionality</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>ingest.geoip.downloader.enabled</span>: <span style=color:#66d9ef>false</span>
+</span></span></code></pre></div><ul>
+<li>node-01</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>cluster.name</span>: <span style=color:#ae81ff>my-es-cluster</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>node.name</span>: <span style=color:#ae81ff>es-node-01</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>network.host</span>: <span style=color:#ae81ff>es-node-01</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>http.port</span>: <span style=color:#ae81ff>9200</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>transport.port</span>: <span style=color:#ae81ff>9300</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>http.cors.enabled</span>: <span style=color:#66d9ef>true</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>http.cors.allow-origin</span>: <span style=color:#e6db74>&#34;*&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>discovery.seed_hosts</span>: [<span style=color:#e6db74>&#34;es-node-00&#34;</span>, <span style=color:#e6db74>&#34;es-node-02&#34;</span>]
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>bootstrap.memory_lock</span>: <span style=color:#66d9ef>true</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>cluster.initial_master_nodes</span>: [<span style=color:#e6db74>&#34;es-node-00&#34;</span>, <span style=color:#e6db74>&#34;es-node-01&#34;</span>, <span style=color:#e6db74>&#34;es-node-02&#34;</span>]
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#disable the usage of geoip functionality</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>ingest.geoip.downloader.enabled</span>: <span style=color:#66d9ef>false</span>
+</span></span></code></pre></div><ul>
+<li>node-02</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>cluster.name</span>: <span style=color:#ae81ff>my-es-cluster</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>node.name</span>: <span style=color:#ae81ff>es-node-02</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>network.host</span>: <span style=color:#ae81ff>es-node-02</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>http.port</span>: <span style=color:#ae81ff>9200</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>transport.port</span>: <span style=color:#ae81ff>9300</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>http.cors.enabled</span>: <span style=color:#66d9ef>true</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>http.cors.allow-origin</span>: <span style=color:#e6db74>&#34;*&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>discovery.seed_hosts</span>: [<span style=color:#e6db74>&#34;es-node-00&#34;</span>, <span style=color:#e6db74>&#34;es-node-01&#34;</span>]
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>bootstrap.memory_lock</span>: <span style=color:#66d9ef>true</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>cluster.initial_master_nodes</span>: [<span style=color:#e6db74>&#34;es-node-00&#34;</span>, <span style=color:#e6db74>&#34;es-node-01&#34;</span>, <span style=color:#e6db74>&#34;es-node-02&#34;</span>]
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#disable the usage of geoip functionality</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>ingest.geoip.downloader.enabled</span>: <span style=color:#66d9ef>false</span>
+</span></span></code></pre></div><h2 id=kibana>kibana</h2><p><a href=https://www.elastic.co/guide/en/kibana/7.16/docker.html>https://www.elastic.co/guide/en/kibana/7.16/docker.html</a></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kibana/
+</span></span><span style=display:flex><span>├── config
+</span></span><span style=display:flex><span>│   ├── kibana.yml
+</span></span><span style=display:flex><span>│   └── node.options
+</span></span><span style=display:flex><span>└── docker-compose.yml
+</span></span></code></pre></div><p>docker-compose.yml</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>version</span>: <span style=color:#e6db74>&#34;3&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>services</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>kibana</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>image</span>: <span style=color:#ae81ff>docker.elastic.co/kibana/kibana:7.16.3</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>container_name</span>: <span style=color:#ae81ff>kibana</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>environment</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>TZ=Asia/Shanghai</span>
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>ELASTICSEARCH_URL=http://es-node-00:9200</span>
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>ELASTICSEARCH_HOSTS=[&#34;http://es-node-00:9200&#34;,&#34;http://es-node-01:9200&#34;,&#34;http://es-node-02:9200&#34;]</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>volumes</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>./config/kibana.yml:/usr/share/kibana/config/kibana.yml</span>
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>./config/node.options:/usr/share/kibana/config/node.options</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>restart</span>: <span style=color:#ae81ff>always</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>ports</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>5601</span>:<span style=color:#ae81ff>5601</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>networks</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>elastic</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>networks</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>elastic</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>external</span>: <span style=color:#66d9ef>true</span>
+</span></span></code></pre></div><p>kibana.yml</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#75715e>#</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># ** THIS IS AN AUTO-GENERATED FILE **</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Default Kibana configuration for docker target</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>server.host</span>: <span style=color:#e6db74>&#34;0.0.0.0&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>server.shutdownTimeout</span>: <span style=color:#e6db74>&#34;5s&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>elasticsearch.hosts</span>: [ <span style=color:#e6db74>&#34;http://es-node-00:9200&#34;</span> ]
+</span></span><span style=display:flex><span><span style=color:#f92672>monitoring.ui.container.elasticsearch.enabled</span>: <span style=color:#66d9ef>true</span>
+</span></span></code></pre></div><p>node.options</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#75715e>## Node command line options</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>## See `node --help` and `node --v8-options` for available options</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>## Please note you should specify one option per line</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>## max size of old space in megabytes</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#--max-old-space-size=4096</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>## do not terminate process on unhandled promise rejection</span>
+</span></span><span style=display:flex><span> --<span style=color:#ae81ff>unhandled-rejections=warn</span>
+</span></span></code></pre></div><h2 id=cerebro>cerebro</h2><p>docker-compose.yml</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>version</span>: <span style=color:#e6db74>&#34;3&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>services</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>cerebro</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>image</span>: <span style=color:#ae81ff>lmenezes/cerebro:0.9.4</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>container_name</span>: <span style=color:#ae81ff>cerebro</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>environment</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>TZ=Asia/Shanghai</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>restart</span>: <span style=color:#ae81ff>always</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>ports</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>9000</span>:<span style=color:#ae81ff>9000</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>networks</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>elastic</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>networks</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>elastic</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>external</span>: <span style=color:#66d9ef>true</span>
+</span></span></code></pre></div></div><footer class=post-footer>
+<div class=post-tags>
+<a href=/tags/%E9%83%A8%E7%BD%B2/>部署</a>
+</div><nav class=post-nav>
+<a class=next href=/post/backend-server-security/>
+<span class="next-text nav-default">后端服务器安全检查清单</span>
+<span class="next-text nav-mobile">下一篇</span>
+<i class="iconfont icon-right"></i>
+</a>
+</nav></footer></article></div><div id=vcomments></div><script src=//cdn1.lncld.net/static/js/3.0.4/av-min.js></script>
+<script src=//unpkg.com/valine/dist/Valine.min.js></script>
+<script type=text/javascript>new Valine({el:"#vcomments",appId:"fXqv8lFikU96F2xUDOBW4T9X-MdYXbMMI",appKey:"AUbjromOz15du9OJSTY6Q8HM",notify:!1,verify:!1,avatar:"robohash",placeholder:"本站支持评论邮件提醒功能，在上方邮箱输入框留下邮箱，可以收到回复通知哦！（支持markdown语法）",visitor:!1})</script>
+</div></main><footer id=footer class=footer>
+<div class=social-links>
+<a href=mailto:gao.bo168@gmail.com class="iconfont icon-email" title=email></a>
+<a href=https://github.com/forgottener class="iconfont icon-github" title=github></a>
+<a href=https://space.bilibili.com/1714562 class="iconfont icon-bilibili" title=bilibili></a>
+<a href=https://gaoboy.com/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a>
+</div><div class=copyright>
+<span class=power-by>
+由 <a class=hexo-link href=https://gohugo.io>Hugo</a> 强力驱动
+</span>
+<span class=division>|</span>
+<span class=theme-info>
+主题 -
+<a class=theme-link href=https://github.com/olOwOlo/hugo-theme-even>Even</a>
+</span>
+<span class=copyright-year>
+&copy;
+2013 -
+2022<span class=heart><i class="iconfont icon-heart"></i></span><span><a rel="license noopener" href=https://beian.miit.gov.cn/ target=_blank>浙ICP备14043338号-2</a>~<a rel="license noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010802003111" target=_blank>浙公网安备 33010802003111号</a></span>
+</span>
+</div></footer><div class=back-to-top id=back-to-top>
+<i class="iconfont icon-up"></i>
+</div></div><script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+<script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script>
+<script type=text/javascript src=/js/main.min.64437849d125a2d603b3e71d6de5225d641a32d17168a58106e0b61852079683.js></script>
+<script src=/js/blank.js></script>
+</body></html>

@@ -2,8 +2,7 @@
 <head>
 <meta charset=utf-8>
 <meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
-<title>SpringBoot 入门指引 - 猿资猿味 - 高波的博客</title>
-<meta name=renderer content="webkit">
+<title>SpringBoot 入门指引 - 猿资猿味 - 高波的博客</title><meta name=renderer content="webkit">
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
 <meta http-equiv=cache-control content="no-transform">
 <meta http-equiv=cache-control content="no-siteapp">
@@ -12,7 +11,7 @@
 <meta name=apple-mobile-web-app-capable content="yes">
 <meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec">
 <meta name=author content="forgottener"><meta name=description content="SpringBoot 入门简介"><meta name=keywords content="spring,springboot,java">
-<meta name=generator content="Hugo 0.88.1 with theme even">
+<meta name=generator content="Hugo 0.93.2 with theme even">
 <link rel=canonical href=https://gaoboy.com/post/springboot-introduction/>
 <link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
 <link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
@@ -35,37 +34,26 @@
 <meta name=twitter:title content="SpringBoot 入门指引">
 <meta name=twitter:description content="SpringBoot 入门简介"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
-</head>
-<body>
+</head><body>
 <div id=mobile-navbar class=mobile-navbar>
 <div class=mobile-header-logo>
 <a href=/ class=logo>猿资猿味</a>
-</div>
-<div class=mobile-navbar-icon>
+</div><div class=mobile-navbar-icon>
 <span></span>
 <span></span>
 <span></span>
-</div>
-</div>
-<nav id=mobile-menu class="mobile-menu slideout-menu">
+</div></div><nav id=mobile-menu class="mobile-menu slideout-menu">
 <ul class=mobile-menu-list>
 <a href=/>
-<li class=mobile-menu-item>Home</li>
-</a><a href=/post/>
-<li class=mobile-menu-item>Archives</li>
-</a><a href=/tags/>
-<li class=mobile-menu-item>Tags</li>
-</a><a href=/categories/>
-<li class=mobile-menu-item>Categories</li>
-</a>
-</ul>
-</nav>
-<div class=container id=mobile-panel>
+<li class=mobile-menu-item>Home</li></a><a href=/post/>
+<li class=mobile-menu-item>Archives</li></a><a href=/tags/>
+<li class=mobile-menu-item>Tags</li></a><a href=/categories/>
+<li class=mobile-menu-item>Categories</li></a>
+</ul></nav><div class=container id=mobile-panel>
 <header id=header class=header>
 <div class=logo-wrapper>
 <a href=/ class=logo>猿资猿味</a>
-</div>
-<nav class=site-navbar>
+</div><nav class=site-navbar>
 <ul id=menu class=menu>
 <li class=menu-item>
 <a class=menu-item-link href=/>Home</a>
@@ -75,97 +63,32 @@
 <a class=menu-item-link href=/tags/>Tags</a>
 </li><li class=menu-item>
 <a class=menu-item-link href=/categories/>Categories</a>
-</li>
-</ul>
-</nav>
-</header>
-<main id=main class=main>
+</li></ul></nav></header><main id=main class=main>
 <div class=content-wrapper>
 <div id=content class=content>
 <article class=post>
 <header class=post-header>
-<h1 class=post-title>SpringBoot 入门指引</h1>
-<div class=post-meta>
+<h1 class=post-title>SpringBoot 入门指引</h1><div class=post-meta>
 <span class=post-time> 2015-03-21 </span>
 <div class=post-category>
 <a href=/categories/springboot/> springboot </a>
 <a href=/categories/java/> java </a>
-</div>
-</div>
-</header>
-<div class=post-toc id=post-toc>
-<h2 class=post-toc-title>文章目录</h2>
-<div class="post-toc-content always-active">
+</div></div></header><div class=post-toc id=post-toc>
+<h2 class=post-toc-title>文章目录</h2><div class="post-toc-content always-active">
 <nav id=TableOfContents>
 <ul>
 <li><a href=#spring-简史>Spring 简史</a>
 <ul>
-<li><a href=#spring-1x-时代>Spring 1.x 时代</a></li>
-<li><a href=#spring-2x-时代>Spring 2.x 时代</a></li>
-<li><a href=#spring-3x-时代>Spring 3.x 时代</a></li>
-<li><a href=#spring-5x-时代>Spring 5.x 时代</a></li>
-</ul>
-</li>
-<li><a href=#spring-boot-简介>Spring Boot 简介</a>
+<li><a href=#spring-1x-时代>Spring 1.x 时代</a></li><li><a href=#spring-2x-时代>Spring 2.x 时代</a></li><li><a href=#spring-3x-时代>Spring 3.x 时代</a></li><li><a href=#spring-5x-时代>Spring 5.x 时代</a></li></ul></li><li><a href=#spring-boot-简介>Spring Boot 简介</a>
 <ul>
-<li><a href=#概述>概述</a></li>
-<li><a href=#主要目标>主要目标</a></li>
-</ul>
-</li>
-<li><a href=#spring-boot-应用程序>Spring Boot 应用程序</a>
+<li><a href=#概述>概述</a></li><li><a href=#主要目标>主要目标</a></li></ul></li><li><a href=#spring-boot-应用程序>Spring Boot 应用程序</a>
 <ul>
-<li><a href=#工程目录结构>工程目录结构</a></li>
-<li><a href=#工程目录说明>工程目录说明</a></li>
-</ul>
-</li>
-<li><a href=#spring-boot-常用配置>Spring Boot 常用配置</a>
+<li><a href=#工程目录结构>工程目录结构</a></li><li><a href=#工程目录说明>工程目录说明</a></li></ul></li><li><a href=#spring-boot-常用配置>Spring Boot 常用配置</a>
 <ul>
-<li><a href=#概述-1>概述</a></li>
-<li><a href=#自定义-banner>自定义 Banner</a></li>
-<li><a href=#配置文件>配置文件</a></li>
-<li><a href=#日志配置>日志配置</a></li>
-<li><a href=#关闭特定的自动配置>关闭特定的自动配置</a></li>
-</ul>
-</li>
-</ul>
-</nav>
-</div>
-</div>
-<div class=post-content>
-<h1 id=spring-简史>Spring 简史</h1>
-<h2 id=spring-1x-时代>Spring 1.x 时代</h2>
-<p>在 Spring1.x 时代，都是通过 xml 文件配置 bean，随着项目的不断扩大，需要将 xml 配置分放到不同的配置文件中，需要频繁的在 java 类和 xml 配置文件中切换。</p>
-<h2 id=spring-2x-时代>Spring 2.x 时代</h2>
-<p>随着 JDK 1.5 带来的注解支持，Spring2.x 可以使用注解对 Bean 进行申明和注入，大大的减少了 xml 配置文件，同时也大大简化了项目的开发。</p>
-<p>那么，问题来了，究竟是应该使用 xml 还是注解呢？</p>
-<p>最佳实践：</p>
-<ul>
-<li>应用的基本配置用 xml，比如：数据源、资源文件等</li>
-<li>业务开发用注解，比如：Service 中注入 bean 等</li>
-</ul>
-<h2 id=spring-3x-时代>Spring 3.x 时代</h2>
-<p>从 Spring3.x 开始提供了 Java 配置方式，使用 Java 配置方式可以更好的理解你配置的 Bean，现在我们就处于这个时代，并且 Spring4.x 和 Spring boot 都推荐使用 java 配置的方式。</p>
-<h2 id=spring-5x-时代>Spring 5.x 时代</h2>
-<p>Spring5.x 是 Java 界首个支持响应式的 Web 框架，是 Spring 的一个重要版本，距离 Spring4.x 差不多四年。在此期间，大多数增强都是在 Spring Boot 项目中完成的，其最大的亮点就是提供了完整的端到端响应式编程的支持（新增 Spring WebFlux 模块）。</p>
-<p>Spring WebFlux 同时支持使用旧的 Spring MVC 注解声明 <code>Reactive Controller</code>。和传统的 <code>MVC Controller</code> 不同，<code>Reactive Controller</code> 操作的是 <strong>非阻塞</strong> 的 <code>ServerHttpRequest</code> 和 <code>ServerHttpResponse</code>，而不再是 Spring MVC 里的 HttpServletRequest 和 HttpServletResponse。</p>
-<p>至此也代表着 Java 正式迎来了响应式异步编程的时代。</p>
-<h1 id=spring-boot-简介>Spring Boot 简介</h1>
-<h2 id=概述>概述</h2>
-<p>Spring Boot 可以称之为 <strong>新一代 JavaEE 开发标准</strong>；随着动态语言的流行 (Ruby、Groovy、Scala、Node.js)，Java 的开发显得格外的笨重：繁多的配置、低下的开发效率、复杂的部署流程以及第三方技术集成难度大。</p>
-<p>在上述环境下，Spring Boot 应运而生。它使用 “<strong>习惯优于配置</strong>” （项目中存在大量的配置，此外还内置了一个习惯性的配置，让你无需手动进行配置）的理念让你的项目快速的运行起来。使用 Spring Boot 很容易创建一个独立运行（运行 Jar，内嵌 Servlet 容器）准生产级别的基于 Spring 框架的项目，使用 Spring Boot 你可以不用或者只需很少的 Spring 配置。</p>
-<h2 id=主要目标>主要目标</h2>
-<p>Spring Boot 让您更简单的创建基于 Spring 的独立的，生产级的可运行 “应用程序”。 对于 Spring 平台和第三方库，我们采取一种 “<strong>强制性</strong>” 的观点，以至于您可以更加轻松的开始使用。 大部分 Spring Boot 应用程序只需要一点点 Spring 的配置即可。</p>
-<p>您能够使用 Spring Boot 创建以 <code>java -jar</code> 或更传统的 <code>war</code> 部署的方式运行的 <strong>Java 应用程序</strong>。我们也提供了可以运行 “spring scripts” 的命令行（CLT）工具。</p>
-<ul>
-<li>为所有 “Spring 开发” 提供更快速、更便于理解的入门体验。</li>
-<li>Be opinionated out of the box but get out of the way quickly as requirements start to diverge from the defaults.</li>
-<li>提供一系列的非功能性特性，这些特性是大型项目类所共有的（如： 内嵌 servers, security, metrics, health checks, and externalized configuration）。</li>
-<li>完全不生成代码， 也不需要配置 XML。</li>
-</ul>
-<h1 id=spring-boot-应用程序>Spring Boot 应用程序</h1>
-<h2 id=工程目录结构>工程目录结构</h2>
-<p>工程目录结构如下：</p>
-<pre tabindex=0><code>│  .gitignore
+<li><a href=#概述-1>概述</a></li><li><a href=#自定义-banner>自定义 Banner</a></li><li><a href=#配置文件>配置文件</a></li><li><a href=#日志配置>日志配置</a></li><li><a href=#关闭特定的自动配置>关闭特定的自动配置</a></li></ul></li></ul></nav></div></div><div class=post-content>
+<h1 id=spring-简史>Spring 简史</h1><h2 id=spring-1x-时代>Spring 1.x 时代</h2><p>在 Spring1.x 时代，都是通过 xml 文件配置 bean，随着项目的不断扩大，需要将 xml 配置分放到不同的配置文件中，需要频繁的在 java 类和 xml 配置文件中切换。</p><h2 id=spring-2x-时代>Spring 2.x 时代</h2><p>随着 JDK 1.5 带来的注解支持，Spring2.x 可以使用注解对 Bean 进行申明和注入，大大的减少了 xml 配置文件，同时也大大简化了项目的开发。</p><p>那么，问题来了，究竟是应该使用 xml 还是注解呢？</p><p>最佳实践：</p><ul>
+<li>应用的基本配置用 xml，比如：数据源、资源文件等</li><li>业务开发用注解，比如：Service 中注入 bean 等</li></ul><h2 id=spring-3x-时代>Spring 3.x 时代</h2><p>从 Spring3.x 开始提供了 Java 配置方式，使用 Java 配置方式可以更好的理解你配置的 Bean，现在我们就处于这个时代，并且 Spring4.x 和 Spring boot 都推荐使用 java 配置的方式。</p><h2 id=spring-5x-时代>Spring 5.x 时代</h2><p>Spring5.x 是 Java 界首个支持响应式的 Web 框架，是 Spring 的一个重要版本，距离 Spring4.x 差不多四年。在此期间，大多数增强都是在 Spring Boot 项目中完成的，其最大的亮点就是提供了完整的端到端响应式编程的支持（新增 Spring WebFlux 模块）。</p><p>Spring WebFlux 同时支持使用旧的 Spring MVC 注解声明 <code>Reactive Controller</code>。和传统的 <code>MVC Controller</code> 不同，<code>Reactive Controller</code> 操作的是 <strong>非阻塞</strong> 的 <code>ServerHttpRequest</code> 和 <code>ServerHttpResponse</code>，而不再是 Spring MVC 里的 HttpServletRequest 和 HttpServletResponse。</p><p>至此也代表着 Java 正式迎来了响应式异步编程的时代。</p><h1 id=spring-boot-简介>Spring Boot 简介</h1><h2 id=概述>概述</h2><p>Spring Boot 可以称之为 <strong>新一代 JavaEE 开发标准</strong>；随着动态语言的流行 (Ruby、Groovy、Scala、Node.js)，Java 的开发显得格外的笨重：繁多的配置、低下的开发效率、复杂的部署流程以及第三方技术集成难度大。</p><p>在上述环境下，Spring Boot 应运而生。它使用 “<strong>习惯优于配置</strong>” （项目中存在大量的配置，此外还内置了一个习惯性的配置，让你无需手动进行配置）的理念让你的项目快速的运行起来。使用 Spring Boot 很容易创建一个独立运行（运行 Jar，内嵌 Servlet 容器）准生产级别的基于 Spring 框架的项目，使用 Spring Boot 你可以不用或者只需很少的 Spring 配置。</p><h2 id=主要目标>主要目标</h2><p>Spring Boot 让您更简单的创建基于 Spring 的独立的，生产级的可运行 “应用程序”。 对于 Spring 平台和第三方库，我们采取一种 “<strong>强制性</strong>” 的观点，以至于您可以更加轻松的开始使用。 大部分 Spring Boot 应用程序只需要一点点 Spring 的配置即可。</p><p>您能够使用 Spring Boot 创建以 <code>java -jar</code> 或更传统的 <code>war</code> 部署的方式运行的 <strong>Java 应用程序</strong>。我们也提供了可以运行 “spring scripts” 的命令行（CLT）工具。</p><ul>
+<li>为所有 “Spring 开发” 提供更快速、更便于理解的入门体验。</li><li>Be opinionated out of the box but get out of the way quickly as requirements start to diverge from the defaults.</li><li>提供一系列的非功能性特性，这些特性是大型项目类所共有的（如： 内嵌 servers, security, metrics, health checks, and externalized configuration）。</li><li>完全不生成代码， 也不需要配置 XML。</li></ul><h1 id=spring-boot-应用程序>Spring Boot 应用程序</h1><h2 id=工程目录结构>工程目录结构</h2><p>工程目录结构如下：</p><pre tabindex=0><code>│  .gitignore
 │  pom.xml
 │
 │
@@ -192,91 +115,54 @@
                         └─spring
                             └─boot
                                     HelloSpringBootApplicationTests.java
-</code></pre><h2 id=工程目录说明>工程目录说明</h2>
+</code></pre><h2 id=工程目录说明>工程目录说明</h2><ul>
+<li>.gitignore：Git 过滤配置文件</li><li>pom.xml：Maven 的依赖管理配置文件</li><li>HelloSpringBootApplication.java：程序入口</li><li>resources：资源文件目录
 <ul>
-<li>.gitignore：Git 过滤配置文件</li>
-<li>pom.xml：Maven 的依赖管理配置文件</li>
-<li>HelloSpringBootApplication.java：程序入口</li>
-<li>resources：资源文件目录
-<ul>
-<li>static: 静态资源文件目录</li>
-<li>templates：模板资源文件目录</li>
-<li>application.properties：Spring Boot 的配置文件，实际开发中会替换成 YAML 语言配置（application.yml）</li>
-</ul>
-</li>
-</ul>
-<h1 id=spring-boot-常用配置>Spring Boot 常用配置</h1>
-<h2 id=概述-1>概述</h2>
-<p>本章节主要介绍一下 Spring Boot 中的一些常用配置，比如：自定义 Banner、配置日志、关闭特定的自动配置等。</p>
-<h2 id=自定义-banner>自定义 Banner</h2>
-<p>在 Spring Boot 启动的时候会有一个默认的启动图案</p>
-<pre tabindex=0><code>  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+<li>static: 静态资源文件目录</li><li>templates：模板资源文件目录</li><li>application.properties：Spring Boot 的配置文件，实际开发中会替换成 YAML 语言配置（application.yml）</li></ul></li></ul><h1 id=spring-boot-常用配置>Spring Boot 常用配置</h1><h2 id=概述-1>概述</h2><p>本章节主要介绍一下 Spring Boot 中的一些常用配置，比如：自定义 Banner、配置日志、关闭特定的自动配置等。</p><h2 id=自定义-banner>自定义 Banner</h2><p>在 Spring Boot 启动的时候会有一个默认的启动图案</p><pre tabindex=0><code>  .   ____          _            __ _ _
+ /\\ / ___&#39;_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | &#39;_ | &#39;_| | &#39;_ \/ _` | \ \ \ \
  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
+  &#39;  |____| .__|_| |_|_| |_\__, | / / / /
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::        (v2.1.6.RELEASE)
-</code></pre><p>我们在 <code>src/main/resources</code> 目录下新建一个 banner.txt</p>
-<p>通过 <a href=http://patorjk.com/software/taag>http://patorjk.com/software/taag</a> 网站生成字符串，将网站生成的字符复制到 banner.txt 中</p>
-<p>再次运行这个程序</p>
-<pre tabindex=0><code>${AnsiColor.BRIGHT_RED}
+</code></pre><p>我们在 <code>src/main/resources</code> 目录下新建一个 banner.txt</p><p>通过 <a href=http://patorjk.com/software/taag>http://patorjk.com/software/taag</a> 网站生成字符串，将网站生成的字符复制到 banner.txt 中</p><p>再次运行这个程序</p><pre tabindex=0><code>${AnsiColor.BRIGHT_RED}
 ////////////////////////////////////////////////////////////////////
 //                          _ooOoo_                               //
 //                         o8888888o                              //
-//                         88&quot; . &quot;88                              //
+//                         88&#34; . &#34;88                              //
 //                         (| ^_^ |)                              //
 //                         O\  =  /O                              //
-//                      ____/`---'\____                           //
-//                    .'  \\|     |//  `.                         //
+//                      ____/`---&#39;\____                           //
+//                    .&#39;  \\|     |//  `.                         //
 //                   /  \\|||  :  |||//  \                        //
 //                  /  _||||| -:- |||||-  \                       //
 //                  |   | \\\  -  /// |   |                       //
-//                  | \_|  ''\---/''  |   |                       //
+//                  | \_|  &#39;&#39;\---/&#39;&#39;  |   |                       //
 //                  \  .-\__  `-`  ___/-. /                       //
-//                ___`. .'  /--.--\  `. . ___                     //
-//              .&quot;&quot; '&lt;  `.___\_&lt;|&gt;_/___.'  &gt;'&quot;&quot;.                  //
+//                ___`. .&#39;  /--.--\  `. . ___                     //
+//              .&#34;&#34; &#39;&lt;  `.___\_&lt;|&gt;_/___.&#39;  &gt;&#39;&#34;&#34;.                  //
 //            | | :  `- \`.;`\ _ /`;.`/ - ` : | |                 //
 //            \  \ `-.   \_ __\ /__ _/   .-` /  /                 //
-//      ========`-.____`-.___\_____/___.-`____.-'========         //
-//                           `=---='                              //
+//      ========`-.____`-.___\_____/___.-`____.-&#39;========         //
+//                           `=---=&#39;                              //
 //      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^        //
 //            佛祖保佑       永不宕机     永无BUG                  //
 ////////////////////////////////////////////////////////////////////
-</code></pre><p>常用属性设置：</p>
-<ul>
-<li><code>${AnsiColor.BRIGHT_RED}</code>：设置控制台中输出内容的颜色</li>
-<li><code>${application.version}</code>：用来获取 <code>MANIFEST.MF</code> 文件中的版本号</li>
-<li><code>${application.formatted-version}</code>：格式化后的 <code>${application.version}</code> 版本信息</li>
-<li><code>${spring-boot.version}</code>：Spring Boot 的版本号</li>
-<li><code>${spring-boot.formatted-version}</code>：格式化后的 <code>${spring-boot.version}</code> 版本信息</li>
-</ul>
-<h2 id=配置文件>配置文件</h2>
-<p>Spring Boot 项目使用一个全局的配置文件 <code>application.properties</code> 或者是 <code>application.yml</code>，在 <code>resources</code> 目录下或者类路径下的 <code>/config</code> 下，一般我们放到 <code>resources</code> 下。</p>
-<p>修改 Tomcat 的端口为 9090，并将默认的访问路径 &ldquo;/&rdquo; 修改为 &ldquo;boot&rdquo;，可以在 <code>application.properties</code> 中添加：</p>
-<pre tabindex=0><code class=language-properties data-lang=properties>server.port=9090
+</code></pre><p>常用属性设置：</p><ul>
+<li><code>${AnsiColor.BRIGHT_RED}</code>：设置控制台中输出内容的颜色</li><li><code>${application.version}</code>：用来获取 <code>MANIFEST.MF</code> 文件中的版本号</li><li><code>${application.formatted-version}</code>：格式化后的 <code>${application.version}</code> 版本信息</li><li><code>${spring-boot.version}</code>：Spring Boot 的版本号</li><li><code>${spring-boot.formatted-version}</code>：格式化后的 <code>${spring-boot.version}</code> 版本信息</li></ul><h2 id=配置文件>配置文件</h2><p>Spring Boot 项目使用一个全局的配置文件 <code>application.properties</code> 或者是 <code>application.yml</code>，在 <code>resources</code> 目录下或者类路径下的 <code>/config</code> 下，一般我们放到 <code>resources</code> 下。</p><p>修改 Tomcat 的端口为 9090，并将默认的访问路径 &ldquo;/&rdquo; 修改为 &ldquo;boot&rdquo;，可以在 <code>application.properties</code> 中添加：</p><pre tabindex=0><code class=language-properties data-lang=properties>server.port=9090
 server.context-path=/boot
-</code></pre><p>或在 application.yml 中添加：</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#f92672>server</span>:
-  <span style=color:#f92672>port</span>: <span style=color:#ae81ff>9090</span>
-  <span style=color:#f92672>context-path</span>: <span style=color:#ae81ff>/boot</span>
-</code></pre></div><h2 id=日志配置>日志配置</h2>
-<p>Spring Boot 对各种日志框架都做了支持，我们可以通过配置来修改默认的日志的配置</p>
-<p>默认情况下，Spring Boot 使用 Logback 作为日志框架</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#f92672>logging</span>:
-  <span style=color:#f92672>file</span>: <span style=color:#ae81ff>../logs/spring-boot-hello.log</span>
-  <span style=color:#f92672>level.org.springframework.web</span>: <span style=color:#ae81ff>DEBUG</span>
-</code></pre></div><h2 id=关闭特定的自动配置>关闭特定的自动配置</h2>
-<p>关闭特定的自动配置使用 <code>@SpringBootApplication</code> 注解的 <code>exclude</code> 参数即可，这里以关闭数据源的自动配置为例</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#a6e22e>@SpringBootApplication</span><span style=color:#f92672>(</span>exclude <span style=color:#f92672>=</span> <span style=color:#f92672>{</span>DataSourceAutoConfiguration<span style=color:#f92672>.</span><span style=color:#a6e22e>class</span><span style=color:#f92672>})</span>
-</code></pre></div>
-</div>
-<footer class=post-footer>
+</code></pre><p>或在 application.yml 中添加：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>server</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>port</span>: <span style=color:#ae81ff>9090</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>context-path</span>: <span style=color:#ae81ff>/boot</span>
+</span></span></code></pre></div><h2 id=日志配置>日志配置</h2><p>Spring Boot 对各种日志框架都做了支持，我们可以通过配置来修改默认的日志的配置</p><p>默认情况下，Spring Boot 使用 Logback 作为日志框架</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>logging</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>file</span>: <span style=color:#ae81ff>../logs/spring-boot-hello.log</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>level.org.springframework.web</span>: <span style=color:#ae81ff>DEBUG</span>
+</span></span></code></pre></div><h2 id=关闭特定的自动配置>关闭特定的自动配置</h2><p>关闭特定的自动配置使用 <code>@SpringBootApplication</code> 注解的 <code>exclude</code> 参数即可，这里以关闭数据源的自动配置为例</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#a6e22e>@SpringBootApplication</span><span style=color:#f92672>(</span>exclude <span style=color:#f92672>=</span> <span style=color:#f92672>{</span>DataSourceAutoConfiguration<span style=color:#f92672>.</span><span style=color:#a6e22e>class</span><span style=color:#f92672>})</span>
+</span></span></code></pre></div></div><footer class=post-footer>
 <div class=post-tags>
 <a href=/tags/springboot/>springboot</a>
 <a href=/tags/java/>java</a>
-</div>
-<nav class=post-nav>
+</div><nav class=post-nav>
 <a class=prev href=/post/ubuntu-lvm-expansion/>
 <i class="iconfont icon-left"></i>
 <span class="prev-text nav-default">Ubuntu Lvm 扩容教程</span>
@@ -287,24 +173,16 @@ server.context-path=/boot
 <span class="next-text nav-mobile">下一篇</span>
 <i class="iconfont icon-right"></i>
 </a>
-</nav>
-</footer>
-</article>
-</div>
-<div id=vcomments></div>
-<script src=//cdn1.lncld.net/static/js/3.0.4/av-min.js></script>
+</nav></footer></article></div><div id=vcomments></div><script src=//cdn1.lncld.net/static/js/3.0.4/av-min.js></script>
 <script src=//unpkg.com/valine/dist/Valine.min.js></script>
-<script type=text/javascript>new Valine({el:'#vcomments',appId:'fXqv8lFikU96F2xUDOBW4T9X-MdYXbMMI',appKey:'AUbjromOz15du9OJSTY6Q8HM',notify:!1,verify:!1,avatar:'robohash',placeholder:'本站支持评论邮件提醒功能，在上方邮箱输入框留下邮箱，可以收到回复通知哦！（支持markdown语法）',visitor:!1})</script>
-</div>
-</main>
-<footer id=footer class=footer>
+<script type=text/javascript>new Valine({el:"#vcomments",appId:"fXqv8lFikU96F2xUDOBW4T9X-MdYXbMMI",appKey:"AUbjromOz15du9OJSTY6Q8HM",notify:!1,verify:!1,avatar:"robohash",placeholder:"本站支持评论邮件提醒功能，在上方邮箱输入框留下邮箱，可以收到回复通知哦！（支持markdown语法）",visitor:!1})</script>
+</div></main><footer id=footer class=footer>
 <div class=social-links>
 <a href=mailto:gao.bo168@gmail.com class="iconfont icon-email" title=email></a>
 <a href=https://github.com/forgottener class="iconfont icon-github" title=github></a>
 <a href=https://space.bilibili.com/1714562 class="iconfont icon-bilibili" title=bilibili></a>
 <a href=https://gaoboy.com/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a>
-</div>
-<div class=copyright>
+</div><div class=copyright>
 <span class=power-by>
 由 <a class=hexo-link href=https://gohugo.io>Hugo</a> 强力驱动
 </span>
@@ -316,19 +194,14 @@ server.context-path=/boot
 <span class=copyright-year>
 &copy;
 2013 -
-2021<span class=heart><i class="iconfont icon-heart"></i></span><span><a rel="license noopener" href=https://beian.miit.gov.cn/ target=_blank>浙ICP备14043338号-2</a>~<a rel="license noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010802003111" target=_blank>浙公网安备 33010802003111号</a></span>
+2022<span class=heart><i class="iconfont icon-heart"></i></span><span><a rel="license noopener" href=https://beian.miit.gov.cn/ target=_blank>浙ICP备14043338号-2</a>~<a rel="license noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010802003111" target=_blank>浙公网安备 33010802003111号</a></span>
 </span>
-</div>
-</footer>
-<div class=back-to-top id=back-to-top>
+</div></footer><div class=back-to-top id=back-to-top>
 <i class="iconfont icon-up"></i>
-</div>
-</div>
-<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+</div></div><script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
 <script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script>
 <script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script>
 <script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script>
-<script type=text/javascript src=/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js></script>
+<script type=text/javascript src=/js/main.min.64437849d125a2d603b3e71d6de5225d641a32d17168a58106e0b61852079683.js></script>
 <script src=/js/blank.js></script>
-</body>
-</html>
+</body></html>

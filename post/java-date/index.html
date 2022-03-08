@@ -2,8 +2,7 @@
 <head>
 <meta charset=utf-8>
 <meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
-<title>Java 日期时间 - 猿资猿味 - 高波的博客</title>
-<meta name=renderer content="webkit">
+<title>Java 日期时间 - 猿资猿味 - 高波的博客</title><meta name=renderer content="webkit">
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
 <meta http-equiv=cache-control content="no-transform">
 <meta http-equiv=cache-control content="no-siteapp">
@@ -12,7 +11,7 @@
 <meta name=apple-mobile-web-app-capable content="yes">
 <meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec">
 <meta name=author content="forgottener"><meta name=description content="Java 日期时间"><meta name=keywords content="java,Date">
-<meta name=generator content="Hugo 0.88.1 with theme even">
+<meta name=generator content="Hugo 0.93.2 with theme even">
 <link rel=canonical href=https://gaoboy.com/post/java-date/>
 <link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
 <link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
@@ -35,37 +34,26 @@
 <meta name=twitter:title content="Java 日期时间">
 <meta name=twitter:description content="Java 日期时间"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
-</head>
-<body>
+</head><body>
 <div id=mobile-navbar class=mobile-navbar>
 <div class=mobile-header-logo>
 <a href=/ class=logo>猿资猿味</a>
-</div>
-<div class=mobile-navbar-icon>
+</div><div class=mobile-navbar-icon>
 <span></span>
 <span></span>
 <span></span>
-</div>
-</div>
-<nav id=mobile-menu class="mobile-menu slideout-menu">
+</div></div><nav id=mobile-menu class="mobile-menu slideout-menu">
 <ul class=mobile-menu-list>
 <a href=/>
-<li class=mobile-menu-item>Home</li>
-</a><a href=/post/>
-<li class=mobile-menu-item>Archives</li>
-</a><a href=/tags/>
-<li class=mobile-menu-item>Tags</li>
-</a><a href=/categories/>
-<li class=mobile-menu-item>Categories</li>
-</a>
-</ul>
-</nav>
-<div class=container id=mobile-panel>
+<li class=mobile-menu-item>Home</li></a><a href=/post/>
+<li class=mobile-menu-item>Archives</li></a><a href=/tags/>
+<li class=mobile-menu-item>Tags</li></a><a href=/categories/>
+<li class=mobile-menu-item>Categories</li></a>
+</ul></nav><div class=container id=mobile-panel>
 <header id=header class=header>
 <div class=logo-wrapper>
 <a href=/ class=logo>猿资猿味</a>
-</div>
-<nav class=site-navbar>
+</div><nav class=site-navbar>
 <ul id=menu class=menu>
 <li class=menu-item>
 <a class=menu-item-link href=/>Home</a>
@@ -75,972 +63,427 @@
 <a class=menu-item-link href=/tags/>Tags</a>
 </li><li class=menu-item>
 <a class=menu-item-link href=/categories/>Categories</a>
-</li>
-</ul>
-</nav>
-</header>
-<main id=main class=main>
+</li></ul></nav></header><main id=main class=main>
 <div class=content-wrapper>
 <div id=content class=content>
 <article class=post>
 <header class=post-header>
-<h1 class=post-title>Java 日期时间</h1>
-<div class=post-meta>
+<h1 class=post-title>Java 日期时间</h1><div class=post-meta>
 <span class=post-time> 2015-01-25 </span>
 <div class=post-category>
 <a href=/categories/java/> java </a>
-</div>
-</div>
-</header>
-<div class=post-toc id=post-toc>
-<h2 class=post-toc-title>文章目录</h2>
-<div class="post-toc-content always-active">
+</div></div></header><div class=post-toc id=post-toc>
+<h2 class=post-toc-title>文章目录</h2><div class="post-toc-content always-active">
 <nav id=TableOfContents>
 <ul>
-<li><a href=#概述>概述</a></li>
-<li><a href=#获取当前日期时间>获取当前日期时间</a></li>
-<li><a href=#日期比较>日期比较</a></li>
-<li><a href=#使用-simpledateformat-格式化日期>使用 SimpleDateFormat 格式化日期</a></li>
-<li><a href=#简单的-dateformat-格式化编码>简单的 DateFormat 格式化编码</a></li>
-<li><a href=#使用-printf-格式化日期>使用 printf 格式化日期</a>
+<li><a href=#概述>概述</a></li><li><a href=#获取当前日期时间>获取当前日期时间</a></li><li><a href=#日期比较>日期比较</a></li><li><a href=#使用-simpledateformat-格式化日期>使用 SimpleDateFormat 格式化日期</a></li><li><a href=#简单的-dateformat-格式化编码>简单的 DateFormat 格式化编码</a></li><li><a href=#使用-printf-格式化日期>使用 printf 格式化日期</a>
 <ul>
-<li><a href=#实例>实例</a></li>
-</ul>
-</li>
-<li><a href=#日期和时间转换字符>日期和时间转换字符</a>
+<li><a href=#实例>实例</a></li></ul></li><li><a href=#日期和时间转换字符>日期和时间转换字符</a>
 <ul>
-<li><a href=#实例-1>实例</a></li>
-</ul>
-</li>
-<li><a href=#解析字符串为时间>解析字符串为时间</a></li>
-<li><a href=#java-休眠-sleep>Java 休眠 (sleep)</a></li>
-<li><a href=#测量时间>测量时间</a></li>
-<li><a href=#calendar-类>Calendar 类</a>
+<li><a href=#实例-1>实例</a></li></ul></li><li><a href=#解析字符串为时间>解析字符串为时间</a></li><li><a href=#java-休眠-sleep>Java 休眠 (sleep)</a></li><li><a href=#测量时间>测量时间</a></li><li><a href=#calendar-类>Calendar 类</a>
 <ul>
-<li><a href=#创建一个代表系统当前日期的-calendar-对象>创建一个代表系统当前日期的 Calendar 对象</a></li>
-<li><a href=#创建一个指定日期的-calendar-对象>创建一个指定日期的 Calendar 对象</a></li>
-<li><a href=#calendar-类对象字段类型>Calendar 类对象字段类型</a></li>
-<li><a href=#calendar-类对象信息的设置>Calendar 类对象信息的设置</a></li>
-<li><a href=#calendar-类对象信息的获得>Calendar 类对象信息的获得</a></li>
-</ul>
-</li>
-<li><a href=#gregoriancalendar-类>GregorianCalendar 类</a>
+<li><a href=#创建一个代表系统当前日期的-calendar-对象>创建一个代表系统当前日期的 Calendar 对象</a></li><li><a href=#创建一个指定日期的-calendar-对象>创建一个指定日期的 Calendar 对象</a></li><li><a href=#calendar-类对象字段类型>Calendar 类对象字段类型</a></li><li><a href=#calendar-类对象信息的设置>Calendar 类对象信息的设置</a></li><li><a href=#calendar-类对象信息的获得>Calendar 类对象信息的获得</a></li></ul></li><li><a href=#gregoriancalendar-类>GregorianCalendar 类</a>
 <ul>
-<li><a href=#实例-2>实例</a></li>
-</ul>
-</li>
-</ul>
-</nav>
-</div>
-</div>
-<div class=post-content>
-<h1 id=概述>概述</h1>
-<p>java.util 包提供了 Date 类来封装当前的日期和时间。 Date 类提供两个构造函数来实例化 Date 对象。</p>
-<p>第一个构造函数使用当前日期和时间来初始化对象。</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>Date<span style=color:#f92672>()</span>
-</code></pre></div><p>第二个构造函数接收一个参数，该参数是从 1970 年 1 月 1 日起的微秒数。</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>Date<span style=color:#f92672>(</span><span style=color:#66d9ef>long</span> millisec<span style=color:#f92672>)</span>
-</code></pre></div><p>Date 对象创建以后，可以调用下面的方法。</p>
-<table>
+<li><a href=#实例-2>实例</a></li></ul></li></ul></nav></div></div><div class=post-content>
+<h1 id=概述>概述</h1><p>java.util 包提供了 Date 类来封装当前的日期和时间。 Date 类提供两个构造函数来实例化 Date 对象。</p><p>第一个构造函数使用当前日期和时间来初始化对象。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span>Date<span style=color:#f92672>()</span>
+</span></span></code></pre></div><p>第二个构造函数接收一个参数，该参数是从 1970 年 1 月 1 日起的微秒数。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span>Date<span style=color:#f92672>(</span><span style=color:#66d9ef>long</span> millisec<span style=color:#f92672>)</span>
+</span></span></code></pre></div><p>Date 对象创建以后，可以调用下面的方法。</p><table>
 <thead>
 <tr>
-<th style=text-align:left>序号</th>
-<th style=text-align:left>方法和描述</th>
-</tr>
-</thead>
-<tbody>
+<th style=text-align:left>序号</th><th style=text-align:left>方法和描述</th></tr></thead><tbody>
 <tr>
-<td style=text-align:left>1</td>
-<td style=text-align:left><strong>boolean after(Date date)</strong> 若当调用此方法的 Date 对象在指定日期之后返回 true, 否则返回 false。</td>
-</tr>
-<tr>
-<td style=text-align:left>2</td>
-<td style=text-align:left><strong>boolean before(Date date)</strong> 若当调用此方法的 Date 对象在指定日期之前返回 true, 否则返回 false。</td>
-</tr>
-<tr>
-<td style=text-align:left>3</td>
-<td style=text-align:left><strong>Object clone( )</strong> 返回此对象的副本。</td>
-</tr>
-<tr>
-<td style=text-align:left>4</td>
-<td style=text-align:left><strong>int compareTo(Date date)</strong> 比较当调用此方法的 Date 对象和指定日期。两者相等时候返回 0。调用对象在指定日期之前则返回负数。调用对象在指定日期之后则返回正数。</td>
-</tr>
-<tr>
-<td style=text-align:left>5</td>
-<td style=text-align:left><strong>int compareTo(Object obj)</strong> 若 obj 是 Date 类型则操作等同于 compareTo (Date) 。否则它抛出 ClassCastException。</td>
-</tr>
-<tr>
-<td style=text-align:left>6</td>
-<td style=text-align:left><strong>boolean equals(Object date)</strong> 当调用此方法的 Date 对象和指定日期相等时候返回 true, 否则返回 false。</td>
-</tr>
-<tr>
-<td style=text-align:left>7</td>
-<td style=text-align:left><strong>long getTime( )</strong> 返回自 1970 年 1 月 1 日 00:00:00 GMT 以来此 Date 对象表示的毫秒数。</td>
-</tr>
-<tr>
-<td style=text-align:left>8</td>
-<td style=text-align:left><strong>int hashCode( )</strong> 返回此对象的哈希码值。</td>
-</tr>
-<tr>
-<td style=text-align:left>9</td>
-<td style=text-align:left><strong>void setTime(long time)</strong> 用自 1970 年 1 月 1 日 00:00:00 GMT 以后 time 毫秒数设置时间和日期。</td>
-</tr>
-<tr>
-<td style=text-align:left>10</td>
-<td style=text-align:left><strong>String toString( )</strong> 转换 Date 对象为 String 表示形式，并返回该字符串。</td>
-</tr>
-</tbody>
-</table>
-<h1 id=获取当前日期时间>获取当前日期时间</h1>
-<p>Java 中获取当前日期和时间很简单，使用 Date 对象的 toString () 方法来打印当前日期和时间，如下所示：</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#f92672>import</span> java.util.Date<span style=color:#f92672>;</span>
-  
-<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>DateDemo</span> <span style=color:#f92672>{</span>
-   <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String args<span style=color:#f92672>[])</span> <span style=color:#f92672>{</span>
-       <span style=color:#75715e>// 初始化 Date 对象
-</span><span style=color:#75715e></span>       Date date <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> Date<span style=color:#f92672>();</span>
-        
-       <span style=color:#75715e>// 使用 toString() 函数显示日期时间
-</span><span style=color:#75715e></span>       System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span>date<span style=color:#f92672>.</span><span style=color:#a6e22e>toString</span><span style=color:#f92672>());</span>
-   <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
-</code></pre></div><p>以上实例编译运行结果如下:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>Mon May <span style=color:#ae81ff>04</span> 09:51:52 CDT <span style=color:#ae81ff>2013</span>
-</code></pre></div><h1 id=日期比较>日期比较</h1>
-<p>Java 使用以下三种方法来比较两个日期：</p>
-<ul>
-<li>使用 getTime() 方法获取两个日期（自 1970 年 1 月 1 日经历的微秒数值），然后比较这两个值。</li>
-<li>使用方法 before()，after() 和 equals()。例如，一个月的 12 号比 18 号早，则 new Date (99, 2, 12).before (new Date (99, 2, 18)) 返回 true。</li>
-<li>使用 compareTo() 方法，它是由 Comparable 接口定义的，Date 类实现了这个接口。</li>
-</ul>
-<h1 id=使用-simpledateformat-格式化日期>使用 SimpleDateFormat 格式化日期</h1>
-<p>SimpleDateFormat 是一个以语言环境敏感的方式来格式化和分析日期的类。SimpleDateFormat 允许你选择任何用户自定义日期时间格式来运行。例如：</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#f92672>import</span> java.util.*<span style=color:#f92672>;</span>
-<span style=color:#f92672>import</span> java.text.*<span style=color:#f92672>;</span>
-
-<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>DateDemo</span> <span style=color:#f92672>{</span>
-   <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String args<span style=color:#f92672>[])</span> <span style=color:#f92672>{</span>
-
-      Date dNow <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> Date<span style=color:#f92672>();</span>
-      SimpleDateFormat ft <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> SimpleDateFormat <span style=color:#f92672>(</span><span style=color:#e6db74>&#34;E yyyy.MM.dd &#39;at&#39; hh:mm:ss a zzz&#34;</span><span style=color:#f92672>);</span>
-
-      System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Current Date: &#34;</span> <span style=color:#f92672>+</span> ft<span style=color:#f92672>.</span><span style=color:#a6e22e>format</span><span style=color:#f92672>(</span>dNow<span style=color:#f92672>));</span>
-   <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
-</code></pre></div><p>以上实例编译运行结果如下:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>Current Date: Sun 2015.07.18 at 04:14:09 PM PDT
-</code></pre></div><h1 id=简单的-dateformat-格式化编码>简单的 DateFormat 格式化编码</h1>
-<p>时间模式字符串用来指定时间格式。在此模式中，所有的 ASCII 字母被保留为模式字母，定义如下：</p>
-<table>
+<td style=text-align:left>1</td><td style=text-align:left><strong>boolean after(Date date)</strong> 若当调用此方法的 Date 对象在指定日期之后返回 true, 否则返回 false。</td></tr><tr>
+<td style=text-align:left>2</td><td style=text-align:left><strong>boolean before(Date date)</strong> 若当调用此方法的 Date 对象在指定日期之前返回 true, 否则返回 false。</td></tr><tr>
+<td style=text-align:left>3</td><td style=text-align:left><strong>Object clone( )</strong> 返回此对象的副本。</td></tr><tr>
+<td style=text-align:left>4</td><td style=text-align:left><strong>int compareTo(Date date)</strong> 比较当调用此方法的 Date 对象和指定日期。两者相等时候返回 0。调用对象在指定日期之前则返回负数。调用对象在指定日期之后则返回正数。</td></tr><tr>
+<td style=text-align:left>5</td><td style=text-align:left><strong>int compareTo(Object obj)</strong> 若 obj 是 Date 类型则操作等同于 compareTo (Date) 。否则它抛出 ClassCastException。</td></tr><tr>
+<td style=text-align:left>6</td><td style=text-align:left><strong>boolean equals(Object date)</strong> 当调用此方法的 Date 对象和指定日期相等时候返回 true, 否则返回 false。</td></tr><tr>
+<td style=text-align:left>7</td><td style=text-align:left><strong>long getTime( )</strong> 返回自 1970 年 1 月 1 日 00:00:00 GMT 以来此 Date 对象表示的毫秒数。</td></tr><tr>
+<td style=text-align:left>8</td><td style=text-align:left><strong>int hashCode( )</strong> 返回此对象的哈希码值。</td></tr><tr>
+<td style=text-align:left>9</td><td style=text-align:left><strong>void setTime(long time)</strong> 用自 1970 年 1 月 1 日 00:00:00 GMT 以后 time 毫秒数设置时间和日期。</td></tr><tr>
+<td style=text-align:left>10</td><td style=text-align:left><strong>String toString( )</strong> 转换 Date 对象为 String 表示形式，并返回该字符串。</td></tr></tbody></table><h1 id=获取当前日期时间>获取当前日期时间</h1><p>Java 中获取当前日期和时间很简单，使用 Date 对象的 toString () 方法来打印当前日期和时间，如下所示：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#f92672>import</span> java.util.Date<span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>DateDemo</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>   <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String args<span style=color:#f92672>[])</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>       <span style=color:#75715e>// 初始化 Date 对象
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>       Date date <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> Date<span style=color:#f92672>();</span>
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>       <span style=color:#75715e>// 使用 toString() 函数显示日期时间
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>       System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span>date<span style=color:#f92672>.</span><span style=color:#a6e22e>toString</span><span style=color:#f92672>());</span>
+</span></span><span style=display:flex><span>   <span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span></code></pre></div><p>以上实例编译运行结果如下:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>Mon May <span style=color:#ae81ff>04</span> 09:51:52 CDT <span style=color:#ae81ff>2013</span>
+</span></span></code></pre></div><h1 id=日期比较>日期比较</h1><p>Java 使用以下三种方法来比较两个日期：</p><ul>
+<li>使用 getTime() 方法获取两个日期（自 1970 年 1 月 1 日经历的微秒数值），然后比较这两个值。</li><li>使用方法 before()，after() 和 equals()。例如，一个月的 12 号比 18 号早，则 new Date (99, 2, 12).before (new Date (99, 2, 18)) 返回 true。</li><li>使用 compareTo() 方法，它是由 Comparable 接口定义的，Date 类实现了这个接口。</li></ul><h1 id=使用-simpledateformat-格式化日期>使用 SimpleDateFormat 格式化日期</h1><p>SimpleDateFormat 是一个以语言环境敏感的方式来格式化和分析日期的类。SimpleDateFormat 允许你选择任何用户自定义日期时间格式来运行。例如：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#f92672>import</span> java.util.*<span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> java.text.*<span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>DateDemo</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>   <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String args<span style=color:#f92672>[])</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      Date dNow <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> Date<span style=color:#f92672>();</span>
+</span></span><span style=display:flex><span>      SimpleDateFormat ft <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> SimpleDateFormat <span style=color:#f92672>(</span><span style=color:#e6db74>&#34;E yyyy.MM.dd &#39;at&#39; hh:mm:ss a zzz&#34;</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Current Date: &#34;</span> <span style=color:#f92672>+</span> ft<span style=color:#f92672>.</span><span style=color:#a6e22e>format</span><span style=color:#f92672>(</span>dNow<span style=color:#f92672>));</span>
+</span></span><span style=display:flex><span>   <span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span></code></pre></div><p>以上实例编译运行结果如下:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>Current Date: Sun 2015.07.18 at 04:14:09 PM PDT
+</span></span></code></pre></div><h1 id=简单的-dateformat-格式化编码>简单的 DateFormat 格式化编码</h1><p>时间模式字符串用来指定时间格式。在此模式中，所有的 ASCII 字母被保留为模式字母，定义如下：</p><table>
 <thead>
 <tr>
-<th style=text-align:left><strong>字母</strong></th>
-<th style=text-align:left><strong>描述</strong></th>
-<th style=text-align:left><strong>示例</strong></th>
-</tr>
-</thead>
-<tbody>
+<th style=text-align:left><strong>字母</strong></th><th style=text-align:left><strong>描述</strong></th><th style=text-align:left><strong>示例</strong></th></tr></thead><tbody>
 <tr>
-<td style=text-align:left>G</td>
-<td style=text-align:left>纪元标记</td>
-<td style=text-align:left>AD</td>
-</tr>
-<tr>
-<td style=text-align:left>y</td>
-<td style=text-align:left>四位年份</td>
-<td style=text-align:left>2001</td>
-</tr>
-<tr>
-<td style=text-align:left>M</td>
-<td style=text-align:left>月份</td>
-<td style=text-align:left>July or 07</td>
-</tr>
-<tr>
-<td style=text-align:left>d</td>
-<td style=text-align:left>一个月的日期</td>
-<td style=text-align:left>10</td>
-</tr>
-<tr>
-<td style=text-align:left>h</td>
-<td style=text-align:left>A.M./P.M. (1~12) 格式小时</td>
-<td style=text-align:left>12</td>
-</tr>
-<tr>
-<td style=text-align:left>H</td>
-<td style=text-align:left>一天中的小时 (0~23)</td>
-<td style=text-align:left>22</td>
-</tr>
-<tr>
-<td style=text-align:left>m</td>
-<td style=text-align:left>分钟数</td>
-<td style=text-align:left>30</td>
-</tr>
-<tr>
-<td style=text-align:left>s</td>
-<td style=text-align:left>秒数</td>
-<td style=text-align:left>55</td>
-</tr>
-<tr>
-<td style=text-align:left>S</td>
-<td style=text-align:left>微妙数</td>
-<td style=text-align:left>234</td>
-</tr>
-<tr>
-<td style=text-align:left>E</td>
-<td style=text-align:left>星期几</td>
-<td style=text-align:left>Tuesday</td>
-</tr>
-<tr>
-<td style=text-align:left>D</td>
-<td style=text-align:left>一年中的日子</td>
-<td style=text-align:left>360</td>
-</tr>
-<tr>
-<td style=text-align:left>F</td>
-<td style=text-align:left>一个月中第几周的周几</td>
-<td style=text-align:left>2 (second Wed. in July)</td>
-</tr>
-<tr>
-<td style=text-align:left>w</td>
-<td style=text-align:left>一年中第几周</td>
-<td style=text-align:left>40</td>
-</tr>
-<tr>
-<td style=text-align:left>W</td>
-<td style=text-align:left>一个月中第几周</td>
-<td style=text-align:left>1</td>
-</tr>
-<tr>
-<td style=text-align:left>a</td>
-<td style=text-align:left>A.M./P.M. 标记</td>
-<td style=text-align:left>PM</td>
-</tr>
-<tr>
-<td style=text-align:left>k</td>
-<td style=text-align:left>一天中的小时 (1~24)</td>
-<td style=text-align:left>24</td>
-</tr>
-<tr>
-<td style=text-align:left>K</td>
-<td style=text-align:left>A.M./P.M. (0~11) 格式小时</td>
-<td style=text-align:left>10</td>
-</tr>
-<tr>
-<td style=text-align:left>z</td>
-<td style=text-align:left>时区</td>
-<td style=text-align:left>Eastern Standard Time</td>
-</tr>
-<tr>
-<td style=text-align:left>'</td>
-<td style=text-align:left>文字定界符</td>
-<td style=text-align:left>Delimiter</td>
-</tr>
-<tr>
-<td style=text-align:left>"</td>
-<td style=text-align:left>单引号</td>
-<td style=text-align:left>`</td>
-</tr>
-</tbody>
-</table>
-<h1 id=使用-printf-格式化日期>使用 printf 格式化日期</h1>
-<p>printf 方法可以很轻松地格式化时间和日期。使用两个字母格式，它以 <code>%t</code> 开头并且以下面表格中的一个字母结尾。</p>
-<table>
+<td style=text-align:left>G</td><td style=text-align:left>纪元标记</td><td style=text-align:left>AD</td></tr><tr>
+<td style=text-align:left>y</td><td style=text-align:left>四位年份</td><td style=text-align:left>2001</td></tr><tr>
+<td style=text-align:left>M</td><td style=text-align:left>月份</td><td style=text-align:left>July or 07</td></tr><tr>
+<td style=text-align:left>d</td><td style=text-align:left>一个月的日期</td><td style=text-align:left>10</td></tr><tr>
+<td style=text-align:left>h</td><td style=text-align:left>A.M./P.M. (1~12) 格式小时</td><td style=text-align:left>12</td></tr><tr>
+<td style=text-align:left>H</td><td style=text-align:left>一天中的小时 (0~23)</td><td style=text-align:left>22</td></tr><tr>
+<td style=text-align:left>m</td><td style=text-align:left>分钟数</td><td style=text-align:left>30</td></tr><tr>
+<td style=text-align:left>s</td><td style=text-align:left>秒数</td><td style=text-align:left>55</td></tr><tr>
+<td style=text-align:left>S</td><td style=text-align:left>微妙数</td><td style=text-align:left>234</td></tr><tr>
+<td style=text-align:left>E</td><td style=text-align:left>星期几</td><td style=text-align:left>Tuesday</td></tr><tr>
+<td style=text-align:left>D</td><td style=text-align:left>一年中的日子</td><td style=text-align:left>360</td></tr><tr>
+<td style=text-align:left>F</td><td style=text-align:left>一个月中第几周的周几</td><td style=text-align:left>2 (second Wed. in July)</td></tr><tr>
+<td style=text-align:left>w</td><td style=text-align:left>一年中第几周</td><td style=text-align:left>40</td></tr><tr>
+<td style=text-align:left>W</td><td style=text-align:left>一个月中第几周</td><td style=text-align:left>1</td></tr><tr>
+<td style=text-align:left>a</td><td style=text-align:left>A.M./P.M. 标记</td><td style=text-align:left>PM</td></tr><tr>
+<td style=text-align:left>k</td><td style=text-align:left>一天中的小时 (1~24)</td><td style=text-align:left>24</td></tr><tr>
+<td style=text-align:left>K</td><td style=text-align:left>A.M./P.M. (0~11) 格式小时</td><td style=text-align:left>10</td></tr><tr>
+<td style=text-align:left>z</td><td style=text-align:left>时区</td><td style=text-align:left>Eastern Standard Time</td></tr><tr>
+<td style=text-align:left>'</td><td style=text-align:left>文字定界符</td><td style=text-align:left>Delimiter</td></tr><tr>
+<td style=text-align:left>"</td><td style=text-align:left>单引号</td><td style=text-align:left>`</td></tr></tbody></table><h1 id=使用-printf-格式化日期>使用 printf 格式化日期</h1><p>printf 方法可以很轻松地格式化时间和日期。使用两个字母格式，它以 <code>%t</code> 开头并且以下面表格中的一个字母结尾。</p><table>
 <thead>
 <tr>
-<th style=text-align:left>转 换 符</th>
-<th style=text-align:left>说 明</th>
-<th style=text-align:left>示 例</th>
-</tr>
-</thead>
-<tbody>
+<th style=text-align:left>转 换 符</th><th style=text-align:left>说 明</th><th style=text-align:left>示 例</th></tr></thead><tbody>
 <tr>
-<td style=text-align:left>c</td>
-<td style=text-align:left>包括全部日期和时间信息</td>
-<td style=text-align:left>星期六 十月 27 14:21:20 CST 2007</td>
-</tr>
-<tr>
-<td style=text-align:left>F</td>
-<td style=text-align:left>&ldquo;年-月-日"格式</td>
-<td style=text-align:left>2007-10-27</td>
-</tr>
-<tr>
-<td style=text-align:left>D</td>
-<td style=text-align:left>&ldquo;月/日/年"格式</td>
-<td style=text-align:left>10/27/07</td>
-</tr>
-<tr>
-<td style=text-align:left>r</td>
-<td style=text-align:left>&ldquo;HH:MM:SS PM"格式（12时制）</td>
-<td style=text-align:left>02:25:51 下午</td>
-</tr>
-<tr>
-<td style=text-align:left>T</td>
-<td style=text-align:left>&ldquo;HH:MM:SS"格式（24时制）</td>
-<td style=text-align:left>14:28:16</td>
-</tr>
-<tr>
-<td style=text-align:left>R</td>
-<td style=text-align:left>&ldquo;HH:MM"格式（24时制）</td>
-<td style=text-align:left>14:28</td>
-</tr>
-</tbody>
-</table>
-<h2 id=实例>实例</h2>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#f92672>import</span> java.util.Date<span style=color:#f92672>;</span>
- 
-<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>DateDemo</span> <span style=color:#f92672>{</span>
- 
-  <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String args<span style=color:#f92672>[])</span> <span style=color:#f92672>{</span>
-     <span style=color:#75715e>// 初始化 Date 对象
-</span><span style=color:#75715e></span>     Date date <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> Date<span style=color:#f92672>();</span>
- 
-     <span style=color:#75715e>//c的使用  
-</span><span style=color:#75715e></span>    System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>printf</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;全部日期和时间信息：%tc%n&#34;</span><span style=color:#f92672>,</span> date<span style=color:#f92672>);</span>          
-    <span style=color:#75715e>//f的使用  
-</span><span style=color:#75715e></span>    System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>printf</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;年-月-日格式：%tF%n&#34;</span><span style=color:#f92672>,</span> date<span style=color:#f92672>);</span>  
-    <span style=color:#75715e>//d的使用  
-</span><span style=color:#75715e></span>    System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>printf</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;月/日/年格式：%tD%n&#34;</span><span style=color:#f92672>,</span> date<span style=color:#f92672>);</span>  
-    <span style=color:#75715e>//r的使用  
-</span><span style=color:#75715e></span>    System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>printf</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;HH:MM:SS PM格式（12时制）：%tr%n&#34;</span><span style=color:#f92672>,</span> date<span style=color:#f92672>);</span>  
-    <span style=color:#75715e>//t的使用  
-</span><span style=color:#75715e></span>    System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>printf</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;HH:MM:SS格式（24时制）：%tT%n&#34;</span><span style=color:#f92672>,</span> date<span style=color:#f92672>);</span>  
-    <span style=color:#75715e>//R的使用  
-</span><span style=color:#75715e></span>    System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>printf</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;HH:MM格式（24时制）：%tR&#34;</span><span style=color:#f92672>,</span> date<span style=color:#f92672>);</span>  
-  <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
-</code></pre></div><p>以上实例编译运行结果如下:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>全部日期和时间信息：星期一 九月 <span style=color:#ae81ff>10</span> 10:43:36 CST <span style=color:#ae81ff>2012</span>  
-年-月-日格式：2012-09-10  
-月/日/年格式：09/10/12  
-HH:MM:SS PM格式（12时制）：10:43:36 上午  
-HH:MM:SS格式（24时制）：10:43:36  
-HH:MM格式（24时制）：10:43  
-</code></pre></div><p>如果你需要重复提供日期，那么利用这种方式来格式化它的每一部分就有点复杂了。因此，可以利用一个格式化字符串指出要被格式化的参数的索引。</p>
-<p>索引必须紧跟在 % 后面，而且必须以 $ 结束。例如：</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#f92672>import</span> java.util.Date<span style=color:#f92672>;</span>
-  
-<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>DateDemo</span> <span style=color:#f92672>{</span>
-
-   <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String args<span style=color:#f92672>[])</span> <span style=color:#f92672>{</span>
-       <span style=color:#75715e>// 初始化 Date 对象
-</span><span style=color:#75715e></span>       Date date <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> Date<span style=color:#f92672>();</span>
-        
-       <span style=color:#75715e>// 使用toString()显示日期和时间
-</span><span style=color:#75715e></span>       System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>printf</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;%1$s %2$tB %2$td, %2$tY&#34;</span><span style=color:#f92672>,</span> 
-                         <span style=color:#e6db74>&#34;Due date:&#34;</span><span style=color:#f92672>,</span> date<span style=color:#f92672>);</span>
-   <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
-</code></pre></div><p>以上实例编译运行结果如下:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>Due date: February 09, <span style=color:#ae81ff>2004</span>
-</code></pre></div><p>或者，你可以使用 &lt; 标志。它表明先前被格式化的参数要被再次使用。例如：</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#f92672>import</span> java.util.Date<span style=color:#f92672>;</span>
-  
-<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>DateDemo</span> <span style=color:#f92672>{</span>
-
-   <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String args<span style=color:#f92672>[])</span> <span style=color:#f92672>{</span>
-       <span style=color:#75715e>// 初始化 Date 对象
-</span><span style=color:#75715e></span>       Date date <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> Date<span style=color:#f92672>();</span>
-        
-       <span style=color:#75715e>// 显示格式化时间
-</span><span style=color:#75715e></span>       System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>printf</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;%s %tB %&lt;te, %&lt;tY&#34;</span><span style=color:#f92672>,</span>
-                           <span style=color:#e6db74>&#34;Due date:&#34;</span><span style=color:#f92672>,</span> date<span style=color:#f92672>);</span>
-   <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
-</code></pre></div><p>以上实例编译运行结果如下:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>Due date: February 09, <span style=color:#ae81ff>2004</span>
-</code></pre></div><h1 id=日期和时间转换字符>日期和时间转换字符</h1>
-<table>
+<td style=text-align:left>c</td><td style=text-align:left>包括全部日期和时间信息</td><td style=text-align:left>星期六 十月 27 14:21:20 CST 2007</td></tr><tr>
+<td style=text-align:left>F</td><td style=text-align:left>&ldquo;年-月-日"格式</td><td style=text-align:left>2007-10-27</td></tr><tr>
+<td style=text-align:left>D</td><td style=text-align:left>&ldquo;月/日/年"格式</td><td style=text-align:left>10/27/07</td></tr><tr>
+<td style=text-align:left>r</td><td style=text-align:left>&ldquo;HH:MM:SS PM"格式（12时制）</td><td style=text-align:left>02:25:51 下午</td></tr><tr>
+<td style=text-align:left>T</td><td style=text-align:left>&ldquo;HH:MM:SS"格式（24时制）</td><td style=text-align:left>14:28:16</td></tr><tr>
+<td style=text-align:left>R</td><td style=text-align:left>&ldquo;HH:MM"格式（24时制）</td><td style=text-align:left>14:28</td></tr></tbody></table><h2 id=实例>实例</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#f92672>import</span> java.util.Date<span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span> 
+</span></span><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>DateDemo</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span> 
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String args<span style=color:#f92672>[])</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>     <span style=color:#75715e>// 初始化 Date 对象
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>     Date date <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> Date<span style=color:#f92672>();</span>
+</span></span><span style=display:flex><span> 
+</span></span><span style=display:flex><span>     <span style=color:#75715e>//c的使用  
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>printf</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;全部日期和时间信息：%tc%n&#34;</span><span style=color:#f92672>,</span> date<span style=color:#f92672>);</span>          
+</span></span><span style=display:flex><span>    <span style=color:#75715e>//f的使用  
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>printf</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;年-月-日格式：%tF%n&#34;</span><span style=color:#f92672>,</span> date<span style=color:#f92672>);</span>  
+</span></span><span style=display:flex><span>    <span style=color:#75715e>//d的使用  
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>printf</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;月/日/年格式：%tD%n&#34;</span><span style=color:#f92672>,</span> date<span style=color:#f92672>);</span>  
+</span></span><span style=display:flex><span>    <span style=color:#75715e>//r的使用  
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>printf</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;HH:MM:SS PM格式（12时制）：%tr%n&#34;</span><span style=color:#f92672>,</span> date<span style=color:#f92672>);</span>  
+</span></span><span style=display:flex><span>    <span style=color:#75715e>//t的使用  
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>printf</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;HH:MM:SS格式（24时制）：%tT%n&#34;</span><span style=color:#f92672>,</span> date<span style=color:#f92672>);</span>  
+</span></span><span style=display:flex><span>    <span style=color:#75715e>//R的使用  
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>printf</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;HH:MM格式（24时制）：%tR&#34;</span><span style=color:#f92672>,</span> date<span style=color:#f92672>);</span>  
+</span></span><span style=display:flex><span>  <span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span></code></pre></div><p>以上实例编译运行结果如下:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>全部日期和时间信息：星期一 九月 <span style=color:#ae81ff>10</span> 10:43:36 CST <span style=color:#ae81ff>2012</span>  
+</span></span><span style=display:flex><span>年-月-日格式：2012-09-10  
+</span></span><span style=display:flex><span>月/日/年格式：09/10/12  
+</span></span><span style=display:flex><span>HH:MM:SS PM格式（12时制）：10:43:36 上午  
+</span></span><span style=display:flex><span>HH:MM:SS格式（24时制）：10:43:36  
+</span></span><span style=display:flex><span>HH:MM格式（24时制）：10:43  
+</span></span></code></pre></div><p>如果你需要重复提供日期，那么利用这种方式来格式化它的每一部分就有点复杂了。因此，可以利用一个格式化字符串指出要被格式化的参数的索引。</p><p>索引必须紧跟在 % 后面，而且必须以 $ 结束。例如：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#f92672>import</span> java.util.Date<span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>DateDemo</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>   <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String args<span style=color:#f92672>[])</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>       <span style=color:#75715e>// 初始化 Date 对象
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>       Date date <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> Date<span style=color:#f92672>();</span>
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>       <span style=color:#75715e>// 使用toString()显示日期和时间
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>       System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>printf</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;%1$s %2$tB %2$td, %2$tY&#34;</span><span style=color:#f92672>,</span> 
+</span></span><span style=display:flex><span>                         <span style=color:#e6db74>&#34;Due date:&#34;</span><span style=color:#f92672>,</span> date<span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>   <span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span></code></pre></div><p>以上实例编译运行结果如下:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>Due date: February 09, <span style=color:#ae81ff>2004</span>
+</span></span></code></pre></div><p>或者，你可以使用 &lt; 标志。它表明先前被格式化的参数要被再次使用。例如：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#f92672>import</span> java.util.Date<span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>DateDemo</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>   <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String args<span style=color:#f92672>[])</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>       <span style=color:#75715e>// 初始化 Date 对象
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>       Date date <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> Date<span style=color:#f92672>();</span>
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>       <span style=color:#75715e>// 显示格式化时间
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>       System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>printf</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;%s %tB %&lt;te, %&lt;tY&#34;</span><span style=color:#f92672>,</span>
+</span></span><span style=display:flex><span>                           <span style=color:#e6db74>&#34;Due date:&#34;</span><span style=color:#f92672>,</span> date<span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>   <span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span></code></pre></div><p>以上实例编译运行结果如下:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>Due date: February 09, <span style=color:#ae81ff>2004</span>
+</span></span></code></pre></div><h1 id=日期和时间转换字符>日期和时间转换字符</h1><table>
 <thead>
 <tr>
-<th><strong>字符</strong></th>
-<th><strong>描述</strong></th>
-<th><strong>例子</strong></th>
-</tr>
-</thead>
-<tbody>
+<th><strong>字符</strong></th><th><strong>描述</strong></th><th><strong>例子</strong></th></tr></thead><tbody>
 <tr>
-<td>c</td>
-<td>完整的日期和时间</td>
-<td>Mon May 04 09:51:52 CDT 2009</td>
-</tr>
-<tr>
-<td>F</td>
-<td>ISO 8601 格式日期</td>
-<td>2004-02-09</td>
-</tr>
-<tr>
-<td>D</td>
-<td>U.S. 格式日期 (月 / 日 / 年)</td>
-<td>02/09/2004</td>
-</tr>
-<tr>
-<td>T</td>
-<td>24 小时时间</td>
-<td>18:05:19</td>
-</tr>
-<tr>
-<td>r</td>
-<td>12 小时时间</td>
-<td>06:05:19 pm</td>
-</tr>
-<tr>
-<td>R</td>
-<td>24 小时时间，不包含秒</td>
-<td>18:05</td>
-</tr>
-<tr>
-<td>Y</td>
-<td>4 位年份 (包含前导 0)</td>
-<td>2004</td>
-</tr>
-<tr>
-<td>y</td>
-<td>年份后 2 位 (包含前导 0)</td>
-<td>04</td>
-</tr>
-<tr>
-<td>C</td>
-<td>年份前 2 位 (包含前导 0)</td>
-<td>20</td>
-</tr>
-<tr>
-<td>B</td>
-<td>月份全称</td>
-<td>February</td>
-</tr>
-<tr>
-<td>b</td>
-<td>月份简称</td>
-<td>Feb</td>
-</tr>
-<tr>
-<td>n</td>
-<td>2 位月份 (包含前导 0)</td>
-<td>02</td>
-</tr>
-<tr>
-<td>d</td>
-<td>2 位日子 (包含前导 0)</td>
-<td>03</td>
-</tr>
-<tr>
-<td>e</td>
-<td>2 位日子 (不包含前导 0)</td>
-<td>9</td>
-</tr>
-<tr>
-<td>A</td>
-<td>星期全称</td>
-<td>Monday</td>
-</tr>
-<tr>
-<td>a</td>
-<td>星期简称</td>
-<td>Mon</td>
-</tr>
-<tr>
-<td>j</td>
-<td>3 位年份 (包含前导 0)</td>
-<td>069</td>
-</tr>
-<tr>
-<td>H</td>
-<td>2 位小时 (包含前导 0), 00 到 23</td>
-<td>18</td>
-</tr>
-<tr>
-<td>k</td>
-<td>2 位小时 (不包含前导 0), 0 到 23</td>
-<td>18</td>
-</tr>
-<tr>
-<td>I</td>
-<td>2 位小时 (包含前导 0), 01 到 12</td>
-<td>06</td>
-</tr>
-<tr>
-<td>l</td>
-<td>2 位小时 (不包含前导 0), 1 到 12</td>
-<td>6</td>
-</tr>
-<tr>
-<td>M</td>
-<td>2 位分钟 (包含前导 0)</td>
-<td>05</td>
-</tr>
-<tr>
-<td>S</td>
-<td>2 位秒数 (包含前导 0)</td>
-<td>19</td>
-</tr>
-<tr>
-<td>L</td>
-<td>3 位毫秒 (包含前导 0)</td>
-<td>047</td>
-</tr>
-<tr>
-<td>N</td>
-<td>9 位纳秒 (包含前导 0)</td>
-<td>047000000</td>
-</tr>
-<tr>
-<td>P</td>
-<td>大写上下午标志</td>
-<td>PM</td>
-</tr>
-<tr>
-<td>p</td>
-<td>小写上下午标志</td>
-<td>pm</td>
-</tr>
-<tr>
-<td>z</td>
-<td>从 GMT 的 RFC 822 数字偏移</td>
-<td>-0800</td>
-</tr>
-<tr>
-<td>Z</td>
-<td>时区</td>
-<td>PST</td>
-</tr>
-<tr>
-<td>s</td>
-<td>自 1970-01-01 00:00:00 GMT 的秒数</td>
-<td>1078884319</td>
-</tr>
-<tr>
-<td>Q</td>
-<td>自 1970-01-01 00:00:00 GMT 的毫妙</td>
-<td>1078884319047</td>
-</tr>
-</tbody>
-</table>
-<p>还有其他有用的日期和时间相关的类。对于更多的细节，你可以参考到 Java 标准文档。</p>
-<p>定义日期格式的转换符可以使日期通过指定的转换符生成新字符串。这些日期转换符如下所示：</p>
-<h2 id=实例-1>实例</h2>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#f92672>import</span> java.util.*<span style=color:#f92672>;</span>
-  
-<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>DateDemo</span> <span style=color:#f92672>{</span>
-   <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String args<span style=color:#f92672>[])</span> <span style=color:#f92672>{</span>
-       Date date<span style=color:#f92672>=</span><span style=color:#66d9ef>new</span> Date<span style=color:#f92672>();</span>                                      
-        <span style=color:#75715e>//b的使用，月份简称  
-</span><span style=color:#75715e></span>        String str<span style=color:#f92672>=</span>String<span style=color:#f92672>.</span><span style=color:#a6e22e>format</span><span style=color:#f92672>(</span>Locale<span style=color:#f92672>.</span><span style=color:#a6e22e>US</span><span style=color:#f92672>,</span><span style=color:#e6db74>&#34;英文月份简称：%tb&#34;</span><span style=color:#f92672>,</span>date<span style=color:#f92672>);</span>       
-        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span>str<span style=color:#f92672>);</span>                                                                              
-        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>printf</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;本地月份简称：%tb%n&#34;</span><span style=color:#f92672>,</span>date<span style=color:#f92672>);</span>  
-        <span style=color:#75715e>//B的使用，月份全称  
-</span><span style=color:#75715e></span>        str<span style=color:#f92672>=</span>String<span style=color:#f92672>.</span><span style=color:#a6e22e>format</span><span style=color:#f92672>(</span>Locale<span style=color:#f92672>.</span><span style=color:#a6e22e>US</span><span style=color:#f92672>,</span><span style=color:#e6db74>&#34;英文月份全称：%tB&#34;</span><span style=color:#f92672>,</span>date<span style=color:#f92672>);</span>  
-        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span>str<span style=color:#f92672>);</span>  
-        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>printf</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;本地月份全称：%tB%n&#34;</span><span style=color:#f92672>,</span>date<span style=color:#f92672>);</span>  
-        <span style=color:#75715e>//a的使用，星期简称  
-</span><span style=color:#75715e></span>        str<span style=color:#f92672>=</span>String<span style=color:#f92672>.</span><span style=color:#a6e22e>format</span><span style=color:#f92672>(</span>Locale<span style=color:#f92672>.</span><span style=color:#a6e22e>US</span><span style=color:#f92672>,</span><span style=color:#e6db74>&#34;英文星期的简称：%ta&#34;</span><span style=color:#f92672>,</span>date<span style=color:#f92672>);</span>  
-        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span>str<span style=color:#f92672>);</span>  
-        <span style=color:#75715e>//A的使用，星期全称  
-</span><span style=color:#75715e></span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>printf</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;本地星期的简称：%tA%n&#34;</span><span style=color:#f92672>,</span>date<span style=color:#f92672>);</span>  
-        <span style=color:#75715e>//C的使用，年前两位  
-</span><span style=color:#75715e></span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>printf</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;年的前两位数字（不足两位前面补0）：%tC%n&#34;</span><span style=color:#f92672>,</span>date<span style=color:#f92672>);</span>  
-        <span style=color:#75715e>//y的使用，年后两位  
-</span><span style=color:#75715e></span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>printf</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;年的后两位数字（不足两位前面补0）：%ty%n&#34;</span><span style=color:#f92672>,</span>date<span style=color:#f92672>);</span>  
-        <span style=color:#75715e>//j的使用，一年的天数  
-</span><span style=color:#75715e></span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>printf</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;一年中的天数（即年的第几天）：%tj%n&#34;</span><span style=color:#f92672>,</span>date<span style=color:#f92672>);</span>  
-        <span style=color:#75715e>//m的使用，月份  
-</span><span style=color:#75715e></span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>printf</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;两位数字的月份（不足两位前面补0）：%tm%n&#34;</span><span style=color:#f92672>,</span>date<span style=color:#f92672>);</span>  
-        <span style=color:#75715e>//d的使用，日（二位，不够补零）  
-</span><span style=color:#75715e></span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>printf</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;两位数字的日（不足两位前面补0）：%td%n&#34;</span><span style=color:#f92672>,</span>date<span style=color:#f92672>);</span>  
-        <span style=color:#75715e>//e的使用，日（一位不补零）  
-</span><span style=color:#75715e></span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>printf</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;月份的日（前面不补0）：%te&#34;</span><span style=color:#f92672>,</span>date<span style=color:#f92672>);</span>  
-   <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
-</code></pre></div><p>输出结果为：</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>英文月份简称：May
-本地月份简称：五月
-英文月份全称：May
-本地月份全称：五月
-英文星期的简称：Thu
-本地星期的简称：星期四
-年的前两位数字（不足两位前面补0）：20
-年的后两位数字（不足两位前面补0）：17
-一年中的天数（即年的第几天）：124
-两位数字的月份（不足两位前面补0）：05
-两位数字的日（不足两位前面补0）：04
-月份的日（前面不补0）：4
-</code></pre></div><h1 id=解析字符串为时间>解析字符串为时间</h1>
-<p>SimpleDateFormat 类有一些附加的方法，特别是 parse ()，它试图按照给定的 SimpleDateFormat 对象的格式化存储来解析字符串。例如：</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#f92672>import</span> java.util.*<span style=color:#f92672>;</span>
-<span style=color:#f92672>import</span> java.text.*<span style=color:#f92672>;</span>
-  
-<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>DateDemo</span> <span style=color:#f92672>{</span>
-
-   <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String args<span style=color:#f92672>[])</span> <span style=color:#f92672>{</span>
-      SimpleDateFormat ft <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> SimpleDateFormat <span style=color:#f92672>(</span><span style=color:#e6db74>&#34;yyyy-MM-dd&#34;</span><span style=color:#f92672>);</span> 
-
-      String input <span style=color:#f92672>=</span> args<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span> <span style=color:#f92672>==</span> 0 <span style=color:#f92672>?</span> <span style=color:#e6db74>&#34;1818-11-11&#34;</span> <span style=color:#f92672>:</span> args<span style=color:#f92672>[</span>0<span style=color:#f92672>];</span> 
-
-      System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>print</span><span style=color:#f92672>(</span>input <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34; Parses as &#34;</span><span style=color:#f92672>);</span> 
-
-      Date t<span style=color:#f92672>;</span> 
-
-      <span style=color:#66d9ef>try</span> <span style=color:#f92672>{</span> 
-          t <span style=color:#f92672>=</span> ft<span style=color:#f92672>.</span><span style=color:#a6e22e>parse</span><span style=color:#f92672>(</span>input<span style=color:#f92672>);</span> 
-          System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span>t<span style=color:#f92672>);</span> 
-      <span style=color:#f92672>}</span> <span style=color:#66d9ef>catch</span> <span style=color:#f92672>(</span>ParseException e<span style=color:#f92672>)</span> <span style=color:#f92672>{</span> 
-          System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Unparseable using &#34;</span> <span style=color:#f92672>+</span> ft<span style=color:#f92672>);</span> 
-      <span style=color:#f92672>}</span>
-   <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
-</code></pre></div><p>以上实例编译运行结果如下:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ java DateDemo
-1818-11-11 Parses as Wed Nov <span style=color:#ae81ff>11</span> 00:00:00 GMT <span style=color:#ae81ff>1818</span>
-$ java DateDemo 2007-12-01
-2007-12-01 Parses as Sat Dec <span style=color:#ae81ff>01</span> 00:00:00 GMT <span style=color:#ae81ff>2007</span>
-</code></pre></div><h1 id=java-休眠-sleep>Java 休眠 (sleep)</h1>
-<p>sleep()使当前线程进入停滞状态（阻塞当前线程），让出CPU的使用、目的是不让当前线程独自霸占该进程所获的CPU资源，以留一定时间给其他线程执行的机会。</p>
-<p>你可以让程序休眠一毫秒的时间或者到您的计算机的寿命长的任意段时间。例如，下面的程序会休眠 3 秒：</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#f92672>import</span> java.util.*<span style=color:#f92672>;</span>
-  
-<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>SleepDemo</span> <span style=color:#f92672>{</span>
-   <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String args<span style=color:#f92672>[])</span> <span style=color:#f92672>{</span>
-      <span style=color:#66d9ef>try</span> <span style=color:#f92672>{</span> 
-         System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#66d9ef>new</span> Date<span style=color:#f92672>(</span> <span style=color:#f92672>)</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;\n&#34;</span><span style=color:#f92672>);</span> 
-         Thread<span style=color:#f92672>.</span><span style=color:#a6e22e>sleep</span><span style=color:#f92672>(</span>5<span style=color:#f92672>*</span>60<span style=color:#f92672>*</span>10<span style=color:#f92672>);</span> 
-         System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#66d9ef>new</span> Date<span style=color:#f92672>(</span> <span style=color:#f92672>)</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;\n&#34;</span><span style=color:#f92672>);</span> 
-      <span style=color:#f92672>}</span> <span style=color:#66d9ef>catch</span> <span style=color:#f92672>(</span>Exception e<span style=color:#f92672>)</span> <span style=color:#f92672>{</span> 
-          System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Got an exception!&#34;</span><span style=color:#f92672>);</span> 
-      <span style=color:#f92672>}</span>
-   <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
-</code></pre></div><p>以上实例编译运行结果如下:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>Sun May <span style=color:#ae81ff>03</span> 18:04:41 GMT <span style=color:#ae81ff>2009</span>
-
-Sun May <span style=color:#ae81ff>03</span> 18:04:44 GMT <span style=color:#ae81ff>2009</span>
-</code></pre></div><h1 id=测量时间>测量时间</h1>
-<p>下面的一个例子表明如何测量时间间隔（以毫秒为单位）：</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#f92672>import</span> java.util.*<span style=color:#f92672>;</span>
-  
-<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>DiffDemo</span> <span style=color:#f92672>{</span>
-
-   <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String args<span style=color:#f92672>[])</span> <span style=color:#f92672>{</span>
-      <span style=color:#66d9ef>try</span> <span style=color:#f92672>{</span>
-         <span style=color:#66d9ef>long</span> start <span style=color:#f92672>=</span> System<span style=color:#f92672>.</span><span style=color:#a6e22e>currentTimeMillis</span><span style=color:#f92672>(</span> <span style=color:#f92672>);</span>
-         System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#66d9ef>new</span> Date<span style=color:#f92672>(</span> <span style=color:#f92672>)</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;\n&#34;</span><span style=color:#f92672>);</span>
-         Thread<span style=color:#f92672>.</span><span style=color:#a6e22e>sleep</span><span style=color:#f92672>(</span>5<span style=color:#f92672>*</span>60<span style=color:#f92672>*</span>10<span style=color:#f92672>);</span>
-         System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#66d9ef>new</span> Date<span style=color:#f92672>(</span> <span style=color:#f92672>)</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;\n&#34;</span><span style=color:#f92672>);</span>
-         <span style=color:#66d9ef>long</span> end <span style=color:#f92672>=</span> System<span style=color:#f92672>.</span><span style=color:#a6e22e>currentTimeMillis</span><span style=color:#f92672>(</span> <span style=color:#f92672>);</span>
-         <span style=color:#66d9ef>long</span> diff <span style=color:#f92672>=</span> end <span style=color:#f92672>-</span> start<span style=color:#f92672>;</span>
-         System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Difference is : &#34;</span> <span style=color:#f92672>+</span> diff<span style=color:#f92672>);</span>
-      <span style=color:#f92672>}</span> <span style=color:#66d9ef>catch</span> <span style=color:#f92672>(</span>Exception e<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-         System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Got an exception!&#34;</span><span style=color:#f92672>);</span>
-      <span style=color:#f92672>}</span>
-   <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
-</code></pre></div><p>以上实例编译运行结果如下:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>Sun May <span style=color:#ae81ff>03</span> 18:16:51 GMT <span style=color:#ae81ff>2009</span>
-
-Sun May <span style=color:#ae81ff>03</span> 18:16:57 GMT <span style=color:#ae81ff>2009</span>
-
-Difference is : <span style=color:#ae81ff>5993</span>
-</code></pre></div><h1 id=calendar-类>Calendar 类</h1>
-<p>我们现在已经能够格式化并创建一个日期对象了，但是我们如何才能设置和获取日期数据的特定部分呢，比如说小时，日，或者分钟？我们又如何在日期的这些部分加上或者减去值呢？答案是使用 Calendar 类。</p>
-<p>Calendar 类的功能要比 Date 类强大很多，而且在实现方式上也比 Date 类要复杂一些。</p>
-<p>Calendar 类是一个抽象类，在实际使用时实现特定的子类的对象，创建对象的过程对程序员来说是透明的，只需要使用 getInstance 方法创建即可。</p>
-<h2 id=创建一个代表系统当前日期的-calendar-对象>创建一个代表系统当前日期的 Calendar 对象</h2>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>Calendar c <span style=color:#f92672>=</span> Calendar<span style=color:#f92672>.</span><span style=color:#a6e22e>getInstance</span><span style=color:#f92672>();</span><span style=color:#75715e>//默认是当前日期
-</span></code></pre></div><h2 id=创建一个指定日期的-calendar-对象>创建一个指定日期的 Calendar 对象</h2>
-<p>使用 Calendar 类代表特定的时间，需要首先创建一个 Calendar 的对象，然后再设定该对象中的年月日参数来完成。</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#75715e>//创建一个代表2009年6月12日的Calendar对象
-</span><span style=color:#75715e></span>Calendar c1 <span style=color:#f92672>=</span> Calendar<span style=color:#f92672>.</span><span style=color:#a6e22e>getInstance</span><span style=color:#f92672>();</span>
-c1<span style=color:#f92672>.</span><span style=color:#a6e22e>set</span><span style=color:#f92672>(</span>2009<span style=color:#f92672>,</span> 6 <span style=color:#f92672>-</span> 1<span style=color:#f92672>,</span> 12<span style=color:#f92672>);</span>
-</code></pre></div><h2 id=calendar-类对象字段类型>Calendar 类对象字段类型</h2>
-<p>Calendar 类中用一下这些常量表示不同的意义，jdk 内的很多类其实都是采用的这种思想</p>
-<table>
+<td>c</td><td>完整的日期和时间</td><td>Mon May 04 09:51:52 CDT 2009</td></tr><tr>
+<td>F</td><td>ISO 8601 格式日期</td><td>2004-02-09</td></tr><tr>
+<td>D</td><td>U.S. 格式日期 (月 / 日 / 年)</td><td>02/09/2004</td></tr><tr>
+<td>T</td><td>24 小时时间</td><td>18:05:19</td></tr><tr>
+<td>r</td><td>12 小时时间</td><td>06:05:19 pm</td></tr><tr>
+<td>R</td><td>24 小时时间，不包含秒</td><td>18:05</td></tr><tr>
+<td>Y</td><td>4 位年份 (包含前导 0)</td><td>2004</td></tr><tr>
+<td>y</td><td>年份后 2 位 (包含前导 0)</td><td>04</td></tr><tr>
+<td>C</td><td>年份前 2 位 (包含前导 0)</td><td>20</td></tr><tr>
+<td>B</td><td>月份全称</td><td>February</td></tr><tr>
+<td>b</td><td>月份简称</td><td>Feb</td></tr><tr>
+<td>n</td><td>2 位月份 (包含前导 0)</td><td>02</td></tr><tr>
+<td>d</td><td>2 位日子 (包含前导 0)</td><td>03</td></tr><tr>
+<td>e</td><td>2 位日子 (不包含前导 0)</td><td>9</td></tr><tr>
+<td>A</td><td>星期全称</td><td>Monday</td></tr><tr>
+<td>a</td><td>星期简称</td><td>Mon</td></tr><tr>
+<td>j</td><td>3 位年份 (包含前导 0)</td><td>069</td></tr><tr>
+<td>H</td><td>2 位小时 (包含前导 0), 00 到 23</td><td>18</td></tr><tr>
+<td>k</td><td>2 位小时 (不包含前导 0), 0 到 23</td><td>18</td></tr><tr>
+<td>I</td><td>2 位小时 (包含前导 0), 01 到 12</td><td>06</td></tr><tr>
+<td>l</td><td>2 位小时 (不包含前导 0), 1 到 12</td><td>6</td></tr><tr>
+<td>M</td><td>2 位分钟 (包含前导 0)</td><td>05</td></tr><tr>
+<td>S</td><td>2 位秒数 (包含前导 0)</td><td>19</td></tr><tr>
+<td>L</td><td>3 位毫秒 (包含前导 0)</td><td>047</td></tr><tr>
+<td>N</td><td>9 位纳秒 (包含前导 0)</td><td>047000000</td></tr><tr>
+<td>P</td><td>大写上下午标志</td><td>PM</td></tr><tr>
+<td>p</td><td>小写上下午标志</td><td>pm</td></tr><tr>
+<td>z</td><td>从 GMT 的 RFC 822 数字偏移</td><td>-0800</td></tr><tr>
+<td>Z</td><td>时区</td><td>PST</td></tr><tr>
+<td>s</td><td>自 1970-01-01 00:00:00 GMT 的秒数</td><td>1078884319</td></tr><tr>
+<td>Q</td><td>自 1970-01-01 00:00:00 GMT 的毫妙</td><td>1078884319047</td></tr></tbody></table><p>还有其他有用的日期和时间相关的类。对于更多的细节，你可以参考到 Java 标准文档。</p><p>定义日期格式的转换符可以使日期通过指定的转换符生成新字符串。这些日期转换符如下所示：</p><h2 id=实例-1>实例</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#f92672>import</span> java.util.*<span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>DateDemo</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>   <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String args<span style=color:#f92672>[])</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>       Date date<span style=color:#f92672>=</span><span style=color:#66d9ef>new</span> Date<span style=color:#f92672>();</span>                                      
+</span></span><span style=display:flex><span>        <span style=color:#75715e>//b的使用，月份简称  
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        String str<span style=color:#f92672>=</span>String<span style=color:#f92672>.</span><span style=color:#a6e22e>format</span><span style=color:#f92672>(</span>Locale<span style=color:#f92672>.</span><span style=color:#a6e22e>US</span><span style=color:#f92672>,</span><span style=color:#e6db74>&#34;英文月份简称：%tb&#34;</span><span style=color:#f92672>,</span>date<span style=color:#f92672>);</span>       
+</span></span><span style=display:flex><span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span>str<span style=color:#f92672>);</span>                                                                              
+</span></span><span style=display:flex><span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>printf</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;本地月份简称：%tb%n&#34;</span><span style=color:#f92672>,</span>date<span style=color:#f92672>);</span>  
+</span></span><span style=display:flex><span>        <span style=color:#75715e>//B的使用，月份全称  
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        str<span style=color:#f92672>=</span>String<span style=color:#f92672>.</span><span style=color:#a6e22e>format</span><span style=color:#f92672>(</span>Locale<span style=color:#f92672>.</span><span style=color:#a6e22e>US</span><span style=color:#f92672>,</span><span style=color:#e6db74>&#34;英文月份全称：%tB&#34;</span><span style=color:#f92672>,</span>date<span style=color:#f92672>);</span>  
+</span></span><span style=display:flex><span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span>str<span style=color:#f92672>);</span>  
+</span></span><span style=display:flex><span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>printf</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;本地月份全称：%tB%n&#34;</span><span style=color:#f92672>,</span>date<span style=color:#f92672>);</span>  
+</span></span><span style=display:flex><span>        <span style=color:#75715e>//a的使用，星期简称  
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        str<span style=color:#f92672>=</span>String<span style=color:#f92672>.</span><span style=color:#a6e22e>format</span><span style=color:#f92672>(</span>Locale<span style=color:#f92672>.</span><span style=color:#a6e22e>US</span><span style=color:#f92672>,</span><span style=color:#e6db74>&#34;英文星期的简称：%ta&#34;</span><span style=color:#f92672>,</span>date<span style=color:#f92672>);</span>  
+</span></span><span style=display:flex><span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span>str<span style=color:#f92672>);</span>  
+</span></span><span style=display:flex><span>        <span style=color:#75715e>//A的使用，星期全称  
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>printf</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;本地星期的简称：%tA%n&#34;</span><span style=color:#f92672>,</span>date<span style=color:#f92672>);</span>  
+</span></span><span style=display:flex><span>        <span style=color:#75715e>//C的使用，年前两位  
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>printf</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;年的前两位数字（不足两位前面补0）：%tC%n&#34;</span><span style=color:#f92672>,</span>date<span style=color:#f92672>);</span>  
+</span></span><span style=display:flex><span>        <span style=color:#75715e>//y的使用，年后两位  
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>printf</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;年的后两位数字（不足两位前面补0）：%ty%n&#34;</span><span style=color:#f92672>,</span>date<span style=color:#f92672>);</span>  
+</span></span><span style=display:flex><span>        <span style=color:#75715e>//j的使用，一年的天数  
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>printf</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;一年中的天数（即年的第几天）：%tj%n&#34;</span><span style=color:#f92672>,</span>date<span style=color:#f92672>);</span>  
+</span></span><span style=display:flex><span>        <span style=color:#75715e>//m的使用，月份  
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>printf</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;两位数字的月份（不足两位前面补0）：%tm%n&#34;</span><span style=color:#f92672>,</span>date<span style=color:#f92672>);</span>  
+</span></span><span style=display:flex><span>        <span style=color:#75715e>//d的使用，日（二位，不够补零）  
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>printf</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;两位数字的日（不足两位前面补0）：%td%n&#34;</span><span style=color:#f92672>,</span>date<span style=color:#f92672>);</span>  
+</span></span><span style=display:flex><span>        <span style=color:#75715e>//e的使用，日（一位不补零）  
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>printf</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;月份的日（前面不补0）：%te&#34;</span><span style=color:#f92672>,</span>date<span style=color:#f92672>);</span>  
+</span></span><span style=display:flex><span>   <span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span></code></pre></div><p>输出结果为：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>英文月份简称：May
+</span></span><span style=display:flex><span>本地月份简称：五月
+</span></span><span style=display:flex><span>英文月份全称：May
+</span></span><span style=display:flex><span>本地月份全称：五月
+</span></span><span style=display:flex><span>英文星期的简称：Thu
+</span></span><span style=display:flex><span>本地星期的简称：星期四
+</span></span><span style=display:flex><span>年的前两位数字（不足两位前面补0）：20
+</span></span><span style=display:flex><span>年的后两位数字（不足两位前面补0）：17
+</span></span><span style=display:flex><span>一年中的天数（即年的第几天）：124
+</span></span><span style=display:flex><span>两位数字的月份（不足两位前面补0）：05
+</span></span><span style=display:flex><span>两位数字的日（不足两位前面补0）：04
+</span></span><span style=display:flex><span>月份的日（前面不补0）：4
+</span></span></code></pre></div><h1 id=解析字符串为时间>解析字符串为时间</h1><p>SimpleDateFormat 类有一些附加的方法，特别是 parse ()，它试图按照给定的 SimpleDateFormat 对象的格式化存储来解析字符串。例如：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#f92672>import</span> java.util.*<span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> java.text.*<span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>DateDemo</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>   <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String args<span style=color:#f92672>[])</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>      SimpleDateFormat ft <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> SimpleDateFormat <span style=color:#f92672>(</span><span style=color:#e6db74>&#34;yyyy-MM-dd&#34;</span><span style=color:#f92672>);</span> 
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      String input <span style=color:#f92672>=</span> args<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span> <span style=color:#f92672>==</span> 0 <span style=color:#f92672>?</span> <span style=color:#e6db74>&#34;1818-11-11&#34;</span> <span style=color:#f92672>:</span> args<span style=color:#f92672>[</span>0<span style=color:#f92672>];</span> 
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>print</span><span style=color:#f92672>(</span>input <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34; Parses as &#34;</span><span style=color:#f92672>);</span> 
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      Date t<span style=color:#f92672>;</span> 
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>try</span> <span style=color:#f92672>{</span> 
+</span></span><span style=display:flex><span>          t <span style=color:#f92672>=</span> ft<span style=color:#f92672>.</span><span style=color:#a6e22e>parse</span><span style=color:#f92672>(</span>input<span style=color:#f92672>);</span> 
+</span></span><span style=display:flex><span>          System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span>t<span style=color:#f92672>);</span> 
+</span></span><span style=display:flex><span>      <span style=color:#f92672>}</span> <span style=color:#66d9ef>catch</span> <span style=color:#f92672>(</span>ParseException e<span style=color:#f92672>)</span> <span style=color:#f92672>{</span> 
+</span></span><span style=display:flex><span>          System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Unparseable using &#34;</span> <span style=color:#f92672>+</span> ft<span style=color:#f92672>);</span> 
+</span></span><span style=display:flex><span>      <span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>   <span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span></code></pre></div><p>以上实例编译运行结果如下:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>$ java DateDemo
+</span></span><span style=display:flex><span>1818-11-11 Parses as Wed Nov <span style=color:#ae81ff>11</span> 00:00:00 GMT <span style=color:#ae81ff>1818</span>
+</span></span><span style=display:flex><span>$ java DateDemo 2007-12-01
+</span></span><span style=display:flex><span>2007-12-01 Parses as Sat Dec <span style=color:#ae81ff>01</span> 00:00:00 GMT <span style=color:#ae81ff>2007</span>
+</span></span></code></pre></div><h1 id=java-休眠-sleep>Java 休眠 (sleep)</h1><p>sleep()使当前线程进入停滞状态（阻塞当前线程），让出CPU的使用、目的是不让当前线程独自霸占该进程所获的CPU资源，以留一定时间给其他线程执行的机会。</p><p>你可以让程序休眠一毫秒的时间或者到您的计算机的寿命长的任意段时间。例如，下面的程序会休眠 3 秒：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#f92672>import</span> java.util.*<span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>SleepDemo</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>   <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String args<span style=color:#f92672>[])</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>try</span> <span style=color:#f92672>{</span> 
+</span></span><span style=display:flex><span>         System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#66d9ef>new</span> Date<span style=color:#f92672>(</span> <span style=color:#f92672>)</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;\n&#34;</span><span style=color:#f92672>);</span> 
+</span></span><span style=display:flex><span>         Thread<span style=color:#f92672>.</span><span style=color:#a6e22e>sleep</span><span style=color:#f92672>(</span>5<span style=color:#f92672>*</span>60<span style=color:#f92672>*</span>10<span style=color:#f92672>);</span> 
+</span></span><span style=display:flex><span>         System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#66d9ef>new</span> Date<span style=color:#f92672>(</span> <span style=color:#f92672>)</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;\n&#34;</span><span style=color:#f92672>);</span> 
+</span></span><span style=display:flex><span>      <span style=color:#f92672>}</span> <span style=color:#66d9ef>catch</span> <span style=color:#f92672>(</span>Exception e<span style=color:#f92672>)</span> <span style=color:#f92672>{</span> 
+</span></span><span style=display:flex><span>          System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Got an exception!&#34;</span><span style=color:#f92672>);</span> 
+</span></span><span style=display:flex><span>      <span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>   <span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span></code></pre></div><p>以上实例编译运行结果如下:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>Sun May <span style=color:#ae81ff>03</span> 18:04:41 GMT <span style=color:#ae81ff>2009</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Sun May <span style=color:#ae81ff>03</span> 18:04:44 GMT <span style=color:#ae81ff>2009</span>
+</span></span></code></pre></div><h1 id=测量时间>测量时间</h1><p>下面的一个例子表明如何测量时间间隔（以毫秒为单位）：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#f92672>import</span> java.util.*<span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>DiffDemo</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>   <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String args<span style=color:#f92672>[])</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>try</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>         <span style=color:#66d9ef>long</span> start <span style=color:#f92672>=</span> System<span style=color:#f92672>.</span><span style=color:#a6e22e>currentTimeMillis</span><span style=color:#f92672>(</span> <span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>         System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#66d9ef>new</span> Date<span style=color:#f92672>(</span> <span style=color:#f92672>)</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;\n&#34;</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>         Thread<span style=color:#f92672>.</span><span style=color:#a6e22e>sleep</span><span style=color:#f92672>(</span>5<span style=color:#f92672>*</span>60<span style=color:#f92672>*</span>10<span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>         System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#66d9ef>new</span> Date<span style=color:#f92672>(</span> <span style=color:#f92672>)</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;\n&#34;</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>         <span style=color:#66d9ef>long</span> end <span style=color:#f92672>=</span> System<span style=color:#f92672>.</span><span style=color:#a6e22e>currentTimeMillis</span><span style=color:#f92672>(</span> <span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>         <span style=color:#66d9ef>long</span> diff <span style=color:#f92672>=</span> end <span style=color:#f92672>-</span> start<span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span>         System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Difference is : &#34;</span> <span style=color:#f92672>+</span> diff<span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>}</span> <span style=color:#66d9ef>catch</span> <span style=color:#f92672>(</span>Exception e<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>         System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Got an exception!&#34;</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>   <span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span></code></pre></div><p>以上实例编译运行结果如下:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>Sun May <span style=color:#ae81ff>03</span> 18:16:51 GMT <span style=color:#ae81ff>2009</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Sun May <span style=color:#ae81ff>03</span> 18:16:57 GMT <span style=color:#ae81ff>2009</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Difference is : <span style=color:#ae81ff>5993</span>
+</span></span></code></pre></div><h1 id=calendar-类>Calendar 类</h1><p>我们现在已经能够格式化并创建一个日期对象了，但是我们如何才能设置和获取日期数据的特定部分呢，比如说小时，日，或者分钟？我们又如何在日期的这些部分加上或者减去值呢？答案是使用 Calendar 类。</p><p>Calendar 类的功能要比 Date 类强大很多，而且在实现方式上也比 Date 类要复杂一些。</p><p>Calendar 类是一个抽象类，在实际使用时实现特定的子类的对象，创建对象的过程对程序员来说是透明的，只需要使用 getInstance 方法创建即可。</p><h2 id=创建一个代表系统当前日期的-calendar-对象>创建一个代表系统当前日期的 Calendar 对象</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span>Calendar c <span style=color:#f92672>=</span> Calendar<span style=color:#f92672>.</span><span style=color:#a6e22e>getInstance</span><span style=color:#f92672>();</span><span style=color:#75715e>//默认是当前日期
+</span></span></span></code></pre></div><h2 id=创建一个指定日期的-calendar-对象>创建一个指定日期的 Calendar 对象</h2><p>使用 Calendar 类代表特定的时间，需要首先创建一个 Calendar 的对象，然后再设定该对象中的年月日参数来完成。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#75715e>//创建一个代表2009年6月12日的Calendar对象
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>Calendar c1 <span style=color:#f92672>=</span> Calendar<span style=color:#f92672>.</span><span style=color:#a6e22e>getInstance</span><span style=color:#f92672>();</span>
+</span></span><span style=display:flex><span>c1<span style=color:#f92672>.</span><span style=color:#a6e22e>set</span><span style=color:#f92672>(</span>2009<span style=color:#f92672>,</span> 6 <span style=color:#f92672>-</span> 1<span style=color:#f92672>,</span> 12<span style=color:#f92672>);</span>
+</span></span></code></pre></div><h2 id=calendar-类对象字段类型>Calendar 类对象字段类型</h2><p>Calendar 类中用一下这些常量表示不同的意义，jdk 内的很多类其实都是采用的这种思想</p><table>
 <thead>
 <tr>
-<th style=text-align:left>常量</th>
-<th style=text-align:left>描述</th>
-</tr>
-</thead>
-<tbody>
+<th style=text-align:left>常量</th><th style=text-align:left>描述</th></tr></thead><tbody>
 <tr>
-<td style=text-align:left>Calendar.YEAR</td>
-<td style=text-align:left>年份</td>
-</tr>
-<tr>
-<td style=text-align:left>Calendar.MONTH</td>
-<td style=text-align:left>月份</td>
-</tr>
-<tr>
-<td style=text-align:left>Calendar.DATE</td>
-<td style=text-align:left>日期</td>
-</tr>
-<tr>
-<td style=text-align:left>Calendar.DAY_OF_MONTH</td>
-<td style=text-align:left>日期，和上面的字段意义完全相同</td>
-</tr>
-<tr>
-<td style=text-align:left>Calendar.HOUR</td>
-<td style=text-align:left>12 小时制的小时</td>
-</tr>
-<tr>
-<td style=text-align:left>Calendar.HOUR_OF_DAY</td>
-<td style=text-align:left>24 小时制的小时</td>
-</tr>
-<tr>
-<td style=text-align:left>Calendar.MINUTE</td>
-<td style=text-align:left>分钟</td>
-</tr>
-<tr>
-<td style=text-align:left>Calendar.SECOND</td>
-<td style=text-align:left>秒</td>
-</tr>
-<tr>
-<td style=text-align:left>Calendar.DAY_OF_WEEK</td>
-<td style=text-align:left>星期几</td>
-</tr>
-</tbody>
-</table>
-<h2 id=calendar-类对象信息的设置>Calendar 类对象信息的设置</h2>
-<p><strong>Set 设置</strong></p>
-<p>如：</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>Calendar c1 <span style=color:#f92672>=</span> Calendar<span style=color:#f92672>.</span><span style=color:#a6e22e>getInstance</span><span style=color:#f92672>();</span>
-</code></pre></div><p>调用：</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>final</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>set</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> year<span style=color:#f92672>,</span><span style=color:#66d9ef>int</span> month<span style=color:#f92672>,</span><span style=color:#66d9ef>int</span> date<span style=color:#f92672>)</span>
-c1<span style=color:#f92672>.</span><span style=color:#a6e22e>set</span><span style=color:#f92672>(</span>2009<span style=color:#f92672>,</span> 6 <span style=color:#f92672>-</span> 1<span style=color:#f92672>,</span> 12<span style=color:#f92672>);</span><span style=color:#75715e>//把Calendar对象c1的年月日分别设这为：2009、6、12
-</span></code></pre></div><p>利用字段类型设置</p>
-<p>如果只设定某个字段，例如日期的值，则可以使用如下 set 方法：</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>set</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> field<span style=color:#f92672>,</span><span style=color:#66d9ef>int</span> value<span style=color:#f92672>)</span>
-</code></pre></div><p>把 c1 对象代表的日期设置为 10 号，其它所有的数值会被重新计算</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>c1<span style=color:#f92672>.</span><span style=color:#a6e22e>set</span><span style=color:#f92672>(</span>Calendar<span style=color:#f92672>.</span><span style=color:#a6e22e>DATE</span><span style=color:#f92672>,</span>10<span style=color:#f92672>);</span>
-</code></pre></div><p>把 c1 对象代表的年份设置为 2008 年，其他的所有数值会被重新计算</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>c1<span style=color:#f92672>.</span><span style=color:#a6e22e>set</span><span style=color:#f92672>(</span>Calendar<span style=color:#f92672>.</span><span style=color:#a6e22e>YEAR</span><span style=color:#f92672>,</span>2008<span style=color:#f92672>);</span>
-</code></pre></div><p>其他字段属性 set 的意义以此类推</p>
-<p><strong>Add 设置</strong></p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>Calendar c1 <span style=color:#f92672>=</span> Calendar<span style=color:#f92672>.</span><span style=color:#a6e22e>getInstance</span><span style=color:#f92672>();</span>
-</code></pre></div><p>把 c1 对象的日期加上 10，也就是 c1 所表的日期的 10 天后的日期，其它所有的数值会被重新计算</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>c1<span style=color:#f92672>.</span><span style=color:#a6e22e>add</span><span style=color:#f92672>(</span>Calendar<span style=color:#f92672>.</span><span style=color:#a6e22e>DATE</span><span style=color:#f92672>,</span> 10<span style=color:#f92672>);</span>
-</code></pre></div><p>把 c1 对象的日期减去 10，也就是 c1 所表的日期的 10 天前的日期，其它所有的数值会被重新计算</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>c1<span style=color:#f92672>.</span><span style=color:#a6e22e>add</span><span style=color:#f92672>(</span>Calendar<span style=color:#f92672>.</span><span style=color:#a6e22e>DATE</span><span style=color:#f92672>,</span> <span style=color:#f92672>-</span>10<span style=color:#f92672>);</span>
-</code></pre></div><p>其他字段属性的 add 的意义以此类推</p>
-<h2 id=calendar-类对象信息的获得>Calendar 类对象信息的获得</h2>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>Calendar c1 <span style=color:#f92672>=</span> Calendar<span style=color:#f92672>.</span><span style=color:#a6e22e>getInstance</span><span style=color:#f92672>();</span>
-<span style=color:#75715e>// 获得年份
-</span><span style=color:#75715e></span><span style=color:#66d9ef>int</span> year <span style=color:#f92672>=</span> c1<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span>Calendar<span style=color:#f92672>.</span><span style=color:#a6e22e>YEAR</span><span style=color:#f92672>);</span>
-<span style=color:#75715e>// 获得月份
-</span><span style=color:#75715e></span><span style=color:#66d9ef>int</span> month <span style=color:#f92672>=</span> c1<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span>Calendar<span style=color:#f92672>.</span><span style=color:#a6e22e>MONTH</span><span style=color:#f92672>)</span> <span style=color:#f92672>+</span> 1<span style=color:#f92672>;</span>
-<span style=color:#75715e>// 获得日期
-</span><span style=color:#75715e></span><span style=color:#66d9ef>int</span> date <span style=color:#f92672>=</span> c1<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span>Calendar<span style=color:#f92672>.</span><span style=color:#a6e22e>DATE</span><span style=color:#f92672>);</span>
-<span style=color:#75715e>// 获得小时
-</span><span style=color:#75715e></span><span style=color:#66d9ef>int</span> hour <span style=color:#f92672>=</span> c1<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span>Calendar<span style=color:#f92672>.</span><span style=color:#a6e22e>HOUR_OF_DAY</span><span style=color:#f92672>);</span>
-<span style=color:#75715e>// 获得分钟
-</span><span style=color:#75715e></span><span style=color:#66d9ef>int</span> minute <span style=color:#f92672>=</span> c1<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span>Calendar<span style=color:#f92672>.</span><span style=color:#a6e22e>MINUTE</span><span style=color:#f92672>);</span>
-<span style=color:#75715e>// 获得秒
-</span><span style=color:#75715e></span><span style=color:#66d9ef>int</span> second <span style=color:#f92672>=</span> c1<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span>Calendar<span style=color:#f92672>.</span><span style=color:#a6e22e>SECOND</span><span style=color:#f92672>);</span>
-<span style=color:#75715e>// 获得星期几（注意（这个与Date类是不同的）：1代表星期日、2代表星期1、3代表星期二，以此类推）
-</span><span style=color:#75715e></span><span style=color:#66d9ef>int</span> day <span style=color:#f92672>=</span> c1<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span>Calendar<span style=color:#f92672>.</span><span style=color:#a6e22e>DAY_OF_WEEK</span><span style=color:#f92672>);</span>
-</code></pre></div><h1 id=gregoriancalendar-类>GregorianCalendar 类</h1>
-<p>Calendar 类实现了公历日历，GregorianCalendar 是 Calendar 类的一个具体实现。</p>
-<p>Calendar 的 getInstance()方法返回一个默认用当前的语言环境和时区初始化的 GregorianCalendar 对象。GregorianCalendar 定义了两个字段：AD 和 BC。这些代表公历定义的两个时代。</p>
-<p>下面列出 GregorianCalendar 对象的几个构造方法：</p>
-<table>
+<td style=text-align:left>Calendar.YEAR</td><td style=text-align:left>年份</td></tr><tr>
+<td style=text-align:left>Calendar.MONTH</td><td style=text-align:left>月份</td></tr><tr>
+<td style=text-align:left>Calendar.DATE</td><td style=text-align:left>日期</td></tr><tr>
+<td style=text-align:left>Calendar.DAY_OF_MONTH</td><td style=text-align:left>日期，和上面的字段意义完全相同</td></tr><tr>
+<td style=text-align:left>Calendar.HOUR</td><td style=text-align:left>12 小时制的小时</td></tr><tr>
+<td style=text-align:left>Calendar.HOUR_OF_DAY</td><td style=text-align:left>24 小时制的小时</td></tr><tr>
+<td style=text-align:left>Calendar.MINUTE</td><td style=text-align:left>分钟</td></tr><tr>
+<td style=text-align:left>Calendar.SECOND</td><td style=text-align:left>秒</td></tr><tr>
+<td style=text-align:left>Calendar.DAY_OF_WEEK</td><td style=text-align:left>星期几</td></tr></tbody></table><h2 id=calendar-类对象信息的设置>Calendar 类对象信息的设置</h2><p><strong>Set 设置</strong></p><p>如：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span>Calendar c1 <span style=color:#f92672>=</span> Calendar<span style=color:#f92672>.</span><span style=color:#a6e22e>getInstance</span><span style=color:#f92672>();</span>
+</span></span></code></pre></div><p>调用：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>final</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>set</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> year<span style=color:#f92672>,</span><span style=color:#66d9ef>int</span> month<span style=color:#f92672>,</span><span style=color:#66d9ef>int</span> date<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>c1<span style=color:#f92672>.</span><span style=color:#a6e22e>set</span><span style=color:#f92672>(</span>2009<span style=color:#f92672>,</span> 6 <span style=color:#f92672>-</span> 1<span style=color:#f92672>,</span> 12<span style=color:#f92672>);</span><span style=color:#75715e>//把Calendar对象c1的年月日分别设这为：2009、6、12
+</span></span></span></code></pre></div><p>利用字段类型设置</p><p>如果只设定某个字段，例如日期的值，则可以使用如下 set 方法：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>set</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> field<span style=color:#f92672>,</span><span style=color:#66d9ef>int</span> value<span style=color:#f92672>)</span>
+</span></span></code></pre></div><p>把 c1 对象代表的日期设置为 10 号，其它所有的数值会被重新计算</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span>c1<span style=color:#f92672>.</span><span style=color:#a6e22e>set</span><span style=color:#f92672>(</span>Calendar<span style=color:#f92672>.</span><span style=color:#a6e22e>DATE</span><span style=color:#f92672>,</span>10<span style=color:#f92672>);</span>
+</span></span></code></pre></div><p>把 c1 对象代表的年份设置为 2008 年，其他的所有数值会被重新计算</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span>c1<span style=color:#f92672>.</span><span style=color:#a6e22e>set</span><span style=color:#f92672>(</span>Calendar<span style=color:#f92672>.</span><span style=color:#a6e22e>YEAR</span><span style=color:#f92672>,</span>2008<span style=color:#f92672>);</span>
+</span></span></code></pre></div><p>其他字段属性 set 的意义以此类推</p><p><strong>Add 设置</strong></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span>Calendar c1 <span style=color:#f92672>=</span> Calendar<span style=color:#f92672>.</span><span style=color:#a6e22e>getInstance</span><span style=color:#f92672>();</span>
+</span></span></code></pre></div><p>把 c1 对象的日期加上 10，也就是 c1 所表的日期的 10 天后的日期，其它所有的数值会被重新计算</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span>c1<span style=color:#f92672>.</span><span style=color:#a6e22e>add</span><span style=color:#f92672>(</span>Calendar<span style=color:#f92672>.</span><span style=color:#a6e22e>DATE</span><span style=color:#f92672>,</span> 10<span style=color:#f92672>);</span>
+</span></span></code></pre></div><p>把 c1 对象的日期减去 10，也就是 c1 所表的日期的 10 天前的日期，其它所有的数值会被重新计算</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span>c1<span style=color:#f92672>.</span><span style=color:#a6e22e>add</span><span style=color:#f92672>(</span>Calendar<span style=color:#f92672>.</span><span style=color:#a6e22e>DATE</span><span style=color:#f92672>,</span> <span style=color:#f92672>-</span>10<span style=color:#f92672>);</span>
+</span></span></code></pre></div><p>其他字段属性的 add 的意义以此类推</p><h2 id=calendar-类对象信息的获得>Calendar 类对象信息的获得</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span>Calendar c1 <span style=color:#f92672>=</span> Calendar<span style=color:#f92672>.</span><span style=color:#a6e22e>getInstance</span><span style=color:#f92672>();</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// 获得年份
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>int</span> year <span style=color:#f92672>=</span> c1<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span>Calendar<span style=color:#f92672>.</span><span style=color:#a6e22e>YEAR</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// 获得月份
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>int</span> month <span style=color:#f92672>=</span> c1<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span>Calendar<span style=color:#f92672>.</span><span style=color:#a6e22e>MONTH</span><span style=color:#f92672>)</span> <span style=color:#f92672>+</span> 1<span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// 获得日期
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>int</span> date <span style=color:#f92672>=</span> c1<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span>Calendar<span style=color:#f92672>.</span><span style=color:#a6e22e>DATE</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// 获得小时
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>int</span> hour <span style=color:#f92672>=</span> c1<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span>Calendar<span style=color:#f92672>.</span><span style=color:#a6e22e>HOUR_OF_DAY</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// 获得分钟
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>int</span> minute <span style=color:#f92672>=</span> c1<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span>Calendar<span style=color:#f92672>.</span><span style=color:#a6e22e>MINUTE</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// 获得秒
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>int</span> second <span style=color:#f92672>=</span> c1<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span>Calendar<span style=color:#f92672>.</span><span style=color:#a6e22e>SECOND</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// 获得星期几（注意（这个与Date类是不同的）：1代表星期日、2代表星期1、3代表星期二，以此类推）
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>int</span> day <span style=color:#f92672>=</span> c1<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span>Calendar<span style=color:#f92672>.</span><span style=color:#a6e22e>DAY_OF_WEEK</span><span style=color:#f92672>);</span>
+</span></span></code></pre></div><h1 id=gregoriancalendar-类>GregorianCalendar 类</h1><p>Calendar 类实现了公历日历，GregorianCalendar 是 Calendar 类的一个具体实现。</p><p>Calendar 的 getInstance()方法返回一个默认用当前的语言环境和时区初始化的 GregorianCalendar 对象。GregorianCalendar 定义了两个字段：AD 和 BC。这些代表公历定义的两个时代。</p><p>下面列出 GregorianCalendar 对象的几个构造方法：</p><table>
 <thead>
 <tr>
-<th><strong>序号</strong></th>
-<th><strong>构造函数和说明</strong></th>
-</tr>
-</thead>
-<tbody>
+<th><strong>序号</strong></th><th><strong>构造函数和说明</strong></th></tr></thead><tbody>
 <tr>
-<td>1</td>
-<td><strong>GregorianCalendar()</strong> 在具有默认语言环境的默认时区内使用当前时间构造一个默认的 GregorianCalendar。</td>
-</tr>
-<tr>
-<td>2</td>
-<td><strong>GregorianCalendar(int year, int month, int date)</strong> 在具有默认语言环境的默认时区内构造一个带有给定日期设置的 GregorianCalendar</td>
-</tr>
-<tr>
-<td>3</td>
-<td><strong>GregorianCalendar(int year, int month, int date, int hour, int minute)</strong> 为具有默认语言环境的默认时区构造一个具有给定日期和时间设置的 GregorianCalendar。</td>
-</tr>
-<tr>
-<td>4</td>
-<td><strong>GregorianCalendar(int year, int month, int date, int hour, int minute, int second)</strong> 为具有默认语言环境的默认时区构造一个具有给定日期和时间设置的 GregorianCalendar。</td>
-</tr>
-<tr>
-<td>5</td>
-<td><strong>GregorianCalendar(Locale aLocale)</strong> 在具有给定语言环境的默认时区内构造一个基于当前时间的 GregorianCalendar。</td>
-</tr>
-<tr>
-<td>6</td>
-<td><strong>GregorianCalendar(TimeZone zone)</strong> 在具有默认语言环境的给定时区内构造一个基于当前时间的 GregorianCalendar。</td>
-</tr>
-<tr>
-<td>7</td>
-<td><strong>GregorianCalendar(TimeZone zone, Locale aLocale)</strong> 在具有给定语言环境的给定时区内构造一个基于当前时间的 GregorianCalendar。</td>
-</tr>
-</tbody>
-</table>
-<p>这里是 GregorianCalendar 类提供的一些有用的方法列表：</p>
-<table>
+<td>1</td><td><strong>GregorianCalendar()</strong> 在具有默认语言环境的默认时区内使用当前时间构造一个默认的 GregorianCalendar。</td></tr><tr>
+<td>2</td><td><strong>GregorianCalendar(int year, int month, int date)</strong> 在具有默认语言环境的默认时区内构造一个带有给定日期设置的 GregorianCalendar</td></tr><tr>
+<td>3</td><td><strong>GregorianCalendar(int year, int month, int date, int hour, int minute)</strong> 为具有默认语言环境的默认时区构造一个具有给定日期和时间设置的 GregorianCalendar。</td></tr><tr>
+<td>4</td><td><strong>GregorianCalendar(int year, int month, int date, int hour, int minute, int second)</strong> 为具有默认语言环境的默认时区构造一个具有给定日期和时间设置的 GregorianCalendar。</td></tr><tr>
+<td>5</td><td><strong>GregorianCalendar(Locale aLocale)</strong> 在具有给定语言环境的默认时区内构造一个基于当前时间的 GregorianCalendar。</td></tr><tr>
+<td>6</td><td><strong>GregorianCalendar(TimeZone zone)</strong> 在具有默认语言环境的给定时区内构造一个基于当前时间的 GregorianCalendar。</td></tr><tr>
+<td>7</td><td><strong>GregorianCalendar(TimeZone zone, Locale aLocale)</strong> 在具有给定语言环境的给定时区内构造一个基于当前时间的 GregorianCalendar。</td></tr></tbody></table><p>这里是 GregorianCalendar 类提供的一些有用的方法列表：</p><table>
 <thead>
 <tr>
-<th><strong>序号</strong></th>
-<th><strong>方法和说明</strong></th>
-</tr>
-</thead>
-<tbody>
+<th><strong>序号</strong></th><th><strong>方法和说明</strong></th></tr></thead><tbody>
 <tr>
-<td>1</td>
-<td><strong>void add(int field, int amount)</strong> 根据日历规则，将指定的（有符号的）时间量添加到给定的日历字段中。</td>
-</tr>
-<tr>
-<td>2</td>
-<td><strong>protected void computeFields()</strong> 转换 UTC 毫秒值为时间域值</td>
-</tr>
-<tr>
-<td>3</td>
-<td><strong>protected void computeTime()</strong> 覆盖 Calendar ，转换时间域值为 UTC 毫秒值</td>
-</tr>
-<tr>
-<td>4</td>
-<td><strong>boolean equals(Object obj)</strong> 比较此 GregorianCalendar 与指定的 Object。</td>
-</tr>
-<tr>
-<td>5</td>
-<td><strong>int get(int field)</strong> 获取指定字段的时间值</td>
-</tr>
-<tr>
-<td>6</td>
-<td><strong>int getActualMaximum(int field)</strong> 返回当前日期，给定字段的最大值</td>
-</tr>
-<tr>
-<td>7</td>
-<td><strong>int getActualMinimum(int field)</strong> 返回当前日期，给定字段的最小值</td>
-</tr>
-<tr>
-<td>8</td>
-<td><strong>int getGreatestMinimum(int field)</strong> 返回此 GregorianCalendar 实例给定日历字段的最高的最小值。</td>
-</tr>
-<tr>
-<td>9</td>
-<td><strong>Date getGregorianChange()</strong> 获得格里高利历的更改日期。</td>
-</tr>
-<tr>
-<td>10</td>
-<td><strong>int getLeastMaximum(int field)</strong> 返回此 GregorianCalendar 实例给定日历字段的最低的最大值</td>
-</tr>
-<tr>
-<td>11</td>
-<td><strong>int getMaximum(int field)</strong> 返回此 GregorianCalendar 实例的给定日历字段的最大值。</td>
-</tr>
-<tr>
-<td>12</td>
-<td><strong>Date getTime()</strong> 获取日历当前时间。</td>
-</tr>
-<tr>
-<td>13</td>
-<td><strong>long getTimeInMillis()</strong> 获取用长整型表示的日历的当前时间</td>
-</tr>
-<tr>
-<td>14</td>
-<td><strong>TimeZone getTimeZone()</strong> 获取时区。</td>
-</tr>
-<tr>
-<td>15</td>
-<td><strong>int getMinimum(int field)</strong> 返回给定字段的最小值。</td>
-</tr>
-<tr>
-<td>16</td>
-<td><strong>int hashCode()</strong> 重写 hashCode.</td>
-</tr>
-<tr>
-<td>17</td>
-<td><strong>boolean isLeapYear(int year)</strong> 确定给定的年份是否为闰年。</td>
-</tr>
-<tr>
-<td>18</td>
-<td><strong>void roll(int field, boolean up)</strong> 在给定的时间字段上添加或减去（上 / 下）单个时间单元，不更改更大的字段。</td>
-</tr>
-<tr>
-<td>19</td>
-<td><strong>void set(int field, int value)</strong> 用给定的值设置时间字段。</td>
-</tr>
-<tr>
-<td>20</td>
-<td><strong>void set(int year, int month, int date)</strong> 设置年、月、日的值。</td>
-</tr>
-<tr>
-<td>21</td>
-<td><strong>void set(int year, int month, int date, int hour, int minute)</strong> 设置年、月、日、小时、分钟的值。</td>
-</tr>
-<tr>
-<td>22</td>
-<td><strong>void set(int year, int month, int date, int hour, int minute, int second)</strong> 设置年、月、日、小时、分钟、秒的值。</td>
-</tr>
-<tr>
-<td>23</td>
-<td><strong>void setGregorianChange(Date date)</strong> 设置 GregorianCalendar 的更改日期。</td>
-</tr>
-<tr>
-<td>24</td>
-<td><strong>void setTime(Date date)</strong> 用给定的日期设置 Calendar 的当前时间。</td>
-</tr>
-<tr>
-<td>25</td>
-<td><strong>void setTimeInMillis(long millis)</strong> 用给定的 long 型毫秒数设置 Calendar 的当前时间。</td>
-</tr>
-<tr>
-<td>26</td>
-<td><strong>void setTimeZone(TimeZone value)</strong> 用给定时区值设置当前时区。</td>
-</tr>
-<tr>
-<td>27</td>
-<td><strong>String toString()</strong> 返回代表日历的字符串。</td>
-</tr>
-</tbody>
-</table>
-<h2 id=实例-2>实例</h2>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#f92672>import</span> java.util.*<span style=color:#f92672>;</span>
-  
-<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>GregorianCalendarDemo</span> <span style=color:#f92672>{</span>
-
-   <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String args<span style=color:#f92672>[])</span> <span style=color:#f92672>{</span>
-      String months<span style=color:#f92672>[]</span> <span style=color:#f92672>=</span> <span style=color:#f92672>{</span>
-      <span style=color:#e6db74>&#34;Jan&#34;</span><span style=color:#f92672>,</span> <span style=color:#e6db74>&#34;Feb&#34;</span><span style=color:#f92672>,</span> <span style=color:#e6db74>&#34;Mar&#34;</span><span style=color:#f92672>,</span> <span style=color:#e6db74>&#34;Apr&#34;</span><span style=color:#f92672>,</span>
-      <span style=color:#e6db74>&#34;May&#34;</span><span style=color:#f92672>,</span> <span style=color:#e6db74>&#34;Jun&#34;</span><span style=color:#f92672>,</span> <span style=color:#e6db74>&#34;Jul&#34;</span><span style=color:#f92672>,</span> <span style=color:#e6db74>&#34;Aug&#34;</span><span style=color:#f92672>,</span>
-      <span style=color:#e6db74>&#34;Sep&#34;</span><span style=color:#f92672>,</span> <span style=color:#e6db74>&#34;Oct&#34;</span><span style=color:#f92672>,</span> <span style=color:#e6db74>&#34;Nov&#34;</span><span style=color:#f92672>,</span> <span style=color:#e6db74>&#34;Dec&#34;</span><span style=color:#f92672>};</span>
-      
-      <span style=color:#66d9ef>int</span> year<span style=color:#f92672>;</span>
-      <span style=color:#75715e>// 初始化 Gregorian 日历
-</span><span style=color:#75715e></span>      <span style=color:#75715e>// 使用当前时间和日期
-</span><span style=color:#75715e></span>      <span style=color:#75715e>// 默认为本地时间和时区
-</span><span style=color:#75715e></span>      GregorianCalendar gcalendar <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> GregorianCalendar<span style=color:#f92672>();</span>
-      <span style=color:#75715e>// 显示当前时间和日期的信息
-</span><span style=color:#75715e></span>      System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>print</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Date: &#34;</span><span style=color:#f92672>);</span>
-      System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>print</span><span style=color:#f92672>(</span>months<span style=color:#f92672>[</span>gcalendar<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span>Calendar<span style=color:#f92672>.</span><span style=color:#a6e22e>MONTH</span><span style=color:#f92672>)]);</span>
-      System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>print</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34; &#34;</span> <span style=color:#f92672>+</span> gcalendar<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span>Calendar<span style=color:#f92672>.</span><span style=color:#a6e22e>DATE</span><span style=color:#f92672>)</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34; &#34;</span><span style=color:#f92672>);</span>
-      System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span>year <span style=color:#f92672>=</span> gcalendar<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span>Calendar<span style=color:#f92672>.</span><span style=color:#a6e22e>YEAR</span><span style=color:#f92672>));</span>
-      System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>print</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Time: &#34;</span><span style=color:#f92672>);</span>
-      System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>print</span><span style=color:#f92672>(</span>gcalendar<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span>Calendar<span style=color:#f92672>.</span><span style=color:#a6e22e>HOUR</span><span style=color:#f92672>)</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;:&#34;</span><span style=color:#f92672>);</span>
-      System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>print</span><span style=color:#f92672>(</span>gcalendar<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span>Calendar<span style=color:#f92672>.</span><span style=color:#a6e22e>MINUTE</span><span style=color:#f92672>)</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;:&#34;</span><span style=color:#f92672>);</span>
-      System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span>gcalendar<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span>Calendar<span style=color:#f92672>.</span><span style=color:#a6e22e>SECOND</span><span style=color:#f92672>));</span>
-      
-      <span style=color:#75715e>// 测试当前年份是否为闰年
-</span><span style=color:#75715e></span>      <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>gcalendar<span style=color:#f92672>.</span><span style=color:#a6e22e>isLeapYear</span><span style=color:#f92672>(</span>year<span style=color:#f92672>))</span> <span style=color:#f92672>{</span>
-         System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;当前年份是闰年&#34;</span><span style=color:#f92672>);</span>
-      <span style=color:#f92672>}</span> <span style=color:#66d9ef>else</span> <span style=color:#f92672>{</span>
-         System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;当前年份不是闰年&#34;</span><span style=color:#f92672>);</span>
-      <span style=color:#f92672>}</span>
-   <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
-</code></pre></div><p>以上实例编译运行结果如下：</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>Date: Apr <span style=color:#ae81ff>22</span> <span style=color:#ae81ff>2009</span>
-Time: 11:25:27
-当前年份不是闰年
-</code></pre></div><p>关于 Calender 类的完整列表，你可以参考标准的 Java 文档。</p>
-</div>
-<footer class=post-footer>
+<td>1</td><td><strong>void add(int field, int amount)</strong> 根据日历规则，将指定的（有符号的）时间量添加到给定的日历字段中。</td></tr><tr>
+<td>2</td><td><strong>protected void computeFields()</strong> 转换 UTC 毫秒值为时间域值</td></tr><tr>
+<td>3</td><td><strong>protected void computeTime()</strong> 覆盖 Calendar ，转换时间域值为 UTC 毫秒值</td></tr><tr>
+<td>4</td><td><strong>boolean equals(Object obj)</strong> 比较此 GregorianCalendar 与指定的 Object。</td></tr><tr>
+<td>5</td><td><strong>int get(int field)</strong> 获取指定字段的时间值</td></tr><tr>
+<td>6</td><td><strong>int getActualMaximum(int field)</strong> 返回当前日期，给定字段的最大值</td></tr><tr>
+<td>7</td><td><strong>int getActualMinimum(int field)</strong> 返回当前日期，给定字段的最小值</td></tr><tr>
+<td>8</td><td><strong>int getGreatestMinimum(int field)</strong> 返回此 GregorianCalendar 实例给定日历字段的最高的最小值。</td></tr><tr>
+<td>9</td><td><strong>Date getGregorianChange()</strong> 获得格里高利历的更改日期。</td></tr><tr>
+<td>10</td><td><strong>int getLeastMaximum(int field)</strong> 返回此 GregorianCalendar 实例给定日历字段的最低的最大值</td></tr><tr>
+<td>11</td><td><strong>int getMaximum(int field)</strong> 返回此 GregorianCalendar 实例的给定日历字段的最大值。</td></tr><tr>
+<td>12</td><td><strong>Date getTime()</strong> 获取日历当前时间。</td></tr><tr>
+<td>13</td><td><strong>long getTimeInMillis()</strong> 获取用长整型表示的日历的当前时间</td></tr><tr>
+<td>14</td><td><strong>TimeZone getTimeZone()</strong> 获取时区。</td></tr><tr>
+<td>15</td><td><strong>int getMinimum(int field)</strong> 返回给定字段的最小值。</td></tr><tr>
+<td>16</td><td><strong>int hashCode()</strong> 重写 hashCode.</td></tr><tr>
+<td>17</td><td><strong>boolean isLeapYear(int year)</strong> 确定给定的年份是否为闰年。</td></tr><tr>
+<td>18</td><td><strong>void roll(int field, boolean up)</strong> 在给定的时间字段上添加或减去（上 / 下）单个时间单元，不更改更大的字段。</td></tr><tr>
+<td>19</td><td><strong>void set(int field, int value)</strong> 用给定的值设置时间字段。</td></tr><tr>
+<td>20</td><td><strong>void set(int year, int month, int date)</strong> 设置年、月、日的值。</td></tr><tr>
+<td>21</td><td><strong>void set(int year, int month, int date, int hour, int minute)</strong> 设置年、月、日、小时、分钟的值。</td></tr><tr>
+<td>22</td><td><strong>void set(int year, int month, int date, int hour, int minute, int second)</strong> 设置年、月、日、小时、分钟、秒的值。</td></tr><tr>
+<td>23</td><td><strong>void setGregorianChange(Date date)</strong> 设置 GregorianCalendar 的更改日期。</td></tr><tr>
+<td>24</td><td><strong>void setTime(Date date)</strong> 用给定的日期设置 Calendar 的当前时间。</td></tr><tr>
+<td>25</td><td><strong>void setTimeInMillis(long millis)</strong> 用给定的 long 型毫秒数设置 Calendar 的当前时间。</td></tr><tr>
+<td>26</td><td><strong>void setTimeZone(TimeZone value)</strong> 用给定时区值设置当前时区。</td></tr><tr>
+<td>27</td><td><strong>String toString()</strong> 返回代表日历的字符串。</td></tr></tbody></table><h2 id=实例-2>实例</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#f92672>import</span> java.util.*<span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>GregorianCalendarDemo</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>   <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String args<span style=color:#f92672>[])</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>      String months<span style=color:#f92672>[]</span> <span style=color:#f92672>=</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>      <span style=color:#e6db74>&#34;Jan&#34;</span><span style=color:#f92672>,</span> <span style=color:#e6db74>&#34;Feb&#34;</span><span style=color:#f92672>,</span> <span style=color:#e6db74>&#34;Mar&#34;</span><span style=color:#f92672>,</span> <span style=color:#e6db74>&#34;Apr&#34;</span><span style=color:#f92672>,</span>
+</span></span><span style=display:flex><span>      <span style=color:#e6db74>&#34;May&#34;</span><span style=color:#f92672>,</span> <span style=color:#e6db74>&#34;Jun&#34;</span><span style=color:#f92672>,</span> <span style=color:#e6db74>&#34;Jul&#34;</span><span style=color:#f92672>,</span> <span style=color:#e6db74>&#34;Aug&#34;</span><span style=color:#f92672>,</span>
+</span></span><span style=display:flex><span>      <span style=color:#e6db74>&#34;Sep&#34;</span><span style=color:#f92672>,</span> <span style=color:#e6db74>&#34;Oct&#34;</span><span style=color:#f92672>,</span> <span style=color:#e6db74>&#34;Nov&#34;</span><span style=color:#f92672>,</span> <span style=color:#e6db74>&#34;Dec&#34;</span><span style=color:#f92672>};</span>
+</span></span><span style=display:flex><span>      
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>int</span> year<span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span>      <span style=color:#75715e>// 初始化 Gregorian 日历
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>      <span style=color:#75715e>// 使用当前时间和日期
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>      <span style=color:#75715e>// 默认为本地时间和时区
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>      GregorianCalendar gcalendar <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> GregorianCalendar<span style=color:#f92672>();</span>
+</span></span><span style=display:flex><span>      <span style=color:#75715e>// 显示当前时间和日期的信息
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>      System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>print</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Date: &#34;</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>      System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>print</span><span style=color:#f92672>(</span>months<span style=color:#f92672>[</span>gcalendar<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span>Calendar<span style=color:#f92672>.</span><span style=color:#a6e22e>MONTH</span><span style=color:#f92672>)]);</span>
+</span></span><span style=display:flex><span>      System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>print</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34; &#34;</span> <span style=color:#f92672>+</span> gcalendar<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span>Calendar<span style=color:#f92672>.</span><span style=color:#a6e22e>DATE</span><span style=color:#f92672>)</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34; &#34;</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>      System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span>year <span style=color:#f92672>=</span> gcalendar<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span>Calendar<span style=color:#f92672>.</span><span style=color:#a6e22e>YEAR</span><span style=color:#f92672>));</span>
+</span></span><span style=display:flex><span>      System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>print</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Time: &#34;</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>      System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>print</span><span style=color:#f92672>(</span>gcalendar<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span>Calendar<span style=color:#f92672>.</span><span style=color:#a6e22e>HOUR</span><span style=color:#f92672>)</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;:&#34;</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>      System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>print</span><span style=color:#f92672>(</span>gcalendar<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span>Calendar<span style=color:#f92672>.</span><span style=color:#a6e22e>MINUTE</span><span style=color:#f92672>)</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;:&#34;</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>      System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span>gcalendar<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span>Calendar<span style=color:#f92672>.</span><span style=color:#a6e22e>SECOND</span><span style=color:#f92672>));</span>
+</span></span><span style=display:flex><span>      
+</span></span><span style=display:flex><span>      <span style=color:#75715e>// 测试当前年份是否为闰年
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>      <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>gcalendar<span style=color:#f92672>.</span><span style=color:#a6e22e>isLeapYear</span><span style=color:#f92672>(</span>year<span style=color:#f92672>))</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>         System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;当前年份是闰年&#34;</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>}</span> <span style=color:#66d9ef>else</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>         System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;当前年份不是闰年&#34;</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>   <span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span></code></pre></div><p>以上实例编译运行结果如下：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>Date: Apr <span style=color:#ae81ff>22</span> <span style=color:#ae81ff>2009</span>
+</span></span><span style=display:flex><span>Time: 11:25:27
+</span></span><span style=display:flex><span>当前年份不是闰年
+</span></span></code></pre></div><p>关于 Calender 类的完整列表，你可以参考标准的 Java 文档。</p></div><footer class=post-footer>
 <div class=post-tags>
 <a href=/tags/java/>java</a>
-</div>
-<nav class=post-nav>
+</div><nav class=post-nav>
 <a class=prev href=/post/java-regex/>
 <i class="iconfont icon-left"></i>
 <span class="prev-text nav-default">Java 正则表达式</span>
@@ -1051,24 +494,16 @@ Time: 11:25:27
 <span class="next-text nav-mobile">下一篇</span>
 <i class="iconfont icon-right"></i>
 </a>
-</nav>
-</footer>
-</article>
-</div>
-<div id=vcomments></div>
-<script src=//cdn1.lncld.net/static/js/3.0.4/av-min.js></script>
+</nav></footer></article></div><div id=vcomments></div><script src=//cdn1.lncld.net/static/js/3.0.4/av-min.js></script>
 <script src=//unpkg.com/valine/dist/Valine.min.js></script>
-<script type=text/javascript>new Valine({el:'#vcomments',appId:'fXqv8lFikU96F2xUDOBW4T9X-MdYXbMMI',appKey:'AUbjromOz15du9OJSTY6Q8HM',notify:!1,verify:!1,avatar:'robohash',placeholder:'本站支持评论邮件提醒功能，在上方邮箱输入框留下邮箱，可以收到回复通知哦！（支持markdown语法）',visitor:!1})</script>
-</div>
-</main>
-<footer id=footer class=footer>
+<script type=text/javascript>new Valine({el:"#vcomments",appId:"fXqv8lFikU96F2xUDOBW4T9X-MdYXbMMI",appKey:"AUbjromOz15du9OJSTY6Q8HM",notify:!1,verify:!1,avatar:"robohash",placeholder:"本站支持评论邮件提醒功能，在上方邮箱输入框留下邮箱，可以收到回复通知哦！（支持markdown语法）",visitor:!1})</script>
+</div></main><footer id=footer class=footer>
 <div class=social-links>
 <a href=mailto:gao.bo168@gmail.com class="iconfont icon-email" title=email></a>
 <a href=https://github.com/forgottener class="iconfont icon-github" title=github></a>
 <a href=https://space.bilibili.com/1714562 class="iconfont icon-bilibili" title=bilibili></a>
 <a href=https://gaoboy.com/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a>
-</div>
-<div class=copyright>
+</div><div class=copyright>
 <span class=power-by>
 由 <a class=hexo-link href=https://gohugo.io>Hugo</a> 强力驱动
 </span>
@@ -1080,19 +515,14 @@ Time: 11:25:27
 <span class=copyright-year>
 &copy;
 2013 -
-2021<span class=heart><i class="iconfont icon-heart"></i></span><span><a rel="license noopener" href=https://beian.miit.gov.cn/ target=_blank>浙ICP备14043338号-2</a>~<a rel="license noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010802003111" target=_blank>浙公网安备 33010802003111号</a></span>
+2022<span class=heart><i class="iconfont icon-heart"></i></span><span><a rel="license noopener" href=https://beian.miit.gov.cn/ target=_blank>浙ICP备14043338号-2</a>~<a rel="license noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010802003111" target=_blank>浙公网安备 33010802003111号</a></span>
 </span>
-</div>
-</footer>
-<div class=back-to-top id=back-to-top>
+</div></footer><div class=back-to-top id=back-to-top>
 <i class="iconfont icon-up"></i>
-</div>
-</div>
-<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+</div></div><script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
 <script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script>
 <script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script>
 <script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script>
-<script type=text/javascript src=/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js></script>
+<script type=text/javascript src=/js/main.min.64437849d125a2d603b3e71d6de5225d641a32d17168a58106e0b61852079683.js></script>
 <script src=/js/blank.js></script>
-</body>
-</html>
+</body></html>

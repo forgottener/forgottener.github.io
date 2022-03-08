@@ -2,8 +2,7 @@
 <head>
 <meta charset=utf-8>
 <meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
-<title>Docker 仓库介绍 - 猿资猿味 - 高波的博客</title>
-<meta name=renderer content="webkit">
+<title>Docker 仓库介绍 - 猿资猿味 - 高波的博客</title><meta name=renderer content="webkit">
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
 <meta http-equiv=cache-control content="no-transform">
 <meta http-equiv=cache-control content="no-siteapp">
@@ -12,7 +11,7 @@
 <meta name=apple-mobile-web-app-capable content="yes">
 <meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec">
 <meta name=author content="forgottener"><meta name=description content="Docker 仓库介绍"><meta name=keywords content="docker,hub">
-<meta name=generator content="Hugo 0.88.1 with theme even">
+<meta name=generator content="Hugo 0.93.2 with theme even">
 <link rel=canonical href=https://gaoboy.com/post/docker-hub/>
 <link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
 <link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
@@ -35,37 +34,26 @@
 <meta name=twitter:title content="Docker 仓库介绍">
 <meta name=twitter:description content="Docker 仓库介绍"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
-</head>
-<body>
+</head><body>
 <div id=mobile-navbar class=mobile-navbar>
 <div class=mobile-header-logo>
 <a href=/ class=logo>猿资猿味</a>
-</div>
-<div class=mobile-navbar-icon>
+</div><div class=mobile-navbar-icon>
 <span></span>
 <span></span>
 <span></span>
-</div>
-</div>
-<nav id=mobile-menu class="mobile-menu slideout-menu">
+</div></div><nav id=mobile-menu class="mobile-menu slideout-menu">
 <ul class=mobile-menu-list>
 <a href=/>
-<li class=mobile-menu-item>Home</li>
-</a><a href=/post/>
-<li class=mobile-menu-item>Archives</li>
-</a><a href=/tags/>
-<li class=mobile-menu-item>Tags</li>
-</a><a href=/categories/>
-<li class=mobile-menu-item>Categories</li>
-</a>
-</ul>
-</nav>
-<div class=container id=mobile-panel>
+<li class=mobile-menu-item>Home</li></a><a href=/post/>
+<li class=mobile-menu-item>Archives</li></a><a href=/tags/>
+<li class=mobile-menu-item>Tags</li></a><a href=/categories/>
+<li class=mobile-menu-item>Categories</li></a>
+</ul></nav><div class=container id=mobile-panel>
 <header id=header class=header>
 <div class=logo-wrapper>
 <a href=/ class=logo>猿资猿味</a>
-</div>
-<nav class=site-navbar>
+</div><nav class=site-navbar>
 <ul id=menu class=menu>
 <li class=menu-item>
 <a class=menu-item-link href=/>Home</a>
@@ -75,66 +63,35 @@
 <a class=menu-item-link href=/tags/>Tags</a>
 </li><li class=menu-item>
 <a class=menu-item-link href=/categories/>Categories</a>
-</li>
-</ul>
-</nav>
-</header>
-<main id=main class=main>
+</li></ul></nav></header><main id=main class=main>
 <div class=content-wrapper>
 <div id=content class=content>
 <article class=post>
 <header class=post-header>
-<h1 class=post-title>Docker 仓库介绍</h1>
-<div class=post-meta>
+<h1 class=post-title>Docker 仓库介绍</h1><div class=post-meta>
 <span class=post-time> 2016-03-01 </span>
 <div class=post-category>
 <a href=/categories/docker/> docker </a>
-</div>
-</div>
-</header>
-<div class=post-content>
-<p>目前 Docker 官方维护了一个公共仓库 <a href=https://hub.docker.com/>Docker Hub</a>，其中已经包括了超过 15,000 的镜像。大部分需求，都可以通过在 Docker Hub 中直接下载镜像来实现。</p>
-<h1 id=登录>登录</h1>
-<p>可以通过执行 <code>docker login</code> 命令来输入用户名、密码和邮箱来完成注册和登录。 注册成功后，本地用户目录的 <code>.dockercfg</code> 中将保存用户的认证信息。</p>
-<h1 id=基本操作>基本操作</h1>
-<p>用户无需登录即可通过 <code>docker search</code> 命令来查找官方仓库中的镜像，并利用 <code>docker pull</code> 命令来将它下载到本地。</p>
-<p>例如以 centos 为关键词进行搜索：</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ sudo docker search centos
-NAME                                            DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED
-centos                                          The official build of CentOS.                   <span style=color:#ae81ff>465</span>       <span style=color:#f92672>[</span>OK<span style=color:#f92672>]</span>
-tianon/centos                                   CentOS <span style=color:#ae81ff>5</span> and 6, created using rinse instea...   <span style=color:#ae81ff>28</span>
-blalor/centos                                   Bare-bones base CentOS 6.5 image                <span style=color:#ae81ff>6</span>                    <span style=color:#f92672>[</span>OK<span style=color:#f92672>]</span>
-saltstack/centos-6-minimal                                                                      <span style=color:#ae81ff>6</span>                    <span style=color:#f92672>[</span>OK<span style=color:#f92672>]</span>
-tutum/centos-6.4                                DEPRECATED. Use tutum/centos:6.4 instead. ...   <span style=color:#ae81ff>5</span>                    <span style=color:#f92672>[</span>OK<span style=color:#f92672>]</span>
-...
-</code></pre></div><p>可以看到返回了很多包含关键字的镜像，其中包括镜像名字、描述、星级（表示该镜像的受欢迎程度）、是否官方创建、是否自动创建。 官方的镜像说明是官方项目组创建和维护的，automated 资源允许用户验证镜像的来源和内容。</p>
-<p>根据是否是官方提供，可将镜像资源分为两类。 一种是类似 centos 这样的基础镜像，被称为基础或根镜像。这些基础镜像是由 Docker 公司创建、验证、支持、提供。这样的镜像往往使用单个单词作为名字。 还有一种类型，比如 <code>tianon/centos</code> 镜像，它是由 Docker 的用户创建并维护的，往往带有用户名称前缀。可以通过前缀 <code>user_name/</code> 来指定使用某个用户提供的镜像，比如 tianon 用户。</p>
-<p>另外，在查找的时候通过 <code>-s N</code> 参数可以指定仅显示评价为 <code>N</code> 星以上的镜像。</p>
-<p>下载官方 centos 镜像到本地。</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ sudo docker pull centos
-Pulling repository centos
-0b443ba03958: Download complete
-539c0211cd76: Download complete
-511136ea3c5a: Download complete
-7064731afe90: Download complete
-</code></pre></div><p>用户也可以在登录后通过 <code>docker push</code> 命令来将镜像推送到 Docker Hub。</p>
-<h1 id=自动创建>自动创建</h1>
-<p>自动创建（Automated Builds）功能对于需要经常升级镜像内程序来说，十分方便。 有时候，用户创建了镜像，安装了某个软件，如果软件发布新版本则需要手动更新镜像。</p>
-<p>要配置自动创建，包括如下的步骤：</p>
-<ul>
-<li>创建并登录 Docker Hub，以及目标网站；</li>
-<li>在目标网站中连接帐户到 Docker Hub；</li>
-<li>在 Docker Hub 中 <a href=https://registry.hub.docker.com/builds/add/>配置一个自动创建</a>；</li>
-<li>选取一个目标网站中的项目（需要含 Dockerfile）和分支；</li>
-<li>指定 Dockerfile 的位置，并提交创建。</li>
-</ul>
-<p>之后，可以 在 Docker Hub 的 <a href=https://registry.hub.docker.com/builds/>自动创建页面</a> 中跟踪每次创建的状态。</p>
-</div>
-<footer class=post-footer>
+</div></div></header><div class=post-content>
+<p>目前 Docker 官方维护了一个公共仓库 <a href=https://hub.docker.com/>Docker Hub</a>，其中已经包括了超过 15,000 的镜像。大部分需求，都可以通过在 Docker Hub 中直接下载镜像来实现。</p><h1 id=登录>登录</h1><p>可以通过执行 <code>docker login</code> 命令来输入用户名、密码和邮箱来完成注册和登录。 注册成功后，本地用户目录的 <code>.dockercfg</code> 中将保存用户的认证信息。</p><h1 id=基本操作>基本操作</h1><p>用户无需登录即可通过 <code>docker search</code> 命令来查找官方仓库中的镜像，并利用 <code>docker pull</code> 命令来将它下载到本地。</p><p>例如以 centos 为关键词进行搜索：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>$ sudo docker search centos
+</span></span><span style=display:flex><span>NAME                                            DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED
+</span></span><span style=display:flex><span>centos                                          The official build of CentOS.                   <span style=color:#ae81ff>465</span>       <span style=color:#f92672>[</span>OK<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>tianon/centos                                   CentOS <span style=color:#ae81ff>5</span> and 6, created using rinse instea...   <span style=color:#ae81ff>28</span>
+</span></span><span style=display:flex><span>blalor/centos                                   Bare-bones base CentOS 6.5 image                <span style=color:#ae81ff>6</span>                    <span style=color:#f92672>[</span>OK<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>saltstack/centos-6-minimal                                                                      <span style=color:#ae81ff>6</span>                    <span style=color:#f92672>[</span>OK<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>tutum/centos-6.4                                DEPRECATED. Use tutum/centos:6.4 instead. ...   <span style=color:#ae81ff>5</span>                    <span style=color:#f92672>[</span>OK<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>...
+</span></span></code></pre></div><p>可以看到返回了很多包含关键字的镜像，其中包括镜像名字、描述、星级（表示该镜像的受欢迎程度）、是否官方创建、是否自动创建。 官方的镜像说明是官方项目组创建和维护的，automated 资源允许用户验证镜像的来源和内容。</p><p>根据是否是官方提供，可将镜像资源分为两类。 一种是类似 centos 这样的基础镜像，被称为基础或根镜像。这些基础镜像是由 Docker 公司创建、验证、支持、提供。这样的镜像往往使用单个单词作为名字。 还有一种类型，比如 <code>tianon/centos</code> 镜像，它是由 Docker 的用户创建并维护的，往往带有用户名称前缀。可以通过前缀 <code>user_name/</code> 来指定使用某个用户提供的镜像，比如 tianon 用户。</p><p>另外，在查找的时候通过 <code>-s N</code> 参数可以指定仅显示评价为 <code>N</code> 星以上的镜像。</p><p>下载官方 centos 镜像到本地。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>$ sudo docker pull centos
+</span></span><span style=display:flex><span>Pulling repository centos
+</span></span><span style=display:flex><span>0b443ba03958: Download complete
+</span></span><span style=display:flex><span>539c0211cd76: Download complete
+</span></span><span style=display:flex><span>511136ea3c5a: Download complete
+</span></span><span style=display:flex><span>7064731afe90: Download complete
+</span></span></code></pre></div><p>用户也可以在登录后通过 <code>docker push</code> 命令来将镜像推送到 Docker Hub。</p><h1 id=自动创建>自动创建</h1><p>自动创建（Automated Builds）功能对于需要经常升级镜像内程序来说，十分方便。 有时候，用户创建了镜像，安装了某个软件，如果软件发布新版本则需要手动更新镜像。</p><p>要配置自动创建，包括如下的步骤：</p><ul>
+<li>创建并登录 Docker Hub，以及目标网站；</li><li>在目标网站中连接帐户到 Docker Hub；</li><li>在 Docker Hub 中 <a href=https://registry.hub.docker.com/builds/add/>配置一个自动创建</a>；</li><li>选取一个目标网站中的项目（需要含 Dockerfile）和分支；</li><li>指定 Dockerfile 的位置，并提交创建。</li></ul><p>之后，可以 在 Docker Hub 的 <a href=https://registry.hub.docker.com/builds/>自动创建页面</a> 中跟踪每次创建的状态。</p></div><footer class=post-footer>
 <div class=post-tags>
 <a href=/tags/docker/>docker</a>
-</div>
-<nav class=post-nav>
+</div><nav class=post-nav>
 <a class=prev href=/post/docker-volume/>
 <i class="iconfont icon-left"></i>
 <span class="prev-text nav-default">Docker 数据卷介绍</span>
@@ -145,24 +102,16 @@ Pulling repository centos
 <span class="next-text nav-mobile">下一篇</span>
 <i class="iconfont icon-right"></i>
 </a>
-</nav>
-</footer>
-</article>
-</div>
-<div id=vcomments></div>
-<script src=//cdn1.lncld.net/static/js/3.0.4/av-min.js></script>
+</nav></footer></article></div><div id=vcomments></div><script src=//cdn1.lncld.net/static/js/3.0.4/av-min.js></script>
 <script src=//unpkg.com/valine/dist/Valine.min.js></script>
-<script type=text/javascript>new Valine({el:'#vcomments',appId:'fXqv8lFikU96F2xUDOBW4T9X-MdYXbMMI',appKey:'AUbjromOz15du9OJSTY6Q8HM',notify:!1,verify:!1,avatar:'robohash',placeholder:'本站支持评论邮件提醒功能，在上方邮箱输入框留下邮箱，可以收到回复通知哦！（支持markdown语法）',visitor:!1})</script>
-</div>
-</main>
-<footer id=footer class=footer>
+<script type=text/javascript>new Valine({el:"#vcomments",appId:"fXqv8lFikU96F2xUDOBW4T9X-MdYXbMMI",appKey:"AUbjromOz15du9OJSTY6Q8HM",notify:!1,verify:!1,avatar:"robohash",placeholder:"本站支持评论邮件提醒功能，在上方邮箱输入框留下邮箱，可以收到回复通知哦！（支持markdown语法）",visitor:!1})</script>
+</div></main><footer id=footer class=footer>
 <div class=social-links>
 <a href=mailto:gao.bo168@gmail.com class="iconfont icon-email" title=email></a>
 <a href=https://github.com/forgottener class="iconfont icon-github" title=github></a>
 <a href=https://space.bilibili.com/1714562 class="iconfont icon-bilibili" title=bilibili></a>
 <a href=https://gaoboy.com/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a>
-</div>
-<div class=copyright>
+</div><div class=copyright>
 <span class=power-by>
 由 <a class=hexo-link href=https://gohugo.io>Hugo</a> 强力驱动
 </span>
@@ -174,19 +123,14 @@ Pulling repository centos
 <span class=copyright-year>
 &copy;
 2013 -
-2021<span class=heart><i class="iconfont icon-heart"></i></span><span><a rel="license noopener" href=https://beian.miit.gov.cn/ target=_blank>浙ICP备14043338号-2</a>~<a rel="license noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010802003111" target=_blank>浙公网安备 33010802003111号</a></span>
+2022<span class=heart><i class="iconfont icon-heart"></i></span><span><a rel="license noopener" href=https://beian.miit.gov.cn/ target=_blank>浙ICP备14043338号-2</a>~<a rel="license noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010802003111" target=_blank>浙公网安备 33010802003111号</a></span>
 </span>
-</div>
-</footer>
-<div class=back-to-top id=back-to-top>
+</div></footer><div class=back-to-top id=back-to-top>
 <i class="iconfont icon-up"></i>
-</div>
-</div>
-<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+</div></div><script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
 <script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script>
 <script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script>
 <script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script>
-<script type=text/javascript src=/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js></script>
+<script type=text/javascript src=/js/main.min.64437849d125a2d603b3e71d6de5225d641a32d17168a58106e0b61852079683.js></script>
 <script src=/js/blank.js></script>
-</body>
-</html>
+</body></html>

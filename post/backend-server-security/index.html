@@ -2,8 +2,7 @@
 <head>
 <meta charset=utf-8>
 <meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
-<title>后端服务器安全检查清单 - 猿资猿味 - 高波的博客</title>
-<meta name=renderer content="webkit">
+<title>后端服务器安全检查清单 - 猿资猿味 - 高波的博客</title><meta name=renderer content="webkit">
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
 <meta http-equiv=cache-control content="no-transform">
 <meta http-equiv=cache-control content="no-siteapp">
@@ -12,7 +11,7 @@
 <meta name=apple-mobile-web-app-capable content="yes">
 <meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec">
 <meta name=author content="forgottener"><meta name=description content="后端服务器安全检查清单"><meta name=keywords content="linux,nginx,mysql,redis">
-<meta name=generator content="Hugo 0.88.1 with theme even">
+<meta name=generator content="Hugo 0.93.2 with theme even">
 <link rel=canonical href=https://gaoboy.com/post/backend-server-security/>
 <link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
 <link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
@@ -35,37 +34,26 @@
 <meta name=twitter:title content="后端服务器安全检查清单">
 <meta name=twitter:description content="后端服务器安全检查清单"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
-</head>
-<body>
+</head><body>
 <div id=mobile-navbar class=mobile-navbar>
 <div class=mobile-header-logo>
 <a href=/ class=logo>猿资猿味</a>
-</div>
-<div class=mobile-navbar-icon>
+</div><div class=mobile-navbar-icon>
 <span></span>
 <span></span>
 <span></span>
-</div>
-</div>
-<nav id=mobile-menu class="mobile-menu slideout-menu">
+</div></div><nav id=mobile-menu class="mobile-menu slideout-menu">
 <ul class=mobile-menu-list>
 <a href=/>
-<li class=mobile-menu-item>Home</li>
-</a><a href=/post/>
-<li class=mobile-menu-item>Archives</li>
-</a><a href=/tags/>
-<li class=mobile-menu-item>Tags</li>
-</a><a href=/categories/>
-<li class=mobile-menu-item>Categories</li>
-</a>
-</ul>
-</nav>
-<div class=container id=mobile-panel>
+<li class=mobile-menu-item>Home</li></a><a href=/post/>
+<li class=mobile-menu-item>Archives</li></a><a href=/tags/>
+<li class=mobile-menu-item>Tags</li></a><a href=/categories/>
+<li class=mobile-menu-item>Categories</li></a>
+</ul></nav><div class=container id=mobile-panel>
 <header id=header class=header>
 <div class=logo-wrapper>
 <a href=/ class=logo>猿资猿味</a>
-</div>
-<nav class=site-navbar>
+</div><nav class=site-navbar>
 <ul id=menu class=menu>
 <li class=menu-item>
 <a class=menu-item-link href=/>Home</a>
@@ -75,218 +63,87 @@
 <a class=menu-item-link href=/tags/>Tags</a>
 </li><li class=menu-item>
 <a class=menu-item-link href=/categories/>Categories</a>
-</li>
-</ul>
-</nav>
-</header>
-<main id=main class=main>
+</li></ul></nav></header><main id=main class=main>
 <div class=content-wrapper>
 <div id=content class=content>
 <article class=post>
 <header class=post-header>
-<h1 class=post-title>后端服务器安全检查清单</h1>
-<div class=post-meta>
+<h1 class=post-title>后端服务器安全检查清单</h1><div class=post-meta>
 <span class=post-time> 2021-10-23 </span>
 <div class=post-category>
 <a href=/categories/%E8%BF%90%E7%BB%B4/> 运维 </a>
-</div>
-</div>
-</header>
-<div class=post-content>
-<h1 id=linux>Linux</h1>
-<h2 id=禁止ssh空密码用户登录-ssh服务配置>禁止SSH空密码用户登录 SSH服务配置</h2>
-<p>禁止SSH空密码用户登录</p>
-<h3 id=加固建议>加固建议</h3>
-<p>编辑文件<code>/etc/ssh/sshd_config</code>，将<code>PermitEmptyPasswords</code>配置为<code>no</code>:</p>
-<pre tabindex=0><code>PermitEmptyPasswords no
-</code></pre><h2 id=设置密码失效时间身份鉴别>设置密码失效时间身份鉴别</h2>
-<p>设置密码失效时间，强制定期修改密码，减少密码被泄漏和猜测风险，使用非密码登陆方式(如密钥对)请忽略此项。</p>
-<h3 id=加固建议-1>加固建议</h3>
-<p>使用非密码登陆方式如密钥对，请忽略此项。
-在 <code>/etc/login.defs</code> 中将 <code>PASS_MAX_DAYS</code> 参数设置为 60-180之间，如:</p>
-<p><code>PASS_MAX_DAYS 90</code>
-需同时执行命令设置root密码失效时间：</p>
-<pre tabindex=0><code>chage --maxdays 90 root
-</code></pre><h2 id=设置密码修改最小间隔时间身份鉴别>设置密码修改最小间隔时间身份鉴别</h2>
-<p>设置密码修改最小间隔时间，限制密码更改过于频繁</p>
-<h3 id=加固建议-2>加固建议</h3>
-<p>在 <code>/etc/login.defs</code> 中将 <code>PASS_MIN_DAYS</code> 参数设置为7-14之间,建议为<code>7</code>：</p>
-<p><code>PASS_MIN_DAYS 7</code>
-需同时执行命令为root用户设置：</p>
-<pre tabindex=0><code>chage --mindays 7 root
-</code></pre><h2 id=设置ssh空闲超时退出时间服务配置>设置SSH空闲超时退出时间服务配置</h2>
-<p>设置SSH空闲超时退出时间,可降低未授权用户访问其他用户ssh会话的风险</p>
-<h3 id=加固建议-3>加固建议</h3>
-<p>编辑<code>/etc/ssh/sshd_config</code>，将<code>ClientAliveInterval</code> 设置为300到900，即5-15分钟，将<code>ClientAliveCountMax</code>设置为0-3之间。</p>
-<pre tabindex=0><code>ClientAliveInterval 600
+</div></div></header><div class=post-content>
+<h1 id=linux>Linux</h1><h2 id=禁止ssh空密码用户登录-ssh服务配置>禁止SSH空密码用户登录 SSH服务配置</h2><p>禁止SSH空密码用户登录</p><h3 id=加固建议>加固建议</h3><p>编辑文件<code>/etc/ssh/sshd_config</code>，将<code>PermitEmptyPasswords</code>配置为<code>no</code>:</p><pre tabindex=0><code>PermitEmptyPasswords no
+</code></pre><h2 id=设置密码失效时间身份鉴别>设置密码失效时间身份鉴别</h2><p>设置密码失效时间，强制定期修改密码，减少密码被泄漏和猜测风险，使用非密码登陆方式(如密钥对)请忽略此项。</p><h3 id=加固建议-1>加固建议</h3><p>使用非密码登陆方式如密钥对，请忽略此项。
+在 <code>/etc/login.defs</code> 中将 <code>PASS_MAX_DAYS</code> 参数设置为 60-180之间，如:</p><p><code>PASS_MAX_DAYS 90</code>
+需同时执行命令设置root密码失效时间：</p><pre tabindex=0><code>chage --maxdays 90 root
+</code></pre><h2 id=设置密码修改最小间隔时间身份鉴别>设置密码修改最小间隔时间身份鉴别</h2><p>设置密码修改最小间隔时间，限制密码更改过于频繁</p><h3 id=加固建议-2>加固建议</h3><p>在 <code>/etc/login.defs</code> 中将 <code>PASS_MIN_DAYS</code> 参数设置为7-14之间,建议为<code>7</code>：</p><p><code>PASS_MIN_DAYS 7</code>
+需同时执行命令为root用户设置：</p><pre tabindex=0><code>chage --mindays 7 root
+</code></pre><h2 id=设置ssh空闲超时退出时间服务配置>设置SSH空闲超时退出时间服务配置</h2><p>设置SSH空闲超时退出时间,可降低未授权用户访问其他用户ssh会话的风险</p><h3 id=加固建议-3>加固建议</h3><p>编辑<code>/etc/ssh/sshd_config</code>，将<code>ClientAliveInterval</code> 设置为300到900，即5-15分钟，将<code>ClientAliveCountMax</code>设置为0-3之间。</p><pre tabindex=0><code>ClientAliveInterval 600
 ClientAliveCountMax 2
-</code></pre><h2 id=密码复杂度检查身份鉴别>密码复杂度检查身份鉴别</h2>
-<p>检查密码长度和密码是否使用多种字符类型</p>
-<h3 id=加固建议-4>加固建议</h3>
-<p>编辑<code>/etc/security/pwquality.conf</code>，把<code>minlen</code>（密码最小长度）设置为8-32位，把<code>minclass</code>（至少包含小写字母、大写字母、数字、特殊字符等4类字符中等3类或4类）设置为3或4。如：</p>
-<pre tabindex=0><code>minlen=10
+</code></pre><h2 id=密码复杂度检查身份鉴别>密码复杂度检查身份鉴别</h2><p>检查密码长度和密码是否使用多种字符类型</p><h3 id=加固建议-4>加固建议</h3><p>编辑<code>/etc/security/pwquality.conf</code>，把<code>minlen</code>（密码最小长度）设置为8-32位，把<code>minclass</code>（至少包含小写字母、大写字母、数字、特殊字符等4类字符中等3类或4类）设置为3或4。如：</p><pre tabindex=0><code>minlen=10
 minclass=3
-</code></pre><h2 id=检查密码重用是否受限制身份鉴别>检查密码重用是否受限制身份鉴别</h2>
-<p>强制用户不重用最近使用的密码，降低密码猜测攻击风险</p>
-<h3 id=加固建议-5>加固建议</h3>
-<p>在<code>/etc/pam.d/password-auth</code>和<code>/etc/pam.d/system-auth</code>中<code>password sufficient pam_unix.so </code>这行的末尾配置<code>remember</code>参数为5-24之间，原来的内容不用更改，只在末尾加了<code>remember=5</code>。</p>
-<h1 id=nginx>nginx</h1>
-<h2 id=检查nginx进程启动账号>检查Nginx进程启动账号</h2>
-<p>Nginx进程启动账号状态，降低被攻击概率</p>
-<h3 id=加固建议-6>加固建议</h3>
-<p>修改Nginx进程启动账号：</p>
-<ol>
-<li>打开<code>conf/nginx.conf</code>配置文件；</li>
-<li>查看配置文件的user配置项，确认是非<code>root</code>启动的；</li>
-<li>如果是<code>root</code>启动，修改成<code>nobody</code>或者<code>nginx</code>账号；</li>
-</ol>
-<p>备注：修改完配置文件之后需要重新启动Nginx。</p>
-<h2 id=nginx后端服务指定的header隐藏状态服务配置>Nginx后端服务指定的Header隐藏状态服务配置</h2>
-<p>隐藏Nginx后端服务X-Powered-By头</p>
-<h3 id=加固建议-7>加固建议</h3>
-<p>隐藏Nginx后端服务指定Header的状态： 1、打开<code>conf/nginx.conf</code>配置文件； 2、在http下配置<code>proxy_hide_header</code>项； 增加或修改为 <code>proxy_hide_header X-Powered-By; proxy_hide_header Server;</code></p>
-<h2 id=隐藏nginx服务的banner服务配置>隐藏Nginx服务的Banner服务配置</h2>
-<p>Nginx服务的Banner隐藏状态</p>
-<h3 id=加固建议-8>加固建议</h3>
-<p>Nginx后端服务指定的Header隐藏状态隐藏Nginx服务Banner的状态：</p>
-<ol>
-<li>打开<code>conf/nginx.conf</code>配置文件；</li>
-<li>在server栏目下，配置<code>server_tokens</code>项 <code>server_tokens off; </code>如出现多项不支持，执行<code>ln &lt;conf_path> /etc/nginx/nginx.conf</code></li>
-</ol>
-<h2 id=nginx-ssl协议的加密策略进行加固>Nginx SSL协议的加密策略进行加固</h2>
-<h3 id=加固建议-9>加固建议</h3>
-<p>Nginx SSL协议采用TLSv1.2：</p>
-<ol>
-<li>打开<code>conf/nginx.conf</code>配置文件（或主配置文件中的inlude文件）；</li>
-<li>配置</li>
-</ol>
-<pre tabindex=0><code>server { 
+</code></pre><h2 id=检查密码重用是否受限制身份鉴别>检查密码重用是否受限制身份鉴别</h2><p>强制用户不重用最近使用的密码，降低密码猜测攻击风险</p><h3 id=加固建议-5>加固建议</h3><p>在<code>/etc/pam.d/password-auth</code>和<code>/etc/pam.d/system-auth</code>中<code>password sufficient pam_unix.so </code>这行的末尾配置<code>remember</code>参数为5-24之间，原来的内容不用更改，只在末尾加了<code>remember=5</code>。</p><h1 id=nginx>nginx</h1><h2 id=检查nginx进程启动账号>检查Nginx进程启动账号</h2><p>Nginx进程启动账号状态，降低被攻击概率</p><h3 id=加固建议-6>加固建议</h3><p>修改Nginx进程启动账号：</p><ol>
+<li>打开<code>conf/nginx.conf</code>配置文件；</li><li>查看配置文件的user配置项，确认是非<code>root</code>启动的；</li><li>如果是<code>root</code>启动，修改成<code>nobody</code>或者<code>nginx</code>账号；</li></ol><p>备注：修改完配置文件之后需要重新启动Nginx。</p><h2 id=nginx后端服务指定的header隐藏状态服务配置>Nginx后端服务指定的Header隐藏状态服务配置</h2><p>隐藏Nginx后端服务X-Powered-By头</p><h3 id=加固建议-7>加固建议</h3><p>隐藏Nginx后端服务指定Header的状态： 1、打开<code>conf/nginx.conf</code>配置文件； 2、在http下配置<code>proxy_hide_header</code>项； 增加或修改为 <code>proxy_hide_header X-Powered-By; proxy_hide_header Server;</code></p><h2 id=隐藏nginx服务的banner服务配置>隐藏Nginx服务的Banner服务配置</h2><p>Nginx服务的Banner隐藏状态</p><h3 id=加固建议-8>加固建议</h3><p>Nginx后端服务指定的Header隐藏状态隐藏Nginx服务Banner的状态：</p><ol>
+<li>打开<code>conf/nginx.conf</code>配置文件；</li><li>在server栏目下，配置<code>server_tokens</code>项 <code>server_tokens off; </code>如出现多项不支持，执行<code>ln &lt;conf_path> /etc/nginx/nginx.conf</code></li></ol><h2 id=nginx-ssl协议的加密策略进行加固>Nginx SSL协议的加密策略进行加固</h2><h3 id=加固建议-9>加固建议</h3><p>Nginx SSL协议采用TLSv1.2：</p><ol>
+<li>打开<code>conf/nginx.conf</code>配置文件（或主配置文件中的inlude文件）；</li><li>配置</li></ol><pre tabindex=0><code>server { 
     ...
     ssl_protocols TLSv1.2;
     ...
 }
-</code></pre><p>备注：配置此项请确认nginx支持OpenSSL，运行nginx -V 如果返回中包含built with OpenSSL则表示支持OpenSSL。 如不支持，可能需要增加配置ssl_protocols TLSv1 TLSv1.1 TLSv1.2; 如果尚未配置ssl协议，请尽快配置（参考连接https://www.nginx.cn/doc/optional/ssl.html）</p>
-<h1 id=mysql>mySQL</h1>
-<h2 id=确保没有用户配置了通配符主机名身份鉴别>确保没有用户配置了通配符主机名身份鉴别</h2>
-<p>避免在主机名中只使用通配符，有助于限定可以连接数据库的客户端，否则服务就开放到了公网</p>
-<h3 id=加固建议-10>加固建议</h3>
-<p>执行SQL更新语句，为每个用户指定允许连接的host范围。</p>
-<p>登录数据库，执行<code>use mysql;</code> ；
+</code></pre><p>备注：配置此项请确认nginx支持OpenSSL，运行nginx -V 如果返回中包含built with OpenSSL则表示支持OpenSSL。 如不支持，可能需要增加配置ssl_protocols TLSv1 TLSv1.1 TLSv1.2; 如果尚未配置ssl协议，请尽快配置（参考连接https://www.nginx.cn/doc/optional/ssl.html）</p><h1 id=mysql>mySQL</h1><h2 id=确保没有用户配置了通配符主机名身份鉴别>确保没有用户配置了通配符主机名身份鉴别</h2><p>避免在主机名中只使用通配符，有助于限定可以连接数据库的客户端，否则服务就开放到了公网</p><h3 id=加固建议-10>加固建议</h3><p>执行SQL更新语句，为每个用户指定允许连接的host范围。</p><p>登录数据库，执行<code>use mysql;</code> ；
 执行语句<code>select user,Host from user where Host='%';</code>查看HOST为通配符的用户;
 删除用户或者修改用户host字段，删除语句：<code>DROP USER 'user_name'@'%';</code> 。更新语句：<code>update user set host = &lt;new_host> where host = '%';</code>。
-执行SQL语句:</p>
-<pre tabindex=0><code>OPTIMIZE TABLE user;
+执行SQL语句:</p><pre tabindex=0><code>OPTIMIZE TABLE user;
 flush privileges;
-</code></pre><h2 id=删除test数据库服务配置>删除&rsquo;test&rsquo;数据库服务配置</h2>
-<p>测试数据库可供所有用户访问，并可用于消耗系统资源。删除测试数据库将减少MySQL服务器的攻击面。</p>
-<h3 id=加固建议-11>加固建议</h3>
-<p>登录数据库执行以下SQL语句删除test数据库：</p>
-<pre tabindex=0><code>DROP DATABASE test;
+</code></pre><h2 id=删除test数据库服务配置>删除&rsquo;test&rsquo;数据库服务配置</h2><p>测试数据库可供所有用户访问，并可用于消耗系统资源。删除测试数据库将减少MySQL服务器的攻击面。</p><h3 id=加固建议-11>加固建议</h3><p>登录数据库执行以下SQL语句删除test数据库：</p><pre tabindex=0><code>DROP DATABASE test;
 flush privileges;
-</code></pre><h2 id=确保配置了log-error选项安全审计>确保配置了log-error选项安全审计</h2>
-<p>启用错误日志可以提高检测针对mysql和其他关键消息的恶意尝试的能力，例如，如果错误日志未启用，则连接错误可能会被忽略。</p>
-<h3 id=加固建议-12>加固建议</h3>
-<p>编辑Mysql配置文件<code>&lt;conf_path>/my.cnf</code>，在<code>[mysqld_safe]</code> 段落中配置<code>log-error</code>参数，<code>&lt;log_path></code>代表存放日志文件路径，如：<code>/var/log/mysqld.log</code>，并重启mysql服务：</p>
-<pre tabindex=0><code>log-error=&lt;log_path&gt;
-</code></pre><h2 id=禁用local-infile选项访问控制>禁用local-infile选项访问控制</h2>
-<p>禁用local_infile选项会降低攻击者通过SQL注入漏洞器读取敏感文件的能力</p>
-<h3 id=加固建议-13>加固建议</h3>
-<p>编辑Mysql配置文件&lt;conf_path>/my.cnf，在[mysqld] 段落中配置local-infile参数为0，并重启mysql服务：</p>
-<pre tabindex=0><code>local-infile=0
-</code></pre><h2 id=禁用symbolic-links选项服务配置>禁用symbolic-links选项服务配置</h2>
-<p>禁用符号链接以防止各种安全风险</p>
-<h3 id=加固建议-14>加固建议</h3>
-<p>编辑Mysql配置文件<code>&lt;conf_path>/my.cnf</code>，在<code>[mysqld]</code> 段落中配置<code>symbolic-links=0</code>，5.6及以上版本应该配置为<code>skip_symbolic_links=yes</code>，并重启mysql服务。</p>
-<h1 id=redis>Redis</h1>
-<p>##禁止监听在公网 访问控制</p>
-<p>Redis监听在<code>0.0.0.0</code>，可能导致服务对外或内网横向移动渗透风险，极易被黑客利用入侵。</p>
-<h3 id=加固建议-15>加固建议</h3>
-<p>在redis的配置文件<code>redis.conf</code>中配置如下： <code>bind 127.0.0.1</code>或者内网IP，然后重启redis</p>
-<h2 id=redis未授权访问身份鉴别>Redis未授权访问身份鉴别</h2>
-<p>Redis端口对外开放并且没有配置认证选项，未授权用户除了可直接获取数据库中所有信息，造成严重的信息泄露外，还可以通过未授权访问漏洞入侵攻击系统。</p>
-<h3 id=加固建议-16>加固建议</h3>
-<p>可以使用以下方法修复：
-1.为Redis服务配置认证，在配置文件redis.conf中requirepass 配置复杂密码，然后重启redis。</p>
-<ol>
-<li>在Redis的配置文件redis.conf中配置如下： <code>bind 127.0.0.1</code>，只允许本机访问，然后重启redis</li>
-</ol>
-<p>##禁止使用root用户启动 访问控制</p>
-<p>使用root权限去运行网络服务是比较有风险的（nginx和apache都是有独立的work用户，而redis没有）。redis crackit 漏洞就是利用root用户的权限来替换或者增加authorized_keys，来获取root登录权限的</p>
-<h3 id=加固建议-17>加固建议</h3>
-<p>使用root切换到redis用户启动服务:</p>
-<pre tabindex=0><code>useradd -s /sbin/nolog -M redis 
+</code></pre><h2 id=确保配置了log-error选项安全审计>确保配置了log-error选项安全审计</h2><p>启用错误日志可以提高检测针对mysql和其他关键消息的恶意尝试的能力，例如，如果错误日志未启用，则连接错误可能会被忽略。</p><h3 id=加固建议-12>加固建议</h3><p>编辑Mysql配置文件<code>&lt;conf_path>/my.cnf</code>，在<code>[mysqld_safe]</code> 段落中配置<code>log-error</code>参数，<code>&lt;log_path></code>代表存放日志文件路径，如：<code>/var/log/mysqld.log</code>，并重启mysql服务：</p><pre tabindex=0><code>log-error=&lt;log_path&gt;
+</code></pre><h2 id=禁用local-infile选项访问控制>禁用local-infile选项访问控制</h2><p>禁用local_infile选项会降低攻击者通过SQL注入漏洞器读取敏感文件的能力</p><h3 id=加固建议-13>加固建议</h3><p>编辑Mysql配置文件&lt;conf_path>/my.cnf，在[mysqld] 段落中配置local-infile参数为0，并重启mysql服务：</p><pre tabindex=0><code>local-infile=0
+</code></pre><h2 id=禁用symbolic-links选项服务配置>禁用symbolic-links选项服务配置</h2><p>禁用符号链接以防止各种安全风险</p><h3 id=加固建议-14>加固建议</h3><p>编辑Mysql配置文件<code>&lt;conf_path>/my.cnf</code>，在<code>[mysqld]</code> 段落中配置<code>symbolic-links=0</code>，5.6及以上版本应该配置为<code>skip_symbolic_links=yes</code>，并重启mysql服务。</p><h1 id=redis>Redis</h1><p>##禁止监听在公网 访问控制</p><p>Redis监听在<code>0.0.0.0</code>，可能导致服务对外或内网横向移动渗透风险，极易被黑客利用入侵。</p><h3 id=加固建议-15>加固建议</h3><p>在redis的配置文件<code>redis.conf</code>中配置如下： <code>bind 127.0.0.1</code>或者内网IP，然后重启redis</p><h2 id=redis未授权访问身份鉴别>Redis未授权访问身份鉴别</h2><p>Redis端口对外开放并且没有配置认证选项，未授权用户除了可直接获取数据库中所有信息，造成严重的信息泄露外，还可以通过未授权访问漏洞入侵攻击系统。</p><h3 id=加固建议-16>加固建议</h3><p>可以使用以下方法修复：
+1.为Redis服务配置认证，在配置文件redis.conf中requirepass 配置复杂密码，然后重启redis。</p><ol>
+<li>在Redis的配置文件redis.conf中配置如下： <code>bind 127.0.0.1</code>，只允许本机访问，然后重启redis</li></ol><p>##禁止使用root用户启动 访问控制</p><p>使用root权限去运行网络服务是比较有风险的（nginx和apache都是有独立的work用户，而redis没有）。redis crackit 漏洞就是利用root用户的权限来替换或者增加authorized_keys，来获取root登录权限的</p><h3 id=加固建议-17>加固建议</h3><p>使用root切换到redis用户启动服务:</p><pre tabindex=0><code>useradd -s /sbin/nolog -M redis 
 sudo -u redis /&lt;redis-server-path&gt;/redis-server /&lt;configpath&gt;/redis.conf 2&amp;1&gt;/dev/null &amp;   
-</code></pre><h2 id=限制redis-配置文件访问权限-文件权限>限制redis 配置文件访问权限 文件权限</h2>
-<p>因为redis密码明文存储在配置文件中，禁止不相关的用户访问改配置文件是必要的，设置redis配置文件权限为600,</p>
-<h3 id=加固建议-18>加固建议</h3>
-<p>执行以下命令修改配置文件权限：</p>
-<pre tabindex=0><code>chmod 600 /&lt;filepath&gt;/redis.conf
-</code></pre><h2 id=修改默认6379端口-服务配置>修改默认6379端口 服务配置</h2>
-<p>避免使用熟知的端口,降低被初级扫描的风险</p>
-<h3 id=加固建议-19>加固建议</h3>
-<p>编辑文件redis的配置文件<code>redis.conf</code>，找到包含port的行，将默认的6379修改为自定义的端口号，然后重启redis</p>
-<h2 id=禁用或者重命名危险命令-入侵防范>禁用或者重命名危险命令 入侵防范</h2>
-<p>Redis中线上使用keys *命令，也是非常危险的。因此线上的Redis必须考虑禁用一些危险的命令，或者尽量避免谁都可以使用这些命令，Redis没有完整的管理系统，但是也提供了一些方案。</p>
-<h3 id=加固建议-20>加固建议</h3>
-<p>修改 redis.conf 文件，添加</p>
-<pre tabindex=0><code>rename-command FLUSHALL &quot;&quot;
-rename-command FLUSHDB  &quot;&quot;
-rename-command CONFIG   &quot;&quot;
-rename-command KEYS     &quot;&quot;
-rename-command SHUTDOWN &quot;&quot;
-rename-command DEL &quot;&quot;
-rename-command EVAL &quot;&quot;
-</code></pre><p>然后重启redis。 重命名为"" 代表禁用命令，如想保留命令，可以重命名为不可猜测的字符串，如： <code>rename-command FLUSHALL joYAPNXRPmcarcR4ZDgC</code></p>
-<h2 id=打开保护模式-访问控制>打开保护模式 访问控制</h2>
-<p>redis默认开启保护模式。要是配置里没有指定bind和密码，开启该参数后，redis只能本地访问，拒绝外部访问。</p>
-<h3 id=加固建议-21>加固建议</h3>
-<p>redis.conf安全设置： # 打开保护模式 <code>protected-mode yes</code></p>
-<h2 id=开启redis密码认证并设置高复杂度密码-身份鉴别>开启redis密码认证,并设置高复杂度密码 身份鉴别</h2>
-<p>redis在<code>redis.conf</code>配置文件中，设置配置项<code>requirepass</code>， 开户密码认证。 redis因查询效率高，auth这种命令每秒能处理9w次以上，简单的redis的密码极容易为攻击者暴破。</p>
-<h3 id=加固建议-22>加固建议</h3>
-<p>打开<code>redis.conf</code>，找到<code>requirepass</code>所在的地方，修改为指定的密码，密码应符合复杂性要求：</p>
-<ol>
-<li>长度8位以上</li>
-<li>包含以下四类字符中的三类字符:
+</code></pre><h2 id=限制redis-配置文件访问权限-文件权限>限制redis 配置文件访问权限 文件权限</h2><p>因为redis密码明文存储在配置文件中，禁止不相关的用户访问改配置文件是必要的，设置redis配置文件权限为600,</p><h3 id=加固建议-18>加固建议</h3><p>执行以下命令修改配置文件权限：</p><pre tabindex=0><code>chmod 600 /&lt;filepath&gt;/redis.conf
+</code></pre><h2 id=修改默认6379端口-服务配置>修改默认6379端口 服务配置</h2><p>避免使用熟知的端口,降低被初级扫描的风险</p><h3 id=加固建议-19>加固建议</h3><p>编辑文件redis的配置文件<code>redis.conf</code>，找到包含port的行，将默认的6379修改为自定义的端口号，然后重启redis</p><h2 id=禁用或者重命名危险命令-入侵防范>禁用或者重命名危险命令 入侵防范</h2><p>Redis中线上使用keys *命令，也是非常危险的。因此线上的Redis必须考虑禁用一些危险的命令，或者尽量避免谁都可以使用这些命令，Redis没有完整的管理系统，但是也提供了一些方案。</p><h3 id=加固建议-20>加固建议</h3><p>修改 redis.conf 文件，添加</p><pre tabindex=0><code>rename-command FLUSHALL &#34;&#34;
+rename-command FLUSHDB  &#34;&#34;
+rename-command CONFIG   &#34;&#34;
+rename-command KEYS     &#34;&#34;
+rename-command SHUTDOWN &#34;&#34;
+rename-command DEL &#34;&#34;
+rename-command EVAL &#34;&#34;
+</code></pre><p>然后重启redis。 重命名为"" 代表禁用命令，如想保留命令，可以重命名为不可猜测的字符串，如： <code>rename-command FLUSHALL joYAPNXRPmcarcR4ZDgC</code></p><h2 id=打开保护模式-访问控制>打开保护模式 访问控制</h2><p>redis默认开启保护模式。要是配置里没有指定bind和密码，开启该参数后，redis只能本地访问，拒绝外部访问。</p><h3 id=加固建议-21>加固建议</h3><p>redis.conf安全设置： # 打开保护模式 <code>protected-mode yes</code></p><h2 id=开启redis密码认证并设置高复杂度密码-身份鉴别>开启redis密码认证,并设置高复杂度密码 身份鉴别</h2><p>redis在<code>redis.conf</code>配置文件中，设置配置项<code>requirepass</code>， 开户密码认证。 redis因查询效率高，auth这种命令每秒能处理9w次以上，简单的redis的密码极容易为攻击者暴破。</p><h3 id=加固建议-22>加固建议</h3><p>打开<code>redis.conf</code>，找到<code>requirepass</code>所在的地方，修改为指定的密码，密码应符合复杂性要求：</p><ol>
+<li>长度8位以上</li><li>包含以下四类字符中的三类字符:
 英文大写字母(A 到 Z)
 英文小写字母(a 到 z)
 10 个基本数字(0 到 9)
-非字母字符(例如 !、$、#、%、@、^、&)</li>
-<li>避免使用已公开的弱口令，如：<code>abcd.1234</code> 、<code>admin@123</code>等</li>
-</ol>
-<p>再去掉前面的<code>#</code>号注释符，然后重启redis</p>
-</div>
-<footer class=post-footer>
+非字母字符(例如 !、$、#、%、@、^、&)</li><li>避免使用已公开的弱口令，如：<code>abcd.1234</code> 、<code>admin@123</code>等</li></ol><p>再去掉前面的<code>#</code>号注释符，然后重启redis</p></div><footer class=post-footer>
 <div class=post-tags>
 <a href=/tags/linux/>linux</a>
 <a href=/tags/nginx/>nginx</a>
 <a href=/tags/mysql/>mysql</a>
 <a href=/tags/redis/>redis</a>
-</div>
-<nav class=post-nav>
+</div><nav class=post-nav>
+<a class=prev href=/post/docker-compose-install-elasticsearch-cluster-kibana-cerebro/>
+<i class="iconfont icon-left"></i>
+<span class="prev-text nav-default">Docker Compose单机安装elasticsearch7.16.3</span>
+<span class="prev-text nav-mobile">上一篇</span>
+</a>
 <a class=next href=/post/nacos-extension-config-and-refresh/>
 <span class="next-text nav-default">Nacos多配置文件加载刷新、共享配置</span>
 <span class="next-text nav-mobile">下一篇</span>
 <i class="iconfont icon-right"></i>
 </a>
-</nav>
-</footer>
-</article>
-</div>
-<div id=vcomments></div>
-<script src=//cdn1.lncld.net/static/js/3.0.4/av-min.js></script>
+</nav></footer></article></div><div id=vcomments></div><script src=//cdn1.lncld.net/static/js/3.0.4/av-min.js></script>
 <script src=//unpkg.com/valine/dist/Valine.min.js></script>
-<script type=text/javascript>new Valine({el:'#vcomments',appId:'fXqv8lFikU96F2xUDOBW4T9X-MdYXbMMI',appKey:'AUbjromOz15du9OJSTY6Q8HM',notify:!1,verify:!1,avatar:'robohash',placeholder:'本站支持评论邮件提醒功能，在上方邮箱输入框留下邮箱，可以收到回复通知哦！（支持markdown语法）',visitor:!1})</script>
-</div>
-</main>
-<footer id=footer class=footer>
+<script type=text/javascript>new Valine({el:"#vcomments",appId:"fXqv8lFikU96F2xUDOBW4T9X-MdYXbMMI",appKey:"AUbjromOz15du9OJSTY6Q8HM",notify:!1,verify:!1,avatar:"robohash",placeholder:"本站支持评论邮件提醒功能，在上方邮箱输入框留下邮箱，可以收到回复通知哦！（支持markdown语法）",visitor:!1})</script>
+</div></main><footer id=footer class=footer>
 <div class=social-links>
 <a href=mailto:gao.bo168@gmail.com class="iconfont icon-email" title=email></a>
 <a href=https://github.com/forgottener class="iconfont icon-github" title=github></a>
 <a href=https://space.bilibili.com/1714562 class="iconfont icon-bilibili" title=bilibili></a>
 <a href=https://gaoboy.com/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a>
-</div>
-<div class=copyright>
+</div><div class=copyright>
 <span class=power-by>
 由 <a class=hexo-link href=https://gohugo.io>Hugo</a> 强力驱动
 </span>
@@ -298,19 +155,14 @@ rename-command EVAL &quot;&quot;
 <span class=copyright-year>
 &copy;
 2013 -
-2021<span class=heart><i class="iconfont icon-heart"></i></span><span><a rel="license noopener" href=https://beian.miit.gov.cn/ target=_blank>浙ICP备14043338号-2</a>~<a rel="license noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010802003111" target=_blank>浙公网安备 33010802003111号</a></span>
+2022<span class=heart><i class="iconfont icon-heart"></i></span><span><a rel="license noopener" href=https://beian.miit.gov.cn/ target=_blank>浙ICP备14043338号-2</a>~<a rel="license noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010802003111" target=_blank>浙公网安备 33010802003111号</a></span>
 </span>
-</div>
-</footer>
-<div class=back-to-top id=back-to-top>
+</div></footer><div class=back-to-top id=back-to-top>
 <i class="iconfont icon-up"></i>
-</div>
-</div>
-<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+</div></div><script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
 <script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script>
 <script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script>
 <script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script>
-<script type=text/javascript src=/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js></script>
+<script type=text/javascript src=/js/main.min.64437849d125a2d603b3e71d6de5225d641a32d17168a58106e0b61852079683.js></script>
 <script src=/js/blank.js></script>
-</body>
-</html>
+</body></html>
