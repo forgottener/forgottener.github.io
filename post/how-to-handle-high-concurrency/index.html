@@ -1,145 +1,26 @@
-<!doctype html><html lang=zh-cn>
-<head>
-<meta charset=utf-8>
-<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
-<title>如何应对高并发 - 猿资猿味 - 高波的博客</title><meta name=renderer content="webkit">
-<meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
-<meta http-equiv=cache-control content="no-transform">
-<meta http-equiv=cache-control content="no-siteapp">
-<meta name=theme-color content="#f8f5ec">
-<meta name=msapplication-navbutton-color content="#f8f5ec">
-<meta name=apple-mobile-web-app-capable content="yes">
-<meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec">
-<meta name=author content="forgottener"><meta name=description content="什么是高并发？如何提升系统的并发能力？如何应对高并发？"><meta name=keywords content="高并发,水平扩展">
-<meta name=generator content="Hugo 0.93.2 with theme even">
-<link rel=canonical href=https://gaoboy.com/post/how-to-handle-high-concurrency/>
-<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
-<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
-<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
-<link rel=manifest href=/manifest.json>
-<link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5>
-<link href=/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css rel=stylesheet>
-<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous>
-<meta property="og:title" content="如何应对高并发">
-<meta property="og:description" content="什么是高并发？如何提升系统的并发能力？如何应对高并发？">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://gaoboy.com/post/how-to-handle-high-concurrency/"><meta property="article:section" content="post">
-<meta property="article:published_time" content="2018-11-22T09:53:55+08:00">
-<meta property="article:modified_time" content="2018-11-22T09:53:55+08:00">
-<meta itemprop=name content="如何应对高并发">
-<meta itemprop=description content="什么是高并发？如何提升系统的并发能力？如何应对高并发？"><meta itemprop=datePublished content="2018-11-22T09:53:55+08:00">
-<meta itemprop=dateModified content="2018-11-22T09:53:55+08:00">
-<meta itemprop=wordCount content="2407">
-<meta itemprop=keywords content="架构,高并发,"><meta name=twitter:card content="summary">
-<meta name=twitter:title content="如何应对高并发">
-<meta name=twitter:description content="什么是高并发？如何提升系统的并发能力？如何应对高并发？"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
-<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
-</head><body>
-<div id=mobile-navbar class=mobile-navbar>
-<div class=mobile-header-logo>
-<a href=/ class=logo>猿资猿味</a>
-</div><div class=mobile-navbar-icon>
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>如何应对高并发 - 猿资猿味 - 高波的博客</title><meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv=cache-control content="no-transform"><meta http-equiv=cache-control content="no-siteapp"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=author content="forgottener"><meta name=description content="什么是高并发？如何提升系统的并发能力？如何应对高并发？"><meta name=keywords content="高并发,水平扩展"><meta name=generator content="Hugo 0.110.0 with theme even"><link rel=canonical href=https://gaoboy.com/post/how-to-handle-high-concurrency/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link href=/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css rel=stylesheet><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous><meta property="og:title" content="如何应对高并发"><meta property="og:description" content="什么是高并发？如何提升系统的并发能力？如何应对高并发？"><meta property="og:type" content="article"><meta property="og:url" content="https://gaoboy.com/post/how-to-handle-high-concurrency/"><meta property="article:section" content="post"><meta property="article:published_time" content="2018-11-22T09:53:55+08:00"><meta property="article:modified_time" content="2018-11-22T09:53:55+08:00"><meta itemprop=name content="如何应对高并发"><meta itemprop=description content="什么是高并发？如何提升系统的并发能力？如何应对高并发？"><meta itemprop=datePublished content="2018-11-22T09:53:55+08:00"><meta itemprop=dateModified content="2018-11-22T09:53:55+08:00"><meta itemprop=wordCount content="2407"><meta itemprop=keywords content="架构,高并发,"><meta name=twitter:card content="summary"><meta name=twitter:title content="如何应对高并发"><meta name=twitter:description content="什么是高并发？如何提升系统的并发能力？如何应对高并发？"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
+<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>猿资猿味</a></div><div class=mobile-navbar-icon><span></span>
 <span></span>
-<span></span>
-<span></span>
-</div></div><nav id=mobile-menu class="mobile-menu slideout-menu">
-<ul class=mobile-menu-list>
-<a href=/>
-<li class=mobile-menu-item>Home</li></a><a href=/post/>
-<li class=mobile-menu-item>Archives</li></a><a href=/tags/>
-<li class=mobile-menu-item>Tags</li></a><a href=/categories/>
-<li class=mobile-menu-item>Categories</li></a>
-</ul></nav><div class=container id=mobile-panel>
-<header id=header class=header>
-<div class=logo-wrapper>
-<a href=/ class=logo>猿资猿味</a>
-</div><nav class=site-navbar>
-<ul id=menu class=menu>
-<li class=menu-item>
-<a class=menu-item-link href=/>Home</a>
-</li><li class=menu-item>
-<a class=menu-item-link href=/post/>Archives</a>
-</li><li class=menu-item>
-<a class=menu-item-link href=/tags/>Tags</a>
-</li><li class=menu-item>
-<a class=menu-item-link href=/categories/>Categories</a>
-</li></ul></nav></header><main id=main class=main>
-<div class=content-wrapper>
-<div id=content class=content>
-<article class=post>
-<header class=post-header>
-<h1 class=post-title>如何应对高并发</h1><div class=post-meta>
-<span class=post-time> 2018-11-22 </span>
-<div class=post-category>
-<a href=/categories/%E6%9E%B6%E6%9E%84/> 架构 </a>
-</div></div></header><div class=post-toc id=post-toc>
-<h2 class=post-toc-title>文章目录</h2><div class="post-toc-content always-active">
-<nav id=TableOfContents>
-<ul>
-<li><a href=#什么是高并发>什么是高并发</a></li><li><a href=#如何提升系统的并发能力>如何提升系统的并发能力</a>
-<ul>
-<li><a href=#垂直扩展>垂直扩展</a></li><li><a href=#水平扩展>水平扩展</a></li></ul></li><li><a href=#典型互联网分层架构>典型互联网分层架构</a></li><li><a href=#水平扩展分层架构>水平扩展分层架构</a>
-<ul>
-<li><a href=#反向代理层的水平扩展>反向代理层的水平扩展</a></li><li><a href=#站点应用层的水平扩展>站点应用层的水平扩展</a></li><li><a href=#服务层的水平扩展>服务层的水平扩展</a></li><li><a href=#数据层的水平扩展>数据层的水平扩展</a>
-<ul>
-<li><a href=#按照范围水平拆分>按照范围水平拆分</a></li><li><a href=#按照哈希水平拆分>按照哈希水平拆分</a></li><li><a href=#水平拆分与主从同步>水平拆分与主从同步</a></li></ul></li></ul></li><li><a href=#总结>总结</a></li></ul></nav></div></div><div class=post-content>
-<h1 id=什么是高并发>什么是高并发</h1><p>高并发(High Concurrency)是互联网分布式系统架构设计中必须考虑的因素之一，它通常是指，通过设计保证系统能够同时并行处理很多请求。高并发相关常用的一些指标有 <strong>响应时间(Response Time)</strong>，<strong>吞吐量(Throughput)</strong>，<strong>每秒查询率 QPS(Query Per Second)</strong>，<strong>并发用户数</strong> 等。</p><ul>
-<li><strong>响应时间：</strong> 系统对请求做出响应的时间。例如系统处理一个 HTTP 请求需要 200ms，这个 200ms 就是系统的响应时间。</li><li><strong>吞吐量：</strong> 单位时间(年，月，日，时，分，秒)内处理的请求数量。</li><li><strong>QPS：</strong> 每秒响应请求数。在互联网领域，这个指标和吞吐量区分的没有这么明显。</li><li><strong>并发用户数：</strong> 同时承载正常使用系统功能的用户数量。例如一个即时通讯系统，同时在线量一定程度上代表了系统的并发用户数。</li></ul><h1 id=如何提升系统的并发能力>如何提升系统的并发能力</h1><p>互联网分布式架构设计，提高系统并发能力的方式，方法论上主要有两种：<strong>垂直扩展(Scale Up)</strong> 与 <strong>水平扩展(Scale Out)</strong>。</p><h2 id=垂直扩展>垂直扩展</h2><p>提升单机处理能力。垂直扩展的方式又有两种：</p><ul>
-<li>增强单机硬件性能，例如：增加 CPU 核数如 32 核，升级更好的网卡如万兆，升级更好的硬盘如 SSD，扩充硬盘容量如 2T，扩充系统内存如 128G；</li><li>提升单机架构性能，例如：使用 Cache 来减少 IO 次数，使用异步来增加单服务吞吐量，使用无锁数据结构来减少响应时间；</li></ul><p>在互联网业务发展非常迅猛的早期，如果预算不是问题，强烈建议使用 “增强单机硬件性能” 的方式提升系统并发能力，因为这个阶段，公司的战略往往是发展业务抢时间，而 “增强单机硬件性能” 往往是最快的方法。</p><p>不管是提升单机硬件性能，还是提升单机架构性能，都有一个致命的不足：单机性能总是有极限的。所以互联网分布式架构设计高并发终极解决方案还是水平扩展。</p><h2 id=水平扩展>水平扩展</h2><p>只要增加服务器数量，就能线性扩充系统性能。水平扩展对系统架构设计是有要求的，如何在架构各层进行可水平扩展的设计，以及互联网公司架构各层常见的水平扩展实践，是本文重点讨论的内容。</p><h1 id=典型互联网分层架构>典型互联网分层架构</h1><p><img src=https://qcloud.gaoboy.com/img/post/20210302111307.png alt></p><ul>
-<li><strong>客户端层：</strong> 典型调用方是浏览器或手机应用 APP</li><li><strong>反向代理层：</strong> 系统入口(Ingress)，反向代理(Nginx)</li><li><strong>站点应用层：</strong> 实现核心应用逻辑，返回 HTML 或者 JSON</li><li><strong>服务层：</strong> 微服务体现在这一层</li><li><strong>数据缓存层：</strong> 缓存加速访问存储</li><li><strong>数据库层：</strong> 数据库持久化数据存储</li></ul><h1 id=水平扩展分层架构>水平扩展分层架构</h1><h2 id=反向代理层的水平扩展>反向代理层的水平扩展</h2><p><img src=https://qcloud.gaoboy.com/img/post/20210302111610.png alt></p><p>反向代理层的水平扩展，是通过 <strong>DNS 轮询</strong> 实现的：DNS Server 对于一个域名配置了多个解析 IP，每次 DNS 解析请求来访问 DNS Server，会轮询返回这些 IP。</p><p>当 Nginx 成为瓶颈的时候，只要增加服务器数量，新增 Nginx 服务的部署，增加一个外网 IP，就能扩展反向代理层的性能，做到理论上的无限高并发。</p><h2 id=站点应用层的水平扩展>站点应用层的水平扩展</h2><p><img src=https://qcloud.gaoboy.com/img/post/20210302111701.png alt></p><p>站点层的水平扩展，是通过 <strong>Nginx</strong> 实现的。通过修改 <code>nginx.conf</code>，可以设置多个 Web 后端。</p><p>当 Web 后端成为瓶颈的时候，只要增加服务器数量，新增 Web 服务的部署，在 Nginx 配置中配置上新的 Web 后端，就能扩展站点层的性能，做到理论上的无限高并发。</p><h2 id=服务层的水平扩展>服务层的水平扩展</h2><p><img src=https://qcloud.gaoboy.com/img/post/20210302111729.png alt></p><p>服务层的水平扩展，是通过 <strong>服务连接池</strong> 实现的。</p><p>站点层通过 RPC Client 调用下游的服务层 RPC Server 时，RPC Client 中的连接池会建立与下游服务多个连接，当服务成为瓶颈的时候，只要增加服务器数量，新增服务部署，在 RPC Client 处建立新的下游服务连接，就能扩展服务层性能，做到理论上的无限高并发。如果需要优雅的进行服务层自动扩容，这里可能需要配置中心里服务自动发现功能的支持。</p><h2 id=数据层的水平扩展>数据层的水平扩展</h2><p>在数据量很大的情况下，数据层(缓存，数据库)涉及数据的水平扩展，将原本存储在一台服务器上的数据(缓存，数据库)水平拆分到不同服务器上去，以达到扩充系统性能的目的。</p><h3 id=按照范围水平拆分>按照范围水平拆分</h3><p><img src=https://qcloud.gaoboy.com/img/post/20210302111806.png alt></p><p>每一个数据服务，存储一定范围的数据</p><ul>
-<li>user0 库，存储 uid 范围 1-1kw</li><li>user1 库，存储 uid 范围 1kw-2kw</li></ul><p><strong>优点：</strong></p><ul>
-<li>规则简单，Service 只需判断一下 uid 范围就能路由到对应的存储服务</li><li>数据均衡性较好</li><li>比较容易扩展，可以随时加一个 uid [2kw,3kw] 的数据服务</li></ul><p><strong>缺点：</strong></p><ul>
-<li>请求的负载不一定均衡，一般来说，新注册的用户会比老用户更活跃，大范围的服务请求压力会更大</li></ul><h3 id=按照哈希水平拆分>按照哈希水平拆分</h3><p><img src=https://qcloud.gaoboy.com/img/post/20210302111837.png alt></p><p>每一个数据库，存储某个 key 值 hash 后的部分数据</p><ul>
-<li>user0 库，存储偶数 uid 数据</li><li>user1 库，存储奇数 uid 数据</li></ul><p><strong>优点：</strong></p><ul>
-<li>规则简单，Service 只需对 uid 进行 hash 能路由到对应的存储服务</li><li>数据均衡性较好</li><li>请求均匀性较好</li></ul><p><strong>缺点：</strong></p><ul>
-<li>不容易扩展，扩展一个数据服务，hash 方法改变时候，可能需要进行数据迁移</li></ul><h3 id=水平拆分与主从同步>水平拆分与主从同步</h3><p>这里需要注意的是，通过水平拆分来扩充系统性能，与主从同步读写分离来扩充数据库性能的方式有本质的不同。</p><h4 id=通过水平拆分扩展数据库性能>通过水平拆分扩展数据库性能</h4><ul>
-<li>每个服务器上存储的数据量是总量的 1/n，所以单机的性能也会有提升</li><li>n 个服务器上的数据没有交集，n个服务器上数据的并集是数据的全集</li><li>数据水平拆分到了 n 个服务器上，理论上读性能扩充了 n 倍，写性能也扩充了 n 倍(其实远不止 n 倍，因为单机的数据量变为了原来的 1/n)</li></ul><h4 id=通过主从同步读写分离扩展数据库性能>通过主从同步读写分离扩展数据库性能</h4><ul>
-<li>每个服务器上存储的数据量是和总量相同</li><li>n 个服务器上的数据都一样，都是全集</li><li>理论上读性能扩充了 n 倍，写仍然是单点，写性能不变</li></ul><blockquote>
-<p><strong>注意：</strong> 缓存层的水平拆分和数据库层的水平拆分类似，也是以范围拆分和哈希拆分的方式居多</p></blockquote><h1 id=总结>总结</h1><p>高并发(High Concurrency)是互联网分布式系统架构设计中必须考虑的因素之一，它通常是指，通过设计保证系统能够同时并行处理很多请求。</p><p>提高系统并发能力的方式，方法论上主要有两种：垂直扩展(Scale Up)与水平扩展(Scale Out)。前者垂直扩展可以通过提升单机硬件性能，或者提升单机架构性能，来提高并发性，但单机性能总是有极限的，<strong>互联网分布式架构设计高并发终极解决方案还是后者：水平扩展</strong>。</p><p>互联网分层架构中，各层次水平扩展的实践又有所不同：</p><ul>
-<li>反向代理层可以通过 <strong>DNS 轮询</strong> 的方式来进行水平扩展</li><li>站点层可以通过 Nginx 来进行水平扩展</li><li>服务层可以通过服务连接池来进行水平扩展</li><li>数据库可以按照数据范围，或者数据哈希的方式来进行水平扩展</li></ul><p>各层实施水平扩展后，能够通过增加服务器数量的方式来提升系统的性能，做到理论上的性能无限。</p></div><footer class=post-footer>
-<div class=post-tags>
-<a href=/tags/%E6%9E%B6%E6%9E%84/>架构</a>
-<a href=/tags/%E9%AB%98%E5%B9%B6%E5%8F%91/>高并发</a>
-</div><nav class=post-nav>
-<a class=prev href=/post/introduction-to-microservices/>
-<i class="iconfont icon-left"></i>
+<span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><a href=/><li class=mobile-menu-item>Home</li></a><a href=/post/><li class=mobile-menu-item>Archives</li></a><a href=/tags/><li class=mobile-menu-item>Tags</li></a><a href=/categories/><li class=mobile-menu-item>Categories</li></a></ul></nav><div class=container id=mobile-panel><header id=header class=header><div class=logo-wrapper><a href=/ class=logo>猿资猿味</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=/>Home</a></li><li class=menu-item><a class=menu-item-link href=/post/>Archives</a></li><li class=menu-item><a class=menu-item-link href=/tags/>Tags</a></li><li class=menu-item><a class=menu-item-link href=/categories/>Categories</a></li></ul></nav></header><main id=main class=main><div class=content-wrapper><div id=content class=content><article class=post><header class=post-header><h1 class=post-title>如何应对高并发</h1><div class=post-meta><span class=post-time>2018-11-22</span><div class=post-category><a href=/categories/%E6%9E%B6%E6%9E%84/>架构</a></div></div></header><div class=post-toc id=post-toc><h2 class=post-toc-title>文章目录</h2><div class="post-toc-content always-active"><nav id=TableOfContents><ul><li><a href=#什么是高并发>什么是高并发</a></li><li><a href=#如何提升系统的并发能力>如何提升系统的并发能力</a><ul><li><a href=#垂直扩展>垂直扩展</a></li><li><a href=#水平扩展>水平扩展</a></li></ul></li><li><a href=#典型互联网分层架构>典型互联网分层架构</a></li><li><a href=#水平扩展分层架构>水平扩展分层架构</a><ul><li><a href=#反向代理层的水平扩展>反向代理层的水平扩展</a></li><li><a href=#站点应用层的水平扩展>站点应用层的水平扩展</a></li><li><a href=#服务层的水平扩展>服务层的水平扩展</a></li><li><a href=#数据层的水平扩展>数据层的水平扩展</a><ul><li><a href=#按照范围水平拆分>按照范围水平拆分</a></li><li><a href=#按照哈希水平拆分>按照哈希水平拆分</a></li><li><a href=#水平拆分与主从同步>水平拆分与主从同步</a></li></ul></li></ul></li><li><a href=#总结>总结</a></li></ul></nav></div></div><div class=post-content><h1 id=什么是高并发>什么是高并发</h1><p>高并发(High Concurrency)是互联网分布式系统架构设计中必须考虑的因素之一，它通常是指，通过设计保证系统能够同时并行处理很多请求。高并发相关常用的一些指标有 <strong>响应时间(Response Time)</strong>，<strong>吞吐量(Throughput)</strong>，<strong>每秒查询率 QPS(Query Per Second)</strong>，<strong>并发用户数</strong> 等。</p><ul><li><strong>响应时间：</strong> 系统对请求做出响应的时间。例如系统处理一个 HTTP 请求需要 200ms，这个 200ms 就是系统的响应时间。</li><li><strong>吞吐量：</strong> 单位时间(年，月，日，时，分，秒)内处理的请求数量。</li><li><strong>QPS：</strong> 每秒响应请求数。在互联网领域，这个指标和吞吐量区分的没有这么明显。</li><li><strong>并发用户数：</strong> 同时承载正常使用系统功能的用户数量。例如一个即时通讯系统，同时在线量一定程度上代表了系统的并发用户数。</li></ul><h1 id=如何提升系统的并发能力>如何提升系统的并发能力</h1><p>互联网分布式架构设计，提高系统并发能力的方式，方法论上主要有两种：<strong>垂直扩展(Scale Up)</strong> 与 <strong>水平扩展(Scale Out)</strong>。</p><h2 id=垂直扩展>垂直扩展</h2><p>提升单机处理能力。垂直扩展的方式又有两种：</p><ul><li>增强单机硬件性能，例如：增加 CPU 核数如 32 核，升级更好的网卡如万兆，升级更好的硬盘如 SSD，扩充硬盘容量如 2T，扩充系统内存如 128G；</li><li>提升单机架构性能，例如：使用 Cache 来减少 IO 次数，使用异步来增加单服务吞吐量，使用无锁数据结构来减少响应时间；</li></ul><p>在互联网业务发展非常迅猛的早期，如果预算不是问题，强烈建议使用 “增强单机硬件性能” 的方式提升系统并发能力，因为这个阶段，公司的战略往往是发展业务抢时间，而 “增强单机硬件性能” 往往是最快的方法。</p><p>不管是提升单机硬件性能，还是提升单机架构性能，都有一个致命的不足：单机性能总是有极限的。所以互联网分布式架构设计高并发终极解决方案还是水平扩展。</p><h2 id=水平扩展>水平扩展</h2><p>只要增加服务器数量，就能线性扩充系统性能。水平扩展对系统架构设计是有要求的，如何在架构各层进行可水平扩展的设计，以及互联网公司架构各层常见的水平扩展实践，是本文重点讨论的内容。</p><h1 id=典型互联网分层架构>典型互联网分层架构</h1><p><img src=https://qcloud.gaoboy.com/img/post/20210302111307.png alt></p><ul><li><strong>客户端层：</strong> 典型调用方是浏览器或手机应用 APP</li><li><strong>反向代理层：</strong> 系统入口(Ingress)，反向代理(Nginx)</li><li><strong>站点应用层：</strong> 实现核心应用逻辑，返回 HTML 或者 JSON</li><li><strong>服务层：</strong> 微服务体现在这一层</li><li><strong>数据缓存层：</strong> 缓存加速访问存储</li><li><strong>数据库层：</strong> 数据库持久化数据存储</li></ul><h1 id=水平扩展分层架构>水平扩展分层架构</h1><h2 id=反向代理层的水平扩展>反向代理层的水平扩展</h2><p><img src=https://qcloud.gaoboy.com/img/post/20210302111610.png alt></p><p>反向代理层的水平扩展，是通过 <strong>DNS 轮询</strong> 实现的：DNS Server 对于一个域名配置了多个解析 IP，每次 DNS 解析请求来访问 DNS Server，会轮询返回这些 IP。</p><p>当 Nginx 成为瓶颈的时候，只要增加服务器数量，新增 Nginx 服务的部署，增加一个外网 IP，就能扩展反向代理层的性能，做到理论上的无限高并发。</p><h2 id=站点应用层的水平扩展>站点应用层的水平扩展</h2><p><img src=https://qcloud.gaoboy.com/img/post/20210302111701.png alt></p><p>站点层的水平扩展，是通过 <strong>Nginx</strong> 实现的。通过修改 <code>nginx.conf</code>，可以设置多个 Web 后端。</p><p>当 Web 后端成为瓶颈的时候，只要增加服务器数量，新增 Web 服务的部署，在 Nginx 配置中配置上新的 Web 后端，就能扩展站点层的性能，做到理论上的无限高并发。</p><h2 id=服务层的水平扩展>服务层的水平扩展</h2><p><img src=https://qcloud.gaoboy.com/img/post/20210302111729.png alt></p><p>服务层的水平扩展，是通过 <strong>服务连接池</strong> 实现的。</p><p>站点层通过 RPC Client 调用下游的服务层 RPC Server 时，RPC Client 中的连接池会建立与下游服务多个连接，当服务成为瓶颈的时候，只要增加服务器数量，新增服务部署，在 RPC Client 处建立新的下游服务连接，就能扩展服务层性能，做到理论上的无限高并发。如果需要优雅的进行服务层自动扩容，这里可能需要配置中心里服务自动发现功能的支持。</p><h2 id=数据层的水平扩展>数据层的水平扩展</h2><p>在数据量很大的情况下，数据层(缓存，数据库)涉及数据的水平扩展，将原本存储在一台服务器上的数据(缓存，数据库)水平拆分到不同服务器上去，以达到扩充系统性能的目的。</p><h3 id=按照范围水平拆分>按照范围水平拆分</h3><p><img src=https://qcloud.gaoboy.com/img/post/20210302111806.png alt></p><p>每一个数据服务，存储一定范围的数据</p><ul><li>user0 库，存储 uid 范围 1-1kw</li><li>user1 库，存储 uid 范围 1kw-2kw</li></ul><p><strong>优点：</strong></p><ul><li>规则简单，Service 只需判断一下 uid 范围就能路由到对应的存储服务</li><li>数据均衡性较好</li><li>比较容易扩展，可以随时加一个 uid [2kw,3kw] 的数据服务</li></ul><p><strong>缺点：</strong></p><ul><li>请求的负载不一定均衡，一般来说，新注册的用户会比老用户更活跃，大范围的服务请求压力会更大</li></ul><h3 id=按照哈希水平拆分>按照哈希水平拆分</h3><p><img src=https://qcloud.gaoboy.com/img/post/20210302111837.png alt></p><p>每一个数据库，存储某个 key 值 hash 后的部分数据</p><ul><li>user0 库，存储偶数 uid 数据</li><li>user1 库，存储奇数 uid 数据</li></ul><p><strong>优点：</strong></p><ul><li>规则简单，Service 只需对 uid 进行 hash 能路由到对应的存储服务</li><li>数据均衡性较好</li><li>请求均匀性较好</li></ul><p><strong>缺点：</strong></p><ul><li>不容易扩展，扩展一个数据服务，hash 方法改变时候，可能需要进行数据迁移</li></ul><h3 id=水平拆分与主从同步>水平拆分与主从同步</h3><p>这里需要注意的是，通过水平拆分来扩充系统性能，与主从同步读写分离来扩充数据库性能的方式有本质的不同。</p><h4 id=通过水平拆分扩展数据库性能>通过水平拆分扩展数据库性能</h4><ul><li>每个服务器上存储的数据量是总量的 1/n，所以单机的性能也会有提升</li><li>n 个服务器上的数据没有交集，n个服务器上数据的并集是数据的全集</li><li>数据水平拆分到了 n 个服务器上，理论上读性能扩充了 n 倍，写性能也扩充了 n 倍(其实远不止 n 倍，因为单机的数据量变为了原来的 1/n)</li></ul><h4 id=通过主从同步读写分离扩展数据库性能>通过主从同步读写分离扩展数据库性能</h4><ul><li>每个服务器上存储的数据量是和总量相同</li><li>n 个服务器上的数据都一样，都是全集</li><li>理论上读性能扩充了 n 倍，写仍然是单点，写性能不变</li></ul><blockquote><p><strong>注意：</strong> 缓存层的水平拆分和数据库层的水平拆分类似，也是以范围拆分和哈希拆分的方式居多</p></blockquote><h1 id=总结>总结</h1><p>高并发(High Concurrency)是互联网分布式系统架构设计中必须考虑的因素之一，它通常是指，通过设计保证系统能够同时并行处理很多请求。</p><p>提高系统并发能力的方式，方法论上主要有两种：垂直扩展(Scale Up)与水平扩展(Scale Out)。前者垂直扩展可以通过提升单机硬件性能，或者提升单机架构性能，来提高并发性，但单机性能总是有极限的，<strong>互联网分布式架构设计高并发终极解决方案还是后者：水平扩展</strong>。</p><p>互联网分层架构中，各层次水平扩展的实践又有所不同：</p><ul><li>反向代理层可以通过 <strong>DNS 轮询</strong> 的方式来进行水平扩展</li><li>站点层可以通过 Nginx 来进行水平扩展</li><li>服务层可以通过服务连接池来进行水平扩展</li><li>数据库可以按照数据范围，或者数据哈希的方式来进行水平扩展</li></ul><p>各层实施水平扩展后，能够通过增加服务器数量的方式来提升系统的性能，做到理论上的性能无限。</p></div><footer class=post-footer><div class=post-tags><a href=/tags/%E6%9E%B6%E6%9E%84/>架构</a>
+<a href=/tags/%E9%AB%98%E5%B9%B6%E5%8F%91/>高并发</a></div><nav class=post-nav><a class=prev href=/post/introduction-to-microservices/><i class="iconfont icon-left"></i>
 <span class="prev-text nav-default">微服务简介</span>
-<span class="prev-text nav-mobile">上一篇</span>
-</a>
-<a class=next href=/post/cap-base/>
-<span class="next-text nav-default">CAP 定理和 BASE 理论</span>
+<span class="prev-text nav-mobile">上一篇</span></a>
+<a class=next href=/post/cap-base/><span class="next-text nav-default">CAP 定理和 BASE 理论</span>
 <span class="next-text nav-mobile">下一篇</span>
-<i class="iconfont icon-right"></i>
-</a>
-</nav></footer></article></div><div id=vcomments></div><script src=//cdn1.lncld.net/static/js/3.0.4/av-min.js></script>
+<i class="iconfont icon-right"></i></a></nav></footer></article></div><div id=vcomments></div><script src=//cdn1.lncld.net/static/js/3.0.4/av-min.js></script>
 <script src=//unpkg.com/valine/dist/Valine.min.js></script>
-<script type=text/javascript>new Valine({el:"#vcomments",appId:"fXqv8lFikU96F2xUDOBW4T9X-MdYXbMMI",appKey:"AUbjromOz15du9OJSTY6Q8HM",notify:!1,verify:!1,avatar:"robohash",placeholder:"本站支持评论邮件提醒功能，在上方邮箱输入框留下邮箱，可以收到回复通知哦！（支持markdown语法）",visitor:!1})</script>
-</div></main><footer id=footer class=footer>
-<div class=social-links>
-<a href=mailto:gao.bo168@gmail.com class="iconfont icon-email" title=email></a>
+<script type=text/javascript>new Valine({el:"#vcomments",appId:"fXqv8lFikU96F2xUDOBW4T9X-MdYXbMMI",appKey:"AUbjromOz15du9OJSTY6Q8HM",notify:!1,verify:!1,avatar:"robohash",placeholder:"本站支持评论邮件提醒功能，在上方邮箱输入框留下邮箱，可以收到回复通知哦！（支持markdown语法）",visitor:!1})</script></div></main><footer id=footer class=footer><div class=social-links><a href=mailto:gao.bo168@gmail.com class="iconfont icon-email" title=email></a>
 <a href=https://github.com/forgottener class="iconfont icon-github" title=github></a>
 <a href=https://space.bilibili.com/1714562 class="iconfont icon-bilibili" title=bilibili></a>
-<a href=https://gaoboy.com/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a>
-</div><div class=copyright>
-<span class=power-by>
-由 <a class=hexo-link href=https://gohugo.io>Hugo</a> 强力驱动
-</span>
+<a href=https://gaoboy.com/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a></div><div class=copyright><span class=power-by>由 <a class=hexo-link href=https://gohugo.io>Hugo</a> 强力驱动</span>
 <span class=division>|</span>
-<span class=theme-info>
-主题 -
-<a class=theme-link href=https://github.com/olOwOlo/hugo-theme-even>Even</a>
-</span>
-<span class=copyright-year>
-&copy;
+<span class=theme-info>主题 -
+<a class=theme-link href=https://github.com/olOwOlo/hugo-theme-even>Even</a></span>
+<span class=copyright-year>&copy;
 2013 -
-2022<span class=heart><i class="iconfont icon-heart"></i></span><span><a rel="license noopener" href=https://beian.miit.gov.cn/ target=_blank>浙ICP备14043338号-2</a>~<a rel="license noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010802003111" target=_blank>浙公网安备 33010802003111号</a></span>
-</span>
-</div></footer><div class=back-to-top id=back-to-top>
-<i class="iconfont icon-up"></i>
-</div></div><script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+2023<span class=heart><i class="iconfont icon-heart"></i></span><span><a rel="license noopener" href=https://beian.miit.gov.cn/ target=_blank>浙ICP备14043338号-2</a>~<a rel="license noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010802003111" target=_blank>浙公网安备 33010802003111号</a></span></span></div></footer><div class=back-to-top id=back-to-top><i class="iconfont icon-up"></i></div></div><script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
 <script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script>
 <script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script>
 <script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script>
-<script type=text/javascript src=/js/main.min.64437849d125a2d603b3e71d6de5225d641a32d17168a58106e0b61852079683.js></script>
-<script src=/js/blank.js></script>
-</body></html>
+<script type=text/javascript src=/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js></script>
+<script src=/js/blank.js></script></body></html>

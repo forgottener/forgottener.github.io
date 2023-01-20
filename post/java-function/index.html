@@ -1,114 +1,15 @@
-<!doctype html><html lang=zh-cn>
-<head>
-<meta charset=utf-8>
-<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
-<title>Java 方法 - 猿资猿味 - 高波的博客</title><meta name=renderer content="webkit">
-<meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
-<meta http-equiv=cache-control content="no-transform">
-<meta http-equiv=cache-control content="no-siteapp">
-<meta name=theme-color content="#f8f5ec">
-<meta name=msapplication-navbutton-color content="#f8f5ec">
-<meta name=apple-mobile-web-app-capable content="yes">
-<meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec">
-<meta name=author content="forgottener"><meta name=description content="Java 方法"><meta name=keywords content="java,function">
-<meta name=generator content="Hugo 0.93.2 with theme even">
-<link rel=canonical href=https://gaoboy.com/post/java-function/>
-<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
-<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
-<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
-<link rel=manifest href=/manifest.json>
-<link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5>
-<link href=/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css rel=stylesheet>
-<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous>
-<meta property="og:title" content="Java 方法">
-<meta property="og:description" content="Java 方法">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://gaoboy.com/post/java-function/"><meta property="article:section" content="post">
-<meta property="article:published_time" content="2015-01-25T14:53:33+08:00">
-<meta property="article:modified_time" content="2015-01-25T14:53:33+08:00">
-<meta itemprop=name content="Java 方法">
-<meta itemprop=description content="Java 方法"><meta itemprop=datePublished content="2015-01-25T14:53:33+08:00">
-<meta itemprop=dateModified content="2015-01-25T14:53:33+08:00">
-<meta itemprop=wordCount content="3547">
-<meta itemprop=keywords content="java,"><meta name=twitter:card content="summary">
-<meta name=twitter:title content="Java 方法">
-<meta name=twitter:description content="Java 方法"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
-<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
-</head><body>
-<div id=mobile-navbar class=mobile-navbar>
-<div class=mobile-header-logo>
-<a href=/ class=logo>猿资猿味</a>
-</div><div class=mobile-navbar-icon>
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>Java 方法 - 猿资猿味 - 高波的博客</title><meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv=cache-control content="no-transform"><meta http-equiv=cache-control content="no-siteapp"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=author content="forgottener"><meta name=description content="Java 方法"><meta name=keywords content="java,function"><meta name=generator content="Hugo 0.110.0 with theme even"><link rel=canonical href=https://gaoboy.com/post/java-function/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link href=/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css rel=stylesheet><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous><meta property="og:title" content="Java 方法"><meta property="og:description" content="Java 方法"><meta property="og:type" content="article"><meta property="og:url" content="https://gaoboy.com/post/java-function/"><meta property="article:section" content="post"><meta property="article:published_time" content="2015-01-25T14:53:33+08:00"><meta property="article:modified_time" content="2015-01-25T14:53:33+08:00"><meta itemprop=name content="Java 方法"><meta itemprop=description content="Java 方法"><meta itemprop=datePublished content="2015-01-25T14:53:33+08:00"><meta itemprop=dateModified content="2015-01-25T14:53:33+08:00"><meta itemprop=wordCount content="3547"><meta itemprop=keywords content="java,"><meta name=twitter:card content="summary"><meta name=twitter:title content="Java 方法"><meta name=twitter:description content="Java 方法"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
+<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>猿资猿味</a></div><div class=mobile-navbar-icon><span></span>
 <span></span>
-<span></span>
-<span></span>
-</div></div><nav id=mobile-menu class="mobile-menu slideout-menu">
-<ul class=mobile-menu-list>
-<a href=/>
-<li class=mobile-menu-item>Home</li></a><a href=/post/>
-<li class=mobile-menu-item>Archives</li></a><a href=/tags/>
-<li class=mobile-menu-item>Tags</li></a><a href=/categories/>
-<li class=mobile-menu-item>Categories</li></a>
-</ul></nav><div class=container id=mobile-panel>
-<header id=header class=header>
-<div class=logo-wrapper>
-<a href=/ class=logo>猿资猿味</a>
-</div><nav class=site-navbar>
-<ul id=menu class=menu>
-<li class=menu-item>
-<a class=menu-item-link href=/>Home</a>
-</li><li class=menu-item>
-<a class=menu-item-link href=/post/>Archives</a>
-</li><li class=menu-item>
-<a class=menu-item-link href=/tags/>Tags</a>
-</li><li class=menu-item>
-<a class=menu-item-link href=/categories/>Categories</a>
-</li></ul></nav></header><main id=main class=main>
-<div class=content-wrapper>
-<div id=content class=content>
-<article class=post>
-<header class=post-header>
-<h1 class=post-title>Java 方法</h1><div class=post-meta>
-<span class=post-time> 2015-01-25 </span>
-<div class=post-category>
-<a href=/categories/java/> java </a>
-</div></div></header><div class=post-toc id=post-toc>
-<h2 class=post-toc-title>文章目录</h2><div class="post-toc-content always-active">
-<nav id=TableOfContents>
-<ul>
-<li><a href=#概述>概述</a>
-<ul>
-<li><a href=#什么是方法>什么是方法</a></li><li><a href=#方法的优点>方法的优点</a></li><li><a href=#方法的命名规则>方法的命名规则</a></li></ul></li><li><a href=#方法的定义>方法的定义</a>
-<ul>
-<li><a href=#实例>实例</a></li></ul></li><li><a href=#方法调用>方法调用</a>
-<ul>
-<li><a href=#示例>示例</a></li></ul></li><li><a href=#void-关键字>void 关键字</a>
-<ul>
-<li><a href=#示例-1>示例</a></li></ul></li><li><a href=#通过值传递参数>通过值传递参数</a>
-<ul>
-<li><a href=#示例-2>示例</a></li></ul></li><li><a href=#方法的重载>方法的重载</a></li><li><a href=#变量作用域>变量作用域</a></li><li><a href=#命令行参数的使用>命令行参数的使用</a>
-<ul>
-<li><a href=#实例-1>实例</a></li></ul></li><li><a href=#构造方法>构造方法</a>
-<ul>
-<li><a href=#实例-2>实例</a></li><li><a href=#实例-3>实例</a></li></ul></li><li><a href=#可变参数>可变参数</a>
-<ul>
-<li><a href=#实例-4>实例</a></li></ul></li><li><a href=#finalize-方法>finalize() 方法</a>
-<ul>
-<li><a href=#实例-5>实例</a></li></ul></li></ul></nav></div></div><div class=post-content>
-<h1 id=概述>概述</h1><p>在前面几个章节中我们经常使用到<code>System.out.println()</code>，那么它是什么呢？</p><p><code>println()</code>是一个方法 (Method)，而<code>System</code>是系统类 (Class)，<code>out</code>是标准输出对象 (Object)。这句话的用法是调用系统类<code>System</code> 中的标准输出对象<code>out</code>中的方法<code>println()</code>。</p><h2 id=什么是方法>什么是方法</h2><p>Java 方法是语句的集合，它们在一起执行一个功能。</p><ul>
-<li>方法是解决一类问题的步骤的有序组合</li><li>方法包含于类或对象中</li><li>方法在程序中被创建，在其他地方被引用</li></ul><h2 id=方法的优点>方法的优点</h2><ul>
-<li>使程序变得更简短而清晰。</li><li>有利于程序维护。</li><li>可以提高程序开发的效率。</li><li>提高了代码的重用性。</li></ul><h2 id=方法的命名规则>方法的命名规则</h2><ul>
-<li>方法的名字的第一个单词应以小写字母作为开头，后面的单词则用大写字母开头写，不使用连接符。例如：<strong>addPerson</strong>。</li><li>下划线可能出现在 JUnit 测试方法名称中用以分隔名称的逻辑组件。一个典型的模式是：<code>test&lt;MethodUnderTest>_&lt;state></code>，例如 <code>testPop_emptyStack</code>。</li></ul><h1 id=方法的定义>方法的定义</h1><p>一般情况下，定义一个方法包含以下语法：</p><pre tabindex=0><code>修饰符 返回值类型 方法名 (参数类型 参数名) {
+<span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><a href=/><li class=mobile-menu-item>Home</li></a><a href=/post/><li class=mobile-menu-item>Archives</li></a><a href=/tags/><li class=mobile-menu-item>Tags</li></a><a href=/categories/><li class=mobile-menu-item>Categories</li></a></ul></nav><div class=container id=mobile-panel><header id=header class=header><div class=logo-wrapper><a href=/ class=logo>猿资猿味</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=/>Home</a></li><li class=menu-item><a class=menu-item-link href=/post/>Archives</a></li><li class=menu-item><a class=menu-item-link href=/tags/>Tags</a></li><li class=menu-item><a class=menu-item-link href=/categories/>Categories</a></li></ul></nav></header><main id=main class=main><div class=content-wrapper><div id=content class=content><article class=post><header class=post-header><h1 class=post-title>Java 方法</h1><div class=post-meta><span class=post-time>2015-01-25</span><div class=post-category><a href=/categories/java/>java</a></div></div></header><div class=post-toc id=post-toc><h2 class=post-toc-title>文章目录</h2><div class="post-toc-content always-active"><nav id=TableOfContents><ul><li><a href=#概述>概述</a><ul><li><a href=#什么是方法>什么是方法</a></li><li><a href=#方法的优点>方法的优点</a></li><li><a href=#方法的命名规则>方法的命名规则</a></li></ul></li><li><a href=#方法的定义>方法的定义</a><ul><li><a href=#实例>实例</a></li></ul></li><li><a href=#方法调用>方法调用</a><ul><li><a href=#示例>示例</a></li></ul></li><li><a href=#void-关键字>void 关键字</a><ul><li><a href=#示例-1>示例</a></li></ul></li><li><a href=#通过值传递参数>通过值传递参数</a><ul><li><a href=#示例-2>示例</a></li></ul></li><li><a href=#方法的重载>方法的重载</a></li><li><a href=#变量作用域>变量作用域</a></li><li><a href=#命令行参数的使用>命令行参数的使用</a><ul><li><a href=#实例-1>实例</a></li></ul></li><li><a href=#构造方法>构造方法</a><ul><li><a href=#实例-2>实例</a></li><li><a href=#实例-3>实例</a></li></ul></li><li><a href=#可变参数>可变参数</a><ul><li><a href=#实例-4>实例</a></li></ul></li><li><a href=#finalize-方法>finalize() 方法</a><ul><li><a href=#实例-5>实例</a></li></ul></li></ul></nav></div></div><div class=post-content><h1 id=概述>概述</h1><p>在前面几个章节中我们经常使用到<code>System.out.println()</code>，那么它是什么呢？</p><p><code>println()</code>是一个方法 (Method)，而<code>System</code>是系统类 (Class)，<code>out</code>是标准输出对象 (Object)。这句话的用法是调用系统类<code>System</code> 中的标准输出对象<code>out</code>中的方法<code>println()</code>。</p><h2 id=什么是方法>什么是方法</h2><p>Java 方法是语句的集合，它们在一起执行一个功能。</p><ul><li>方法是解决一类问题的步骤的有序组合</li><li>方法包含于类或对象中</li><li>方法在程序中被创建，在其他地方被引用</li></ul><h2 id=方法的优点>方法的优点</h2><ul><li>使程序变得更简短而清晰。</li><li>有利于程序维护。</li><li>可以提高程序开发的效率。</li><li>提高了代码的重用性。</li></ul><h2 id=方法的命名规则>方法的命名规则</h2><ul><li>方法的名字的第一个单词应以小写字母作为开头，后面的单词则用大写字母开头写，不使用连接符。例如：<strong>addPerson</strong>。</li><li>下划线可能出现在 JUnit 测试方法名称中用以分隔名称的逻辑组件。一个典型的模式是：<code>test&lt;MethodUnderTest>_&lt;state></code>，例如 <code>testPop_emptyStack</code>。</li></ul><h1 id=方法的定义>方法的定义</h1><p>一般情况下，定义一个方法包含以下语法：</p><pre tabindex=0><code>修饰符 返回值类型 方法名 (参数类型 参数名) {
     ...
     方法体
     ...
     return 返回值;
 }
-</code></pre><p>方法包含一个方法头和一个方法体。下面是一个方法的所有部分：</p><ul>
-<li>**修饰符：**修饰符，这是可选的，告诉编译器如何调用该方法。定义了该方法的访问类型。</li><li>**返回值类型 ：**方法可能会返回值。returnValueType 是方法返回值的数据类型。有些方法执行所需的操作，但没有返回值。在这种情况下，returnValueType 是关键字 <strong>void</strong>。</li><li>**方法名：**是方法的实际名称。方法名和参数表共同构成方法签名。</li><li>**参数类型：**参数像是一个占位符。当方法被调用时，传递值给参数。这个值被称为实参或变量。参数列表是指方法的参数类型、顺序和参数的个数。参数是可选的，方法可以不包含任何参数。</li><li>**方法体：**方法体包含具体的语句，定义该方法的功能。</li></ul><p><img src=https://qcloud.gaoboy.com/img/post/20210226173428.png alt></p><p>如：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>age</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> birthday<span style=color:#f92672>){...}</span>
+</code></pre><p>方法包含一个方法头和一个方法体。下面是一个方法的所有部分：</p><ul><li>**修饰符：**修饰符，这是可选的，告诉编译器如何调用该方法。定义了该方法的访问类型。</li><li>**返回值类型 ：**方法可能会返回值。returnValueType 是方法返回值的数据类型。有些方法执行所需的操作，但没有返回值。在这种情况下，returnValueType 是关键字 <strong>void</strong>。</li><li>**方法名：**是方法的实际名称。方法名和参数表共同构成方法签名。</li><li>**参数类型：**参数像是一个占位符。当方法被调用时，传递值给参数。这个值被称为实参或变量。参数列表是指方法的参数类型、顺序和参数的个数。参数是可选的，方法可以不包含任何参数。</li><li>**方法体：**方法体包含具体的语句，定义该方法的功能。</li></ul><p><img src=https://qcloud.gaoboy.com/img/post/20210226173428.png alt></p><p>如：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>age</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> birthday<span style=color:#f92672>){...}</span>
 </span></span></code></pre></div><p>参数可以有多个：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#66d9ef>static</span> <span style=color:#66d9ef>float</span> <span style=color:#a6e22e>interest</span><span style=color:#f92672>(</span><span style=color:#66d9ef>float</span> principal<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> year<span style=color:#f92672>){...}</span>
-</span></span></code></pre></div><blockquote>
-<p><strong>注意：</strong> 在一些其它语言中方法指过程和函数。一个返回非 void 类型返回值的方法称为函数；一个返回 void 类型返回值的方法叫做过程。</p></blockquote><h2 id=实例>实例</h2><p>下面的方法包含 2 个参数 num1 和 num2，它返回这两个参数的最大值。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#75715e>/** 返回两个整型变量数据的较大值 */</span>
+</span></span></code></pre></div><blockquote><p><strong>注意：</strong> 在一些其它语言中方法指过程和函数。一个返回非 void 类型返回值的方法称为函数；一个返回 void 类型返回值的方法叫做过程。</p></blockquote><h2 id=实例>实例</h2><p>下面的方法包含 2 个参数 num1 和 num2，它返回这两个参数的最大值。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#75715e>/** 返回两个整型变量数据的较大值 */</span>
 </span></span><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>max</span><span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> num1<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> num2<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
 </span></span><span style=display:flex><span>   <span style=color:#66d9ef>int</span> result<span style=color:#f92672>;</span>
 </span></span><span style=display:flex><span>   <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>num1 <span style=color:#f92672>&gt;</span> num2<span style=color:#f92672>)</span>
@@ -118,13 +19,13 @@
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>   <span style=color:#66d9ef>return</span> result<span style=color:#f92672>;</span> 
 </span></span><span style=display:flex><span><span style=color:#f92672>}</span>
-</span></span></code></pre></div><h1 id=方法调用>方法调用</h1><p>Java 支持两种调用方法的方式，根据方法是否返回值来选择。</p><p>当程序调用一个方法时，程序的控制权交给了被调用的方法。当被调用方法的返回语句执行或者到达方法体闭括号时候交还控制权给程序。</p><p>当方法返回一个值的时候，方法调用通常被当做一个值。例如：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#66d9ef>int</span> larger <span style=color:#f92672>=</span> max<span style=color:#f92672>(</span>30<span style=color:#f92672>,</span> 40<span style=color:#f92672>);</span>
+</span></span></code></pre></div><h1 id=方法调用>方法调用</h1><p>Java 支持两种调用方法的方式，根据方法是否返回值来选择。</p><p>当程序调用一个方法时，程序的控制权交给了被调用的方法。当被调用方法的返回语句执行或者到达方法体闭括号时候交还控制权给程序。</p><p>当方法返回一个值的时候，方法调用通常被当做一个值。例如：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#66d9ef>int</span> larger <span style=color:#f92672>=</span> max<span style=color:#f92672>(</span><span style=color:#ae81ff>30</span><span style=color:#f92672>,</span> <span style=color:#ae81ff>40</span><span style=color:#f92672>);</span>
 </span></span></code></pre></div><p>如果方法返回值是 void，方法调用一定是一条语句。例如，方法 println 返回 void。下面的调用是个语句：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span>System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Welcome to Java!&#34;</span><span style=color:#f92672>);</span>
 </span></span></code></pre></div><h2 id=示例>示例</h2><p>下面的例子演示了如何定义一个方法，以及如何调用它：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>TestMax</span> <span style=color:#f92672>{</span>
 </span></span><span style=display:flex><span>   <span style=color:#75715e>/** 主方法 */</span>
 </span></span><span style=display:flex><span>   <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String<span style=color:#f92672>[]</span> args<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-</span></span><span style=display:flex><span>      <span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> 5<span style=color:#f92672>;</span>
-</span></span><span style=display:flex><span>      <span style=color:#66d9ef>int</span> j <span style=color:#f92672>=</span> 2<span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> <span style=color:#ae81ff>5</span><span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>int</span> j <span style=color:#f92672>=</span> <span style=color:#ae81ff>2</span><span style=color:#f92672>;</span>
 </span></span><span style=display:flex><span>      <span style=color:#66d9ef>int</span> k <span style=color:#f92672>=</span> max<span style=color:#f92672>(</span>i<span style=color:#f92672>,</span> j<span style=color:#f92672>);</span>
 </span></span><span style=display:flex><span>      System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;The maximum between &#34;</span> <span style=color:#f92672>+</span> i <span style=color:#f92672>+</span>
 </span></span><span style=display:flex><span>                    <span style=color:#e6db74>&#34; and &#34;</span> <span style=color:#f92672>+</span> j <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34; is &#34;</span> <span style=color:#f92672>+</span> k<span style=color:#f92672>);</span>
@@ -145,20 +46,20 @@
 </span></span></code></pre></div><p>这个程序包含 main 方法和 max 方法。Main 方法是被 JVM 调用的，除此之外，main 方法和其它方法没什么区别。</p><p>main 方法的头部是不变的，如例子所示，带修饰符 public 和 static, 返回 void 类型值，方法名字是 main, 此外带个一个 String [] 类型参数。String [] 表明参数是字符串数组。</p><h1 id=void-关键字>void 关键字</h1><p>本节说明如何声明和调用一个 void 方法。</p><p>下面的例子声明了一个名为 printGrade 的方法，并且调用它来打印给定的分数。</p><h2 id=示例-1>示例</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>TestVoidMethod</span> <span style=color:#f92672>{</span>
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>   <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String<span style=color:#f92672>[]</span> args<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-</span></span><span style=display:flex><span>      printGrade<span style=color:#f92672>(</span>78<span style=color:#f92672>.</span><span style=color:#a6e22e>5</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>      printGrade<span style=color:#f92672>(</span><span style=color:#ae81ff>78.5</span><span style=color:#f92672>);</span>
 </span></span><span style=display:flex><span>   <span style=color:#f92672>}</span>
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>   <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>printGrade</span><span style=color:#f92672>(</span><span style=color:#66d9ef>double</span> score<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-</span></span><span style=display:flex><span>      <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>score <span style=color:#f92672>&gt;=</span> 90<span style=color:#f92672>.</span><span style=color:#a6e22e>0</span><span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>score <span style=color:#f92672>&gt;=</span> <span style=color:#ae81ff>90.0</span><span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
 </span></span><span style=display:flex><span>         System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#39;A&#39;</span><span style=color:#f92672>);</span>
 </span></span><span style=display:flex><span>      <span style=color:#f92672>}</span>
-</span></span><span style=display:flex><span>      <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>score <span style=color:#f92672>&gt;=</span> 80<span style=color:#f92672>.</span><span style=color:#a6e22e>0</span><span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>score <span style=color:#f92672>&gt;=</span> <span style=color:#ae81ff>80.0</span><span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
 </span></span><span style=display:flex><span>         System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#39;B&#39;</span><span style=color:#f92672>);</span>
 </span></span><span style=display:flex><span>      <span style=color:#f92672>}</span>
-</span></span><span style=display:flex><span>      <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>score <span style=color:#f92672>&gt;=</span> 70<span style=color:#f92672>.</span><span style=color:#a6e22e>0</span><span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>score <span style=color:#f92672>&gt;=</span> <span style=color:#ae81ff>70.0</span><span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
 </span></span><span style=display:flex><span>         System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#39;C&#39;</span><span style=color:#f92672>);</span>
 </span></span><span style=display:flex><span>      <span style=color:#f92672>}</span>
-</span></span><span style=display:flex><span>      <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>score <span style=color:#f92672>&gt;=</span> 60<span style=color:#f92672>.</span><span style=color:#a6e22e>0</span><span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>score <span style=color:#f92672>&gt;=</span> <span style=color:#ae81ff>60.0</span><span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
 </span></span><span style=display:flex><span>         System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#39;D&#39;</span><span style=color:#f92672>);</span>
 </span></span><span style=display:flex><span>      <span style=color:#f92672>}</span>
 </span></span><span style=display:flex><span>      <span style=color:#66d9ef>else</span> <span style=color:#f92672>{</span>
@@ -168,12 +69,12 @@
 </span></span><span style=display:flex><span><span style=color:#f92672>}</span>
 </span></span></code></pre></div><p>以上实例编译运行结果如下：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>C
 </span></span></code></pre></div><p>这里 printGrade 方法是一个 void 类型方法，它不返回值。</p><p>一个 void 方法的调用一定是一个语句。 所以，它被在 main 方法第三行以语句形式调用。就像任何以分号结束的语句一样。</p><h1 id=通过值传递参数>通过值传递参数</h1><p>调用一个方法时候需要提供参数，你必须按照参数列表指定的顺序提供。</p><p>例如，下面的方法连续 n 次打印一个消息：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>nPrintln</span><span style=color:#f92672>(</span>String message<span style=color:#f92672>,</span> <span style=color:#66d9ef>int</span> n<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span> i <span style=color:#f92672>&lt;</span> n<span style=color:#f92672>;</span> i<span style=color:#f92672>++)</span> System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span>message<span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span><span style=color:#f92672>;</span> i <span style=color:#f92672>&lt;</span> n<span style=color:#f92672>;</span> i<span style=color:#f92672>++)</span> System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span>message<span style=color:#f92672>);</span>
 </span></span><span style=display:flex><span><span style=color:#f92672>}</span>
 </span></span></code></pre></div><h2 id=示例-2>示例</h2><p>下面的例子演示按值传递的效果。</p><p>该程序创建一个方法，该方法用于交换两个变量。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>TestPassByValue</span> <span style=color:#f92672>{</span>
 </span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String<span style=color:#f92672>[]</span> args<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>int</span> num1 <span style=color:#f92672>=</span> 1<span style=color:#f92672>;</span>
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>int</span> num2 <span style=color:#f92672>=</span> 2<span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>int</span> num1 <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span><span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>int</span> num2 <span style=color:#f92672>=</span> <span style=color:#ae81ff>2</span><span style=color:#f92672>;</span>
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Before swap method, num1 is &#34;</span> <span style=color:#f92672>+</span> num1 <span style=color:#f92672>+</span>
 </span></span><span style=display:flex><span>            <span style=color:#e6db74>&#34; and num2 is &#34;</span> <span style=color:#f92672>+</span> num2<span style=color:#f92672>);</span>
@@ -210,7 +111,7 @@
 </span></span><span style=display:flex><span><span style=color:#f92672>}</span>
 </span></span></code></pre></div><p>如果你调用 max 方法时传递的是 int 型参数，则 int 型参数的 max 方法就会被调用；</p><p>如果传递的是 double 型参数，则 double 类型的 max 方法体会被调用，这叫做方法重载；</p><p>就是说一个类的两个方法拥有相同的名字，但是有不同的参数列表。</p><p>Java 编译器根据方法签名判断哪个方法应该被调用。</p><p>方法重载可以让程序更清晰易读。执行密切相关任务的方法应该使用相同的名字。</p><p>重载的方法必须拥有不同的参数列表。你不能仅仅依据修饰符或者返回类型的不同来重载方法。</p><h1 id=变量作用域>变量作用域</h1><p>变量的范围是程序中该变量可以被引用的部分。</p><p>方法内定义的变量被称为局部变量。</p><p>局部变量的作用范围从声明开始，直到包含它的块结束。</p><p>局部变量必须声明才可以使用。</p><p>方法的参数范围涵盖整个方法。参数实际上是一个局部变量。</p><p>for 循环的初始化部分声明的变量，其作用范围在整个循环。</p><p>但循环体内声明的变量其适用范围是从它声明到循环体结束。它包含如下所示的变量声明：</p><p><img src=https://qcloud.gaoboy.com/img/post/20210226173735.png alt></p><p>你可以在一个方法里，不同的非嵌套块中多次声明一个具有相同的名称局部变量，但你不能在嵌套块内两次声明局部变量。</p><h1 id=命令行参数的使用>命令行参数的使用</h1><p>有时候你希望运行一个程序时候再传递给它消息。这要靠传递命令行参数给 main () 函数实现。</p><p>命令行参数是在执行程序时候紧跟在程序名字后面的信息。</p><h2 id=实例-1>实例</h2><p>下面的程序打印所有的命令行参数：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>CommandLine</span> <span style=color:#f92672>{</span>
 </span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String<span style=color:#f92672>[]</span> args<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> 0<span style=color:#f92672>;</span> i <span style=color:#f92672>&lt;</span> args<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>;</span> i<span style=color:#f92672>++)</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span><span style=color:#f92672>;</span> i <span style=color:#f92672>&lt;</span> args<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>;</span> i<span style=color:#f92672>++)</span> <span style=color:#f92672>{</span>
 </span></span><span style=display:flex><span>            System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;args[&#34;</span> <span style=color:#f92672>+</span> i <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;]: &#34;</span> <span style=color:#f92672>+</span> args<span style=color:#f92672>[</span>i<span style=color:#f92672>]);</span>
 </span></span><span style=display:flex><span>        <span style=color:#f92672>}</span>
 </span></span><span style=display:flex><span>    <span style=color:#f92672>}</span>
@@ -229,7 +130,7 @@
 </span></span><span style=display:flex><span>   
 </span></span><span style=display:flex><span>   <span style=color:#75715e>// 以下是构造函数
 </span></span></span><span style=display:flex><span><span style=color:#75715e></span>   MyClass<span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
-</span></span><span style=display:flex><span>      x <span style=color:#f92672>=</span> 10<span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span>      x <span style=color:#f92672>=</span> <span style=color:#ae81ff>10</span><span style=color:#f92672>;</span>
 </span></span><span style=display:flex><span>   <span style=color:#f92672>}</span>
 </span></span><span style=display:flex><span><span style=color:#f92672>}</span>
 </span></span></code></pre></div><p>你可以像下面这样调用构造方法来初始化一个对象：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ConsDemo</span> <span style=color:#f92672>{</span>
@@ -251,8 +152,8 @@
 </span></span></code></pre></div><p>你可以像下面这样调用构造方法来初始化一个对象：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ConsDemo</span> <span style=color:#f92672>{</span>
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>   <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String args<span style=color:#f92672>[])</span> <span style=color:#f92672>{</span>
-</span></span><span style=display:flex><span>      MyClass t1 <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> MyClass<span style=color:#f92672>(</span>10<span style=color:#f92672>);</span>
-</span></span><span style=display:flex><span>      MyClass t2 <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> MyClass<span style=color:#f92672>(</span>20<span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>      MyClass t1 <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> MyClass<span style=color:#f92672>(</span><span style=color:#ae81ff>10</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>      MyClass t2 <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> MyClass<span style=color:#f92672>(</span><span style=color:#ae81ff>20</span><span style=color:#f92672>);</span>
 </span></span><span style=display:flex><span>      System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span>t1<span style=color:#f92672>.</span><span style=color:#a6e22e>x</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34; &#34;</span> <span style=color:#f92672>+</span> t2<span style=color:#f92672>.</span><span style=color:#a6e22e>x</span><span style=color:#f92672>);</span>
 </span></span><span style=display:flex><span>   <span style=color:#f92672>}</span>
 </span></span><span style=display:flex><span><span style=color:#f92672>}</span>
@@ -261,20 +162,20 @@
 </span></span></code></pre></div><p>在方法声明中，在指定参数类型后加一个省略号 (&mldr;) 。</p><p>一个方法中只能指定一个可变参数，它必须是方法的最后一个参数。任何普通的参数必须在它之前声明。</p><h2 id=实例-4>实例</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>VarargsDemo</span> <span style=color:#f92672>{</span>
 </span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String<span style=color:#f92672>[]</span> args<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
 </span></span><span style=display:flex><span>        <span style=color:#75715e>// 调用可变参数的方法
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        printMax<span style=color:#f92672>(</span>34<span style=color:#f92672>,</span> 3<span style=color:#f92672>,</span> 3<span style=color:#f92672>,</span> 2<span style=color:#f92672>,</span> 56<span style=color:#f92672>.</span><span style=color:#a6e22e>5</span><span style=color:#f92672>);</span>
-</span></span><span style=display:flex><span>        printMax<span style=color:#f92672>(</span><span style=color:#66d9ef>new</span> <span style=color:#66d9ef>double</span><span style=color:#f92672>[]</span> <span style=color:#f92672>{</span>1<span style=color:#f92672>,</span> 2<span style=color:#f92672>,</span> 3<span style=color:#f92672>});</span>
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        printMax<span style=color:#f92672>(</span><span style=color:#ae81ff>34</span><span style=color:#f92672>,</span> <span style=color:#ae81ff>3</span><span style=color:#f92672>,</span> <span style=color:#ae81ff>3</span><span style=color:#f92672>,</span> <span style=color:#ae81ff>2</span><span style=color:#f92672>,</span> <span style=color:#ae81ff>56.5</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>        printMax<span style=color:#f92672>(</span><span style=color:#66d9ef>new</span> <span style=color:#66d9ef>double</span><span style=color:#f92672>[]</span> <span style=color:#f92672>{</span><span style=color:#ae81ff>1</span><span style=color:#f92672>,</span> <span style=color:#ae81ff>2</span><span style=color:#f92672>,</span> <span style=color:#ae81ff>3</span><span style=color:#f92672>});</span>
 </span></span><span style=display:flex><span>    <span style=color:#f92672>}</span>
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>printMax</span><span style=color:#f92672>(</span><span style=color:#66d9ef>double</span><span style=color:#f92672>...</span> numbers<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>numbers<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span> <span style=color:#f92672>==</span> 0<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>numbers<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span> <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span><span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
 </span></span><span style=display:flex><span>            System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;No argument passed&#34;</span><span style=color:#f92672>);</span>
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>            <span style=color:#66d9ef>return</span><span style=color:#f92672>;</span>
 </span></span><span style=display:flex><span>        <span style=color:#f92672>}</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>double</span> result <span style=color:#f92672>=</span> numbers<span style=color:#f92672>[</span>0<span style=color:#f92672>];</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>double</span> result <span style=color:#f92672>=</span> numbers<span style=color:#f92672>[</span><span style=color:#ae81ff>0</span><span style=color:#f92672>];</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> 1<span style=color:#f92672>;</span> i <span style=color:#f92672>&lt;</span> numbers<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>;</span> i<span style=color:#f92672>++)</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>for</span> <span style=color:#f92672>(</span><span style=color:#66d9ef>int</span> i <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span><span style=color:#f92672>;</span> i <span style=color:#f92672>&lt;</span> numbers<span style=color:#f92672>.</span><span style=color:#a6e22e>length</span><span style=color:#f92672>;</span> i<span style=color:#f92672>++)</span>
 </span></span><span style=display:flex><span>            <span style=color:#66d9ef>if</span> <span style=color:#f92672>(</span>numbers<span style=color:#f92672>[</span>i<span style=color:#f92672>]</span> <span style=color:#f92672>&gt;</span> result<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
 </span></span><span style=display:flex><span>                result <span style=color:#f92672>=</span> numbers<span style=color:#f92672>[</span>i<span style=color:#f92672>];</span>
 </span></span><span style=display:flex><span>            <span style=color:#f92672>}</span>
@@ -289,9 +190,9 @@
 </span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#f92672>}</span>
 </span></span></code></pre></div><p>关键字 protected 是一个限定符，它确保 finalize () 方法不会被该类以外的代码调用。</p><p>当然，Java 的内存回收可以由 JVM 来自动完成。如果你手动使用，则可以使用上面的方法。</p><h2 id=实例-5>实例</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>FinalizationDemo</span> <span style=color:#f92672>{</span>  
 </span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String<span style=color:#f92672>[]</span> args<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>  
-</span></span><span style=display:flex><span>        Cake c1 <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> Cake<span style=color:#f92672>(</span>1<span style=color:#f92672>);</span>  
-</span></span><span style=display:flex><span>        Cake c2 <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> Cake<span style=color:#f92672>(</span>2<span style=color:#f92672>);</span>  
-</span></span><span style=display:flex><span>        Cake c3 <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> Cake<span style=color:#f92672>(</span>3<span style=color:#f92672>);</span>  
+</span></span><span style=display:flex><span>        Cake c1 <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> Cake<span style=color:#f92672>(</span><span style=color:#ae81ff>1</span><span style=color:#f92672>);</span>  
+</span></span><span style=display:flex><span>        Cake c2 <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> Cake<span style=color:#f92672>(</span><span style=color:#ae81ff>2</span><span style=color:#f92672>);</span>  
+</span></span><span style=display:flex><span>        Cake c3 <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> Cake<span style=color:#f92672>(</span><span style=color:#ae81ff>3</span><span style=color:#f92672>);</span>  
 </span></span><span style=display:flex><span>          
 </span></span><span style=display:flex><span>        c2 <span style=color:#f92672>=</span> c3 <span style=color:#f92672>=</span> <span style=color:#66d9ef>null</span><span style=color:#f92672>;</span>  
 </span></span><span style=display:flex><span>        System<span style=color:#f92672>.</span><span style=color:#a6e22e>gc</span><span style=color:#f92672>();</span> <span style=color:#75715e>//调用Java垃圾收集器
@@ -316,49 +217,25 @@
 </span></span><span style=display:flex><span>Cake Object 3is created  
 </span></span><span style=display:flex><span>Cake Object 3is disposed  
 </span></span><span style=display:flex><span>Cake Object 2is disposed
-</span></span></code></pre></div></div><footer class=post-footer>
-<div class=post-tags>
-<a href=/tags/java/>java</a>
-</div><nav class=post-nav>
-<a class=prev href=/post/java-stream-file-io/>
-<i class="iconfont icon-left"></i>
+</span></span></code></pre></div></div><footer class=post-footer><div class=post-tags><a href=/tags/java/>java</a></div><nav class=post-nav><a class=prev href=/post/java-stream-file-io/><i class="iconfont icon-left"></i>
 <span class="prev-text nav-default">Java 流(Stream)、文件(File)和IO</span>
-<span class="prev-text nav-mobile">上一篇</span>
-</a>
-<a class=next href=/post/java-regex/>
-<span class="next-text nav-default">Java 正则表达式</span>
+<span class="prev-text nav-mobile">上一篇</span></a>
+<a class=next href=/post/java-regex/><span class="next-text nav-default">Java 正则表达式</span>
 <span class="next-text nav-mobile">下一篇</span>
-<i class="iconfont icon-right"></i>
-</a>
-</nav></footer></article></div><div id=vcomments></div><script src=//cdn1.lncld.net/static/js/3.0.4/av-min.js></script>
+<i class="iconfont icon-right"></i></a></nav></footer></article></div><div id=vcomments></div><script src=//cdn1.lncld.net/static/js/3.0.4/av-min.js></script>
 <script src=//unpkg.com/valine/dist/Valine.min.js></script>
-<script type=text/javascript>new Valine({el:"#vcomments",appId:"fXqv8lFikU96F2xUDOBW4T9X-MdYXbMMI",appKey:"AUbjromOz15du9OJSTY6Q8HM",notify:!1,verify:!1,avatar:"robohash",placeholder:"本站支持评论邮件提醒功能，在上方邮箱输入框留下邮箱，可以收到回复通知哦！（支持markdown语法）",visitor:!1})</script>
-</div></main><footer id=footer class=footer>
-<div class=social-links>
-<a href=mailto:gao.bo168@gmail.com class="iconfont icon-email" title=email></a>
+<script type=text/javascript>new Valine({el:"#vcomments",appId:"fXqv8lFikU96F2xUDOBW4T9X-MdYXbMMI",appKey:"AUbjromOz15du9OJSTY6Q8HM",notify:!1,verify:!1,avatar:"robohash",placeholder:"本站支持评论邮件提醒功能，在上方邮箱输入框留下邮箱，可以收到回复通知哦！（支持markdown语法）",visitor:!1})</script></div></main><footer id=footer class=footer><div class=social-links><a href=mailto:gao.bo168@gmail.com class="iconfont icon-email" title=email></a>
 <a href=https://github.com/forgottener class="iconfont icon-github" title=github></a>
 <a href=https://space.bilibili.com/1714562 class="iconfont icon-bilibili" title=bilibili></a>
-<a href=https://gaoboy.com/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a>
-</div><div class=copyright>
-<span class=power-by>
-由 <a class=hexo-link href=https://gohugo.io>Hugo</a> 强力驱动
-</span>
+<a href=https://gaoboy.com/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a></div><div class=copyright><span class=power-by>由 <a class=hexo-link href=https://gohugo.io>Hugo</a> 强力驱动</span>
 <span class=division>|</span>
-<span class=theme-info>
-主题 -
-<a class=theme-link href=https://github.com/olOwOlo/hugo-theme-even>Even</a>
-</span>
-<span class=copyright-year>
-&copy;
+<span class=theme-info>主题 -
+<a class=theme-link href=https://github.com/olOwOlo/hugo-theme-even>Even</a></span>
+<span class=copyright-year>&copy;
 2013 -
-2022<span class=heart><i class="iconfont icon-heart"></i></span><span><a rel="license noopener" href=https://beian.miit.gov.cn/ target=_blank>浙ICP备14043338号-2</a>~<a rel="license noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010802003111" target=_blank>浙公网安备 33010802003111号</a></span>
-</span>
-</div></footer><div class=back-to-top id=back-to-top>
-<i class="iconfont icon-up"></i>
-</div></div><script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+2023<span class=heart><i class="iconfont icon-heart"></i></span><span><a rel="license noopener" href=https://beian.miit.gov.cn/ target=_blank>浙ICP备14043338号-2</a>~<a rel="license noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010802003111" target=_blank>浙公网安备 33010802003111号</a></span></span></div></footer><div class=back-to-top id=back-to-top><i class="iconfont icon-up"></i></div></div><script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
 <script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script>
 <script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script>
 <script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script>
-<script type=text/javascript src=/js/main.min.64437849d125a2d603b3e71d6de5225d641a32d17168a58106e0b61852079683.js></script>
-<script src=/js/blank.js></script>
-</body></html>
+<script type=text/javascript src=/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js></script>
+<script src=/js/blank.js></script></body></html>

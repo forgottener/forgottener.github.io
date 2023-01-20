@@ -1,85 +1,7 @@
-<!doctype html><html lang=zh-cn>
-<head>
-<meta charset=utf-8>
-<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
-<title>Java StringBuffer & StringBuilder 类 - 猿资猿味 - 高波的博客</title><meta name=renderer content="webkit">
-<meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
-<meta http-equiv=cache-control content="no-transform">
-<meta http-equiv=cache-control content="no-siteapp">
-<meta name=theme-color content="#f8f5ec">
-<meta name=msapplication-navbutton-color content="#f8f5ec">
-<meta name=apple-mobile-web-app-capable content="yes">
-<meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec">
-<meta name=author content="forgottener"><meta name=description content="Java StringBuffer & StringBuilder 类"><meta name=keywords content="java,StringBuffer,StringBuilder">
-<meta name=generator content="Hugo 0.93.2 with theme even">
-<link rel=canonical href=https://gaoboy.com/post/java-stringbuffer-and-stringbuilder-class/>
-<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
-<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
-<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
-<link rel=manifest href=/manifest.json>
-<link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5>
-<link href=/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css rel=stylesheet>
-<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous>
-<meta property="og:title" content="Java StringBuffer & StringBuilder 类">
-<meta property="og:description" content="Java StringBuffer & StringBuilder 类">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://gaoboy.com/post/java-stringbuffer-and-stringbuilder-class/"><meta property="article:section" content="post">
-<meta property="article:published_time" content="2015-01-25T14:33:15+08:00">
-<meta property="article:modified_time" content="2015-01-25T14:33:15+08:00">
-<meta itemprop=name content="Java StringBuffer & StringBuilder 类">
-<meta itemprop=description content="Java StringBuffer & StringBuilder 类"><meta itemprop=datePublished content="2015-01-25T14:33:15+08:00">
-<meta itemprop=dateModified content="2015-01-25T14:33:15+08:00">
-<meta itemprop=wordCount content="935">
-<meta itemprop=keywords content="java,"><meta name=twitter:card content="summary">
-<meta name=twitter:title content="Java StringBuffer & StringBuilder 类">
-<meta name=twitter:description content="Java StringBuffer & StringBuilder 类"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
-<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
-</head><body>
-<div id=mobile-navbar class=mobile-navbar>
-<div class=mobile-header-logo>
-<a href=/ class=logo>猿资猿味</a>
-</div><div class=mobile-navbar-icon>
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>Java StringBuffer & StringBuilder 类 - 猿资猿味 - 高波的博客</title><meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv=cache-control content="no-transform"><meta http-equiv=cache-control content="no-siteapp"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=author content="forgottener"><meta name=description content="Java StringBuffer & StringBuilder 类"><meta name=keywords content="java,StringBuffer,StringBuilder"><meta name=generator content="Hugo 0.110.0 with theme even"><link rel=canonical href=https://gaoboy.com/post/java-stringbuffer-and-stringbuilder-class/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link href=/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css rel=stylesheet><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous><meta property="og:title" content="Java StringBuffer & StringBuilder 类"><meta property="og:description" content="Java StringBuffer & StringBuilder 类"><meta property="og:type" content="article"><meta property="og:url" content="https://gaoboy.com/post/java-stringbuffer-and-stringbuilder-class/"><meta property="article:section" content="post"><meta property="article:published_time" content="2015-01-25T14:33:15+08:00"><meta property="article:modified_time" content="2015-01-25T14:33:15+08:00"><meta itemprop=name content="Java StringBuffer & StringBuilder 类"><meta itemprop=description content="Java StringBuffer & StringBuilder 类"><meta itemprop=datePublished content="2015-01-25T14:33:15+08:00"><meta itemprop=dateModified content="2015-01-25T14:33:15+08:00"><meta itemprop=wordCount content="935"><meta itemprop=keywords content="java,"><meta name=twitter:card content="summary"><meta name=twitter:title content="Java StringBuffer & StringBuilder 类"><meta name=twitter:description content="Java StringBuffer & StringBuilder 类"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
+<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>猿资猿味</a></div><div class=mobile-navbar-icon><span></span>
 <span></span>
-<span></span>
-<span></span>
-</div></div><nav id=mobile-menu class="mobile-menu slideout-menu">
-<ul class=mobile-menu-list>
-<a href=/>
-<li class=mobile-menu-item>Home</li></a><a href=/post/>
-<li class=mobile-menu-item>Archives</li></a><a href=/tags/>
-<li class=mobile-menu-item>Tags</li></a><a href=/categories/>
-<li class=mobile-menu-item>Categories</li></a>
-</ul></nav><div class=container id=mobile-panel>
-<header id=header class=header>
-<div class=logo-wrapper>
-<a href=/ class=logo>猿资猿味</a>
-</div><nav class=site-navbar>
-<ul id=menu class=menu>
-<li class=menu-item>
-<a class=menu-item-link href=/>Home</a>
-</li><li class=menu-item>
-<a class=menu-item-link href=/post/>Archives</a>
-</li><li class=menu-item>
-<a class=menu-item-link href=/tags/>Tags</a>
-</li><li class=menu-item>
-<a class=menu-item-link href=/categories/>Categories</a>
-</li></ul></nav></header><main id=main class=main>
-<div class=content-wrapper>
-<div id=content class=content>
-<article class=post>
-<header class=post-header>
-<h1 class=post-title>Java StringBuffer & StringBuilder 类</h1><div class=post-meta>
-<span class=post-time> 2015-01-25 </span>
-<div class=post-category>
-<a href=/categories/java/> java </a>
-</div></div></header><div class=post-toc id=post-toc>
-<h2 class=post-toc-title>文章目录</h2><div class="post-toc-content always-active">
-<nav id=TableOfContents>
-<ul>
-<li><a href=#概述>概述</a>
-<ul>
-<li><a href=#实例>实例</a></li></ul></li><li><a href=#stringbuffer-方法>StringBuffer 方法</a></li></ul></nav></div></div><div class=post-content>
-<h1 id=概述>概述</h1><p>当对字符串进行修改的时候，需要使用 StringBuffer 和 StringBuilder 类。</p><p>和 String 类不同的是，StringBuffer 和 StringBuilder 类的对象能够被多次的修改，并且不产生新的未使用对象。</p><p><img src=https://qcloud.gaoboy.com/img/post/20210226154740.png alt></p><p>在使用 StringBuffer 类时，每次都会对 StringBuffer 对象本身进行操作，而不是生成新的对象，所以如果需要对字符串进行修改推荐使用 StringBuffer。</p><p>StringBuilder 类在 Java 5 中被提出，它和 StringBuffer 之间的最大不同在于 StringBuilder 的方法不是线程安全的（线程安全就是多线程访问时，采用了加锁机制，当一个线程访问该类的某个数据时，进行保护，其他线程不能进行访问直到该线程读取完，其他线程才可使用。不会出现数据不一致或者数据污染。线程不安全就是不提供数据访问保护，有可能出现多个线程先后更改数据造成所得到的数据是脏数据）。</p><p>由于 StringBuilder 相较于 StringBuffer 有速度优势，所以多数情况下建议使用 StringBuilder 类。然而在应用程序要求线程安全的情况下，则必须使用 StringBuffer 类。</p><h2 id=实例>实例</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Test</span> <span style=color:#f92672>{</span>
+<span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><a href=/><li class=mobile-menu-item>Home</li></a><a href=/post/><li class=mobile-menu-item>Archives</li></a><a href=/tags/><li class=mobile-menu-item>Tags</li></a><a href=/categories/><li class=mobile-menu-item>Categories</li></a></ul></nav><div class=container id=mobile-panel><header id=header class=header><div class=logo-wrapper><a href=/ class=logo>猿资猿味</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=/>Home</a></li><li class=menu-item><a class=menu-item-link href=/post/>Archives</a></li><li class=menu-item><a class=menu-item-link href=/tags/>Tags</a></li><li class=menu-item><a class=menu-item-link href=/categories/>Categories</a></li></ul></nav></header><main id=main class=main><div class=content-wrapper><div id=content class=content><article class=post><header class=post-header><h1 class=post-title>Java StringBuffer & StringBuilder 类</h1><div class=post-meta><span class=post-time>2015-01-25</span><div class=post-category><a href=/categories/java/>java</a></div></div></header><div class=post-toc id=post-toc><h2 class=post-toc-title>文章目录</h2><div class="post-toc-content always-active"><nav id=TableOfContents><ul><li><a href=#概述>概述</a><ul><li><a href=#实例>实例</a></li></ul></li><li><a href=#stringbuffer-方法>StringBuffer 方法</a></li></ul></nav></div></div><div class=post-content><h1 id=概述>概述</h1><p>当对字符串进行修改的时候，需要使用 StringBuffer 和 StringBuilder 类。</p><p>和 String 类不同的是，StringBuffer 和 StringBuilder 类的对象能够被多次的修改，并且不产生新的未使用对象。</p><p><img src=https://qcloud.gaoboy.com/img/post/20210226154740.png alt></p><p>在使用 StringBuffer 类时，每次都会对 StringBuffer 对象本身进行操作，而不是生成新的对象，所以如果需要对字符串进行修改推荐使用 StringBuffer。</p><p>StringBuilder 类在 Java 5 中被提出，它和 StringBuffer 之间的最大不同在于 StringBuilder 的方法不是线程安全的（线程安全就是多线程访问时，采用了加锁机制，当一个线程访问该类的某个数据时，进行保护，其他线程不能进行访问直到该线程读取完，其他线程才可使用。不会出现数据不一致或者数据污染。线程不安全就是不提供数据访问保护，有可能出现多个线程先后更改数据造成所得到的数据是脏数据）。</p><p>由于 StringBuilder 相较于 StringBuffer 有速度优势，所以多数情况下建议使用 StringBuilder 类。然而在应用程序要求线程安全的情况下，则必须使用 StringBuffer 类。</p><h2 id=实例>实例</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Test</span> <span style=color:#f92672>{</span>
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String args<span style=color:#f92672>[])</span> <span style=color:#f92672>{</span>
 </span></span><span style=display:flex><span>       StringBuffer sBuffer <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> StringBuffer<span style=color:#f92672>(</span><span style=color:#e6db74>&#34; test&#34;</span><span style=color:#f92672>);</span>
@@ -88,77 +10,25 @@
 </span></span><span style=display:flex><span>   <span style=color:#f92672>}</span>
 </span></span><span style=display:flex><span><span style=color:#f92672>}</span>
 </span></span></code></pre></div><p>以上实例编译运行结果如下：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>test String Buffer
-</span></span></code></pre></div><h1 id=stringbuffer-方法>StringBuffer 方法</h1><p>以下是 StringBuffer 类支持的主要方法：</p><table>
-<thead>
-<tr>
-<th style=text-align:left>序号</th><th style=text-align:left>方法描述</th></tr></thead><tbody>
-<tr>
-<td style=text-align:left>1</td><td style=text-align:left>public StringBuffer append(String s) 将指定的字符串追加到此字符序列。</td></tr><tr>
-<td style=text-align:left>2</td><td style=text-align:left>public StringBuffer reverse() 将此字符序列用其反转形式取代。</td></tr><tr>
-<td style=text-align:left>3</td><td style=text-align:left>public delete(int start, int end) 移除此序列的子字符串中的字符。</td></tr><tr>
-<td style=text-align:left>4</td><td style=text-align:left>public insert(int offset, int i) 将 <code>int</code> 参数的字符串表示形式插入此序列中。</td></tr><tr>
-<td style=text-align:left>5</td><td style=text-align:left>replace(int start, int end, String str) 使用给定 <code>String</code> 中的字符替换此序列的子字符串中的字符。</td></tr></tbody></table><p>下面的列表里的方法和 String 类的方法类似：</p><table>
-<thead>
-<tr>
-<th>序号</th><th>方法描述</th></tr></thead><tbody>
-<tr>
-<td>1</td><td>int capacity() 返回当前容量。</td></tr><tr>
-<td>2</td><td>char charAt(int index) 返回此序列中指定索引处的 <code>char</code> 值。</td></tr><tr>
-<td>3</td><td>void ensureCapacity(int minimumCapacity) 确保容量至少等于指定的最小值。</td></tr><tr>
-<td>4</td><td>void getChars(int srcBegin, int srcEnd, char[] dst, int dstBegin) 将字符从此序列复制到目标字符数组 <code>dst</code>。</td></tr><tr>
-<td>5</td><td>int indexOf(String str) 返回第一次出现的指定子字符串在该字符串中的索引。</td></tr><tr>
-<td>6</td><td>int indexOf(String str, int fromIndex) 从指定的索引处开始，返回第一次出现的指定子字符串在该字符串中的索引。</td></tr><tr>
-<td>7</td><td>int lastIndexOf(String str) 返回最右边出现的指定子字符串在此字符串中的索引。</td></tr><tr>
-<td>8</td><td>int lastIndexOf(String str, int fromIndex) 返回最后一次出现的指定子字符串在此字符串中的索引。</td></tr><tr>
-<td>9</td><td>int length() 返回长度（字符数）。</td></tr><tr>
-<td>10</td><td>void setCharAt(int index, char ch) 将给定索引处的字符设置为 <code>ch</code>。</td></tr><tr>
-<td>11</td><td>void setLength(int newLength) 设置字符序列的长度。</td></tr><tr>
-<td>12</td><td>CharSequence subSequence(int start, int end) 返回一个新的字符序列，该字符序列是此序列的子序列。</td></tr><tr>
-<td>13</td><td>String substring(int start) 返回一个新的 <code>String</code>，它包含此字符序列当前所包含的字符子序列。</td></tr><tr>
-<td>14</td><td>String substring(int start, int end) 返回一个新的 <code>String</code>，它包含此序列当前所包含的字符子序列。</td></tr><tr>
-<td>15</td><td>String toString() 返回此序列中数据的字符串表示形式。</td></tr></tbody></table></div><footer class=post-footer>
-<div class=post-tags>
-<a href=/tags/java/>java</a>
-</div><nav class=post-nav>
-<a class=prev href=/post/java-array/>
-<i class="iconfont icon-left"></i>
+</span></span></code></pre></div><h1 id=stringbuffer-方法>StringBuffer 方法</h1><p>以下是 StringBuffer 类支持的主要方法：</p><table><thead><tr><th style=text-align:left>序号</th><th style=text-align:left>方法描述</th></tr></thead><tbody><tr><td style=text-align:left>1</td><td style=text-align:left>public StringBuffer append(String s) 将指定的字符串追加到此字符序列。</td></tr><tr><td style=text-align:left>2</td><td style=text-align:left>public StringBuffer reverse() 将此字符序列用其反转形式取代。</td></tr><tr><td style=text-align:left>3</td><td style=text-align:left>public delete(int start, int end) 移除此序列的子字符串中的字符。</td></tr><tr><td style=text-align:left>4</td><td style=text-align:left>public insert(int offset, int i) 将 <code>int</code> 参数的字符串表示形式插入此序列中。</td></tr><tr><td style=text-align:left>5</td><td style=text-align:left>replace(int start, int end, String str) 使用给定 <code>String</code> 中的字符替换此序列的子字符串中的字符。</td></tr></tbody></table><p>下面的列表里的方法和 String 类的方法类似：</p><table><thead><tr><th>序号</th><th>方法描述</th></tr></thead><tbody><tr><td>1</td><td>int capacity() 返回当前容量。</td></tr><tr><td>2</td><td>char charAt(int index) 返回此序列中指定索引处的 <code>char</code> 值。</td></tr><tr><td>3</td><td>void ensureCapacity(int minimumCapacity) 确保容量至少等于指定的最小值。</td></tr><tr><td>4</td><td>void getChars(int srcBegin, int srcEnd, char[] dst, int dstBegin) 将字符从此序列复制到目标字符数组 <code>dst</code>。</td></tr><tr><td>5</td><td>int indexOf(String str) 返回第一次出现的指定子字符串在该字符串中的索引。</td></tr><tr><td>6</td><td>int indexOf(String str, int fromIndex) 从指定的索引处开始，返回第一次出现的指定子字符串在该字符串中的索引。</td></tr><tr><td>7</td><td>int lastIndexOf(String str) 返回最右边出现的指定子字符串在此字符串中的索引。</td></tr><tr><td>8</td><td>int lastIndexOf(String str, int fromIndex) 返回最后一次出现的指定子字符串在此字符串中的索引。</td></tr><tr><td>9</td><td>int length() 返回长度（字符数）。</td></tr><tr><td>10</td><td>void setCharAt(int index, char ch) 将给定索引处的字符设置为 <code>ch</code>。</td></tr><tr><td>11</td><td>void setLength(int newLength) 设置字符序列的长度。</td></tr><tr><td>12</td><td>CharSequence subSequence(int start, int end) 返回一个新的字符序列，该字符序列是此序列的子序列。</td></tr><tr><td>13</td><td>String substring(int start) 返回一个新的 <code>String</code>，它包含此字符序列当前所包含的字符子序列。</td></tr><tr><td>14</td><td>String substring(int start, int end) 返回一个新的 <code>String</code>，它包含此序列当前所包含的字符子序列。</td></tr><tr><td>15</td><td>String toString() 返回此序列中数据的字符串表示形式。</td></tr></tbody></table></div><footer class=post-footer><div class=post-tags><a href=/tags/java/>java</a></div><nav class=post-nav><a class=prev href=/post/java-array/><i class="iconfont icon-left"></i>
 <span class="prev-text nav-default">Java 数组</span>
-<span class="prev-text nav-mobile">上一篇</span>
-</a>
-<a class=next href=/post/java-string-class/>
-<span class="next-text nav-default">Java String 类</span>
+<span class="prev-text nav-mobile">上一篇</span></a>
+<a class=next href=/post/java-string-class/><span class="next-text nav-default">Java String 类</span>
 <span class="next-text nav-mobile">下一篇</span>
-<i class="iconfont icon-right"></i>
-</a>
-</nav></footer></article></div><div id=vcomments></div><script src=//cdn1.lncld.net/static/js/3.0.4/av-min.js></script>
+<i class="iconfont icon-right"></i></a></nav></footer></article></div><div id=vcomments></div><script src=//cdn1.lncld.net/static/js/3.0.4/av-min.js></script>
 <script src=//unpkg.com/valine/dist/Valine.min.js></script>
-<script type=text/javascript>new Valine({el:"#vcomments",appId:"fXqv8lFikU96F2xUDOBW4T9X-MdYXbMMI",appKey:"AUbjromOz15du9OJSTY6Q8HM",notify:!1,verify:!1,avatar:"robohash",placeholder:"本站支持评论邮件提醒功能，在上方邮箱输入框留下邮箱，可以收到回复通知哦！（支持markdown语法）",visitor:!1})</script>
-</div></main><footer id=footer class=footer>
-<div class=social-links>
-<a href=mailto:gao.bo168@gmail.com class="iconfont icon-email" title=email></a>
+<script type=text/javascript>new Valine({el:"#vcomments",appId:"fXqv8lFikU96F2xUDOBW4T9X-MdYXbMMI",appKey:"AUbjromOz15du9OJSTY6Q8HM",notify:!1,verify:!1,avatar:"robohash",placeholder:"本站支持评论邮件提醒功能，在上方邮箱输入框留下邮箱，可以收到回复通知哦！（支持markdown语法）",visitor:!1})</script></div></main><footer id=footer class=footer><div class=social-links><a href=mailto:gao.bo168@gmail.com class="iconfont icon-email" title=email></a>
 <a href=https://github.com/forgottener class="iconfont icon-github" title=github></a>
 <a href=https://space.bilibili.com/1714562 class="iconfont icon-bilibili" title=bilibili></a>
-<a href=https://gaoboy.com/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a>
-</div><div class=copyright>
-<span class=power-by>
-由 <a class=hexo-link href=https://gohugo.io>Hugo</a> 强力驱动
-</span>
+<a href=https://gaoboy.com/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a></div><div class=copyright><span class=power-by>由 <a class=hexo-link href=https://gohugo.io>Hugo</a> 强力驱动</span>
 <span class=division>|</span>
-<span class=theme-info>
-主题 -
-<a class=theme-link href=https://github.com/olOwOlo/hugo-theme-even>Even</a>
-</span>
-<span class=copyright-year>
-&copy;
+<span class=theme-info>主题 -
+<a class=theme-link href=https://github.com/olOwOlo/hugo-theme-even>Even</a></span>
+<span class=copyright-year>&copy;
 2013 -
-2022<span class=heart><i class="iconfont icon-heart"></i></span><span><a rel="license noopener" href=https://beian.miit.gov.cn/ target=_blank>浙ICP备14043338号-2</a>~<a rel="license noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010802003111" target=_blank>浙公网安备 33010802003111号</a></span>
-</span>
-</div></footer><div class=back-to-top id=back-to-top>
-<i class="iconfont icon-up"></i>
-</div></div><script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+2023<span class=heart><i class="iconfont icon-heart"></i></span><span><a rel="license noopener" href=https://beian.miit.gov.cn/ target=_blank>浙ICP备14043338号-2</a>~<a rel="license noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010802003111" target=_blank>浙公网安备 33010802003111号</a></span></span></div></footer><div class=back-to-top id=back-to-top><i class="iconfont icon-up"></i></div></div><script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
 <script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script>
 <script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script>
 <script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script>
-<script type=text/javascript src=/js/main.min.64437849d125a2d603b3e71d6de5225d641a32d17168a58106e0b61852079683.js></script>
-<script src=/js/blank.js></script>
-</body></html>
+<script type=text/javascript src=/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js></script>
+<script src=/js/blank.js></script></body></html>

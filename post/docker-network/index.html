@@ -1,92 +1,7 @@
-<!doctype html><html lang=zh-cn>
-<head>
-<meta charset=utf-8>
-<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
-<title>Docker Network介绍 - 猿资猿味 - 高波的博客</title><meta name=renderer content="webkit">
-<meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
-<meta http-equiv=cache-control content="no-transform">
-<meta http-equiv=cache-control content="no-siteapp">
-<meta name=theme-color content="#f8f5ec">
-<meta name=msapplication-navbutton-color content="#f8f5ec">
-<meta name=apple-mobile-web-app-capable content="yes">
-<meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec">
-<meta name=author content="forgottener"><meta name=description content="Docker 网络介绍"><meta name=keywords content="docker,network">
-<meta name=generator content="Hugo 0.93.2 with theme even">
-<link rel=canonical href=https://gaoboy.com/post/docker-network/>
-<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
-<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
-<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
-<link rel=manifest href=/manifest.json>
-<link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5>
-<link href=/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css rel=stylesheet>
-<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous>
-<meta property="og:title" content="Docker Network介绍">
-<meta property="og:description" content="Docker 网络介绍">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://gaoboy.com/post/docker-network/"><meta property="article:section" content="post">
-<meta property="article:published_time" content="2016-03-01T14:18:33+08:00">
-<meta property="article:modified_time" content="2016-03-01T14:18:33+08:00">
-<meta itemprop=name content="Docker Network介绍">
-<meta itemprop=description content="Docker 网络介绍"><meta itemprop=datePublished content="2016-03-01T14:18:33+08:00">
-<meta itemprop=dateModified content="2016-03-01T14:18:33+08:00">
-<meta itemprop=wordCount content="4470">
-<meta itemprop=keywords content="docker,"><meta name=twitter:card content="summary">
-<meta name=twitter:title content="Docker Network介绍">
-<meta name=twitter:description content="Docker 网络介绍"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
-<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
-</head><body>
-<div id=mobile-navbar class=mobile-navbar>
-<div class=mobile-header-logo>
-<a href=/ class=logo>猿资猿味</a>
-</div><div class=mobile-navbar-icon>
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>Docker Network介绍 - 猿资猿味 - 高波的博客</title><meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv=cache-control content="no-transform"><meta http-equiv=cache-control content="no-siteapp"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=author content="forgottener"><meta name=description content="Docker 网络介绍"><meta name=keywords content="docker,network"><meta name=generator content="Hugo 0.110.0 with theme even"><link rel=canonical href=https://gaoboy.com/post/docker-network/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link href=/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css rel=stylesheet><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous><meta property="og:title" content="Docker Network介绍"><meta property="og:description" content="Docker 网络介绍"><meta property="og:type" content="article"><meta property="og:url" content="https://gaoboy.com/post/docker-network/"><meta property="article:section" content="post"><meta property="article:published_time" content="2016-03-01T14:18:33+08:00"><meta property="article:modified_time" content="2016-03-01T14:18:33+08:00"><meta itemprop=name content="Docker Network介绍"><meta itemprop=description content="Docker 网络介绍"><meta itemprop=datePublished content="2016-03-01T14:18:33+08:00"><meta itemprop=dateModified content="2016-03-01T14:18:33+08:00"><meta itemprop=wordCount content="4470"><meta itemprop=keywords content="docker,"><meta name=twitter:card content="summary"><meta name=twitter:title content="Docker Network介绍"><meta name=twitter:description content="Docker 网络介绍"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
+<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>猿资猿味</a></div><div class=mobile-navbar-icon><span></span>
 <span></span>
-<span></span>
-<span></span>
-</div></div><nav id=mobile-menu class="mobile-menu slideout-menu">
-<ul class=mobile-menu-list>
-<a href=/>
-<li class=mobile-menu-item>Home</li></a><a href=/post/>
-<li class=mobile-menu-item>Archives</li></a><a href=/tags/>
-<li class=mobile-menu-item>Tags</li></a><a href=/categories/>
-<li class=mobile-menu-item>Categories</li></a>
-</ul></nav><div class=container id=mobile-panel>
-<header id=header class=header>
-<div class=logo-wrapper>
-<a href=/ class=logo>猿资猿味</a>
-</div><nav class=site-navbar>
-<ul id=menu class=menu>
-<li class=menu-item>
-<a class=menu-item-link href=/>Home</a>
-</li><li class=menu-item>
-<a class=menu-item-link href=/post/>Archives</a>
-</li><li class=menu-item>
-<a class=menu-item-link href=/tags/>Tags</a>
-</li><li class=menu-item>
-<a class=menu-item-link href=/categories/>Categories</a>
-</li></ul></nav></header><main id=main class=main>
-<div class=content-wrapper>
-<div id=content class=content>
-<article class=post>
-<header class=post-header>
-<h1 class=post-title>Docker Network介绍</h1><div class=post-meta>
-<span class=post-time> 2016-03-01 </span>
-<div class=post-category>
-<a href=/categories/docker/> docker </a>
-</div></div></header><div class=post-toc id=post-toc>
-<h2 class=post-toc-title>文章目录</h2><div class="post-toc-content always-active">
-<nav id=TableOfContents>
-<ul>
-<li><a href=#自定义容器命名>自定义容器命名</a></li><li><a href=#docker-容器互联>Docker 容器互联</a></li><li><a href=#docker-外部访问>Docker 外部访问</a>
-<ul>
-<li><a href=#映射所有接口地址>映射所有接口地址</a></li><li><a href=#映射到指定地址的指定端口>映射到指定地址的指定端口</a></li><li><a href=#映射到指定地址的任意端口>映射到指定地址的任意端口</a></li><li><a href=#查看映射端口配置>查看映射端口配置</a></li></ul></li><li><a href=#docker-网络命令>Docker 网络命令</a></li><li><a href=#docker-配置-dns>Docker 配置 DNS</a></li><li><a href=#docker-访问控制>Docker 访问控制</a>
-<ul>
-<li><a href=#容器访问外部网络>容器访问外部网络</a></li><li><a href=#容器之间访问>容器之间访问</a>
-<ul>
-<li><a href=#访问所有端口>访问所有端口</a></li><li><a href=#访问指定端口>访问指定端口</a></li></ul></li></ul></li><li><a href=#docker-端口映射>Docker 端口映射</a>
-<ul>
-<li><a href=#容器访问外部实现>容器访问外部实现</a></li><li><a href=#外部访问容器实现>外部访问容器实现</a></li></ul></li><li><a href=#docker-配置网桥>Docker 配置网桥</a></li><li><a href=#docker-自定义网桥>Docker 自定义网桥</a></li></ul></nav></div></div><div class=post-content>
-<p>容器的连接（linking）系统是除了端口映射外，另一种跟容器中应用交互的方式。</p><p>该系统会在源和接收容器之间创建一个隧道，接收容器可以看到源容器指定的信息。</p><h1 id=自定义容器命名>自定义容器命名</h1><p>连接系统依据容器的名称来执行。因此，首先需要自定义一个好记的容器命名。</p><p>虽然当创建容器的时候，系统默认会分配一个名字。自定义命名容器有 2 个好处：</p><ul>
-<li>自定义的命名，比较好记，比如一个 web 应用容器我们可以给它起名叫 web</li><li>当要连接其他容器时候，可以作为一个有用的参考点，比如连接 web 容器到 db 容器</li></ul><p>使用 <code>--name</code> 标记可以为容器自定义命名。</p><pre tabindex=0><code>$ sudo docker run -d -P --name web training/webapp python app.py
+<span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><a href=/><li class=mobile-menu-item>Home</li></a><a href=/post/><li class=mobile-menu-item>Archives</li></a><a href=/tags/><li class=mobile-menu-item>Tags</li></a><a href=/categories/><li class=mobile-menu-item>Categories</li></a></ul></nav><div class=container id=mobile-panel><header id=header class=header><div class=logo-wrapper><a href=/ class=logo>猿资猿味</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=/>Home</a></li><li class=menu-item><a class=menu-item-link href=/post/>Archives</a></li><li class=menu-item><a class=menu-item-link href=/tags/>Tags</a></li><li class=menu-item><a class=menu-item-link href=/categories/>Categories</a></li></ul></nav></header><main id=main class=main><div class=content-wrapper><div id=content class=content><article class=post><header class=post-header><h1 class=post-title>Docker Network介绍</h1><div class=post-meta><span class=post-time>2016-03-01</span><div class=post-category><a href=/categories/docker/>docker</a></div></div></header><div class=post-toc id=post-toc><h2 class=post-toc-title>文章目录</h2><div class="post-toc-content always-active"><nav id=TableOfContents><ul><li><a href=#自定义容器命名>自定义容器命名</a></li><li><a href=#docker-容器互联>Docker 容器互联</a></li><li><a href=#docker-外部访问>Docker 外部访问</a><ul><li><a href=#映射所有接口地址>映射所有接口地址</a></li><li><a href=#映射到指定地址的指定端口>映射到指定地址的指定端口</a></li><li><a href=#映射到指定地址的任意端口>映射到指定地址的任意端口</a></li><li><a href=#查看映射端口配置>查看映射端口配置</a></li></ul></li><li><a href=#docker-网络命令>Docker 网络命令</a></li><li><a href=#docker-配置-dns>Docker 配置 DNS</a></li><li><a href=#docker-访问控制>Docker 访问控制</a><ul><li><a href=#容器访问外部网络>容器访问外部网络</a></li><li><a href=#容器之间访问>容器之间访问</a><ul><li><a href=#访问所有端口>访问所有端口</a></li><li><a href=#访问指定端口>访问指定端口</a></li></ul></li></ul></li><li><a href=#docker-端口映射>Docker 端口映射</a><ul><li><a href=#容器访问外部实现>容器访问外部实现</a></li><li><a href=#外部访问容器实现>外部访问容器实现</a></li></ul></li><li><a href=#docker-配置网桥>Docker 配置网桥</a></li><li><a href=#docker-自定义网桥>Docker 自定义网桥</a></li></ul></nav></div></div><div class=post-content><p>容器的连接（linking）系统是除了端口映射外，另一种跟容器中应用交互的方式。</p><p>该系统会在源和接收容器之间创建一个隧道，接收容器可以看到源容器指定的信息。</p><h1 id=自定义容器命名>自定义容器命名</h1><p>连接系统依据容器的名称来执行。因此，首先需要自定义一个好记的容器命名。</p><p>虽然当创建容器的时候，系统默认会分配一个名字。自定义命名容器有 2 个好处：</p><ul><li>自定义的命名，比较好记，比如一个 web 应用容器我们可以给它起名叫 web</li><li>当要连接其他容器时候，可以作为一个有用的参考点，比如连接 web 容器到 db 容器</li></ul><p>使用 <code>--name</code> 标记可以为容器自定义命名。</p><pre tabindex=0><code>$ sudo docker run -d -P --name web training/webapp python app.py
 </code></pre><p>使用 <code>docker ps</code> 来验证设定的命名。</p><pre tabindex=0><code>$ sudo docker ps -l
 CONTAINER ID  IMAGE                  COMMAND        CREATED       STATUS       PORTS                    NAMES
 aed84ee21bde  training/webapp:latest python app.py  12 hours ago  Up 2 seconds 0.0.0.0:49154-&gt;5000/tcp  web
@@ -99,8 +14,7 @@ aed84ee21bde  training/webapp:latest python app.py  12 hours ago  Up 2 seconds 0
 </span></span><span style=display:flex><span>CONTAINER ID  IMAGE                     COMMAND               CREATED             STATUS             PORTS                    NAMES
 </span></span><span style=display:flex><span>349169744e49  training/postgres:latest  su postgres -c <span style=color:#960050;background-color:#1e0010>&#39;</span>/usr  About a minute ago  Up About a minute  5432/tcp                 db, web/db
 </span></span><span style=display:flex><span>aed84ee21bde  training/webapp:latest    python app.py         <span style=color:#ae81ff>16</span> hours ago        Up <span style=color:#ae81ff>2</span> minutes       0.0.0.0:49154-&gt;5000/tcp  web
-</span></span></code></pre></div><p>可以看到自定义命名的容器，db 和 web，db 容器的 names 列有 db 也有 web/db。这表示 web 容器链接到 db 容器，web 容器将被允许访问 db 容器的信息。</p><p>Docker 在两个互联的容器之间创建了一个安全隧道，而且不用映射它们的端口到宿主主机上。在启动 db 容器的时候并没有使用 <code>-p</code> 和 <code>-P</code> 标记，从而避免了暴露数据库端口到外部网络上。</p><p>Docker 通过 2 种方式为容器公开连接信息：</p><ul>
-<li>环境变量</li><li>更新 <code>/etc/hosts</code> 文件</li></ul><p>使用 <code>env</code> 命令来查看 web 容器的环境变量</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>$ sudo docker run --rm --name web2 --link db:db training/webapp env
+</span></span></code></pre></div><p>可以看到自定义命名的容器，db 和 web，db 容器的 names 列有 db 也有 web/db。这表示 web 容器链接到 db 容器，web 容器将被允许访问 db 容器的信息。</p><p>Docker 在两个互联的容器之间创建了一个安全隧道，而且不用映射它们的端口到宿主主机上。在启动 db 容器的时候并没有使用 <code>-p</code> 和 <code>-P</code> 标记，从而避免了暴露数据库端口到外部网络上。</p><p>Docker 通过 2 种方式为容器公开连接信息：</p><ul><li>环境变量</li><li>更新 <code>/etc/hosts</code> 文件</li></ul><p>使用 <code>env</code> 命令来查看 web 容器的环境变量</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>$ sudo docker run --rm --name web2 --link db:db training/webapp env
 </span></span><span style=display:flex><span>. . .
 </span></span><span style=display:flex><span>DB_NAME<span style=color:#f92672>=</span>/web2/db
 </span></span><span style=display:flex><span>DB_PORT<span style=color:#f92672>=</span>tcp://172.17.0.5:5432
@@ -134,12 +48,8 @@ aed84ee21bde  training/webapp:latest python app.py  12 hours ago  Up 2 seconds 0
 </span></span></code></pre></div><p>还可以使用 udp 标记来指定 udp 端口</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>$ sudo docker run -d -p 127.0.0.1:5000:5000/udp training/webapp python app.py
 </span></span></code></pre></div><h2 id=查看映射端口配置>查看映射端口配置</h2><p>使用 <code>docker port</code> 来查看当前映射的端口配置，也可以查看到绑定的地址</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>$ docker port nostalgic_morse <span style=color:#ae81ff>5000</span>
 </span></span><span style=display:flex><span>127.0.0.1:49155.
-</span></span></code></pre></div><p>注意：</p><ul>
-<li>容器有自己的内部网络和 ip 地址（使用 <code>docker inspect</code> 可以获取所有的变量，Docker 还可以有一个可变的网络配置。）</li><li>-p 标记可以多次使用来绑定多个端口</li></ul><p>例如</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>$ sudo docker run -d -p 5000:5000  -p 3000:80 training/webapp python app.py
-</span></span></code></pre></div><h1 id=docker-网络命令>Docker 网络命令</h1><p>下面是一个跟 Docker 网络相关的命令列表。</p><p>其中有些命令选项只有在 Docker 服务启动的时候才能配置，而且不能马上生效。</p><ul>
-<li><code>-b BRIDGE or --bridge=BRIDGE</code> &ndash; 指定容器挂载的网桥</li><li><code>--bip=CIDR</code> &ndash; 定制 docker0 的掩码</li><li><code>-H SOCKET... or --host=SOCKET...</code> &ndash;Docker 服务端接收命令的通道</li><li><code>--icc=true|false</code> &ndash; 是否支持容器之间进行通信</li><li><code>--ip-forward=true|false</code> &ndash; 请看下文容器之间的通信</li><li><code>--iptables=true|false</code> &ndash; 禁止 Docker 添加 iptables 规则</li><li><code>--mtu=BYTES</code> &ndash; 容器网络中的 MTU</li></ul><p>下面 2 个命令选项既可以在启动服务时指定，也可以 Docker 容器启动（<code>docker run</code>）时候指定。在 Docker 服务启动的时候指定则会成为默认值，后面执行 <code>docker run</code> 时可以覆盖设置的默认值。</p><ul>
-<li><code>--dns=IP_ADDRESS...</code> &ndash; 使用指定的 DNS 服务器</li><li><code>--dns-search=DOMAIN...</code> &ndash; 指定 DNS 搜索域</li></ul><p>最后这些选项只有在 <code>docker run</code> 执行时使用，因为它是针对容器的特性内容。</p><ul>
-<li><code>-h HOSTNAME or --hostname=HOSTNAME</code> &ndash; 配置容器主机名</li><li><code>--link=CONTAINER_NAME:ALIAS</code> &ndash; 添加到另一个容器的连接</li><li><code>--net=bridge|none|container:NAME_or_ID|host</code> &ndash; 配置容器的桥接模式</li><li><code>-p SPEC or --publish=SPEC</code> &ndash; 映射容器端口到宿主主机</li><li><code>-P or --publish-all=true|false</code> &ndash; 映射容器所有端口到宿主主机</li></ul><h1 id=docker-配置-dns>Docker 配置 DNS</h1><p>Docker 没有为每个容器专门定制镜像，那么怎么自定义配置容器的主机名和 DNS 配置呢？ 秘诀就是它利用虚拟文件来挂载到来容器的 3 个相关配置文件。</p><p>在容器中使用 mount 命令可以看到挂载信息：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>$ mount
+</span></span></code></pre></div><p>注意：</p><ul><li>容器有自己的内部网络和 ip 地址（使用 <code>docker inspect</code> 可以获取所有的变量，Docker 还可以有一个可变的网络配置。）</li><li>-p 标记可以多次使用来绑定多个端口</li></ul><p>例如</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>$ sudo docker run -d -p 5000:5000  -p 3000:80 training/webapp python app.py
+</span></span></code></pre></div><h1 id=docker-网络命令>Docker 网络命令</h1><p>下面是一个跟 Docker 网络相关的命令列表。</p><p>其中有些命令选项只有在 Docker 服务启动的时候才能配置，而且不能马上生效。</p><ul><li><code>-b BRIDGE or --bridge=BRIDGE</code> &ndash; 指定容器挂载的网桥</li><li><code>--bip=CIDR</code> &ndash; 定制 docker0 的掩码</li><li><code>-H SOCKET... or --host=SOCKET...</code> &ndash;Docker 服务端接收命令的通道</li><li><code>--icc=true|false</code> &ndash; 是否支持容器之间进行通信</li><li><code>--ip-forward=true|false</code> &ndash; 请看下文容器之间的通信</li><li><code>--iptables=true|false</code> &ndash; 禁止 Docker 添加 iptables 规则</li><li><code>--mtu=BYTES</code> &ndash; 容器网络中的 MTU</li></ul><p>下面 2 个命令选项既可以在启动服务时指定，也可以 Docker 容器启动（<code>docker run</code>）时候指定。在 Docker 服务启动的时候指定则会成为默认值，后面执行 <code>docker run</code> 时可以覆盖设置的默认值。</p><ul><li><code>--dns=IP_ADDRESS...</code> &ndash; 使用指定的 DNS 服务器</li><li><code>--dns-search=DOMAIN...</code> &ndash; 指定 DNS 搜索域</li></ul><p>最后这些选项只有在 <code>docker run</code> 执行时使用，因为它是针对容器的特性内容。</p><ul><li><code>-h HOSTNAME or --hostname=HOSTNAME</code> &ndash; 配置容器主机名</li><li><code>--link=CONTAINER_NAME:ALIAS</code> &ndash; 添加到另一个容器的连接</li><li><code>--net=bridge|none|container:NAME_or_ID|host</code> &ndash; 配置容器的桥接模式</li><li><code>-p SPEC or --publish=SPEC</code> &ndash; 映射容器端口到宿主主机</li><li><code>-P or --publish-all=true|false</code> &ndash; 映射容器所有端口到宿主主机</li></ul><h1 id=docker-配置-dns>Docker 配置 DNS</h1><p>Docker 没有为每个容器专门定制镜像，那么怎么自定义配置容器的主机名和 DNS 配置呢？ 秘诀就是它利用虚拟文件来挂载到来容器的 3 个相关配置文件。</p><p>在容器中使用 mount 命令可以看到挂载信息：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>$ mount
 </span></span><span style=display:flex><span>...
 </span></span><span style=display:flex><span>/dev/disk/by-uuid/1fec...ebdf on /etc/hostname type ext4 ...
 </span></span><span style=display:flex><span>/dev/disk/by-uuid/1fec...ebdf on /etc/hosts type ext4 ...
@@ -148,8 +58,7 @@ aed84ee21bde  training/webapp:latest python app.py  12 hours ago  Up 2 seconds 0
 </span></span></code></pre></div><p>这种机制可以让宿主主机 DNS 信息发生更新后，所有 Docker 容器的 dns 配置通过 <code>/etc/resolv.conf</code> 文件立刻得到更新。</p><p>如果用户想要手动指定容器的配置，可以利用下面的选项。</p><p><code>-h HOSTNAME or --hostname=HOSTNAME</code> 设定容器的主机名，它会被写到容器内的 <code>/etc/hostname</code> 和 <code>/etc/hosts</code>。但它在容器外部看不到，既不会在 <code>docker ps</code> 中显示，也不会在其他的容器的 <code>/etc/hosts</code> 看到。</p><p><code>--link=CONTAINER_NAME:ALIAS</code> 选项会在创建容器的时候，添加一个其他容器的主机名到 <code>/etc/hosts</code> 文件中，让新容器的进程可以使用主机名 ALIAS 就可以连接它。</p><p><code>--dns=IP_ADDRESS</code> 添加 DNS 服务器到容器的 <code>/etc/resolv.conf</code> 中，让容器用这个服务器来解析所有不在 <code>/etc/hosts</code> 中的主机名。</p><p><code>--dns-search=DOMAIN</code> 设定容器的搜索域，当设定搜索域为 <code>.example.com</code> 时，在搜索一个名为 host 的主机时，DNS 不仅搜索 host，还会搜索 <code>host.example.com</code>。 注意：如果没有上述最后 2 个选项，Docker 会默认用主机上的 <code>/etc/resolv.conf</code> 来配置容器。</p><h1 id=docker-访问控制>Docker 访问控制</h1><p>容器的访问控制，主要通过 Linux 上的 <code>iptables</code> 防火墙来进行管理和实现。<code>iptables</code> 是 Linux 上默认的防火墙软件，在大部分发行版中都自带。</p><h2 id=容器访问外部网络>容器访问外部网络</h2><p>容器要想访问外部网络，需要本地系统的转发支持。在 Linux 系统中，检查转发是否打开。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>$sysctl net.ipv4.ip_forward
 </span></span><span style=display:flex><span>net.ipv4.ip_forward <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>
 </span></span></code></pre></div><p>如果为 0，说明没有开启转发，则需要手动打开。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>$sysctl -w net.ipv4.ip_forward<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span>
-</span></span></code></pre></div><p>如果在启动 Docker 服务的时候设定 <code>--ip-forward=true</code>, Docker 就会自动设定系统的 <code>ip_forward</code> 参数为 1。</p><h2 id=容器之间访问>容器之间访问</h2><p>容器之间相互访问，需要两方面的支持。</p><ul>
-<li>容器的网络拓扑是否已经互联。默认情况下，所有容器都会被连接到 <code>docker0</code> 网桥上。</li><li>本地系统的防火墙软件 &ndash; <code>iptables</code> 是否允许通过。</li></ul><h3 id=访问所有端口>访问所有端口</h3><p>当启动 Docker 服务时候，默认会添加一条转发策略到 iptables 的 FORWARD 链上。策略为通过（<code>ACCEPT</code>）还是禁止（<code>DROP</code>）取决于配置 <code>--icc=true</code>（缺省值）还是 <code>--icc=false</code>。当然，如果手动指定 <code>--iptables=false</code> 则不会添加 <code>iptables</code> 规则。</p><p>可见，默认情况下，不同容器之间是允许网络互通的。如果为了安全考虑，可以在 <code>/etc/default/docker</code> 文件中配置 <code>DOCKER_OPTS=--icc=false</code> 来禁止它。</p><h3 id=访问指定端口>访问指定端口</h3><p>在通过 <code>-icc=false</code> 关闭网络访问后，还可以通过 <code>--link=CONTAINER_NAME:ALIAS</code> 选项来访问容器的开放端口。</p><p>例如，在启动 Docker 服务时，可以同时使用 <code>icc=false --iptables=true</code> 参数来关闭允许相互的网络访问，并让 Docker 可以修改系统中的 <code>iptables</code> 规则。</p><p>此时，系统中的 <code>iptables</code> 规则可能是类似</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>$ sudo iptables -nL
+</span></span></code></pre></div><p>如果在启动 Docker 服务的时候设定 <code>--ip-forward=true</code>, Docker 就会自动设定系统的 <code>ip_forward</code> 参数为 1。</p><h2 id=容器之间访问>容器之间访问</h2><p>容器之间相互访问，需要两方面的支持。</p><ul><li>容器的网络拓扑是否已经互联。默认情况下，所有容器都会被连接到 <code>docker0</code> 网桥上。</li><li>本地系统的防火墙软件 &ndash; <code>iptables</code> 是否允许通过。</li></ul><h3 id=访问所有端口>访问所有端口</h3><p>当启动 Docker 服务时候，默认会添加一条转发策略到 iptables 的 FORWARD 链上。策略为通过（<code>ACCEPT</code>）还是禁止（<code>DROP</code>）取决于配置 <code>--icc=true</code>（缺省值）还是 <code>--icc=false</code>。当然，如果手动指定 <code>--iptables=false</code> 则不会添加 <code>iptables</code> 规则。</p><p>可见，默认情况下，不同容器之间是允许网络互通的。如果为了安全考虑，可以在 <code>/etc/default/docker</code> 文件中配置 <code>DOCKER_OPTS=--icc=false</code> 来禁止它。</p><h3 id=访问指定端口>访问指定端口</h3><p>在通过 <code>-icc=false</code> 关闭网络访问后，还可以通过 <code>--link=CONTAINER_NAME:ALIAS</code> 选项来访问容器的开放端口。</p><p>例如，在启动 Docker 服务时，可以同时使用 <code>icc=false --iptables=true</code> 参数来关闭允许相互的网络访问，并让 Docker 可以修改系统中的 <code>iptables</code> 规则。</p><p>此时，系统中的 <code>iptables</code> 规则可能是类似</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>$ sudo iptables -nL
 </span></span><span style=display:flex><span>...
 </span></span><span style=display:flex><span>Chain FORWARD <span style=color:#f92672>(</span>policy ACCEPT<span style=color:#f92672>)</span>
 </span></span><span style=display:flex><span>target     prot opt source               destination
@@ -177,13 +86,10 @@ aed84ee21bde  training/webapp:latest python app.py  12 hours ago  Up 2 seconds 0
 </span></span><span style=display:flex><span>Chain DOCKER <span style=color:#f92672>(</span><span style=color:#ae81ff>2</span> references<span style=color:#f92672>)</span>
 </span></span><span style=display:flex><span>target     prot opt source               destination
 </span></span><span style=display:flex><span>DNAT       tcp  --  0.0.0.0/0            0.0.0.0/0            tcp dpt:80 to:172.17.0.2:80
-</span></span></code></pre></div><p>注意：</p><ul>
-<li>这里的规则映射了 0.0.0.0，意味着将接受主机来自所有接口的流量。用户可以通过 <code>-p IP:host_port:container_port</code> 或 <code>-p IP::port</code> 来指定允许访问容器的主机上的 IP、接口等，以制定更严格的规则。</li><li>如果希望永久绑定到某个固定的 IP 地址，可以在 Docker 配置文件 <code>/etc/default/docker</code> 中指定 <code>DOCKER_OPTS="--ip=IP_ADDRESS"</code>，之后重启 Docker 服务即可生效。</li></ul><h1 id=docker-配置网桥>Docker 配置网桥</h1><p>Docker 服务默认会创建一个 <code>docker0</code> 网桥（其上有一个 <code>docker0</code> 内部接口），它在内核层连通了其他的物理或虚拟网卡，这就将所有容器和本地主机都放到同一个物理网络。</p><p>Docker 默认指定了 <code>docker0</code> 接口 的 IP 地址和子网掩码，让主机和容器之间可以通过网桥相互通信，它还给出了 MTU（接口允许接收的最大传输单元），通常是 1500 Bytes，或宿主主机网络路由上支持的默认值。这些值都可以在服务启动的时候进行配置。</p><ul>
-<li><code>--bip=CIDR</code> &ndash; IP 地址加掩码格式，例如 192.168.1.5/24</li><li><code>--mtu=BYTES</code> &ndash; 覆盖默认的 Docker mtu 配置</li></ul><p>也可以在配置文件中配置 DOCKER_OPTS，然后重启服务。 由于目前 Docker 网桥是 Linux 网桥，用户可以使用 <code>brctl show</code> 来查看网桥和端口连接信息。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>$ sudo brctl show
+</span></span></code></pre></div><p>注意：</p><ul><li>这里的规则映射了 0.0.0.0，意味着将接受主机来自所有接口的流量。用户可以通过 <code>-p IP:host_port:container_port</code> 或 <code>-p IP::port</code> 来指定允许访问容器的主机上的 IP、接口等，以制定更严格的规则。</li><li>如果希望永久绑定到某个固定的 IP 地址，可以在 Docker 配置文件 <code>/etc/default/docker</code> 中指定 <code>DOCKER_OPTS="--ip=IP_ADDRESS"</code>，之后重启 Docker 服务即可生效。</li></ul><h1 id=docker-配置网桥>Docker 配置网桥</h1><p>Docker 服务默认会创建一个 <code>docker0</code> 网桥（其上有一个 <code>docker0</code> 内部接口），它在内核层连通了其他的物理或虚拟网卡，这就将所有容器和本地主机都放到同一个物理网络。</p><p>Docker 默认指定了 <code>docker0</code> 接口 的 IP 地址和子网掩码，让主机和容器之间可以通过网桥相互通信，它还给出了 MTU（接口允许接收的最大传输单元），通常是 1500 Bytes，或宿主主机网络路由上支持的默认值。这些值都可以在服务启动的时候进行配置。</p><ul><li><code>--bip=CIDR</code> &ndash; IP 地址加掩码格式，例如 192.168.1.5/24</li><li><code>--mtu=BYTES</code> &ndash; 覆盖默认的 Docker mtu 配置</li></ul><p>也可以在配置文件中配置 DOCKER_OPTS，然后重启服务。 由于目前 Docker 网桥是 Linux 网桥，用户可以使用 <code>brctl show</code> 来查看网桥和端口连接信息。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>$ sudo brctl show
 </span></span><span style=display:flex><span>bridge name     bridge id               STP enabled     interfaces
 </span></span><span style=display:flex><span>docker0         8000.3a1d7362b4ee       no              veth65f9vethdda6
-</span></span></code></pre></div><blockquote>
-<p>注：<code>brctl</code> 命令在 Debian、Ubuntu 中可以使用 <code>sudo apt-get install bridge-utils</code> 来安装。</p></blockquote><p>每次创建一个新容器的时候，Docker 从可用的地址段中选择一个空闲的 IP 地址分配给容器的 eth0 端口。使用本地主机上 <code>docker0</code> 接口的 IP 作为所有容器的默认网关。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>$ sudo docker run -i -t --rm base /bin/bash
+</span></span></code></pre></div><blockquote><p>注：<code>brctl</code> 命令在 Debian、Ubuntu 中可以使用 <code>sudo apt-get install bridge-utils</code> 来安装。</p></blockquote><p>每次创建一个新容器的时候，Docker 从可用的地址段中选择一个空闲的 IP 地址分配给容器的 eth0 端口。使用本地主机上 <code>docker0</code> 接口的 IP 作为所有容器的默认网关。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>$ sudo docker run -i -t --rm base /bin/bash
 </span></span><span style=display:flex><span>$ ip addr show eth0
 </span></span><span style=display:flex><span>24: eth0: &lt;BROADCAST,UP,LOWER_UP&gt; mtu <span style=color:#ae81ff>1500</span> qdisc pfifo_fast state UP group default qlen <span style=color:#ae81ff>1000</span>
 </span></span><span style=display:flex><span>    link/ether 32:6f:e0:35:57:91 brd ff:ff:ff:ff:ff:ff
@@ -208,49 +114,25 @@ aed84ee21bde  training/webapp:latest python app.py  12 hours ago  Up 2 seconds 0
 </span></span><span style=display:flex><span>       valid_lft forever preferred_lft forever
 </span></span></code></pre></div><p>配置 Docker 服务，默认桥接到创建的网桥上。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>$ echo <span style=color:#e6db74>&#39;DOCKER_OPTS=&#34;-b=bridge0&#34;&#39;</span> &gt;&gt; /etc/default/docker
 </span></span><span style=display:flex><span>$ sudo service docker start
-</span></span></code></pre></div><p>启动 Docker 服务。 新建一个容器，可以看到它已经桥接到了 <code>bridge0</code> 上。</p><p>可以继续用 <code>brctl show</code> 命令查看桥接的信息。另外，在容器中可以使用 <code>ip addr</code> 和 <code>ip route</code> 命令来查看 IP 地址配置和路由信息。</p></div><footer class=post-footer>
-<div class=post-tags>
-<a href=/tags/docker/>docker</a>
-</div><nav class=post-nav>
-<a class=prev href=/post/docker-safety/>
-<i class="iconfont icon-left"></i>
+</span></span></code></pre></div><p>启动 Docker 服务。 新建一个容器，可以看到它已经桥接到了 <code>bridge0</code> 上。</p><p>可以继续用 <code>brctl show</code> 命令查看桥接的信息。另外，在容器中可以使用 <code>ip addr</code> 和 <code>ip route</code> 命令来查看 IP 地址配置和路由信息。</p></div><footer class=post-footer><div class=post-tags><a href=/tags/docker/>docker</a></div><nav class=post-nav><a class=prev href=/post/docker-safety/><i class="iconfont icon-left"></i>
 <span class="prev-text nav-default">Docker 安全介绍</span>
-<span class="prev-text nav-mobile">上一篇</span>
-</a>
-<a class=next href=/post/docker-volume/>
-<span class="next-text nav-default">Docker 数据卷介绍</span>
+<span class="prev-text nav-mobile">上一篇</span></a>
+<a class=next href=/post/docker-volume/><span class="next-text nav-default">Docker 数据卷介绍</span>
 <span class="next-text nav-mobile">下一篇</span>
-<i class="iconfont icon-right"></i>
-</a>
-</nav></footer></article></div><div id=vcomments></div><script src=//cdn1.lncld.net/static/js/3.0.4/av-min.js></script>
+<i class="iconfont icon-right"></i></a></nav></footer></article></div><div id=vcomments></div><script src=//cdn1.lncld.net/static/js/3.0.4/av-min.js></script>
 <script src=//unpkg.com/valine/dist/Valine.min.js></script>
-<script type=text/javascript>new Valine({el:"#vcomments",appId:"fXqv8lFikU96F2xUDOBW4T9X-MdYXbMMI",appKey:"AUbjromOz15du9OJSTY6Q8HM",notify:!1,verify:!1,avatar:"robohash",placeholder:"本站支持评论邮件提醒功能，在上方邮箱输入框留下邮箱，可以收到回复通知哦！（支持markdown语法）",visitor:!1})</script>
-</div></main><footer id=footer class=footer>
-<div class=social-links>
-<a href=mailto:gao.bo168@gmail.com class="iconfont icon-email" title=email></a>
+<script type=text/javascript>new Valine({el:"#vcomments",appId:"fXqv8lFikU96F2xUDOBW4T9X-MdYXbMMI",appKey:"AUbjromOz15du9OJSTY6Q8HM",notify:!1,verify:!1,avatar:"robohash",placeholder:"本站支持评论邮件提醒功能，在上方邮箱输入框留下邮箱，可以收到回复通知哦！（支持markdown语法）",visitor:!1})</script></div></main><footer id=footer class=footer><div class=social-links><a href=mailto:gao.bo168@gmail.com class="iconfont icon-email" title=email></a>
 <a href=https://github.com/forgottener class="iconfont icon-github" title=github></a>
 <a href=https://space.bilibili.com/1714562 class="iconfont icon-bilibili" title=bilibili></a>
-<a href=https://gaoboy.com/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a>
-</div><div class=copyright>
-<span class=power-by>
-由 <a class=hexo-link href=https://gohugo.io>Hugo</a> 强力驱动
-</span>
+<a href=https://gaoboy.com/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a></div><div class=copyright><span class=power-by>由 <a class=hexo-link href=https://gohugo.io>Hugo</a> 强力驱动</span>
 <span class=division>|</span>
-<span class=theme-info>
-主题 -
-<a class=theme-link href=https://github.com/olOwOlo/hugo-theme-even>Even</a>
-</span>
-<span class=copyright-year>
-&copy;
+<span class=theme-info>主题 -
+<a class=theme-link href=https://github.com/olOwOlo/hugo-theme-even>Even</a></span>
+<span class=copyright-year>&copy;
 2013 -
-2022<span class=heart><i class="iconfont icon-heart"></i></span><span><a rel="license noopener" href=https://beian.miit.gov.cn/ target=_blank>浙ICP备14043338号-2</a>~<a rel="license noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010802003111" target=_blank>浙公网安备 33010802003111号</a></span>
-</span>
-</div></footer><div class=back-to-top id=back-to-top>
-<i class="iconfont icon-up"></i>
-</div></div><script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+2023<span class=heart><i class="iconfont icon-heart"></i></span><span><a rel="license noopener" href=https://beian.miit.gov.cn/ target=_blank>浙ICP备14043338号-2</a>~<a rel="license noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010802003111" target=_blank>浙公网安备 33010802003111号</a></span></span></div></footer><div class=back-to-top id=back-to-top><i class="iconfont icon-up"></i></div></div><script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
 <script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script>
 <script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script>
 <script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script>
-<script type=text/javascript src=/js/main.min.64437849d125a2d603b3e71d6de5225d641a32d17168a58106e0b61852079683.js></script>
-<script src=/js/blank.js></script>
-</body></html>
+<script type=text/javascript src=/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js></script>
+<script src=/js/blank.js></script></body></html>

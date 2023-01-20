@@ -1,0 +1,724 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>Go Antlr4 Plsql Sql Parser Demo - 猿资猿味 - 高波的博客</title><meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv=cache-control content="no-transform"><meta http-equiv=cache-control content="no-siteapp"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=author content="forgottener"><meta name=description content="基于antlr-4.10.1自动生成plsql解析语法树demo创建流程"><meta name=keywords content="golang,antlr4,oracle,plsql&#34;,parser"><meta name=generator content="Hugo 0.110.0 with theme even"><link rel=canonical href=https://gaoboy.com/post/go-antlr4-plsql-sql-parser-demo/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link href=/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css rel=stylesheet><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous><meta property="og:title" content="Go Antlr4 Plsql Sql Parser Demo"><meta property="og:description" content="基于antlr-4.10.1自动生成plsql解析语法树demo创建流程"><meta property="og:type" content="article"><meta property="og:url" content="https://gaoboy.com/post/go-antlr4-plsql-sql-parser-demo/"><meta property="article:section" content="post"><meta property="article:published_time" content="2023-01-20T20:47:53+08:00"><meta property="article:modified_time" content="2023-01-20T20:47:53+08:00"><meta itemprop=name content="Go Antlr4 Plsql Sql Parser Demo"><meta itemprop=description content="基于antlr-4.10.1自动生成plsql解析语法树demo创建流程"><meta itemprop=datePublished content="2023-01-20T20:47:53+08:00"><meta itemprop=dateModified content="2023-01-20T20:47:53+08:00"><meta itemprop=wordCount content="5617"><meta itemprop=keywords content="Go,plsql,"><meta name=twitter:card content="summary"><meta name=twitter:title content="Go Antlr4 Plsql Sql Parser Demo"><meta name=twitter:description content="基于antlr-4.10.1自动生成plsql解析语法树demo创建流程"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
+<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>猿资猿味</a></div><div class=mobile-navbar-icon><span></span>
+<span></span>
+<span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><a href=/><li class=mobile-menu-item>Home</li></a><a href=/post/><li class=mobile-menu-item>Archives</li></a><a href=/tags/><li class=mobile-menu-item>Tags</li></a><a href=/categories/><li class=mobile-menu-item>Categories</li></a></ul></nav><div class=container id=mobile-panel><header id=header class=header><div class=logo-wrapper><a href=/ class=logo>猿资猿味</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=/>Home</a></li><li class=menu-item><a class=menu-item-link href=/post/>Archives</a></li><li class=menu-item><a class=menu-item-link href=/tags/>Tags</a></li><li class=menu-item><a class=menu-item-link href=/categories/>Categories</a></li></ul></nav></header><main id=main class=main><div class=content-wrapper><div id=content class=content><article class=post><header class=post-header><h1 class=post-title>Go Antlr4 Plsql Sql Parser Demo</h1><div class=post-meta><span class=post-time>2023-01-20</span><div class=post-category><a href=/categories/go/>Go</a>
+<a href=/categories/plsql/>plsql</a>
+<a href=/categories/sql-parser/>SQL-parser</a></div></div></header><div class=post-toc id=post-toc><h2 class=post-toc-title>文章目录</h2><div class="post-toc-content always-active"><nav id=TableOfContents><ul><li><a href=#准备>准备</a><ul><li><a href=#一-antlrgrammars-v4-下载plsql>一. antlr/grammars-v4 下载plsql</a></li><li><a href=#二-下载antlr-4101-completejarhttpswwwantlrorgdownloadantlr-4101-completejar>二. 下载<a href=https://www.antlr.org/download/antlr-4.10.1-complete.jar>antlr-4.10.1-complete.jar</a></a></li></ul></li><li><a href=#开始>开始</a><ul><li><a href=#一-新建工程目录及初始化>一. 新建工程目录及初始化</a></li><li><a href=#二-目录中加入下载最新的g4文件及antlr-4101-completejar>二. 目录中加入下载最新的.g4文件及antlr-4.10.1-complete.jar</a></li><li><a href=#三-生成go-parser>三. 生成go parser</a></li><li><a href=#四-调整goland-419m-file-size-limit-for-inspection问题>四. 调整goland 4.19M file size limit for inspection问题</a></li><li><a href=#五-实现plsqllexerbase和plsqlparserbase>五. 实现PlSqlLexerBase和PlSqlParserBase</a><ul><li><a href=#实现plsqllexerbase>实现PlSqlLexerBase</a></li><li><a href=#实现plsqlparserbase>实现PlSqlParserBase</a></li></ul></li><li><a href=#六-替换plsql_lexergoplsql_parsergo中的self>六. 替换<code>plsql_lexer.go</code>、<code>plsql_parser.go</code>中的<code>self.</code></a></li></ul></li><li><a href=#demo>Demo</a></li><li><a href=#性能压测>性能压测</a></li><li><a href=#heading></a><ul><li><ul><li><a href=#参考资料>参考资料</a></li></ul></li></ul></li></ul></nav></div></div><div class=post-content><h1 id=准备>准备</h1><h2 id=一-antlrgrammars-v4-下载plsql>一. antlr/grammars-v4 下载plsql</h2><p><a href=https://github.com/antlr/grammars-v4/tree/master/sql/plsql>https://github.com/antlr/grammars-v4/tree/master/sql/plsql</a></p><p>下载2个<code>.g4</code>的文件</p><p><a href=https://github.com/antlr/grammars-v4/blob/master/sql/plsql/PlSqlLexer.g4>PlSqlLexer.g4</a></p><p><a href=https://github.com/antlr/grammars-v4/blob/master/sql/plsql/PlSqlParser.g4>PlSqlParser.g4</a></p><h2 id=二-下载antlr-4101-completejarhttpswwwantlrorgdownloadantlr-4101-completejar>二. 下载<a href=https://www.antlr.org/download/antlr-4.10.1-complete.jar>antlr-4.10.1-complete.jar</a></h2><p>注意运行此<code>jar</code>包需要<code>jdk11</code>。</p><p><strong>截至2023-01-20，antlr-4.11.0-complete.jar1及以上版本生成出的parser本人未能修改并成功跑通，多次降低版本至4.10.1才勉强改动后跑起来了，如有纰漏请指正。</strong></p><h1 id=开始>开始</h1><p>官方的<a href=https://github.com/antlr/antlr4/blob/master/doc/go-target.md>go-target.md</a>可供参考，本人步骤如下：</p><h2 id=一-新建工程目录及初始化>一. 新建工程目录及初始化</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>make dir go_antlr4_plsql_parser
+</span></span><span style=display:flex><span>cd go_antlr4_plsql_parser
+</span></span><span style=display:flex><span>go mod init go_antlr4_plsql_parser
+</span></span><span style=display:flex><span>go get github.com/antlr/antlr4/runtime/Go/antlr
+</span></span></code></pre></div><h2 id=二-目录中加入下载最新的g4文件及antlr-4101-completejar>二. 目录中加入下载最新的.g4文件及antlr-4.10.1-complete.jar</h2><pre tabindex=0><code>.
+├── PlSqlLexer.g4
+├── PlSqlParser.g4
+├── antlr-4.10.1-complete.jar
+└── go.mod
+</code></pre><h2 id=三-生成go-parser>三. 生成go parser</h2><pre tabindex=0><code># 自行替换java路径
+D:\java\jdk-11.0.13\bin\java.exe -jar .\antlr-4.10.1-complete.jar -Dlanguage=Go -o parser .\PlSqlLexer.g4 -visitor
+D:\java\jdk-11.0.13\bin\java.exe -jar .\antlr-4.10.1-complete.jar -Dlanguage=Go -o parser .\PlSqlParser.g4 -visitor
+</code></pre><p>生成成功后文件结构如下：</p><pre tabindex=0><code>.                            
+├── PlSqlLexer.g4            
+├── PlSqlParser.g4           
+├── antlr-4.10.1-complete.jar
+├── go.mod
+└── parser
+    ├── PlSqlLexer.interp
+    ├── PlSqlLexer.tokens
+    ├── PlSqlParser.interp
+    ├── PlSqlParser.tokens
+    ├── plsql_lexer.go
+    ├── plsql_parser.go
+    ├── plsqlparser_base_listener.go
+    ├── plsqlparser_base_visitor.go
+    ├── plsqlparser_listener.go
+    └── plsqlparser_visitor.go
+</code></pre><h2 id=四-调整goland-419m-file-size-limit-for-inspection问题>四. 调整goland 4.19M file size limit for inspection问题</h2><p>由于生成的<code>plsql_parser.go</code>比较大，goland里会提示不进行检查，这不利于后续的调试，故需修改默认限制，</p><p><code>help -> Edit Custom Properties</code>，增加两行：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-properties data-lang=properties><span style=display:flex><span><span style=color:#a6e22e>idea.max.intellisense.filesize</span><span style=color:#f92672>=</span><span style=color:#e6db74>99999999</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>idea.max.content.load.filesize</span><span style=color:#f92672>=</span><span style=color:#e6db74>99999999</span>
+</span></span></code></pre></div><p>保存重启goland。</p><h2 id=五-实现plsqllexerbase和plsqlparserbase>五. 实现PlSqlLexerBase和PlSqlParserBase</h2><p>第三步生成后的parser模块还不能使用，goland打开<code>plsql_lexer.go</code>、<code>plsql_parser.go</code>一片红。</p><h3 id=实现plsqllexerbase>实现PlSqlLexerBase</h3><p>parser目录下新建<code>plsql_base_lexer.go</code></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#f92672>package</span> <span style=color:#a6e22e>parser</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> <span style=color:#e6db74>&#34;github.com/antlr/antlr4/runtime/Go/antlr&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// PlSqlBaseLexer state
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>type</span> <span style=color:#a6e22e>PlSqlLexerBase</span> <span style=color:#66d9ef>struct</span> {
+</span></span><span style=display:flex><span>	<span style=color:#f92672>*</span><span style=color:#a6e22e>antlr</span>.<span style=color:#a6e22e>BaseLexer</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>lastToken</span> <span style=color:#a6e22e>antlr</span>.<span style=color:#a6e22e>Token</span>
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// NextToken from the character stream.
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>func</span> (<span style=color:#a6e22e>p</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>PlSqlLexerBase</span>) <span style=color:#a6e22e>NextToken</span>() <span style=color:#a6e22e>antlr</span>.<span style=color:#a6e22e>Token</span> {
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>next</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>p</span>.<span style=color:#a6e22e>BaseLexer</span>.<span style=color:#a6e22e>NextToken</span>() <span style=color:#75715e>// Get next token
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>	<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>next</span>.<span style=color:#a6e22e>GetChannel</span>() <span style=color:#f92672>==</span> <span style=color:#a6e22e>antlr</span>.<span style=color:#a6e22e>TokenDefaultChannel</span> {
+</span></span><span style=display:flex><span>		<span style=color:#75715e>// Keep track of the last token on default channel
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>		<span style=color:#a6e22e>p</span>.<span style=color:#a6e22e>lastToken</span> = <span style=color:#a6e22e>next</span>
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>return</span> <span style=color:#a6e22e>next</span>
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// IsRegexPossible returns true if the lexer can match a
+</span></span></span><span style=display:flex><span><span style=color:#75715e>// regex literal.
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>func</span> (<span style=color:#a6e22e>p</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>PlSqlLexerBase</span>) <span style=color:#a6e22e>IsNewlineAtPos</span>(<span style=color:#a6e22e>pos</span> <span style=color:#66d9ef>int</span>) <span style=color:#66d9ef>bool</span> {
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>p</span>.<span style=color:#a6e22e>lastToken</span> <span style=color:#f92672>==</span> <span style=color:#66d9ef>nil</span> {
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>return</span> <span style=color:#66d9ef>true</span>
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>la</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>p</span>.<span style=color:#a6e22e>GetInputStream</span>().<span style=color:#a6e22e>LA</span>(<span style=color:#a6e22e>pos</span>)
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>return</span> <span style=color:#a6e22e>la</span> <span style=color:#f92672>==</span> <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span> <span style=color:#f92672>||</span> <span style=color:#a6e22e>la</span> <span style=color:#f92672>==</span> <span style=color:#e6db74>&#39;\n&#39;</span>
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h3 id=实现plsqlparserbase>实现PlSqlParserBase</h3><p>parser目录下新建<code>plsql_base_parser.go</code></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#f92672>package</span> <span style=color:#a6e22e>parser</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> (
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;github.com/antlr/antlr4/runtime/Go/antlr&#34;</span>
+</span></span><span style=display:flex><span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// PlSqlBaseParser implementation.
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>type</span> <span style=color:#a6e22e>PlSqlParserBase</span> <span style=color:#66d9ef>struct</span> {
+</span></span><span style=display:flex><span>	<span style=color:#f92672>*</span><span style=color:#a6e22e>antlr</span>.<span style=color:#a6e22e>BaseParser</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>_isVersion12</span> <span style=color:#66d9ef>bool</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>_isVersion10</span> <span style=color:#66d9ef>bool</span>
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>func</span> (<span style=color:#a6e22e>p</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>PlSqlParserBase</span>) <span style=color:#a6e22e>isVersion12</span>() <span style=color:#66d9ef>bool</span> {
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>return</span> <span style=color:#a6e22e>p</span>.<span style=color:#a6e22e>_isVersion12</span>
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>func</span> (<span style=color:#a6e22e>p</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>PlSqlParserBase</span>) <span style=color:#a6e22e>setVersion12</span>(<span style=color:#a6e22e>value</span> <span style=color:#66d9ef>bool</span>) {
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>p</span>.<span style=color:#a6e22e>_isVersion12</span> = <span style=color:#a6e22e>value</span>
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>func</span> (<span style=color:#a6e22e>p</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>PlSqlParserBase</span>) <span style=color:#a6e22e>isVersion10</span>() <span style=color:#66d9ef>bool</span> {
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>return</span> <span style=color:#a6e22e>p</span>.<span style=color:#a6e22e>_isVersion10</span>
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>func</span> (<span style=color:#a6e22e>p</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>PlSqlParserBase</span>) <span style=color:#a6e22e>setVersion10</span>(<span style=color:#a6e22e>value</span> <span style=color:#66d9ef>bool</span>) {
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>p</span>.<span style=color:#a6e22e>_isVersion10</span> = <span style=color:#a6e22e>value</span>
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>此时文件结构如下：</p><pre tabindex=0><code>.                                   
+├── PlSqlLexer.g4                   
+├── PlSqlParser.g4                  
+├── antlr-4.10.1-complete.jar       
+├── go.mod                          
+├── go.sum                          
+└── parser
+    ├── PlSqlLexer.interp
+    ├── PlSqlLexer.tokens
+    ├── PlSqlParser.interp
+    ├── PlSqlParser.tokens
+    ├── plsql_base_lexer.go
+    ├── plsql_base_parser.go        
+    ├── plsql_lexer.go
+    ├── plsql_parser.go
+    ├── plsqlparser_base_listener.go
+    ├── plsqlparser_base_visitor.go 
+    ├── plsqlparser_listener.go     
+    └── plsqlparser_visitor.go  
+</code></pre><h2 id=六-替换plsql_lexergoplsql_parsergo中的self>六. 替换<code>plsql_lexer.go</code>、<code>plsql_parser.go</code>中的<code>self.</code></h2><p>由于go语言没有<code>self</code>的语法，所以需要分别在这两个文件中批量搜索替换<code>self.</code>为<code>p.</code>。<code>plsql_lexer.go</code>中有3处要替换，<code>plsql_parser.go</code>中有30处要替换，替换完成后parser模块就没有飘红错误了。</p><h1 id=demo>Demo</h1><p>工程目录新建<code>main.go</code></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#f92672>package</span> <span style=color:#a6e22e>main</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> (
+</span></span><span style=display:flex><span>	<span style=color:#75715e>//因工程包名为go_antlr4_plsql_parser，如不同自行替换
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>	<span style=color:#e6db74>&#34;go_antlr4_plsql_parser/parser&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;fmt&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;github.com/antlr/antlr4/runtime/Go/antlr&#34;</span>
+</span></span><span style=display:flex><span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>type</span> <span style=color:#a6e22e>TreeShapeListener</span> <span style=color:#66d9ef>struct</span> {
+</span></span><span style=display:flex><span>	<span style=color:#f92672>*</span><span style=color:#a6e22e>parser</span>.<span style=color:#a6e22e>BasePlSqlParserListener</span>
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>NewTreeShapeListener</span>() <span style=color:#f92672>*</span><span style=color:#a6e22e>TreeShapeListener</span> {
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>return</span> new(<span style=color:#a6e22e>TreeShapeListener</span>)
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>main</span>() {
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>var</span> <span style=color:#a6e22e>sql</span> = <span style=color:#e6db74>&#34;SELECT t.l_fundid AS cpbh, t.vc_code AS cpdm2, &#39; &#39; AS dzdm, t.vc_fullname AS cpmc\n\t, substr(t.vc_name, 1, 25) AS cpjc\n\t, t.vc_glr AS glrmc, &#39; &#39; AS glrdm, pkg_urp_ftsp_common.f_get_dict_code(&#39;DK_PRODTYPE_CODE&#39;,t.l_class) AS cplx\n\t, &#39; &#39; AS cplb, &#39;1&#39; AS yzfs, &#39; &#39; AS STZR\n\t, decode(t.l_jjtzlx, 4, &#39;1&#39;, &#39;0&#39;) AS SFZSJJ\n\t, decode(t.l_class, 13, &#39;1&#39;, 14, &#39;1&#39;, 15, &#39;1&#39;, 0) AS SFETFJJ\n\t, &#39; &#39; AS SFLOFJJ\n\t, decode(t.l_class, 9, &#39;1&#39;, 15, &#39;1&#39;, &#39;0&#39;) AS SFQDII\n\t, &#39; &#39; AS sfdqlcjj, &#39; &#39; AS SFJJZJJ, &#39; &#39; AS SFGLRZGLRCP, &#39; &#39; AS SFZZCDY, &#39; &#39; AS glrzglrcpdm2\n\t, &#39; &#39; AS SFCDZH, &#39; &#39; AS ZDCPDM, t.d_creat AS CLRQ2, &#39; &#39; AS BARQ, t.d_dqrq AS DQRQ3\n\t, t.d_dqrq AS QSJSRQ, 0.0 AS TGFL2, 0 AS GZWCTS2, &#39;系统&#39; AS data_source, &#39; &#39; AS czy\n\t, sysdate AS czsj\n\t, CASE \n\t\tWHEN pkg_urp_ftsp_common.f_get_dict_code(&#39;DK_PRODTYPE_CODE&#39;, t.l_class) &lt;&gt; &#39;3&#39; THEN &#39;1&#39;\n\t\tWHEN pkg_urp_ftsp_common.f_get_dict_code(&#39;DK_PRODTYPE_CODE&#39;, t.l_class) = &#39;3&#39;\n\t\t\tAND z.jgmc IS NOT NULL\n\t\tTHEN &#39;1&#39;\n\t\tELSE &#39;0&#39;\n\tEND AS isenabled, 0 AS qzms\nFROM ods_ftsp_fa26_tfundinfo t\n\tLEFT JOIN urp_ftsp_hd_zqgssmjjzgs z ON t.vc_glr = z.jgmc\nWHERE NOT EXISTS (\n\t\tSELECT 1\n\t\tFROM URP_FTSP_CP_CPJBXX_INFO b\n\t\tWHERE t.l_fundid = b.cpbh\n\t)\n\tAND t.xx = 1&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>input</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>antlr</span>.<span style=color:#a6e22e>NewInputStream</span>(<span style=color:#a6e22e>sql</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>lexer</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>parser</span>.<span style=color:#a6e22e>NewPlSqlLexer</span>(<span style=color:#a6e22e>input</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>stream</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>antlr</span>.<span style=color:#a6e22e>NewCommonTokenStream</span>(<span style=color:#a6e22e>lexer</span>, <span style=color:#a6e22e>antlr</span>.<span style=color:#a6e22e>TokenDefaultChannel</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>p</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>parser</span>.<span style=color:#a6e22e>NewPlSqlParser</span>(<span style=color:#a6e22e>stream</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>p</span>.<span style=color:#a6e22e>AddErrorListener</span>(<span style=color:#a6e22e>antlr</span>.<span style=color:#a6e22e>NewDiagnosticErrorListener</span>(<span style=color:#66d9ef>true</span>))
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>tree</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>p</span>.<span style=color:#a6e22e>Sql_script</span>()
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Println</span>(<span style=color:#a6e22e>tree</span>.<span style=color:#a6e22e>ToStringTree</span>(<span style=color:#a6e22e>p</span>.<span style=color:#a6e22e>RuleNames</span>, <span style=color:#a6e22e>p</span>))
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>运行成功控制台输出如下：</p><pre tabindex=0><code>line 1:18 reportAttemptingFullContext d=1527 (atom), input=&#39;t.l_fundid AS&#39;
+line 1:18 reportAttemptingFullContext d=1677 (variable_name), input=&#39;.l_fundid AS&#39;
+line 1:9 reportContextSensitivity d=1677 (variable_name), input=&#39;.l_fundid&#39;
+line 1:25 reportAttemptingFullContext d=1318 (select_list_elements), input=&#39;AS cpbh,&#39;
+line 1:18 reportContextSensitivity d=1318 (select_list_elements), input=&#39;AS&#39;
+line 1:25 reportAttemptingFullContext d=1652 (column_alias), input=&#39;AS cpbh,&#39;
+line 1:21 reportContextSensitivity d=1652 (column_alias), input=&#39;AS cpbh&#39;
+line 1:25 reportAttemptingFullContext d=1651 (column_alias), input=&#39;cpbh,&#39;
+line 1:37 reportAttemptingFullContext d=1527 (atom), input=&#39;t.vc_code AS&#39;
+line 1:37 reportAttemptingFullContext d=1677 (variable_name), input=&#39;.vc_code AS&#39;
+line 1:29 reportContextSensitivity d=1677 (variable_name), input=&#39;.vc_code&#39;
+line 1:45 reportAttemptingFullContext d=1318 (select_list_elements), input=&#39;AS cpdm2,&#39;
+line 1:37 reportContextSensitivity d=1318 (select_list_elements), input=&#39;AS&#39;
+line 1:45 reportAttemptingFullContext d=1652 (column_alias), input=&#39;AS cpdm2,&#39;
+line 1:40 reportContextSensitivity d=1652 (column_alias), input=&#39;AS cpdm2&#39;
+line 1:45 reportAttemptingFullContext d=1651 (column_alias), input=&#39;cpdm2,&#39;
+line 1:58 reportAttemptingFullContext d=1318 (select_list_elements), input=&#39;AS dzdm,&#39;
+line 1:51 reportContextSensitivity d=1318 (select_list_elements), input=&#39;AS&#39;
+line 1:58 reportAttemptingFullContext d=1652 (column_alias), input=&#39;AS dzdm,&#39;
+line 1:54 reportContextSensitivity d=1652 (column_alias), input=&#39;AS dzdm&#39;
+line 1:58 reportAttemptingFullContext d=1651 (column_alias), input=&#39;dzdm,&#39;
+line 1:74 reportAttemptingFullContext d=1527 (atom), input=&#39;t.vc_fullname AS&#39;
+line 1:74 reportAttemptingFullContext d=1677 (variable_name), input=&#39;.vc_fullname AS&#39;
+line 1:62 reportContextSensitivity d=1677 (variable_name), input=&#39;.vc_fullname&#39;
+line 2:1 reportAttemptingFullContext d=1318 (select_list_elements), input=&#39;AS cpmc
+        ,&#39;
+line 1:74 reportContextSensitivity d=1318 (select_list_elements), input=&#39;AS&#39;
+line 2:1 reportAttemptingFullContext d=1652 (column_alias), input=&#39;AS cpmc
+        ,&#39;
+line 1:77 reportContextSensitivity d=1652 (column_alias), input=&#39;AS cpmc&#39;
+line 2:1 reportAttemptingFullContext d=1651 (column_alias), input=&#39;cpmc
+        ,&#39;
+line 2:28 reportAttemptingFullContext d=1511 (unary_expression), input=&#39;substr(t.vc_name, 1, 25) AS&#39;
+line 2:19 reportAttemptingFullContext d=1527 (atom), input=&#39;t.vc_name,&#39;
+line 2:26 reportAttemptingFullContext d=1677 (variable_name), input=&#39;.vc_name, 1, 25)&#39;
+line 2:11 reportContextSensitivity d=1677 (variable_name), input=&#39;.&#39;
+line 3:1 reportAttemptingFullContext d=1318 (select_list_elements), input=&#39;AS cpjc
+        ,&#39;
+line 2:28 reportContextSensitivity d=1318 (select_list_elements), input=&#39;AS&#39;
+line 3:1 reportAttemptingFullContext d=1652 (column_alias), input=&#39;AS cpjc
+        ,&#39;
+line 2:31 reportContextSensitivity d=1652 (column_alias), input=&#39;AS cpjc&#39;
+line 3:1 reportAttemptingFullContext d=1651 (column_alias), input=&#39;cpjc
+        ,&#39;
+line 3:12 reportAttemptingFullContext d=1527 (atom), input=&#39;t.vc_glr AS&#39;
+line 3:12 reportAttemptingFullContext d=1677 (variable_name), input=&#39;.vc_glr AS&#39;
+line 3:5 reportContextSensitivity d=1677 (variable_name), input=&#39;.vc_glr&#39;
+line 3:20 reportAttemptingFullContext d=1318 (select_list_elements), input=&#39;AS glrmc,&#39;
+line 3:12 reportContextSensitivity d=1318 (select_list_elements), input=&#39;AS&#39;
+line 3:20 reportAttemptingFullContext d=1652 (column_alias), input=&#39;AS glrmc,&#39;
+line 3:15 reportContextSensitivity d=1652 (column_alias), input=&#39;AS glrmc&#39;
+line 3:20 reportAttemptingFullContext d=1651 (column_alias), input=&#39;glrmc,&#39;
+line 3:34 reportAttemptingFullContext d=1318 (select_list_elements), input=&#39;AS glrdm,&#39;
+line 3:26 reportContextSensitivity d=1318 (select_list_elements), input=&#39;AS&#39;
+line 3:34 reportAttemptingFullContext d=1652 (column_alias), input=&#39;AS glrdm,&#39;
+line 3:29 reportContextSensitivity d=1652 (column_alias), input=&#39;AS glrdm&#39;
+line 3:34 reportAttemptingFullContext d=1651 (column_alias), input=&#39;glrdm,&#39;
+line 3:102 reportAttemptingFullContext d=1740 (general_element_part), input=&#39;.f_get_dict_code(&#39;DK_PRODTYPE_CODE&#39;,t.l_class) AS&#39;
+line 3:100 reportAttemptingFullContext d=1527 (atom), input=&#39;t.l_class)&#39;
+line 3:102 reportAttemptingFullContext d=1677 (variable_name), input=&#39;.l_class) AS&#39;
+line 3:92 reportContextSensitivity d=1677 (variable_name), input=&#39;.&#39;
+line 4:1 reportAttemptingFullContext d=1318 (select_list_elements), input=&#39;AS cplx
+        ,&#39;
+line 3:102 reportContextSensitivity d=1318 (select_list_elements), input=&#39;AS&#39;
+line 4:1 reportAttemptingFullContext d=1652 (column_alias), input=&#39;AS cplx
+        ,&#39;
+line 3:105 reportContextSensitivity d=1652 (column_alias), input=&#39;AS cplx&#39;
+line 4:1 reportAttemptingFullContext d=1651 (column_alias), input=&#39;cplx
+        ,&#39;
+line 4:14 reportAttemptingFullContext d=1318 (select_list_elements), input=&#39;AS cplb,&#39;
+line 4:7 reportContextSensitivity d=1318 (select_list_elements), input=&#39;AS&#39;
+line 4:14 reportAttemptingFullContext d=1652 (column_alias), input=&#39;AS cplb,&#39;
+line 4:10 reportContextSensitivity d=1652 (column_alias), input=&#39;AS cplb&#39;
+line 4:14 reportAttemptingFullContext d=1651 (column_alias), input=&#39;cplb,&#39;
+line 4:27 reportAttemptingFullContext d=1318 (select_list_elements), input=&#39;AS yzfs,&#39;
+line 4:20 reportContextSensitivity d=1318 (select_list_elements), input=&#39;AS&#39;
+line 4:27 reportAttemptingFullContext d=1652 (column_alias), input=&#39;AS yzfs,&#39;
+line 4:23 reportContextSensitivity d=1652 (column_alias), input=&#39;AS yzfs&#39;
+line 4:27 reportAttemptingFullContext d=1651 (column_alias), input=&#39;yzfs,&#39;
+line 5:1 reportAttemptingFullContext d=1318 (select_list_elements), input=&#39;AS STZR
+        ,&#39;
+line 4:33 reportContextSensitivity d=1318 (select_list_elements), input=&#39;AS&#39;
+line 5:1 reportAttemptingFullContext d=1652 (column_alias), input=&#39;AS STZR
+        ,&#39;
+line 4:36 reportContextSensitivity d=1652 (column_alias), input=&#39;AS STZR&#39;
+line 5:1 reportAttemptingFullContext d=1651 (column_alias), input=&#39;STZR
+        ,&#39;
+line 5:20 reportAttemptingFullContext d=1527 (atom), input=&#39;t.l_jjtzlx,&#39;
+line 5:33 reportAttemptingFullContext d=1677 (variable_name), input=&#39;.l_jjtzlx, 4, &#39;1&#39;, &#39;0&#39;)&#39;
+line 5:11 reportContextSensitivity d=1677 (variable_name), input=&#39;.&#39;
+line 5:22 reportAttemptingFullContext d=1468 (expressions), input=&#39;, 4&#39;
+line 5:20 reportContextSensitivity d=1468 (expressions), input=&#39;,&#39;
+line 5:28 reportAttemptingFullContext d=1468 (expressions), input=&#39;, &#39;1&#39;,&#39;
+line 5:23 reportContextSensitivity d=1468 (expressions), input=&#39;,&#39;
+line 5:33 reportAttemptingFullContext d=1468 (expressions), input=&#39;, &#39;0&#39;)&#39;
+line 5:28 reportContextSensitivity d=1468 (expressions), input=&#39;,&#39;
+line 6:1 reportAttemptingFullContext d=1318 (select_list_elements), input=&#39;AS SFZSJJ
+        ,&#39;
+line 5:35 reportContextSensitivity d=1318 (select_list_elements), input=&#39;AS&#39;
+line 6:1 reportAttemptingFullContext d=1652 (column_alias), input=&#39;AS SFZSJJ
+        ,&#39;
+line 5:38 reportContextSensitivity d=1652 (column_alias), input=&#39;AS SFZSJJ&#39;
+line 6:1 reportAttemptingFullContext d=1651 (column_alias), input=&#39;SFZSJJ
+        ,&#39;
+line 6:19 reportAttemptingFullContext d=1527 (atom), input=&#39;t.l_class,&#39;
+line 6:49 reportAttemptingFullContext d=1677 (variable_name), input=&#39;.l_class, 13, &#39;1&#39;, 14, &#39;1&#39;, 15, &#39;1&#39;, 0)&#39;
+line 6:11 reportContextSensitivity d=1677 (variable_name), input=&#39;.&#39;
+line 6:21 reportAttemptingFullContext d=1468 (expressions), input=&#39;, 13&#39;
+line 6:19 reportContextSensitivity d=1468 (expressions), input=&#39;,&#39;
+line 6:28 reportAttemptingFullContext d=1468 (expressions), input=&#39;, &#39;1&#39;,&#39;
+line 6:23 reportContextSensitivity d=1468 (expressions), input=&#39;,&#39;
+line 6:30 reportAttemptingFullContext d=1468 (expressions), input=&#39;, 14&#39;
+line 6:28 reportContextSensitivity d=1468 (expressions), input=&#39;,&#39;
+line 6:37 reportAttemptingFullContext d=1468 (expressions), input=&#39;, &#39;1&#39;,&#39;
+line 6:32 reportContextSensitivity d=1468 (expressions), input=&#39;,&#39;
+line 6:39 reportAttemptingFullContext d=1468 (expressions), input=&#39;, 15&#39;
+line 6:37 reportContextSensitivity d=1468 (expressions), input=&#39;,&#39;
+line 6:46 reportAttemptingFullContext d=1468 (expressions), input=&#39;, &#39;1&#39;,&#39;
+line 6:41 reportContextSensitivity d=1468 (expressions), input=&#39;,&#39;
+line 6:48 reportAttemptingFullContext d=1468 (expressions), input=&#39;, 0&#39;
+line 6:46 reportContextSensitivity d=1468 (expressions), input=&#39;,&#39;
+line 7:1 reportAttemptingFullContext d=1318 (select_list_elements), input=&#39;AS SFETFJJ
+        ,&#39;
+line 6:51 reportContextSensitivity d=1318 (select_list_elements), input=&#39;AS&#39;
+line 7:1 reportAttemptingFullContext d=1652 (column_alias), input=&#39;AS SFETFJJ
+        ,&#39;
+line 6:54 reportContextSensitivity d=1652 (column_alias), input=&#39;AS SFETFJJ&#39;
+line 7:1 reportAttemptingFullContext d=1651 (column_alias), input=&#39;SFETFJJ
+        ,&#39;
+line 8:1 reportAttemptingFullContext d=1318 (select_list_elements), input=&#39;AS SFLOFJJ
+        ,&#39;
+line 7:7 reportContextSensitivity d=1318 (select_list_elements), input=&#39;AS&#39;
+line 8:1 reportAttemptingFullContext d=1652 (column_alias), input=&#39;AS SFLOFJJ
+        ,&#39;
+line 7:10 reportContextSensitivity d=1652 (column_alias), input=&#39;AS SFLOFJJ&#39;
+line 8:1 reportAttemptingFullContext d=1651 (column_alias), input=&#39;SFLOFJJ
+        ,&#39;
+line 8:19 reportAttemptingFullContext d=1527 (atom), input=&#39;t.l_class,&#39;
+line 8:41 reportAttemptingFullContext d=1677 (variable_name), input=&#39;.l_class, 9, &#39;1&#39;, 15, &#39;1&#39;, &#39;0&#39;)&#39;
+line 8:11 reportContextSensitivity d=1677 (variable_name), input=&#39;.&#39;
+line 8:21 reportAttemptingFullContext d=1468 (expressions), input=&#39;, 9&#39;
+line 8:19 reportContextSensitivity d=1468 (expressions), input=&#39;,&#39;
+line 8:27 reportAttemptingFullContext d=1468 (expressions), input=&#39;, &#39;1&#39;,&#39;
+line 8:22 reportContextSensitivity d=1468 (expressions), input=&#39;,&#39;
+line 8:29 reportAttemptingFullContext d=1468 (expressions), input=&#39;, 15&#39;
+line 8:27 reportContextSensitivity d=1468 (expressions), input=&#39;,&#39;
+line 8:36 reportAttemptingFullContext d=1468 (expressions), input=&#39;, &#39;1&#39;,&#39;
+line 8:31 reportContextSensitivity d=1468 (expressions), input=&#39;,&#39;
+line 8:41 reportAttemptingFullContext d=1468 (expressions), input=&#39;, &#39;0&#39;)&#39;
+line 8:36 reportContextSensitivity d=1468 (expressions), input=&#39;,&#39;
+line 9:1 reportAttemptingFullContext d=1318 (select_list_elements), input=&#39;AS SFQDII
+        ,&#39;
+line 8:43 reportContextSensitivity d=1318 (select_list_elements), input=&#39;AS&#39;
+line 9:1 reportAttemptingFullContext d=1652 (column_alias), input=&#39;AS SFQDII
+        ,&#39;
+line 8:46 reportContextSensitivity d=1652 (column_alias), input=&#39;AS SFQDII&#39;
+line 9:1 reportAttemptingFullContext d=1651 (column_alias), input=&#39;SFQDII
+        ,&#39;
+line 9:18 reportAttemptingFullContext d=1318 (select_list_elements), input=&#39;AS sfdqlcjj,&#39;
+line 9:7 reportContextSensitivity d=1318 (select_list_elements), input=&#39;AS&#39;
+line 9:18 reportAttemptingFullContext d=1652 (column_alias), input=&#39;AS sfdqlcjj,&#39;
+line 9:10 reportContextSensitivity d=1652 (column_alias), input=&#39;AS sfdqlcjj&#39;
+line 9:18 reportAttemptingFullContext d=1651 (column_alias), input=&#39;sfdqlcjj,&#39;
+line 9:34 reportAttemptingFullContext d=1318 (select_list_elements), input=&#39;AS SFJJZJJ,&#39;
+line 9:24 reportContextSensitivity d=1318 (select_list_elements), input=&#39;AS&#39;
+line 9:34 reportAttemptingFullContext d=1652 (column_alias), input=&#39;AS SFJJZJJ,&#39;
+line 9:27 reportContextSensitivity d=1652 (column_alias), input=&#39;AS SFJJZJJ&#39;
+line 9:34 reportAttemptingFullContext d=1651 (column_alias), input=&#39;SFJJZJJ,&#39;
+line 9:54 reportAttemptingFullContext d=1318 (select_list_elements), input=&#39;AS SFGLRZGLRCP,&#39;
+line 9:40 reportContextSensitivity d=1318 (select_list_elements), input=&#39;AS&#39;
+line 9:54 reportAttemptingFullContext d=1652 (column_alias), input=&#39;AS SFGLRZGLRCP,&#39;
+line 9:43 reportContextSensitivity d=1652 (column_alias), input=&#39;AS SFGLRZGLRCP&#39;
+line 9:54 reportAttemptingFullContext d=1651 (column_alias), input=&#39;SFGLRZGLRCP,&#39;
+line 9:70 reportAttemptingFullContext d=1318 (select_list_elements), input=&#39;AS SFZZCDY,&#39;
+line 9:60 reportContextSensitivity d=1318 (select_list_elements), input=&#39;AS&#39;
+line 9:70 reportAttemptingFullContext d=1652 (column_alias), input=&#39;AS SFZZCDY,&#39;
+line 9:63 reportContextSensitivity d=1652 (column_alias), input=&#39;AS SFZZCDY&#39;
+line 9:70 reportAttemptingFullContext d=1651 (column_alias), input=&#39;SFZZCDY,&#39;
+line 10:1 reportAttemptingFullContext d=1318 (select_list_elements), input=&#39;AS glrzglrcpdm2
+        ,&#39;
+line 9:76 reportContextSensitivity d=1318 (select_list_elements), input=&#39;AS&#39;
+line 10:1 reportAttemptingFullContext d=1652 (column_alias), input=&#39;AS glrzglrcpdm2
+        ,&#39;
+line 9:79 reportContextSensitivity d=1652 (column_alias), input=&#39;AS glrzglrcpdm2&#39;
+line 10:1 reportAttemptingFullContext d=1651 (column_alias), input=&#39;glrzglrcpdm2
+        ,&#39;
+line 10:16 reportAttemptingFullContext d=1318 (select_list_elements), input=&#39;AS SFCDZH,&#39;
+line 10:7 reportContextSensitivity d=1318 (select_list_elements), input=&#39;AS&#39;
+line 10:16 reportAttemptingFullContext d=1652 (column_alias), input=&#39;AS SFCDZH,&#39;
+line 10:10 reportContextSensitivity d=1652 (column_alias), input=&#39;AS SFCDZH&#39;
+line 10:16 reportAttemptingFullContext d=1651 (column_alias), input=&#39;SFCDZH,&#39;
+line 10:31 reportAttemptingFullContext d=1318 (select_list_elements), input=&#39;AS ZDCPDM,&#39;
+line 10:22 reportContextSensitivity d=1318 (select_list_elements), input=&#39;AS&#39;
+line 10:31 reportAttemptingFullContext d=1652 (column_alias), input=&#39;AS ZDCPDM,&#39;
+line 10:25 reportContextSensitivity d=1652 (column_alias), input=&#39;AS ZDCPDM&#39;
+line 10:31 reportAttemptingFullContext d=1651 (column_alias), input=&#39;ZDCPDM,&#39;
+line 10:43 reportAttemptingFullContext d=1527 (atom), input=&#39;t.d_creat AS&#39;
+line 10:43 reportAttemptingFullContext d=1677 (variable_name), input=&#39;.d_creat AS&#39;
+line 10:35 reportContextSensitivity d=1677 (variable_name), input=&#39;.d_creat&#39;
+line 10:51 reportAttemptingFullContext d=1318 (select_list_elements), input=&#39;AS CLRQ2,&#39;
+line 10:43 reportContextSensitivity d=1318 (select_list_elements), input=&#39;AS&#39;
+line 10:51 reportAttemptingFullContext d=1652 (column_alias), input=&#39;AS CLRQ2,&#39;
+line 10:46 reportContextSensitivity d=1652 (column_alias), input=&#39;AS CLRQ2&#39;
+line 10:51 reportAttemptingFullContext d=1651 (column_alias), input=&#39;CLRQ2,&#39;
+line 10:64 reportAttemptingFullContext d=1318 (select_list_elements), input=&#39;AS BARQ,&#39;
+line 10:57 reportContextSensitivity d=1318 (select_list_elements), input=&#39;AS&#39;
+line 10:64 reportAttemptingFullContext d=1652 (column_alias), input=&#39;AS BARQ,&#39;
+line 10:60 reportContextSensitivity d=1652 (column_alias), input=&#39;AS BARQ&#39;
+line 10:64 reportAttemptingFullContext d=1651 (column_alias), input=&#39;BARQ,&#39;
+line 10:75 reportAttemptingFullContext d=1527 (atom), input=&#39;t.d_dqrq AS&#39;
+line 10:75 reportAttemptingFullContext d=1677 (variable_name), input=&#39;.d_dqrq AS&#39;
+line 10:68 reportContextSensitivity d=1677 (variable_name), input=&#39;.d_dqrq&#39;
+line 11:1 reportAttemptingFullContext d=1318 (select_list_elements), input=&#39;AS DQRQ3
+        ,&#39;
+line 10:75 reportContextSensitivity d=1318 (select_list_elements), input=&#39;AS&#39;
+line 11:1 reportAttemptingFullContext d=1652 (column_alias), input=&#39;AS DQRQ3
+        ,&#39;
+line 10:78 reportContextSensitivity d=1652 (column_alias), input=&#39;AS DQRQ3&#39;
+line 11:1 reportAttemptingFullContext d=1651 (column_alias), input=&#39;DQRQ3
+        ,&#39;
+line 11:12 reportAttemptingFullContext d=1527 (atom), input=&#39;t.d_dqrq AS&#39;
+line 11:12 reportAttemptingFullContext d=1677 (variable_name), input=&#39;.d_dqrq AS&#39;
+line 11:5 reportContextSensitivity d=1677 (variable_name), input=&#39;.d_dqrq&#39;
+line 11:21 reportAttemptingFullContext d=1318 (select_list_elements), input=&#39;AS QSJSRQ,&#39;
+line 11:12 reportContextSensitivity d=1318 (select_list_elements), input=&#39;AS&#39;
+line 11:21 reportAttemptingFullContext d=1652 (column_alias), input=&#39;AS QSJSRQ,&#39;
+line 11:15 reportContextSensitivity d=1652 (column_alias), input=&#39;AS QSJSRQ&#39;
+line 11:21 reportAttemptingFullContext d=1651 (column_alias), input=&#39;QSJSRQ,&#39;
+line 11:35 reportAttemptingFullContext d=1318 (select_list_elements), input=&#39;AS TGFL2,&#39;
+line 11:27 reportContextSensitivity d=1318 (select_list_elements), input=&#39;AS&#39;
+line 11:35 reportAttemptingFullContext d=1652 (column_alias), input=&#39;AS TGFL2,&#39;
+line 11:30 reportContextSensitivity d=1652 (column_alias), input=&#39;AS TGFL2&#39;
+line 11:35 reportAttemptingFullContext d=1651 (column_alias), input=&#39;TGFL2,&#39;
+line 11:49 reportAttemptingFullContext d=1318 (select_list_elements), input=&#39;AS GZWCTS2,&#39;
+line 11:39 reportContextSensitivity d=1318 (select_list_elements), input=&#39;AS&#39;
+line 11:49 reportAttemptingFullContext d=1652 (column_alias), input=&#39;AS GZWCTS2,&#39;
+line 11:42 reportContextSensitivity d=1652 (column_alias), input=&#39;AS GZWCTS2&#39;
+line 11:49 reportAttemptingFullContext d=1651 (column_alias), input=&#39;GZWCTS2,&#39;
+line 11:70 reportAttemptingFullContext d=1318 (select_list_elements), input=&#39;AS data_source,&#39;
+line 11:56 reportContextSensitivity d=1318 (select_list_elements), input=&#39;AS&#39;
+line 11:70 reportAttemptingFullContext d=1652 (column_alias), input=&#39;AS data_source,&#39;
+line 11:59 reportContextSensitivity d=1652 (column_alias), input=&#39;AS data_source&#39;
+line 11:70 reportAttemptingFullContext d=1651 (column_alias), input=&#39;data_source,&#39;
+line 12:1 reportAttemptingFullContext d=1318 (select_list_elements), input=&#39;AS czy
+        ,&#39;
+line 11:76 reportContextSensitivity d=1318 (select_list_elements), input=&#39;AS&#39;
+line 12:1 reportAttemptingFullContext d=1652 (column_alias), input=&#39;AS czy
+        ,&#39;
+line 11:79 reportContextSensitivity d=1652 (column_alias), input=&#39;AS czy&#39;
+line 12:1 reportAttemptingFullContext d=1651 (column_alias), input=&#39;czy
+        ,&#39;
+line 12:11 reportAttemptingFullContext d=1527 (atom), input=&#39;sysdate AS&#39;
+line 13:1 reportAttemptingFullContext d=1318 (select_list_elements), input=&#39;AS czsj
+        ,&#39;
+line 12:11 reportContextSensitivity d=1318 (select_list_elements), input=&#39;AS&#39;
+line 13:1 reportAttemptingFullContext d=1652 (column_alias), input=&#39;AS czsj
+        ,&#39;
+line 12:14 reportContextSensitivity d=1652 (column_alias), input=&#39;AS czsj&#39;
+line 13:1 reportAttemptingFullContext d=1651 (column_alias), input=&#39;czsj
+        ,&#39;
+line 19:5 reportAttemptingFullContext d=1511 (unary_expression), input=&#39;CASE
+                WHEN pkg_urp_ftsp_common.f_get_dict_code(&#39;DK_PRODTYPE_CODE&#39;, t.l_class) &lt;&gt; &#39;3&#39; THEN &#39;1&#39;
+                WHEN pkg_urp_ftsp_common.f_get_dict_code(&#39;DK_PRODTYPE_CODE&#39;, t.l_class) = &#39;3&#39;
+                        AND z.jgmc IS NOT NULL
+                THEN &#39;1&#39;
+                ELSE &#39;0&#39;
+        END AS&#39;
+line 14:7 reportContextSensitivity d=1511 (unary_expression), input=&#39;CASE
+                WHEN pkg_urp_ftsp_common&#39;
+line 14:74 reportAttemptingFullContext d=1740 (general_element_part), input=&#39;.f_get_dict_code(&#39;DK_PRODTYPE_CODE&#39;, t.l_class) &lt;&gt;&#39;
+line 14:72 reportAttemptingFullContext d=1527 (atom), input=&#39;t.l_class)&#39;
+line 14:74 reportAttemptingFullContext d=1677 (variable_name), input=&#39;.l_class) &lt;&gt;&#39;
+line 14:64 reportContextSensitivity d=1677 (variable_name), input=&#39;.&#39;
+line 14:77 reportAttemptingFullContext d=1481 (relational_expression), input=&#39;&lt;&gt; &#39;3&#39;&#39;
+line 14:74 reportContextSensitivity d=1481 (relational_expression), input=&#39;&lt;&gt;&#39;
+line 15:74 reportAttemptingFullContext d=1740 (general_element_part), input=&#39;.f_get_dict_code(&#39;DK_PRODTYPE_CODE&#39;, t.l_class) =&#39;
+line 15:72 reportAttemptingFullContext d=1527 (atom), input=&#39;t.l_class)&#39;
+line 15:74 reportAttemptingFullContext d=1677 (variable_name), input=&#39;.l_class) =&#39;
+line 15:64 reportContextSensitivity d=1677 (variable_name), input=&#39;.&#39;
+line 15:76 reportAttemptingFullContext d=1481 (relational_expression), input=&#39;= &#39;3&#39;&#39;
+line 15:74 reportContextSensitivity d=1481 (relational_expression), input=&#39;=&#39;
+line 16:3 reportAttemptingFullContext d=1471 (logical_expression), input=&#39;AND&#39;
+line 16:3 reportContextSensitivity d=1471 (logical_expression), input=&#39;AND&#39;
+line 16:14 reportAttemptingFullContext d=1527 (atom), input=&#39;z.jgmc IS&#39;
+line 16:14 reportAttemptingFullContext d=1677 (variable_name), input=&#39;.jgmc IS&#39;
+line 16:8 reportContextSensitivity d=1677 (variable_name), input=&#39;.&#39;
+line 16:14 reportAttemptingFullContext d=1474 (unary_logical_expression), input=&#39;IS&#39;
+line 16:14 reportContextSensitivity d=1474 (unary_logical_expression), input=&#39;IS&#39;
+line 19:17 reportAttemptingFullContext d=1318 (select_list_elements), input=&#39;AS isenabled,&#39;
+line 19:5 reportContextSensitivity d=1318 (select_list_elements), input=&#39;AS&#39;
+line 19:17 reportAttemptingFullContext d=1652 (column_alias), input=&#39;AS isenabled,&#39;
+line 19:8 reportContextSensitivity d=1652 (column_alias), input=&#39;AS isenabled&#39;
+line 19:17 reportAttemptingFullContext d=1651 (column_alias), input=&#39;isenabled,&#39;
+line 20:0 reportAttemptingFullContext d=1318 (select_list_elements), input=&#39;AS qzms
+FROM&#39;
+line 19:21 reportContextSensitivity d=1318 (select_list_elements), input=&#39;AS&#39;
+line 20:0 reportAttemptingFullContext d=1652 (column_alias), input=&#39;AS qzms
+FROM&#39;
+line 19:24 reportContextSensitivity d=1652 (column_alias), input=&#39;AS qzms&#39;
+line 20:0 reportAttemptingFullContext d=1651 (column_alias), input=&#39;qzms
+FROM&#39;
+line 21:1 reportAttemptingFullContext d=1324 (table_ref_aux), input=&#39;t
+        LEFT&#39;
+line 21:1 reportAttemptingFullContext d=1653 (table_alias), input=&#39;t
+        LEFT&#39;
+line 21:35 reportAttemptingFullContext d=1321 (table_ref), input=&#39;LEFT JOIN urp_ftsp_hd_zqgssmjjzgs z&#39;
+line 21:37 reportAttemptingFullContext d=1324 (table_ref_aux), input=&#39;z ON&#39;
+line 21:37 reportContextSensitivity d=1324 (table_ref_aux), input=&#39;z ON&#39;
+line 21:37 reportAttemptingFullContext d=1653 (table_alias), input=&#39;z ON&#39;
+line 21:40 reportAttemptingFullContext d=1334 (join_clause), input=&#39;ON t&#39;
+line 21:37 reportContextSensitivity d=1334 (join_clause), input=&#39;ON&#39;
+line 21:49 reportAttemptingFullContext d=1527 (atom), input=&#39;t.vc_glr =&#39;
+line 21:49 reportAttemptingFullContext d=1677 (variable_name), input=&#39;.vc_glr =&#39;
+line 21:49 reportContextSensitivity d=1677 (variable_name), input=&#39;.vc_glr =&#39;
+line 21:51 reportAttemptingFullContext d=1481 (relational_expression), input=&#39;= z&#39;
+line 21:49 reportContextSensitivity d=1481 (relational_expression), input=&#39;=&#39;
+line 22:0 reportAttemptingFullContext d=1527 (atom), input=&#39;z.jgmc
+WHERE&#39;
+line 22:10 reportAttemptingFullContext d=1677 (variable_name), input=&#39;.jgmc
+WHERE NOT EXISTS&#39;
+line 22:0 reportContextSensitivity d=1677 (variable_name), input=&#39;.jgmc
+WHERE&#39;
+line 22:10 reportAttemptingFullContext d=1310 (query_block), input=&#39;WHERE NOT EXISTS&#39;
+line 22:0 reportContextSensitivity d=1310 (query_block), input=&#39;WHERE&#39;
+line 25:2 reportAttemptingFullContext d=1324 (table_ref_aux), input=&#39;b
+                WHERE&#39;
+line 24:31 reportContextSensitivity d=1324 (table_ref_aux), input=&#39;b&#39;
+line 25:2 reportAttemptingFullContext d=1653 (table_alias), input=&#39;b
+                WHERE&#39;
+line 25:8 reportAttemptingFullContext d=1310 (query_block), input=&#39;WHERE t&#39;
+line 25:2 reportContextSensitivity d=1310 (query_block), input=&#39;WHERE&#39;
+line 25:19 reportAttemptingFullContext d=1527 (atom), input=&#39;t.l_fundid =&#39;
+line 25:19 reportAttemptingFullContext d=1677 (variable_name), input=&#39;.l_fundid =&#39;
+line 25:9 reportContextSensitivity d=1677 (variable_name), input=&#39;.&#39;
+line 25:21 reportAttemptingFullContext d=1481 (relational_expression), input=&#39;= b&#39;
+line 25:19 reportContextSensitivity d=1481 (relational_expression), input=&#39;=&#39;
+line 26:1 reportAttemptingFullContext d=1527 (atom), input=&#39;b.cpbh
+        )&#39;
+line 27:1 reportAttemptingFullContext d=1677 (variable_name), input=&#39;.cpbh
+        )
+        AND&#39;
+line 25:22 reportContextSensitivity d=1677 (variable_name), input=&#39;.&#39;
+line 27:1 reportAttemptingFullContext d=1471 (logical_expression), input=&#39;AND&#39;
+line 27:1 reportContextSensitivity d=1471 (logical_expression), input=&#39;AND&#39;
+line 27:10 reportAttemptingFullContext d=1527 (atom), input=&#39;t.xx =&#39;
+line 27:10 reportAttemptingFullContext d=1677 (variable_name), input=&#39;.xx =&#39;
+line 27:10 reportContextSensitivity d=1677 (variable_name), input=&#39;.xx =&#39;
+line 27:12 reportAttemptingFullContext d=1481 (relational_expression), input=&#39;= 1&#39;
+line 27:10 reportContextSensitivity d=1481 (relational_expression), input=&#39;=&#39;
+(sql_script (unit_statement (data_manipulation_language_statements (select_statement (select_only_statement (subquery (subquery_basic_elements (query
+_block SELECT (selected_list (select_list_elements (expression (logical_expression (unary_logical_expression (multiset_expression (relational_express
+ion (compound_expression (concatenation (model_expression (unary_expression (atom (constant (quoted_string (variable_name (id_expression (regular_id
+t)) . (id_expression (regular_id l_fundid))))))))))))))) (column_alias AS (identifier (id_expression (regular_id cpbh))))) , (select_list_elements (e
+xpression (logical_expression (unary_logical_expression (multiset_expression (relational_expression (compound_expression (concatenation (model_expres
+sion (unary_expression (atom (constant (quoted_string (variable_name (id_expression (regular_id t)) . (id_expression (regular_id vc_code)))))))))))))
+)) (column_alias AS (identifier (id_expression (regular_id cpdm2))))) , (select_list_elements (expression (logical_expression (unary_logical_expressi
+on (multiset_expression (relational_expression (compound_expression (concatenation (model_expression (unary_expression (atom (constant (quoted_string
+ &#39; &#39;)))))))))))) (column_alias AS (identifier (id_expression (regular_id dzdm))))) , (select_list_elements (expression (logical_expression (unary_log
+ical_expression (multiset_expression (relational_expression (compound_expression (concatenation (model_expression (unary_expression (atom (constant (
+quoted_string (variable_name (id_expression (regular_id t)) . (id_expression (regular_id vc_fullname))))))))))))))) (column_alias AS (identifier (id_
+expression (regular_id cpmc))))) , (select_list_elements (expression (logical_expression (unary_logical_expression (multiset_expression (relational_e
+xpression (compound_expression (concatenation (model_expression (unary_expression (standard_function (string_function substr ( (expression (logical_e
+xpression (unary_logical_expression (multiset_expression (relational_expression (compound_expression (concatenation (model_expression (unary_expressi
+on (atom (constant (quoted_string (variable_name (id_expression (regular_id t)) . (id_expression (regular_id vc_name))))))))))))))) , (expression (lo
+gical_expression (unary_logical_expression (multiset_expression (relational_expression (compound_expression (concatenation (model_expression (unary_e
+xpression (atom (constant (numeric 1)))))))))))) , (expression (logical_expression (unary_logical_expression (multiset_expression (relational_express
+ion (compound_expression (concatenation (model_expression (unary_expression (atom (constant (numeric 25)))))))))))) )))))))))))) (column_alias AS (id
+entifier (id_expression (regular_id cpjc))))) , (select_list_elements (expression (logical_expression (unary_logical_expression (multiset_expression
+(relational_expression (compound_expression (concatenation (model_expression (unary_expression (atom (constant (quoted_string (variable_name (id_expr
+ession (regular_id t)) . (id_expression (regular_id vc_glr))))))))))))))) (column_alias AS (identifier (id_expression (regular_id glrmc))))) , (selec
+t_list_elements (expression (logical_expression (unary_logical_expression (multiset_expression (relational_expression (compound_expression (concatena
+tion (model_expression (unary_expression (atom (constant (quoted_string &#39; &#39;)))))))))))) (column_alias AS (identifier (id_expression (regular_id glrdm
+))))) , (select_list_elements (expression (logical_expression (unary_logical_expression (multiset_expression (relational_expression (compound_express
+ion (concatenation (model_expression (unary_expression (atom (general_element (general_element_part (id_expression (regular_id pkg_urp_ftsp_common))
+. (id_expression (regular_id f_get_dict_code)) (function_argument ( (argument (expression (logical_expression (unary_logical_expression (multiset_exp
+ression (relational_expression (compound_expression (concatenation (model_expression (unary_expression (atom (constant (quoted_string &#39;DK_PRODTYPE_CO
+DE&#39;))))))))))))) , (argument (expression (logical_expression (unary_logical_expression (multiset_expression (relational_expression (compound_expressi
+on (concatenation (model_expression (unary_expression (atom (constant (quoted_string (variable_name (id_expression (regular_id t)) . (id_expression (
+regular_id l_class)))))))))))))))) )))))))))))))) (column_alias AS (identifier (id_expression (regular_id cplx))))) , (select_list_elements (expressi
+on (logical_expression (unary_logical_expression (multiset_expression (relational_expression (compound_expression (concatenation (model_expression (u
+nary_expression (atom (constant (quoted_string &#39; &#39;)))))))))))) (column_alias AS (identifier (id_expression (regular_id cplb))))) , (select_list_eleme
+nts (expression (logical_expression (unary_logical_expression (multiset_expression (relational_expression (compound_expression (concatenation (model_
+expression (unary_expression (atom (constant (quoted_string &#39;1&#39;)))))))))))) (column_alias AS (identifier (id_expression (regular_id yzfs))))) , (sele
+ct_list_elements (expression (logical_expression (unary_logical_expression (multiset_expression (relational_expression (compound_expression (concaten
+ation (model_expression (unary_expression (atom (constant (quoted_string &#39; &#39;)))))))))))) (column_alias AS (identifier (id_expression (regular_id STZR
+))))) , (select_list_elements (expression (logical_expression (unary_logical_expression (multiset_expression (relational_expression (compound_express
+ion (concatenation (model_expression (unary_expression (standard_function (string_function decode ( (expressions (expression (logical_expression (una
+ry_logical_expression (multiset_expression (relational_expression (compound_expression (concatenation (model_expression (unary_expression (atom (cons
+tant (quoted_string (variable_name (id_expression (regular_id t)) . (id_expression (regular_id l_jjtzlx))))))))))))))) , (expression (logical_express
+ion (unary_logical_expression (multiset_expression (relational_expression (compound_expression (concatenation (model_expression (unary_expression (at
+om (constant (numeric 4)))))))))))) , (expression (logical_expression (unary_logical_expression (multiset_expression (relational_expression (compound
+_expression (concatenation (model_expression (unary_expression (atom (constant (quoted_string &#39;1&#39;)))))))))))) , (expression (logical_expression (unar
+y_logical_expression (multiset_expression (relational_expression (compound_expression (concatenation (model_expression (unary_expression (atom (const
+ant (quoted_string &#39;0&#39;))))))))))))) )))))))))))) (column_alias AS (identifier (id_expression (regular_id SFZSJJ))))) , (select_list_elements (express
+ion (logical_expression (unary_logical_expression (multiset_expression (relational_expression (compound_expression (concatenation (model_expression (
+unary_expression (standard_function (string_function decode ( (expressions (expression (logical_expression (unary_logical_expression (multiset_expres
+sion (relational_expression (compound_expression (concatenation (model_expression (unary_expression (atom (constant (quoted_string (variable_name (id
+_expression (regular_id t)) . (id_expression (regular_id l_class))))))))))))))) , (expression (logical_expression (unary_logical_expression (multiset
+_expression (relational_expression (compound_expression (concatenation (model_expression (unary_expression (atom (constant (numeric 13)))))))))))) ,
+(expression (logical_expression (unary_logical_expression (multiset_expression (relational_expression (compound_expression (concatenation (model_expr
+ession (unary_expression (atom (constant (quoted_string &#39;1&#39;)))))))))))) , (expression (logical_expression (unary_logical_expression (multiset_express
+ion (relational_expression (compound_expression (concatenation (model_expression (unary_expression (atom (constant (numeric 14)))))))))))) , (express
+ion (logical_expression (unary_logical_expression (multiset_expression (relational_expression (compound_expression (concatenation (model_expression (
+unary_expression (atom (constant (quoted_string &#39;1&#39;)))))))))))) , (expression (logical_expression (unary_logical_expression (multiset_expression (rel
+ational_expression (compound_expression (concatenation (model_expression (unary_expression (atom (constant (numeric 15)))))))))))) , (expression (log
+ical_expression (unary_logical_expression (multiset_expression (relational_expression (compound_expression (concatenation (model_expression (unary_ex
+pression (atom (constant (quoted_string &#39;1&#39;)))))))))))) , (expression (logical_expression (unary_logical_expression (multiset_expression (relational_
+expression (compound_expression (concatenation (model_expression (unary_expression (atom (constant (numeric 0))))))))))))) )))))))))))) (column_alias
+ AS (identifier (id_expression (regular_id SFETFJJ))))) , (select_list_elements (expression (logical_expression (unary_logical_expression (multiset_e
+xpression (relational_expression (compound_expression (concatenation (model_expression (unary_expression (atom (constant (quoted_string &#39; &#39;))))))))))
+)) (column_alias AS (identifier (id_expression (regular_id SFLOFJJ))))) , (select_list_elements (expression (logical_expression (unary_logical_expres
+sion (multiset_expression (relational_expression (compound_expression (concatenation (model_expression (unary_expression (standard_function (string_f
+unction decode ( (expressions (expression (logical_expression (unary_logical_expression (multiset_expression (relational_expression (compound_express
+ion (concatenation (model_expression (unary_expression (atom (constant (quoted_string (variable_name (id_expression (regular_id t)) . (id_expression
+(regular_id l_class))))))))))))))) , (expression (logical_expression (unary_logical_expression (multiset_expression (relational_expression (compound_
+expression (concatenation (model_expression (unary_expression (atom (constant (numeric 9)))))))))))) , (expression (logical_expression (unary_logical
+_expression (multiset_expression (relational_expression (compound_expression (concatenation (model_expression (unary_expression (atom (constant (quot
+ed_string &#39;1&#39;)))))))))))) , (expression (logical_expression (unary_logical_expression (multiset_expression (relational_expression (compound_expressio
+n (concatenation (model_expression (unary_expression (atom (constant (numeric 15)))))))))))) , (expression (logical_expression (unary_logical_express
+ion (multiset_expression (relational_expression (compound_expression (concatenation (model_expression (unary_expression (atom (constant (quoted_strin
+g &#39;1&#39;)))))))))))) , (expression (logical_expression (unary_logical_expression (multiset_expression (relational_expression (compound_expression (conca
+tenation (model_expression (unary_expression (atom (constant (quoted_string &#39;0&#39;))))))))))))) )))))))))))) (column_alias AS (identifier (id_expression
+ (regular_id SFQDII))))) , (select_list_elements (expression (logical_expression (unary_logical_expression (multiset_expression (relational_expressio
+n (compound_expression (concatenation (model_expression (unary_expression (atom (constant (quoted_string &#39; &#39;)))))))))))) (column_alias AS (identifier
+ (id_expression (regular_id sfdqlcjj))))) , (select_list_elements (expression (logical_expression (unary_logical_expression (multiset_expression (rel
+ational_expression (compound_expression (concatenation (model_expression (unary_expression (atom (constant (quoted_string &#39; &#39;)))))))))))) (column_ali
+as AS (identifier (id_expression (regular_id SFJJZJJ))))) , (select_list_elements (expression (logical_expression (unary_logical_expression (multiset
+_expression (relational_expression (compound_expression (concatenation (model_expression (unary_expression (atom (constant (quoted_string &#39; &#39;))))))))
+)))) (column_alias AS (identifier (id_expression (regular_id SFGLRZGLRCP))))) , (select_list_elements (expression (logical_expression (unary_logical_
+expression (multiset_expression (relational_expression (compound_expression (concatenation (model_expression (unary_expression (atom (constant (quote
+d_string &#39; &#39;)))))))))))) (column_alias AS (identifier (id_expression (regular_id SFZZCDY))))) , (select_list_elements (expression (logical_expression
+ (unary_logical_expression (multiset_expression (relational_expression (compound_expression (concatenation (model_expression (unary_expression (atom
+(constant (quoted_string &#39; &#39;)))))))))))) (column_alias AS (identifier (id_expression (regular_id glrzglrcpdm2))))) , (select_list_elements (expressio
+n (logical_expression (unary_logical_expression (multiset_expression (relational_expression (compound_expression (concatenation (model_expression (un
+ary_expression (atom (constant (quoted_string &#39; &#39;)))))))))))) (column_alias AS (identifier (id_expression (regular_id SFCDZH))))) , (select_list_elem
+ents (expression (logical_expression (unary_logical_expression (multiset_expression (relational_expression (compound_expression (concatenation (model
+_expression (unary_expression (atom (constant (quoted_string &#39; &#39;)))))))))))) (column_alias AS (identifier (id_expression (regular_id ZDCPDM))))) , (s
+elect_list_elements (expression (logical_expression (unary_logical_expression (multiset_expression (relational_expression (compound_expression (conca
+tenation (model_expression (unary_expression (atom (constant (quoted_string (variable_name (id_expression (regular_id t)) . (id_expression (regular_i
+d d_creat))))))))))))))) (column_alias AS (identifier (id_expression (regular_id CLRQ2))))) , (select_list_elements (expression (logical_expression (
+unary_logical_expression (multiset_expression (relational_expression (compound_expression (concatenation (model_expression (unary_expression (atom (c
+onstant (quoted_string &#39; &#39;)))))))))))) (column_alias AS (identifier (id_expression (regular_id BARQ))))) , (select_list_elements (expression (logical
+_expression (unary_logical_expression (multiset_expression (relational_expression (compound_expression (concatenation (model_expression (unary_expres
+sion (atom (constant (quoted_string (variable_name (id_expression (regular_id t)) . (id_expression (regular_id d_dqrq))))))))))))))) (column_alias AS
+ (identifier (id_expression (regular_id DQRQ3))))) , (select_list_elements (expression (logical_expression (unary_logical_expression (multiset_expres
+sion (relational_expression (compound_expression (concatenation (model_expression (unary_expression (atom (constant (quoted_string (variable_name (id
+_expression (regular_id t)) . (id_expression (regular_id d_dqrq))))))))))))))) (column_alias AS (identifier (id_expression (regular_id QSJSRQ))))) ,
+(select_list_elements (expression (logical_expression (unary_logical_expression (multiset_expression (relational_expression (compound_expression (con
+catenation (model_expression (unary_expression (atom (constant (numeric 0.0)))))))))))) (column_alias AS (identifier (id_expression (regular_id TGFL2
+))))) , (select_list_elements (expression (logical_expression (unary_logical_expression (multiset_expression (relational_expression (compound_express
+ion (concatenation (model_expression (unary_expression (atom (constant (numeric 0)))))))))))) (column_alias AS (identifier (id_expression (regular_id
+ GZWCTS2))))) , (select_list_elements (expression (logical_expression (unary_logical_expression (multiset_expression (relational_expression (compound
+_expression (concatenation (model_expression (unary_expression (atom (constant (quoted_string &#39;系统&#39;)))))))))))) (column_alias AS (identifier (id_exp
+ression (regular_id data_source))))) , (select_list_elements (expression (logical_expression (unary_logical_expression (multiset_expression (relation
+al_expression (compound_expression (concatenation (model_expression (unary_expression (atom (constant (quoted_string &#39; &#39;)))))))))))) (column_alias AS
+ (identifier (id_expression (regular_id czy))))) , (select_list_elements (expression (logical_expression (unary_logical_expression (multiset_expressi
+on (relational_expression (compound_expression (concatenation (model_expression (unary_expression (atom (constant (quoted_string (variable_name (id_e
+xpression (regular_id (non_reserved_keywords_pre12c sysdate)))))))))))))))) (column_alias AS (identifier (id_expression (regular_id czsj))))) , (sele
+ct_list_elements (expression (logical_expression (unary_logical_expression (multiset_expression (relational_expression (compound_expression (concaten
+ation (model_expression (unary_expression (case_statement (searched_case_statement CASE (searched_case_when_part WHEN (expression (logical_expression
+ (unary_logical_expression (multiset_expression (relational_expression (relational_expression (compound_expression (concatenation (model_expression (
+unary_expression (atom (general_element (general_element_part (id_expression (regular_id pkg_urp_ftsp_common)) . (id_expression (regular_id f_get_dic
+t_code)) (function_argument ( (argument (expression (logical_expression (unary_logical_expression (multiset_expression (relational_expression (compou
+nd_expression (concatenation (model_expression (unary_expression (atom (constant (quoted_string &#39;DK_PRODTYPE_CODE&#39;))))))))))))) , (argument (expressi
+on (logical_expression (unary_logical_expression (multiset_expression (relational_expression (compound_expression (concatenation (model_expression (u
+nary_expression (atom (constant (quoted_string (variable_name (id_expression (regular_id t)) . (id_expression (regular_id l_class)))))))))))))))) )))
+))))))) (relational_operator &lt;&gt;) (relational_expression (compound_expression (concatenation (model_expression (unary_expression (atom (constant (quot
+ed_string &#39;3&#39;))))))))))))) THEN (expression (logical_expression (unary_logical_expression (multiset_expression (relational_expression (compound_expre
+ssion (concatenation (model_expression (unary_expression (atom (constant (quoted_string &#39;1&#39;))))))))))))) (searched_case_when_part WHEN (expression (l
+ogical_expression (logical_expression (unary_logical_expression (multiset_expression (relational_expression (relational_expression (compound_expressi
+on (concatenation (model_expression (unary_expression (atom (general_element (general_element_part (id_expression (regular_id pkg_urp_ftsp_common)) .
+ (id_expression (regular_id f_get_dict_code)) (function_argument ( (argument (expression (logical_expression (unary_logical_expression (multiset_expr
+ession (relational_expression (compound_expression (concatenation (model_expression (unary_expression (atom (constant (quoted_string &#39;DK_PRODTYPE_COD
+E&#39;))))))))))))) , (argument (expression (logical_expression (unary_logical_expression (multiset_expression (relational_expression (compound_expressio
+n (concatenation (model_expression (unary_expression (atom (constant (quoted_string (variable_name (id_expression (regular_id t)) . (id_expression (r
+egular_id l_class)))))))))))))))) )))))))))) (relational_operator =) (relational_expression (compound_expression (concatenation (model_expression (un
+ary_expression (atom (constant (quoted_string &#39;3&#39;)))))))))))) AND (logical_expression (unary_logical_expression (multiset_expression (relational_expr
+ession (compound_expression (concatenation (model_expression (unary_expression (atom (constant (quoted_string (variable_name (id_expression (regular_
+id z)) . (id_expression (regular_id jgmc)))))))))))) IS NOT (logical_operation NULL))))) THEN (expression (logical_expression (unary_logical_expressi
+on (multiset_expression (relational_expression (compound_expression (concatenation (model_expression (unary_expression (atom (constant (quoted_string
+ &#39;1&#39;))))))))))))) (case_else_part ELSE (expression (logical_expression (unary_logical_expression (multiset_expression (relational_expression (compoun
+d_expression (concatenation (model_expression (unary_expression (atom (constant (quoted_string &#39;0&#39;))))))))))))) END))))))))))) (column_alias AS (iden
+tifier (id_expression (regular_id isenabled))))) , (select_list_elements (expression (logical_expression (unary_logical_expression (multiset_expressi
+on (relational_expression (compound_expression (concatenation (model_expression (unary_expression (atom (constant (numeric 0)))))))))))) (column_alia
+s AS (identifier (id_expression (regular_id qzms)))))) (from_clause FROM (table_ref_list (table_ref (table_ref_aux (table_ref_aux_internal (dml_table
+_expression_clause (tableview_name (identifier (id_expression (regular_id ods_ftsp_fa26_tfundinfo)))))) (table_alias (identifier (id_expression (regu
+lar_id t))))) (join_clause (outer_join_type LEFT) JOIN (table_ref_aux (table_ref_aux_internal (dml_table_expression_clause (tableview_name (identifie
+r (id_expression (regular_id urp_ftsp_hd_zqgssmjjzgs)))))) (table_alias (identifier (id_expression (regular_id z))))) (join_on_part ON (condition (ex
+pression (logical_expression (unary_logical_expression (multiset_expression (relational_expression (relational_expression (compound_expression (conca
+tenation (model_expression (unary_expression (atom (constant (quoted_string (variable_name (id_expression (regular_id t)) . (id_expression (regular_i
+d vc_glr))))))))))) (relational_operator =) (relational_expression (compound_expression (concatenation (model_expression (unary_expression (atom (con
+stant (quoted_string (variable_name (id_expression (regular_id z)) . (id_expression (regular_id jgmc)))))))))))))))))))))) (where_clause WHERE (expre
+ssion (logical_expression (logical_expression (unary_logical_expression NOT (multiset_expression (relational_expression (compound_expression (concate
+nation (model_expression (unary_expression (quantified_expression EXISTS ( (select_only_statement (subquery (subquery_basic_elements (query_block SEL
+ECT (selected_list (select_list_elements (expression (logical_expression (unary_logical_expression (multiset_expression (relational_expression (compo
+und_expression (concatenation (model_expression (unary_expression (atom (constant (numeric 1)))))))))))))) (from_clause FROM (table_ref_list (table_r
+ef (table_ref_aux (table_ref_aux_internal (dml_table_expression_clause (tableview_name (identifier (id_expression (regular_id URP_FTSP_CP_CPJBXX_INFO
+)))))) (table_alias (identifier (id_expression (regular_id b)))))))) (where_clause WHERE (expression (logical_expression (unary_logical_expression (m
+ultiset_expression (relational_expression (relational_expression (compound_expression (concatenation (model_expression (unary_expression (atom (const
+ant (quoted_string (variable_name (id_expression (regular_id t)) . (id_expression (regular_id l_fundid))))))))))) (relational_operator =) (relational
+_expression (compound_expression (concatenation (model_expression (unary_expression (atom (constant (quoted_string (variable_name (id_expression (reg
+ular_id b)) . (id_expression (regular_id cpbh))))))))))))))))))))) )))))))))) AND (logical_expression (unary_logical_expression (multiset_expression
+(relational_expression (relational_expression (compound_expression (concatenation (model_expression (unary_expression (atom (constant (quoted_string
+(variable_name (id_expression (regular_id t)) . (id_expression (regular_id xx))))))))))) (relational_operator =) (relational_expression (compound_exp
+ression (concatenation (model_expression (unary_expression (atom (constant (numeric 1)))))))))))))))))))))) &lt;EOF&gt;)
+</code></pre><h1 id=性能压测>性能压测</h1><h1 id=heading></h1><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>BenchmarkParseComplex</span>(<span style=color:#a6e22e>b</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>testing</span>.<span style=color:#a6e22e>B</span>) {
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>var</span> <span style=color:#a6e22e>table</span> = []<span style=color:#66d9ef>string</span>{
+</span></span><span style=display:flex><span>		<span style=color:#e6db74>`SELECT t.l_fundid AS cpbh, t.vc_code AS cpdm2, &#39; &#39; AS dzdm, t.vc_fullname AS cpmc
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    , substr(t.vc_name, 1, 25) AS cpjc
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    , t.vc_glr AS glrmc, &#39; &#39; AS glrdm, pkg_urp_ftsp_common.f_get_dict_code(&#39;DK_PRODTYPE_CODE&#39;,t.l_class) AS cplx
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    , &#39; &#39; AS cplb, &#39;1&#39; AS yzfs, &#39; &#39; AS STZR
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    , decode(t.l_jjtzlx, 4, &#39;1&#39;, &#39;0&#39;) AS SFZSJJ
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    , decode(t.l_class, 13, &#39;1&#39;, 14, &#39;1&#39;, 15, &#39;1&#39;, 0) AS SFETFJJ
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    , &#39; &#39; AS SFLOFJJ
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    , decode(t.l_class, 9, &#39;1&#39;, 15, &#39;1&#39;, &#39;0&#39;) AS SFQDII
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    , &#39; &#39; AS sfdqlcjj, &#39; &#39; AS SFJJZJJ, &#39; &#39; AS SFGLRZGLRCP, &#39; &#39; AS SFZZCDY, &#39; &#39; AS glrzglrcpdm2
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    , &#39; &#39; AS SFCDZH, &#39; &#39; AS ZDCPDM, t.d_creat AS CLRQ2, &#39; &#39; AS BARQ, t.d_dqrq AS DQRQ3
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    , t.d_dqrq AS QSJSRQ, 0.0 AS TGFL2, 0 AS GZWCTS2, &#39;系统&#39; AS data_source, &#39; &#39; AS czy
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    , sysdate AS czsj
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    , CASE 
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        WHEN pkg_urp_ftsp_common.f_get_dict_code(&#39;DK_PRODTYPE_CODE&#39;, t.l_class) &lt;&gt; &#39;3&#39; THEN &#39;1&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        WHEN pkg_urp_ftsp_common.f_get_dict_code(&#39;DK_PRODTYPE_CODE&#39;, t.l_class) = &#39;3&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>            AND z.jgmc IS NOT NULL
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        THEN &#39;1&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        ELSE &#39;0&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    END AS isenabled, 0 AS qzms
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>FROM ods_ftsp_fa26_tfundinfo t
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    LEFT JOIN urp_ftsp_hd_zqgssmjjzgs z ON t.vc_glr = z.jgmc
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>WHERE NOT EXISTS (
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        SELECT 1
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        FROM URP_FTSP_CP_CPJBXX_INFO b
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        WHERE t.l_fundid = b.cpbh
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    )
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    AND t.xx = 1`</span>}
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>b</span>.<span style=color:#a6e22e>ResetTimer</span>()
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>for</span> <span style=color:#a6e22e>i</span> <span style=color:#f92672>:=</span> <span style=color:#ae81ff>0</span>; <span style=color:#a6e22e>i</span> &lt; <span style=color:#a6e22e>b</span>.<span style=color:#a6e22e>N</span>; <span style=color:#a6e22e>i</span><span style=color:#f92672>++</span> {
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>for</span> <span style=color:#a6e22e>_</span>, <span style=color:#a6e22e>sql</span> <span style=color:#f92672>:=</span> <span style=color:#66d9ef>range</span> <span style=color:#a6e22e>table</span> {
+</span></span><span style=display:flex><span>			<span style=color:#a6e22e>input</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>antlr</span>.<span style=color:#a6e22e>NewInputStream</span>(<span style=color:#a6e22e>sql</span>)
+</span></span><span style=display:flex><span>			<span style=color:#a6e22e>lexer</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>parser</span>.<span style=color:#a6e22e>NewPlSqlLexer</span>(<span style=color:#a6e22e>input</span>)
+</span></span><span style=display:flex><span>			<span style=color:#a6e22e>stream</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>antlr</span>.<span style=color:#a6e22e>NewCommonTokenStream</span>(<span style=color:#a6e22e>lexer</span>, <span style=color:#a6e22e>antlr</span>.<span style=color:#a6e22e>TokenDefaultChannel</span>)
+</span></span><span style=display:flex><span>			<span style=color:#a6e22e>p</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>parser</span>.<span style=color:#a6e22e>NewPlSqlParser</span>(<span style=color:#a6e22e>stream</span>)
+</span></span><span style=display:flex><span>			<span style=color:#a6e22e>p</span>.<span style=color:#a6e22e>AddErrorListener</span>(<span style=color:#a6e22e>antlr</span>.<span style=color:#a6e22e>NewDiagnosticErrorListener</span>(<span style=color:#66d9ef>true</span>))
+</span></span><span style=display:flex><span>			<span style=color:#a6e22e>tree</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>p</span>.<span style=color:#a6e22e>Sql_script</span>()
+</span></span><span style=display:flex><span>			<span style=color:#a6e22e>tree</span>.<span style=color:#a6e22e>ToStringTree</span>(<span style=color:#a6e22e>p</span>.<span style=color:#a6e22e>RuleNames</span>, <span style=color:#a6e22e>p</span>)
+</span></span><span style=display:flex><span>		}
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>b</span>.<span style=color:#a6e22e>ReportAllocs</span>()
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>压测结果如下：</p><pre tabindex=0><code>goarch: amd64
+pkg: antlr4_go_parser
+cpu: 11th Gen Intel(R) Core(TM) i7-1165G7 @ 2.80GHz
+BenchmarkParseComplex-8    1    1114407305 ns/op    482770208 B/op    8646102 allocs/op
+PASS
+</code></pre><p><code>BenchmarkParseComplex</code>执行了1次，每次执行平均时间是1114407305<strong>纳秒</strong>，即1.1144073 <strong>秒</strong>！！！太拉跨不敢相信，换个简单sql试下：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=display:flex><span><span style=color:#66d9ef>SELECT</span> <span style=color:#f92672>*</span> <span style=color:#66d9ef>FROM</span> t <span style=color:#66d9ef>WHERE</span> id <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>
+</span></span></code></pre></div><pre tabindex=0><code>goarch: amd64
+pkg: antlr4_go_parser
+cpu: 11th Gen Intel(R) Core(TM) i7-1165G7 @ 2.80GHz
+BenchmarkParseComplex-8    843    1404329 ns/op    896744 B/op    13333 allocs/op
+PASS
+</code></pre><p>每次执行平均时间是1404329<strong>纳秒</strong>，即1.404329<strong>毫秒</strong>，还是拉跨。</p><p>还是怀疑这个<code>antlr-4.10.1</code>的这个版本对<code>go</code>支持不好，详细可以看这个<a href=https://github.com/antlr/antlr4/issues/3718>issues</a>，但是高版本生成的又无法使用，本人初学，还望各路大佬不吝赐教。</p><hr><h3 id=参考资料>参考资料</h3></div><div class=post-reward><input type=checkbox name=reward id=reward hidden>
+<label class=reward-button for=reward>赞赏支持</label><div class=qr-code><label class=qr-code-image for=reward><img class=image src=/img/wechat-reward.png>
+<span>微信打赏</span></label>
+<label class=qr-code-image for=reward><img class=image src=/img/alipay-reward.jpeg>
+<span>支付宝打赏</span></label></div></div><footer class=post-footer><div class=post-tags><a href=/tags/go/>Go</a>
+<a href=/tags/plsql/>plsql</a></div><nav class=post-nav><a class=next href=/post/docker-compose-install-elasticsearch-cluster-kibana-cerebro/><span class="next-text nav-default">Docker Compose单机安装elasticsearch7.16.3</span>
+<span class="next-text nav-mobile">下一篇</span>
+<i class="iconfont icon-right"></i></a></nav></footer></article></div><div id=vcomments></div><script src=//cdn1.lncld.net/static/js/3.0.4/av-min.js></script>
+<script src=//unpkg.com/valine/dist/Valine.min.js></script>
+<script type=text/javascript>new Valine({el:"#vcomments",appId:"fXqv8lFikU96F2xUDOBW4T9X-MdYXbMMI",appKey:"AUbjromOz15du9OJSTY6Q8HM",notify:!1,verify:!1,avatar:"robohash",placeholder:"本站支持评论邮件提醒功能，在上方邮箱输入框留下邮箱，可以收到回复通知哦！（支持markdown语法）",visitor:!1})</script></div></main><footer id=footer class=footer><div class=social-links><a href=mailto:gao.bo168@gmail.com class="iconfont icon-email" title=email></a>
+<a href=https://github.com/forgottener class="iconfont icon-github" title=github></a>
+<a href=https://space.bilibili.com/1714562 class="iconfont icon-bilibili" title=bilibili></a>
+<a href=https://gaoboy.com/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a></div><div class=copyright><span class=power-by>由 <a class=hexo-link href=https://gohugo.io>Hugo</a> 强力驱动</span>
+<span class=division>|</span>
+<span class=theme-info>主题 -
+<a class=theme-link href=https://github.com/olOwOlo/hugo-theme-even>Even</a></span>
+<span class=copyright-year>&copy;
+2013 -
+2023<span class=heart><i class="iconfont icon-heart"></i></span><span><a rel="license noopener" href=https://beian.miit.gov.cn/ target=_blank>浙ICP备14043338号-2</a>~<a rel="license noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010802003111" target=_blank>浙公网安备 33010802003111号</a></span></span></div></footer><div class=back-to-top id=back-to-top><i class="iconfont icon-up"></i></div></div><script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+<script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script>
+<script type=text/javascript src=/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js></script>
+<script src=/js/blank.js></script></body></html>
