@@ -1,1 +1,24 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>architecture on 静夜思己过 - 猿资猿味 - 高波的博客</title><link>https://gaoboy.com/tags/architecture/</link><description>Recent content in architecture on 静夜思己过 - 猿资猿味 - 高波的博客</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>&lt;a rel="license noopener" href="https://beian.miit.gov.cn/" target="_blank">浙ICP备14043338号-2&lt;/a>~&lt;a rel="license noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010802003111" target="_blank">浙公网安备 33010802003111号&lt;/a></copyright><lastBuildDate>Sun, 15 Dec 2019 10:28:45 +0800</lastBuildDate><atom:link href="https://gaoboy.com/tags/architecture/index.xml" rel="self" type="application/rss+xml"/><item><title>微服务架构设计模式</title><link>https://gaoboy.com/post/microservices-design-pattern/</link><pubDate>Sun, 15 Dec 2019 10:28:45 +0800</pubDate><guid>https://gaoboy.com/post/microservices-design-pattern/</guid><description>概述 微服务能在企业中发挥积极作用。因此了解微服务架构（MSA）设计的一般目标或原则，以及一些微服务的设计模式，都是是很有意义的 降低成本：MS</description></item><item><title>微服务简介</title><link>https://gaoboy.com/post/introduction-to-microservices/</link><pubDate>Thu, 22 Nov 2018 16:34:27 +0800</pubDate><guid>https://gaoboy.com/post/introduction-to-microservices/</guid><description>©️Introduction to Microservices 构建单体应用 我们假设，您开始开发一个打车应用，打算与 Uber 和 Hailo 竞争。经过初步交流和需求收集，您开始手动或者使用类</description></item><item><title>如何应对高并发</title><link>https://gaoboy.com/post/how-to-handle-high-concurrency/</link><pubDate>Thu, 22 Nov 2018 09:53:55 +0800</pubDate><guid>https://gaoboy.com/post/how-to-handle-high-concurrency/</guid><description>什么是高并发 高并发(High Concurrency)是互联网分布式系统架构设计中必须考虑的因素之一，它通常是指，通过设计保证系统能够同时并行</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Architecture on 静夜思己过 - 猿资猿味 - 高波的博客</title><link>https://gaoboy.com/tags/architecture/</link><description>Recent content in Architecture on 静夜思己过 - 猿资猿味 - 高波的博客</description><generator>Hugo</generator><language>zh-cn</language><copyright>&lt;a rel="license noopener" href="https://beian.miit.gov.cn/" target="_blank">浙ICP备14043338号-2&lt;/a>~&lt;a rel="license noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010802003111" target="_blank">浙公网安备 33010802003111号&lt;/a></copyright><lastBuildDate>Sun, 15 Dec 2019 10:28:45 +0800</lastBuildDate><atom:link href="https://gaoboy.com/tags/architecture/index.xml" rel="self" type="application/rss+xml"/><item><title>微服务架构设计模式</title><link>https://gaoboy.com/post/microservices-design-pattern/</link><pubDate>Sun, 15 Dec 2019 10:28:45 +0800</pubDate><guid>https://gaoboy.com/post/microservices-design-pattern/</guid><description>&lt;h1 id="概述">概述&lt;/h1>
+&lt;p>微服务能在企业中发挥积极作用。因此了解微服务架构（MSA）设计的一般目标或原则，以及一些微服务的设计模式，都是是很有意义的&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>降低成本&lt;/strong>：MSA 降低了 IT 服务的设计、实现和管理的总体成本&lt;/li>
+&lt;li>&lt;strong>提高交付速度&lt;/strong>：MSA 能够提高服务的实现速度&lt;/li>
+&lt;li>&lt;strong>增强健壮性&lt;/strong>：MSA 能够增强我们服务网络的健壮性&lt;/li>
+&lt;li>&lt;strong>提供可视化支持&lt;/strong>：MSA 能够为服务和网络提供更好的可视化支持&lt;/li>
+&lt;/ul>
+&lt;h1 id="微服务架构的构建原则">微服务架构的构建原则&lt;/h1>
+&lt;ul>
+&lt;li>伸缩能力&lt;/li>
+&lt;li>可用性&lt;/li>
+&lt;li>健壮性&lt;/li>
+&lt;li>弹性&lt;/li>
+&lt;li>独立的匿名服务&lt;/li>
+&lt;li>去中心化的治理&lt;/li>
+&lt;li>故障隔离&lt;/li>
+&lt;li>自动供给&lt;/li>
+&lt;li>通过 DevOps 实现持续交付&lt;/li>
+&lt;/ul>
+&lt;p>在系统建设中，坚持上述原则会遭遇很多挑战和问题。这些问题在很多解决方案中都会出现。如果能够正确的使用合适的设计模式，就能够克服这些问题。微服务的设计模式可以分为五大类，每个大类中都包含一些设计模式&lt;/p></description></item><item><title>微服务简介</title><link>https://gaoboy.com/post/introduction-to-microservices/</link><pubDate>Thu, 22 Nov 2018 16:34:27 +0800</pubDate><guid>https://gaoboy.com/post/introduction-to-microservices/</guid><description>&lt;p>©️&lt;a href="https://www.nginx.com/blog/introduction-to-microservices/">Introduction to Microservices&lt;/a>&lt;/p>
+&lt;h1 id="构建单体应用">构建单体应用&lt;/h1>
+&lt;p>我们假设，您开始开发一个打车应用，打算与 Uber 和 Hailo 竞争。经过初步交流和需求收集，您开始手动或者使用类似 Rails、 Spring Boot、 Play 或者 Maven 等平台来生成一个新项目。&lt;/p></description></item><item><title>如何应对高并发</title><link>https://gaoboy.com/post/how-to-handle-high-concurrency/</link><pubDate>Thu, 22 Nov 2018 09:53:55 +0800</pubDate><guid>https://gaoboy.com/post/how-to-handle-high-concurrency/</guid><description>&lt;h1 id="什么是高并发">什么是高并发&lt;/h1>
+&lt;p>高并发(High Concurrency)是互联网分布式系统架构设计中必须考虑的因素之一，它通常是指，通过设计保证系统能够同时并行处理很多请求。高并发相关常用的一些指标有 &lt;strong>响应时间(Response Time)&lt;/strong>，&lt;strong>吞吐量(Throughput)&lt;/strong>，&lt;strong>每秒查询率 QPS(Query Per Second)&lt;/strong>，&lt;strong>并发用户数&lt;/strong> 等。&lt;/p></description></item></channel></rss>

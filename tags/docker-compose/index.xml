@@ -1,1 +1,193 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>docker-compose on 静夜思己过 - 猿资猿味 - 高波的博客</title><link>https://gaoboy.com/tags/docker-compose/</link><description>Recent content in docker-compose on 静夜思己过 - 猿资猿味 - 高波的博客</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>&lt;a rel="license noopener" href="https://beian.miit.gov.cn/" target="_blank">浙ICP备14043338号-2&lt;/a>~&lt;a rel="license noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010802003111" target="_blank">浙公网安备 33010802003111号&lt;/a></copyright><lastBuildDate>Tue, 08 Mar 2022 21:02:53 +0800</lastBuildDate><atom:link href="https://gaoboy.com/tags/docker-compose/index.xml" rel="self" type="application/rss+xml"/><item><title>Docker Compose单机安装elasticsearch7.16.3</title><link>https://gaoboy.com/post/docker-compose-install-elasticsearch-cluster-kibana-cerebro/</link><pubDate>Tue, 08 Mar 2022 21:02:53 +0800</pubDate><guid>https://gaoboy.com/post/docker-compose-install-elasticsearch-cluster-kibana-cerebro/</guid><description>https://www.elastic.co/guide/en/elasticsearch/reference/7.16/docker.html 文件结构 └── elasticsearch ├── node-00 │ ├── config │ │ └── elasticsearch.yml │ ├── data │ ├── docker-compose.yml │ ├── logs │ └── plugins │ └── ik ├── node-01 │ ├── config │ │ └── elasticsearch.yml │ ├── data │</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Docker-Compose on 静夜思己过 - 猿资猿味 - 高波的博客</title><link>https://gaoboy.com/tags/docker-compose/</link><description>Recent content in Docker-Compose on 静夜思己过 - 猿资猿味 - 高波的博客</description><generator>Hugo</generator><language>zh-cn</language><copyright>&lt;a rel="license noopener" href="https://beian.miit.gov.cn/" target="_blank">浙ICP备14043338号-2&lt;/a>~&lt;a rel="license noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010802003111" target="_blank">浙公网安备 33010802003111号&lt;/a></copyright><lastBuildDate>Tue, 08 Mar 2022 21:02:53 +0800</lastBuildDate><atom:link href="https://gaoboy.com/tags/docker-compose/index.xml" rel="self" type="application/rss+xml"/><item><title>Docker Compose单机安装elasticsearch7.16.3</title><link>https://gaoboy.com/post/docker-compose-install-elasticsearch-cluster-kibana-cerebro/</link><pubDate>Tue, 08 Mar 2022 21:02:53 +0800</pubDate><guid>https://gaoboy.com/post/docker-compose-install-elasticsearch-cluster-kibana-cerebro/</guid><description>&lt;p>&lt;a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/docker.html">https://www.elastic.co/guide/en/elasticsearch/reference/7.16/docker.html&lt;/a>&lt;/p>
+&lt;h2 id="文件结构">文件结构&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>└── elasticsearch
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ├── node-00
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ ├── config
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ │ └── elasticsearch.yml
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ ├── data
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ ├── docker-compose.yml
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ ├── logs
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ └── plugins
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ └── ik
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ├── node-01
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ ├── config
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ │ └── elasticsearch.yml
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ ├── data
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ ├── docker-compose.yml
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ ├── logs
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ └── plugins
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ └── ik
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> └── node-02
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ├── config
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ └── elasticsearch.yml
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ├── data
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ├── docker-compose.yml
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ├── logs
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> └── plugins
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> └── ik
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>chown 1000:1000 data
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>chown 1000:1000 logs
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="配置">配置&lt;/h2>
+&lt;ol>
+&lt;li>创建公用docker network&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>docker network ls
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>docker network create --driver bridge elastic
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="2">
+&lt;li>创建各个node的docker-compose.yml&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>node-00&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">version&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;3&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">services&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">es-node-00&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">image&lt;/span>: &lt;span style="color:#ae81ff">docker.elastic.co/elasticsearch/elasticsearch:7.16.3&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">container_name&lt;/span>: &lt;span style="color:#ae81ff">es-node-00&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">environment&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#e6db74">&amp;#34;TZ=Asia/Shanghai&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#e6db74">&amp;#34;ES_JAVA_OPTS=-Xms1g -Xmx1g&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">restart&lt;/span>: &lt;span style="color:#ae81ff">always&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ulimits&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">memlock&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">soft&lt;/span>: -&lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">hard&lt;/span>: -&lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">nofile&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">soft&lt;/span>: &lt;span style="color:#ae81ff">65536&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">hard&lt;/span>: &lt;span style="color:#ae81ff">65536&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ports&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">9200&lt;/span>:&lt;span style="color:#ae81ff">9200&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">9300&lt;/span>:&lt;span style="color:#ae81ff">9300&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">networks&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">elastic&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">volumes&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">./config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">./data:/usr/share/elasticsearch/data&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">./plugins:/usr/share/elasticsearch/plugins&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">./logs:/usr/share/elasticsearch/logs&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">networks&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">elastic&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">external&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>node-01&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">version&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;3&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">services&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">es-node-01&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">image&lt;/span>: &lt;span style="color:#ae81ff">docker.elastic.co/elasticsearch/elasticsearch:7.16.3&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">container_name&lt;/span>: &lt;span style="color:#ae81ff">es-node-01&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">environment&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#e6db74">&amp;#34;TZ=Asia/Shanghai&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#e6db74">&amp;#34;ES_JAVA_OPTS=-Xms1g -Xmx1g&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">restart&lt;/span>: &lt;span style="color:#ae81ff">always&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ulimits&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">memlock&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">soft&lt;/span>: -&lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">hard&lt;/span>: -&lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">nofile&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">soft&lt;/span>: &lt;span style="color:#ae81ff">65536&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">hard&lt;/span>: &lt;span style="color:#ae81ff">65536&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ports&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">9201&lt;/span>:&lt;span style="color:#ae81ff">9200&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">9301&lt;/span>:&lt;span style="color:#ae81ff">9300&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">networks&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">elastic&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">volumes&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">./config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">./data:/usr/share/elasticsearch/data&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">./plugins:/usr/share/elasticsearch/plugins&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">./logs:/usr/share/elasticsearch/logs&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">networks&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">elastic&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">external&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>node-02&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">version&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;3&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">services&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">es-node-02&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">image&lt;/span>: &lt;span style="color:#ae81ff">docker.elastic.co/elasticsearch/elasticsearch:7.16.3&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">container_name&lt;/span>: &lt;span style="color:#ae81ff">es-node-02&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">environment&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#e6db74">&amp;#34;TZ=Asia/Shanghai&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#e6db74">&amp;#34;ES_JAVA_OPTS=-Xms1g -Xmx1g&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">restart&lt;/span>: &lt;span style="color:#ae81ff">always&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ulimits&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">memlock&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">soft&lt;/span>: -&lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">hard&lt;/span>: -&lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">nofile&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">soft&lt;/span>: &lt;span style="color:#ae81ff">65536&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">hard&lt;/span>: &lt;span style="color:#ae81ff">65536&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ports&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">9202&lt;/span>:&lt;span style="color:#ae81ff">9200&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">9302&lt;/span>:&lt;span style="color:#ae81ff">9300&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">networks&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">elastic&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">volumes&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">./config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">./data:/usr/share/elasticsearch/data&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">./plugins:/usr/share/elasticsearch/plugins&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">./logs:/usr/share/elasticsearch/logs&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">networks&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">elastic&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">external&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="3">
+&lt;li>config/elasticsearch.yml&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>node-00&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">cluster.name&lt;/span>: &lt;span style="color:#ae81ff">my-es-cluster&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">node.name&lt;/span>: &lt;span style="color:#ae81ff">es-node-00&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">network.host&lt;/span>: &lt;span style="color:#ae81ff">es-node-00&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">http.port&lt;/span>: &lt;span style="color:#ae81ff">9200&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">transport.port&lt;/span>: &lt;span style="color:#ae81ff">9300&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">http.cors.enabled&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">http.cors.allow-origin&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;*&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">discovery.seed_hosts&lt;/span>: [&lt;span style="color:#e6db74">&amp;#34;es-node-01&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;es-node-02&amp;#34;&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">bootstrap.memory_lock&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">cluster.initial_master_nodes&lt;/span>: [&lt;span style="color:#e6db74">&amp;#34;es-node-00&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;es-node-01&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;es-node-02&amp;#34;&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#disable the usage of geoip functionality&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">ingest.geoip.downloader.enabled&lt;/span>: &lt;span style="color:#66d9ef">false&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>node-01&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">cluster.name&lt;/span>: &lt;span style="color:#ae81ff">my-es-cluster&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">node.name&lt;/span>: &lt;span style="color:#ae81ff">es-node-01&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">network.host&lt;/span>: &lt;span style="color:#ae81ff">es-node-01&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">http.port&lt;/span>: &lt;span style="color:#ae81ff">9200&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">transport.port&lt;/span>: &lt;span style="color:#ae81ff">9300&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">http.cors.enabled&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">http.cors.allow-origin&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;*&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">discovery.seed_hosts&lt;/span>: [&lt;span style="color:#e6db74">&amp;#34;es-node-00&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;es-node-02&amp;#34;&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">bootstrap.memory_lock&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">cluster.initial_master_nodes&lt;/span>: [&lt;span style="color:#e6db74">&amp;#34;es-node-00&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;es-node-01&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;es-node-02&amp;#34;&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#disable the usage of geoip functionality&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">ingest.geoip.downloader.enabled&lt;/span>: &lt;span style="color:#66d9ef">false&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>node-02&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">cluster.name&lt;/span>: &lt;span style="color:#ae81ff">my-es-cluster&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">node.name&lt;/span>: &lt;span style="color:#ae81ff">es-node-02&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">network.host&lt;/span>: &lt;span style="color:#ae81ff">es-node-02&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">http.port&lt;/span>: &lt;span style="color:#ae81ff">9200&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">transport.port&lt;/span>: &lt;span style="color:#ae81ff">9300&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">http.cors.enabled&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">http.cors.allow-origin&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;*&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">discovery.seed_hosts&lt;/span>: [&lt;span style="color:#e6db74">&amp;#34;es-node-00&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;es-node-01&amp;#34;&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">bootstrap.memory_lock&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">cluster.initial_master_nodes&lt;/span>: [&lt;span style="color:#e6db74">&amp;#34;es-node-00&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;es-node-01&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;es-node-02&amp;#34;&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#disable the usage of geoip functionality&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">ingest.geoip.downloader.enabled&lt;/span>: &lt;span style="color:#66d9ef">false&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="kibana">kibana&lt;/h2>
+&lt;p>&lt;a href="https://www.elastic.co/guide/en/kibana/7.16/docker.html">https://www.elastic.co/guide/en/kibana/7.16/docker.html&lt;/a>&lt;/p></description></item></channel></rss>

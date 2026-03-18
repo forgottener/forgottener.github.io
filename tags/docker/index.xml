@@ -1,1 +1,214 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>docker on 静夜思己过 - 猿资猿味 - 高波的博客</title><link>https://gaoboy.com/tags/docker/</link><description>Recent content in docker on 静夜思己过 - 猿资猿味 - 高波的博客</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>&lt;a rel="license noopener" href="https://beian.miit.gov.cn/" target="_blank">浙ICP备14043338号-2&lt;/a>~&lt;a rel="license noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010802003111" target="_blank">浙公网安备 33010802003111号&lt;/a></copyright><lastBuildDate>Tue, 08 Mar 2022 21:02:53 +0800</lastBuildDate><atom:link href="https://gaoboy.com/tags/docker/index.xml" rel="self" type="application/rss+xml"/><item><title>Docker Compose单机安装elasticsearch7.16.3</title><link>https://gaoboy.com/post/docker-compose-install-elasticsearch-cluster-kibana-cerebro/</link><pubDate>Tue, 08 Mar 2022 21:02:53 +0800</pubDate><guid>https://gaoboy.com/post/docker-compose-install-elasticsearch-cluster-kibana-cerebro/</guid><description>https://www.elastic.co/guide/en/elasticsearch/reference/7.16/docker.html 文件结构 └── elasticsearch ├── node-00 │ ├── config │ │ └── elasticsearch.yml │ ├── data │ ├── docker-compose.yml │ ├── logs │ └── plugins │ └── ik ├── node-01 │ ├── config │ │ └── elasticsearch.yml │ ├── data │</description></item><item><title>Unraid下Docker部署Nextcloud网盘</title><link>https://gaoboy.com/post/unraid-docker-nextcloud-setting-ddns-proxy/</link><pubDate>Wed, 24 Feb 2021 16:19:40 +0800</pubDate><guid>https://gaoboy.com/post/unraid-docker-nextcloud-setting-ddns-proxy/</guid><description/></item><item><title>Docker Compose介绍</title><link>https://gaoboy.com/post/docker-compose/</link><pubDate>Tue, 01 Mar 2016 14:56:59 +0800</pubDate><guid>https://gaoboy.com/post/docker-compose/</guid><description>YAML 配置文件语言 YAML 是专门用来写配置文件的语言，非常简洁和强大，远比 JSON 格式方便。YAML 语言的设计目标，就是方便人类读写。它实质上是一种通用的数</description></item><item><title>Docker 安全介绍</title><link>https://gaoboy.com/post/docker-safety/</link><pubDate>Tue, 01 Mar 2016 14:33:34 +0800</pubDate><guid>https://gaoboy.com/post/docker-safety/</guid><description>Docker 内核命名空间 Docker 容器和 LXC 容器很相似，所提供的安全特性也差不多。当用 docker run 启动一个容器时，在后台 Docker 为容器创建了一个独立的命名空间和控制组集合。 命</description></item><item><title>Docker Network介绍</title><link>https://gaoboy.com/post/docker-network/</link><pubDate>Tue, 01 Mar 2016 14:18:33 +0800</pubDate><guid>https://gaoboy.com/post/docker-network/</guid><description>容器的连接（linking）系统是除了端口映射外，另一种跟容器中应用交互的方式。 该系统会在源和接收容器之间创建一个隧道，接收容器可以看到源容</description></item><item><title>Docker 数据卷介绍</title><link>https://gaoboy.com/post/docker-volume/</link><pubDate>Tue, 01 Mar 2016 14:13:08 +0800</pubDate><guid>https://gaoboy.com/post/docker-volume/</guid><description>数据卷是一个可供一个或多个容器使用的特殊目录，它绕过 UFS，可以提供很多有用的特性： 数据卷可以在容器之间共享和重用 对数据卷的修改会立马生效 对</description></item><item><title>Docker 仓库介绍</title><link>https://gaoboy.com/post/docker-hub/</link><pubDate>Tue, 01 Mar 2016 14:08:24 +0800</pubDate><guid>https://gaoboy.com/post/docker-hub/</guid><description>目前 Docker 官方维护了一个公共仓库 Docker Hub，其中已经包括了超过 15,000 的镜像。大部分需求，都可以通过在 Docker Hub 中直接下载镜像来实现。 登录 可以通过执行 docker login 命令</description></item><item><title>Docker 容器介绍</title><link>https://gaoboy.com/post/docker-container/</link><pubDate>Tue, 01 Mar 2016 13:06:25 +0800</pubDate><guid>https://gaoboy.com/post/docker-container/</guid><description>Docker 进入容器 在使用 -d 参数时，容器启动后会进入后台。 某些时候需要进入容器进行操作，有很多种方法，包括使用 docker attach 命令或 nsenter 工具等。 attach 命令 docker attach 是 Docker 自带的</description></item><item><title>Docker 镜像介绍</title><link>https://gaoboy.com/post/docker-image/</link><pubDate>Tue, 01 Mar 2016 12:16:59 +0800</pubDate><guid>https://gaoboy.com/post/docker-image/</guid><description>Docker 镜像的实现原理 Docker 镜像是怎么实现增量的修改和维护的？ 每个镜像都由很多层次构成，Docker 使用 Union FS 将这些不同的层结合到一个镜像中去。 通常 Union FS</description></item><item><title>Docker 简介和安装</title><link>https://gaoboy.com/post/docker-introduction/</link><pubDate>Tue, 01 Mar 2016 11:30:51 +0800</pubDate><guid>https://gaoboy.com/post/docker-introduction/</guid><description>什么是 Docker 官网地址：https://www.docker.com/ Docker 最初是 dotCloud 公司创始人 Solomon Hykes 在法国期间发起的一个公司内部项目，它是基于 dotCloud 公司多年</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Docker on 静夜思己过 - 猿资猿味 - 高波的博客</title><link>https://gaoboy.com/tags/docker/</link><description>Recent content in Docker on 静夜思己过 - 猿资猿味 - 高波的博客</description><generator>Hugo</generator><language>zh-cn</language><copyright>&lt;a rel="license noopener" href="https://beian.miit.gov.cn/" target="_blank">浙ICP备14043338号-2&lt;/a>~&lt;a rel="license noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010802003111" target="_blank">浙公网安备 33010802003111号&lt;/a></copyright><lastBuildDate>Tue, 08 Mar 2022 21:02:53 +0800</lastBuildDate><atom:link href="https://gaoboy.com/tags/docker/index.xml" rel="self" type="application/rss+xml"/><item><title>Docker Compose单机安装elasticsearch7.16.3</title><link>https://gaoboy.com/post/docker-compose-install-elasticsearch-cluster-kibana-cerebro/</link><pubDate>Tue, 08 Mar 2022 21:02:53 +0800</pubDate><guid>https://gaoboy.com/post/docker-compose-install-elasticsearch-cluster-kibana-cerebro/</guid><description>&lt;p>&lt;a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/docker.html">https://www.elastic.co/guide/en/elasticsearch/reference/7.16/docker.html&lt;/a>&lt;/p>
+&lt;h2 id="文件结构">文件结构&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>└── elasticsearch
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ├── node-00
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ ├── config
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ │ └── elasticsearch.yml
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ ├── data
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ ├── docker-compose.yml
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ ├── logs
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ └── plugins
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ └── ik
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ├── node-01
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ ├── config
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ │ └── elasticsearch.yml
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ ├── data
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ ├── docker-compose.yml
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ ├── logs
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ └── plugins
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ └── ik
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> └── node-02
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ├── config
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> │ └── elasticsearch.yml
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ├── data
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ├── docker-compose.yml
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ├── logs
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> └── plugins
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> └── ik
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>chown 1000:1000 data
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>chown 1000:1000 logs
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="配置">配置&lt;/h2>
+&lt;ol>
+&lt;li>创建公用docker network&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>docker network ls
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>docker network create --driver bridge elastic
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="2">
+&lt;li>创建各个node的docker-compose.yml&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>node-00&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">version&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;3&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">services&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">es-node-00&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">image&lt;/span>: &lt;span style="color:#ae81ff">docker.elastic.co/elasticsearch/elasticsearch:7.16.3&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">container_name&lt;/span>: &lt;span style="color:#ae81ff">es-node-00&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">environment&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#e6db74">&amp;#34;TZ=Asia/Shanghai&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#e6db74">&amp;#34;ES_JAVA_OPTS=-Xms1g -Xmx1g&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">restart&lt;/span>: &lt;span style="color:#ae81ff">always&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ulimits&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">memlock&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">soft&lt;/span>: -&lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">hard&lt;/span>: -&lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">nofile&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">soft&lt;/span>: &lt;span style="color:#ae81ff">65536&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">hard&lt;/span>: &lt;span style="color:#ae81ff">65536&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ports&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">9200&lt;/span>:&lt;span style="color:#ae81ff">9200&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">9300&lt;/span>:&lt;span style="color:#ae81ff">9300&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">networks&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">elastic&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">volumes&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">./config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">./data:/usr/share/elasticsearch/data&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">./plugins:/usr/share/elasticsearch/plugins&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">./logs:/usr/share/elasticsearch/logs&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">networks&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">elastic&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">external&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>node-01&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">version&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;3&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">services&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">es-node-01&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">image&lt;/span>: &lt;span style="color:#ae81ff">docker.elastic.co/elasticsearch/elasticsearch:7.16.3&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">container_name&lt;/span>: &lt;span style="color:#ae81ff">es-node-01&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">environment&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#e6db74">&amp;#34;TZ=Asia/Shanghai&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#e6db74">&amp;#34;ES_JAVA_OPTS=-Xms1g -Xmx1g&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">restart&lt;/span>: &lt;span style="color:#ae81ff">always&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ulimits&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">memlock&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">soft&lt;/span>: -&lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">hard&lt;/span>: -&lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">nofile&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">soft&lt;/span>: &lt;span style="color:#ae81ff">65536&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">hard&lt;/span>: &lt;span style="color:#ae81ff">65536&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ports&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">9201&lt;/span>:&lt;span style="color:#ae81ff">9200&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">9301&lt;/span>:&lt;span style="color:#ae81ff">9300&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">networks&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">elastic&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">volumes&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">./config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">./data:/usr/share/elasticsearch/data&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">./plugins:/usr/share/elasticsearch/plugins&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">./logs:/usr/share/elasticsearch/logs&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">networks&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">elastic&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">external&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>node-02&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">version&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;3&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">services&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">es-node-02&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">image&lt;/span>: &lt;span style="color:#ae81ff">docker.elastic.co/elasticsearch/elasticsearch:7.16.3&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">container_name&lt;/span>: &lt;span style="color:#ae81ff">es-node-02&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">environment&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#e6db74">&amp;#34;TZ=Asia/Shanghai&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#e6db74">&amp;#34;ES_JAVA_OPTS=-Xms1g -Xmx1g&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">restart&lt;/span>: &lt;span style="color:#ae81ff">always&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ulimits&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">memlock&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">soft&lt;/span>: -&lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">hard&lt;/span>: -&lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">nofile&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">soft&lt;/span>: &lt;span style="color:#ae81ff">65536&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">hard&lt;/span>: &lt;span style="color:#ae81ff">65536&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ports&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">9202&lt;/span>:&lt;span style="color:#ae81ff">9200&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">9302&lt;/span>:&lt;span style="color:#ae81ff">9300&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">networks&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">elastic&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">volumes&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">./config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">./data:/usr/share/elasticsearch/data&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">./plugins:/usr/share/elasticsearch/plugins&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">./logs:/usr/share/elasticsearch/logs&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">networks&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">elastic&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">external&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="3">
+&lt;li>config/elasticsearch.yml&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>node-00&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">cluster.name&lt;/span>: &lt;span style="color:#ae81ff">my-es-cluster&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">node.name&lt;/span>: &lt;span style="color:#ae81ff">es-node-00&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">network.host&lt;/span>: &lt;span style="color:#ae81ff">es-node-00&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">http.port&lt;/span>: &lt;span style="color:#ae81ff">9200&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">transport.port&lt;/span>: &lt;span style="color:#ae81ff">9300&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">http.cors.enabled&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">http.cors.allow-origin&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;*&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">discovery.seed_hosts&lt;/span>: [&lt;span style="color:#e6db74">&amp;#34;es-node-01&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;es-node-02&amp;#34;&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">bootstrap.memory_lock&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">cluster.initial_master_nodes&lt;/span>: [&lt;span style="color:#e6db74">&amp;#34;es-node-00&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;es-node-01&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;es-node-02&amp;#34;&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#disable the usage of geoip functionality&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">ingest.geoip.downloader.enabled&lt;/span>: &lt;span style="color:#66d9ef">false&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>node-01&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">cluster.name&lt;/span>: &lt;span style="color:#ae81ff">my-es-cluster&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">node.name&lt;/span>: &lt;span style="color:#ae81ff">es-node-01&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">network.host&lt;/span>: &lt;span style="color:#ae81ff">es-node-01&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">http.port&lt;/span>: &lt;span style="color:#ae81ff">9200&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">transport.port&lt;/span>: &lt;span style="color:#ae81ff">9300&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">http.cors.enabled&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">http.cors.allow-origin&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;*&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">discovery.seed_hosts&lt;/span>: [&lt;span style="color:#e6db74">&amp;#34;es-node-00&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;es-node-02&amp;#34;&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">bootstrap.memory_lock&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">cluster.initial_master_nodes&lt;/span>: [&lt;span style="color:#e6db74">&amp;#34;es-node-00&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;es-node-01&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;es-node-02&amp;#34;&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#disable the usage of geoip functionality&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">ingest.geoip.downloader.enabled&lt;/span>: &lt;span style="color:#66d9ef">false&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>node-02&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">cluster.name&lt;/span>: &lt;span style="color:#ae81ff">my-es-cluster&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">node.name&lt;/span>: &lt;span style="color:#ae81ff">es-node-02&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">network.host&lt;/span>: &lt;span style="color:#ae81ff">es-node-02&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">http.port&lt;/span>: &lt;span style="color:#ae81ff">9200&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">transport.port&lt;/span>: &lt;span style="color:#ae81ff">9300&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">http.cors.enabled&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">http.cors.allow-origin&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;*&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">discovery.seed_hosts&lt;/span>: [&lt;span style="color:#e6db74">&amp;#34;es-node-00&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;es-node-01&amp;#34;&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">bootstrap.memory_lock&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">cluster.initial_master_nodes&lt;/span>: [&lt;span style="color:#e6db74">&amp;#34;es-node-00&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;es-node-01&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;es-node-02&amp;#34;&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#disable the usage of geoip functionality&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">ingest.geoip.downloader.enabled&lt;/span>: &lt;span style="color:#66d9ef">false&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="kibana">kibana&lt;/h2>
+&lt;p>&lt;a href="https://www.elastic.co/guide/en/kibana/7.16/docker.html">https://www.elastic.co/guide/en/kibana/7.16/docker.html&lt;/a>&lt;/p></description></item><item><title>Unraid下Docker部署Nextcloud网盘</title><link>https://gaoboy.com/post/unraid-docker-nextcloud-setting-ddns-proxy/</link><pubDate>Wed, 24 Feb 2021 16:19:40 +0800</pubDate><guid>https://gaoboy.com/post/unraid-docker-nextcloud-setting-ddns-proxy/</guid><description/></item><item><title>Docker Compose介绍</title><link>https://gaoboy.com/post/docker-compose/</link><pubDate>Tue, 01 Mar 2016 14:56:59 +0800</pubDate><guid>https://gaoboy.com/post/docker-compose/</guid><description>&lt;h1 id="yaml-配置文件语言">YAML 配置文件语言&lt;/h1>
+&lt;p>YAML 是专门用来写配置文件的语言，非常简洁和强大，远比 JSON 格式方便。YAML 语言的设计目标，就是方便人类读写。它实质上是一种通用的数据串行化格式。它的基本语法规则如下：&lt;/p></description></item><item><title>Docker 安全介绍</title><link>https://gaoboy.com/post/docker-safety/</link><pubDate>Tue, 01 Mar 2016 14:33:34 +0800</pubDate><guid>https://gaoboy.com/post/docker-safety/</guid><description>&lt;h1 id="docker-内核命名空间">Docker 内核命名空间&lt;/h1>
+&lt;p>Docker 容器和 LXC 容器很相似，所提供的安全特性也差不多。当用 &lt;code>docker run&lt;/code> 启动一个容器时，在后台 Docker 为容器创建了一个独立的命名空间和控制组集合。&lt;/p>
+&lt;p>命名空间提供了最基础也是最直接的隔离，在容器中运行的进程不会被运行在主机上的进程和其它容器发现和作用。&lt;/p></description></item><item><title>Docker Network介绍</title><link>https://gaoboy.com/post/docker-network/</link><pubDate>Tue, 01 Mar 2016 14:18:33 +0800</pubDate><guid>https://gaoboy.com/post/docker-network/</guid><description>&lt;p>容器的连接（linking）系统是除了端口映射外，另一种跟容器中应用交互的方式。&lt;/p>
+&lt;p>该系统会在源和接收容器之间创建一个隧道，接收容器可以看到源容器指定的信息。&lt;/p></description></item><item><title>Docker 数据卷介绍</title><link>https://gaoboy.com/post/docker-volume/</link><pubDate>Tue, 01 Mar 2016 14:13:08 +0800</pubDate><guid>https://gaoboy.com/post/docker-volume/</guid><description>&lt;p>数据卷是一个可供一个或多个容器使用的特殊目录，它绕过 UFS，可以提供很多有用的特性：&lt;/p>
+&lt;ul>
+&lt;li>数据卷可以在容器之间共享和重用&lt;/li>
+&lt;li>对数据卷的修改会立马生效&lt;/li>
+&lt;li>对数据卷的更新，不会影响镜像&lt;/li>
+&lt;li>卷会一直存在，直到没有容器使用&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>数据卷的使用，类似于 Linux 下对目录或文件进行 mount。&lt;/p></description></item><item><title>Docker 仓库介绍</title><link>https://gaoboy.com/post/docker-hub/</link><pubDate>Tue, 01 Mar 2016 14:08:24 +0800</pubDate><guid>https://gaoboy.com/post/docker-hub/</guid><description>&lt;p>目前 Docker 官方维护了一个公共仓库 &lt;a href="https://hub.docker.com/">Docker Hub&lt;/a>，其中已经包括了超过 15,000 的镜像。大部分需求，都可以通过在 Docker Hub 中直接下载镜像来实现。&lt;/p>
+&lt;h1 id="登录">登录&lt;/h1>
+&lt;p>可以通过执行 &lt;code>docker login&lt;/code> 命令来输入用户名、密码和邮箱来完成注册和登录。 注册成功后，本地用户目录的 &lt;code>.dockercfg&lt;/code> 中将保存用户的认证信息。&lt;/p></description></item><item><title>Docker 容器介绍</title><link>https://gaoboy.com/post/docker-container/</link><pubDate>Tue, 01 Mar 2016 13:06:25 +0800</pubDate><guid>https://gaoboy.com/post/docker-container/</guid><description>&lt;h1 id="docker-进入容器">Docker 进入容器&lt;/h1>
+&lt;p>在使用 &lt;code>-d&lt;/code> 参数时，容器启动后会进入后台。 某些时候需要进入容器进行操作，有很多种方法，包括使用 &lt;code>docker attach&lt;/code> 命令或 &lt;code>nsenter&lt;/code> 工具等。&lt;/p>
+&lt;h2 id="attach-命令">attach 命令&lt;/h2>
+&lt;p>&lt;code>docker attach&lt;/code> 是 Docker 自带的命令。下面示例如何使用该命令。&lt;/p></description></item><item><title>Docker 镜像介绍</title><link>https://gaoboy.com/post/docker-image/</link><pubDate>Tue, 01 Mar 2016 12:16:59 +0800</pubDate><guid>https://gaoboy.com/post/docker-image/</guid><description>&lt;h1 id="docker-镜像的实现原理">Docker 镜像的实现原理&lt;/h1>
+&lt;p>Docker 镜像是怎么实现增量的修改和维护的？ 每个镜像都由很多层次构成，Docker 使用 &lt;a href="http://en.wikipedia.org/wiki/UnionFS">Union FS&lt;/a> 将这些不同的层结合到一个镜像中去。&lt;/p>
+&lt;p>通常 Union FS 有两个用途，一方面可以实现不借助 LVM、RAID 将多个 disk 挂到同一个目录下，另一个更常用的就是将一个只读的分支和一个可写的分支联合在一起，Live CD 正是基于此方法可以允许在镜像不变的基础上允许用户在其上进行一些写操作。 Docker 在 AUFS 上构建的容器也是利用了类似的原理。&lt;/p></description></item><item><title>Docker 简介和安装</title><link>https://gaoboy.com/post/docker-introduction/</link><pubDate>Tue, 01 Mar 2016 11:30:51 +0800</pubDate><guid>https://gaoboy.com/post/docker-introduction/</guid><description>&lt;h1 id="什么是-docker">什么是 Docker&lt;/h1>
+&lt;p>官网地址：https://www.docker.com/&lt;/p>
+&lt;p>Docker 最初是 dotCloud 公司创始人 Solomon Hykes 在法国期间发起的一个公司内部项目，它是基于 dotCloud 公司多年云服务技术的一次革新，并于 [2013 年 3 月以 Apache 2.0 授权协议开源][docker-soft]，主要项目代码在 &lt;a href="https://github.com/moby/moby">GitHub&lt;/a> 上进行维护。Docker 项目后来还加入了 Linux 基金会，并成立推动 &lt;a href="https://www.opencontainers.org/">开放容器联盟（OCI）&lt;/a>。&lt;/p></description></item></channel></rss>
