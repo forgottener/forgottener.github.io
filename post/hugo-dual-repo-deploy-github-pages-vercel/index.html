@@ -18,65 +18,65 @@
 └── .github/
     └── workflows/
         └── gh-pages.yml   # CI/CD 配置
-</code></pre><h3 id=12-github-actions-workflow>1.2 GitHub Actions Workflow</h3><p><code>.github/workflows/gh-pages.yml</code>：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=line><span class=cl><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>Deploy Hugo Site to Github Pages on Master Branch</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>on</span><span class=p>:</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>push</span><span class=p>:</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>branches</span><span class=p>:</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=l>master</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>workflow_dispatch</span><span class=p>:</span><span class=w>    </span><span class=c># 支持手动触发</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>env</span><span class=p>:</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>FORCE_JAVASCRIPT_ACTIONS_TO_NODE24</span><span class=p>:</span><span class=w> </span><span class=kc>true</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>jobs</span><span class=p>:</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>build-deploy</span><span class=p>:</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>runs-on</span><span class=p>:</span><span class=w> </span><span class=l>ubuntu-latest</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>steps</span><span class=p>:</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=c># 1. 拉取源码（含 submodule 主题）</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=nt>uses</span><span class=p>:</span><span class=w> </span><span class=l>actions/checkout@v4</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>with</span><span class=p>:</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>submodules</span><span class=p>:</span><span class=w> </span><span class=kc>true</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>fetch-depth</span><span class=p>:</span><span class=w> </span><span class=m>0</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=c># 2. 安装 Hugo</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>Setup Hugo</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>uses</span><span class=p>:</span><span class=w> </span><span class=l>peaceiris/actions-hugo@v3</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>with</span><span class=p>:</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>hugo-version</span><span class=p>:</span><span class=w> </span><span class=s1>&#39;0.136.5&#39;</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>extended</span><span class=p>:</span><span class=w> </span><span class=kc>true</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=c># 3. 构建静态文件</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>Build</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>run</span><span class=p>:</span><span class=w> </span><span class=l>hugo --minify</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=c># 4. 构建搜索索引（可选，使用 Pagefind）</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>Build search index</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>run</span><span class=p>:</span><span class=w> </span><span class=l>npx pagefind --site public</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=c># 5. 部署到静态文件仓库</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=nt>name</span><span class=p>:</span><span class=w> </span><span class=l>Deploy</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>uses</span><span class=p>:</span><span class=w> </span><span class=l>peaceiris/actions-gh-pages@v4</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nt>with</span><span class=p>:</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>deploy_key</span><span class=p>:</span><span class=w> </span><span class=l>${{ secrets.ACTIONS_DEPLOY_KEY }}</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>external_repository</span><span class=p>:</span><span class=w> </span>{<span class=l>username}/{username}.github.io</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>publish_dir</span><span class=p>:</span><span class=w> </span><span class=l>./public</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>keep_files</span><span class=p>:</span><span class=w> </span><span class=kc>false</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>publish_branch</span><span class=p>:</span><span class=w> </span><span class=l>master</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>cname</span><span class=p>:</span><span class=w> </span><span class=l>www.example.com       </span><span class=w> </span><span class=c># 自定义域名</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>          </span><span class=nt>commit_message</span><span class=p>:</span><span class=w> </span><span class=l>${{ github.event.head_commit.message }}</span><span class=w>
-</span></span></span></code></pre></div><h3 id=13-workflow-原理>1.3 Workflow 原理</h3><p>整个流程分 5 步：</p><ol><li><p><strong>Checkout</strong>：拉取源码，<code>submodules: true</code> 确保主题代码也被拉取，<code>fetch-depth: 0</code> 获取完整 git 历史（用于 <code>.GitInfo</code> 和 <code>.Lastmod</code>）</p></li><li><p><strong>Setup Hugo</strong>：下载指定版本的 Hugo Extended（Extended 版本支持 SCSS/SASS 编译）</p></li><li><p><strong>Build</strong>：<code>hugo --minify</code> 将 Markdown 编译为 HTML，输出到 <code>./public</code> 目录，<code>--minify</code> 压缩 HTML/CSS/JS</p></li><li><p><strong>Search Index</strong>（可选）：Pagefind 扫描 <code>./public</code> 中的 HTML 文件，生成静态搜索索引到 <code>./public/pagefind/</code></p></li><li><p><strong>Deploy</strong>：使用 <code>peaceiris/actions-gh-pages</code> 将 <code>./public</code> 目录的内容 push 到目标仓库。<code>keep_files: false</code> 表示每次清空目标仓库再推送，确保内容一致</p></li></ol><h3 id=14-deploy-key-配置>1.4 Deploy Key 配置</h3><p>源码仓库通过 SSH Deploy Key 向静态文件仓库推送，配置步骤：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=c1># 生成密钥对</span>
-</span></span><span class=line><span class=cl>ssh-keygen -t ed25519 -C <span class=s2>&#34;github-actions-deploy&#34;</span> -f deploy_key -N <span class=s2>&#34;&#34;</span>
-</span></span></code></pre></div><ul><li><strong>公钥</strong> <code>deploy_key.pub</code> → 添加到 <code>{username}.github.io</code> 仓库：Settings → Deploy keys → Add deploy key → 勾选 &ldquo;Allow write access&rdquo;</li><li><strong>私钥</strong> <code>deploy_key</code> → 添加到 <code>{username}.github.io.source</code> 仓库：Settings → Secrets and variables → Actions → New repository secret，名称为 <code>ACTIONS_DEPLOY_KEY</code></li></ul><blockquote><p>⚠️ 重要限制：Deploy Key push 的 commit 不会触发目标仓库的 GitHub Actions workflow（GitHub 安全机制，防止循环触发）。但 GitHub Pages 的内置 <code>pages-build-deployment</code> 和 Vercel 的 Webhook 不受此限制。</p></blockquote><h3 id=15-mermaid-图表支持>1.5 Mermaid 图表支持</h3><p>Hugo 不内置 Mermaid 支持，但通过代码块渲染钩子可以轻松实现，且不需要修改主题代码。</p><p>Hugo 的模板优先级是 <code>项目 layouts/ > 主题 layouts/</code>，只需在项目根目录添加文件即可。</p><p>只需两个文件：</p><p><strong>文件一：代码块渲染钩子</strong></p><p><code>layouts/_default/_markup/render-codeblock-mermaid.html</code>：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=line><span class=cl><span class=p>&lt;</span><span class=nt>pre</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;mermaid&#34;</span><span class=p>&gt;</span>
-</span></span><span class=line><span class=cl>  {{ &#34;{{&#34; }} .Inner | htmlEscape | safeHTML {{ &#34;}}&#34; }}
-</span></span><span class=line><span class=cl><span class=p>&lt;/</span><span class=nt>pre</span><span class=p>&gt;</span>
-</span></span><span class=line><span class=cl>{{ &#34;{{&#34; }} .Page.Store.Set &#34;hasMermaid&#34; true {{ &#34;}}&#34; }}
-</span></span></code></pre></div><ul><li>将 mermaid 代码块输出为 <code>&lt;pre class="mermaid"></code> 标签</li><li>标记当前页面包含 Mermaid 内容</li></ul><p><strong>文件二：覆盖 baseof.html</strong></p><p>将主题的 <code>baseof.html</code> 复制到 <code>layouts/_default/baseof.html</code>，在 <code>&lt;/body></code> 前添加：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=line><span class=cl>{{ &#34;{{&#34; }} if .Store.Get &#34;hasMermaid&#34; {{ &#34;}}&#34; }}
-</span></span><span class=line><span class=cl><span class=p>&lt;</span><span class=nt>script</span> <span class=na>type</span><span class=o>=</span><span class=s>&#34;module&#34;</span><span class=p>&gt;</span>
-</span></span><span class=line><span class=cl>  <span class=kr>import</span> <span class=nx>mermaid</span> <span class=nx>from</span> <span class=s1>&#39;https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs&#39;</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>  <span class=nx>mermaid</span><span class=p>.</span><span class=nx>initialize</span><span class=p>({</span> <span class=nx>startOnLoad</span><span class=o>:</span> <span class=kc>true</span> <span class=p>});</span>
-</span></span><span class=line><span class=cl><span class=p>&lt;/</span><span class=nt>script</span><span class=p>&gt;</span>
-</span></span><span class=line><span class=cl>{{ &#34;{{&#34; }} end {{ &#34;}}&#34; }}
+</code></pre><h3 id=12-github-actions-workflow>1.2 GitHub Actions Workflow</h3><p><code>.github/workflows/gh-pages.yml</code>：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>name</span>: <span style=color:#ae81ff>Deploy Hugo Site to Github Pages on Master Branch</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>on</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>push</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>branches</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>master</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>workflow_dispatch</span>:    <span style=color:#75715e># 支持手动触发</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>env</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>FORCE_JAVASCRIPT_ACTIONS_TO_NODE24</span>: <span style=color:#66d9ef>true</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>jobs</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>build-deploy</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>runs-on</span>: <span style=color:#ae81ff>ubuntu-latest</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>steps</span>:
+</span></span><span style=display:flex><span>      <span style=color:#75715e># 1. 拉取源码（含 submodule 主题）</span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>actions/checkout@v4</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>with</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>submodules</span>: <span style=color:#66d9ef>true</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>fetch-depth</span>: <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      <span style=color:#75715e># 2. 安装 Hugo</span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Setup Hugo</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>peaceiris/actions-hugo@v3</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>with</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>hugo-version</span>: <span style=color:#e6db74>&#39;0.136.5&#39;</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>extended</span>: <span style=color:#66d9ef>true</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      <span style=color:#75715e># 3. 构建静态文件</span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Build</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>run</span>: <span style=color:#ae81ff>hugo --minify</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      <span style=color:#75715e># 4. 构建搜索索引（可选，使用 Pagefind）</span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Build search index</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>run</span>: <span style=color:#ae81ff>npx pagefind --site public</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      <span style=color:#75715e># 5. 部署到静态文件仓库</span>
+</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Deploy</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>peaceiris/actions-gh-pages@v4</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>with</span>:
+</span></span><span style=display:flex><span>          <span style=color:#f92672>deploy_key</span>: <span style=color:#ae81ff>${{ secrets.ACTIONS_DEPLOY_KEY }}</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>external_repository</span>: {<span style=color:#ae81ff>username}/{username}.github.io</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>publish_dir</span>: <span style=color:#ae81ff>./public</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>keep_files</span>: <span style=color:#66d9ef>false</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>publish_branch</span>: <span style=color:#ae81ff>master</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>cname</span>: <span style=color:#ae81ff>www.example.com       </span> <span style=color:#75715e># 自定义域名</span>
+</span></span><span style=display:flex><span>          <span style=color:#f92672>commit_message</span>: <span style=color:#ae81ff>${{ github.event.head_commit.message }}</span>
+</span></span></code></pre></div><h3 id=13-workflow-原理>1.3 Workflow 原理</h3><p>整个流程分 5 步：</p><ol><li><p><strong>Checkout</strong>：拉取源码，<code>submodules: true</code> 确保主题代码也被拉取，<code>fetch-depth: 0</code> 获取完整 git 历史（用于 <code>.GitInfo</code> 和 <code>.Lastmod</code>）</p></li><li><p><strong>Setup Hugo</strong>：下载指定版本的 Hugo Extended（Extended 版本支持 SCSS/SASS 编译）</p></li><li><p><strong>Build</strong>：<code>hugo --minify</code> 将 Markdown 编译为 HTML，输出到 <code>./public</code> 目录，<code>--minify</code> 压缩 HTML/CSS/JS</p></li><li><p><strong>Search Index</strong>（可选）：Pagefind 扫描 <code>./public</code> 中的 HTML 文件，生成静态搜索索引到 <code>./public/pagefind/</code></p></li><li><p><strong>Deploy</strong>：使用 <code>peaceiris/actions-gh-pages</code> 将 <code>./public</code> 目录的内容 push 到目标仓库。<code>keep_files: false</code> 表示每次清空目标仓库再推送，确保内容一致</p></li></ol><h3 id=14-deploy-key-配置>1.4 Deploy Key 配置</h3><p>源码仓库通过 SSH Deploy Key 向静态文件仓库推送，配置步骤：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># 生成密钥对</span>
+</span></span><span style=display:flex><span>ssh-keygen -t ed25519 -C <span style=color:#e6db74>&#34;github-actions-deploy&#34;</span> -f deploy_key -N <span style=color:#e6db74>&#34;&#34;</span>
+</span></span></code></pre></div><ul><li><strong>公钥</strong> <code>deploy_key.pub</code> → 添加到 <code>{username}.github.io</code> 仓库：Settings → Deploy keys → Add deploy key → 勾选 &ldquo;Allow write access&rdquo;</li><li><strong>私钥</strong> <code>deploy_key</code> → 添加到 <code>{username}.github.io.source</code> 仓库：Settings → Secrets and variables → Actions → New repository secret，名称为 <code>ACTIONS_DEPLOY_KEY</code></li></ul><blockquote><p>⚠️ 重要限制：Deploy Key push 的 commit 不会触发目标仓库的 GitHub Actions workflow（GitHub 安全机制，防止循环触发）。但 GitHub Pages 的内置 <code>pages-build-deployment</code> 和 Vercel 的 Webhook 不受此限制。</p></blockquote><h3 id=15-mermaid-图表支持>1.5 Mermaid 图表支持</h3><p>Hugo 不内置 Mermaid 支持，但通过代码块渲染钩子可以轻松实现，且不需要修改主题代码。</p><p>Hugo 的模板优先级是 <code>项目 layouts/ > 主题 layouts/</code>，只需在项目根目录添加文件即可。</p><p>只需两个文件：</p><p><strong>文件一：代码块渲染钩子</strong></p><p><code>layouts/_default/_markup/render-codeblock-mermaid.html</code>：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html><span style=display:flex><span>&lt;<span style=color:#f92672>pre</span> <span style=color:#a6e22e>class</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;mermaid&#34;</span>&gt;
+</span></span><span style=display:flex><span>  {{ &#34;{{&#34; }} .Inner | htmlEscape | safeHTML {{ &#34;}}&#34; }}
+</span></span><span style=display:flex><span>&lt;/<span style=color:#f92672>pre</span>&gt;
+</span></span><span style=display:flex><span>{{ &#34;{{&#34; }} .Page.Store.Set &#34;hasMermaid&#34; true {{ &#34;}}&#34; }}
+</span></span></code></pre></div><ul><li>将 mermaid 代码块输出为 <code>&lt;pre class="mermaid"></code> 标签</li><li>标记当前页面包含 Mermaid 内容</li></ul><p><strong>文件二：覆盖 baseof.html</strong></p><p>将主题的 <code>baseof.html</code> 复制到 <code>layouts/_default/baseof.html</code>，在 <code>&lt;/body></code> 前添加：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html><span style=display:flex><span>{{ &#34;{{&#34; }} if .Store.Get &#34;hasMermaid&#34; {{ &#34;}}&#34; }}
+</span></span><span style=display:flex><span>&lt;<span style=color:#f92672>script</span> <span style=color:#a6e22e>type</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;module&#34;</span>&gt;
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>import</span> <span style=color:#a6e22e>mermaid</span> <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#39;https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs&#39;</span>;
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>mermaid</span>.<span style=color:#a6e22e>initialize</span>({ <span style=color:#a6e22e>startOnLoad</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>true</span> });
+</span></span><span style=display:flex><span>&lt;/<span style=color:#f92672>script</span>&gt;
+</span></span><span style=display:flex><span>{{ &#34;{{&#34; }} end {{ &#34;}}&#34; }}
 </span></span></code></pre></div><p>只在包含 Mermaid 代码块的页面才加载 JS，按需加载不影响其他页面性能。语法与 Obsidian 完全一致，两边可以无缝复制。</p><h2 id=二静态文件仓库配置>二、静态文件仓库配置</h2><h3 id=21-创建仓库>2.1 创建仓库</h3><p>创建公开仓库 <code>{username}.github.io</code>。这是一个特殊的仓库名，GitHub 会自动将其识别为 GitHub Pages 站点。</p><p>这个仓库不需要手动维护，所有内容由源码仓库的 workflow 自动推送。</p><h3 id=22-github-pages-配置>2.2 GitHub Pages 配置</h3><ol><li>进入仓库 Settings → Pages</li><li>Build and deployment → Source → 选择 <strong>&ldquo;Deploy from a branch&rdquo;</strong></li><li>Branch 选 <code>master</code>，目录选 <code>/ (root)</code></li><li>保存</li></ol><p>选择 &ldquo;Deploy from a branch&rdquo; 而不是 &ldquo;GitHub Actions&rdquo; 的原因：</p><ul><li>Deploy Key push 的 commit 不会触发自定义 workflow</li><li>但 &ldquo;Deploy from a branch&rdquo; 使用的是 GitHub 内置的 <code>pages-build-deployment</code>，不受此限制</li><li>每次源码仓库 push 新内容过来，GitHub Pages 会自动部署</li></ul><h3 id=23-自定义域名>2.3 自定义域名</h3><p>如果需要自定义域名：</p><ol><li>在 DNS 服务商添加 CNAME 记录：<code>www.example.com</code> → <code>{username}.github.io</code></li><li>workflow 中的 <code>cname: www.example.com</code> 会自动在仓库根目录创建 <code>CNAME</code> 文件</li><li>在 GitHub Pages 设置中勾选 &ldquo;Enforce HTTPS&rdquo;</li></ol><h2 id=三vercel-免费部署方案>三、Vercel 免费部署方案</h2><h3 id=31-为什么用-vercel>3.1 为什么用 Vercel</h3><ul><li>全球 CDN 加速，国内访问速度优于 GitHub Pages</li><li>免费 HTTPS</li><li>自动部署，零配置</li><li>支持自定义域名</li><li>Hobby 计划完全免费</li></ul><h3 id=32-接入步骤>3.2 接入步骤</h3><ol><li>注册 <a href=https://vercel.com>Vercel</a>，使用 GitHub 账号登录</li><li>Import Project → 选择 <code>{username}.github.io</code> 仓库</li><li>Framework Preset 选择 <strong>Other</strong>（因为这是已经构建好的静态文件，不需要 Vercel 再构建）</li><li>Build Command 留空或设为 <code>echo "skip build"</code></li><li>Output Directory 设为 <code>.</code>（根目录）</li><li>点击 Deploy</li></ol><h3 id=33-deployment-原理>3.3 Deployment 原理</h3><pre class=mermaid>
   sequenceDiagram
     participant R as GitHub Repo
@@ -90,11 +90,11 @@
     V-&gt;&gt;V: 构建阶段（静态文件跳过）
     V-&gt;&gt;C: 分发到全球边缘节点
     C--&gt;&gt;C: 用户就近访问
-</pre><ol><li><p><strong>Webhook 监听</strong>：Vercel 在你导入项目时，会在 GitHub 仓库自动注册一个 Webhook。每次仓库收到 push 事件，GitHub 会向 Vercel 发送 HTTP POST 通知</p></li><li><p><strong>拉取代码</strong>：Vercel 收到通知后，从 GitHub 拉取最新代码</p></li><li><p><strong>构建阶段</strong>：由于静态文件仓库已经是构建好的 HTML/CSS/JS，不需要额外构建。Vercel 会检测到没有框架配置，直接将文件作为静态资源处理</p></li><li><p><strong>部署到 CDN</strong>：Vercel 将静态文件分发到全球边缘节点（Edge Network），用户访问时自动路由到最近的节点</p></li><li><p><strong>Deployment 类型</strong>：</p><ul><li><strong>Production Deployment</strong>：master 分支的 push 会触发生产环境部署，绑定到自定义域名</li><li><strong>Preview Deployment</strong>：其他分支的 push 会生成预览 URL（本方案中不涉及，因为静态文件仓库只有 master 分支）</li></ul></li></ol><h3 id=34-vercel-自定义域名>3.4 Vercel 自定义域名</h3><ol><li>Vercel Dashboard → 项目 → Settings → Domains</li><li>添加自定义域名，如 <code>www.example.com</code></li><li>按提示在 DNS 服务商添加 CNAME 记录：<code>www.example.com</code> → <code>cname.vercel-dns.com</code></li><li>Vercel 自动签发 SSL 证书</li></ol><blockquote><p>💡 可以让 GitHub Pages 和 Vercel 使用不同的域名，比如 <code>{username}.github.io</code> 走 GitHub Pages，<code>www.example.com</code> 走 Vercel。</p></blockquote><h3 id=35-nodejs-版本配置>3.5 Node.js 版本配置</h3><p>Vercel 构建时需要 Node.js 环境。如果遇到版本问题：</p><ul><li>方式一：Vercel Dashboard → 项目 → Settings → Build and Deployment → Node.js Version → 选择 24.x</li><li>方式二：在仓库根目录添加 <code>package.json</code>：</li></ul><div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=p>{</span>
-</span></span><span class=line><span class=cl>  <span class=nt>&#34;engines&#34;</span><span class=p>:</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>    <span class=nt>&#34;node&#34;</span><span class=p>:</span> <span class=s2>&#34;24.x&#34;</span>
-</span></span><span class=line><span class=cl>  <span class=p>}</span>
-</span></span><span class=line><span class=cl><span class=p>}</span>
+</pre><ol><li><p><strong>Webhook 监听</strong>：Vercel 在你导入项目时，会在 GitHub 仓库自动注册一个 Webhook。每次仓库收到 push 事件，GitHub 会向 Vercel 发送 HTTP POST 通知</p></li><li><p><strong>拉取代码</strong>：Vercel 收到通知后，从 GitHub 拉取最新代码</p></li><li><p><strong>构建阶段</strong>：由于静态文件仓库已经是构建好的 HTML/CSS/JS，不需要额外构建。Vercel 会检测到没有框架配置，直接将文件作为静态资源处理</p></li><li><p><strong>部署到 CDN</strong>：Vercel 将静态文件分发到全球边缘节点（Edge Network），用户访问时自动路由到最近的节点</p></li><li><p><strong>Deployment 类型</strong>：</p><ul><li><strong>Production Deployment</strong>：master 分支的 push 会触发生产环境部署，绑定到自定义域名</li><li><strong>Preview Deployment</strong>：其他分支的 push 会生成预览 URL（本方案中不涉及，因为静态文件仓库只有 master 分支）</li></ul></li></ol><h3 id=34-vercel-自定义域名>3.4 Vercel 自定义域名</h3><ol><li>Vercel Dashboard → 项目 → Settings → Domains</li><li>添加自定义域名，如 <code>www.example.com</code></li><li>按提示在 DNS 服务商添加 CNAME 记录：<code>www.example.com</code> → <code>cname.vercel-dns.com</code></li><li>Vercel 自动签发 SSL 证书</li></ol><blockquote><p>💡 可以让 GitHub Pages 和 Vercel 使用不同的域名，比如 <code>{username}.github.io</code> 走 GitHub Pages，<code>www.example.com</code> 走 Vercel。</p></blockquote><h3 id=35-nodejs-版本配置>3.5 Node.js 版本配置</h3><p>Vercel 构建时需要 Node.js 环境。如果遇到版本问题：</p><ul><li>方式一：Vercel Dashboard → 项目 → Settings → Build and Deployment → Node.js Version → 选择 24.x</li><li>方式二：在仓库根目录添加 <code>package.json</code>：</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;engines&#34;</span>: {
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;node&#34;</span>: <span style=color:#e6db74>&#34;24.x&#34;</span>
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
 </span></span></code></pre></div><h2 id=四完整部署流程>四、完整部署流程</h2><pre class=mermaid>
   sequenceDiagram
     participant D as 开发者
